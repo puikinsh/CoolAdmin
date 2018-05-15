@@ -77,7 +77,7 @@ Initial Release
 [Colorlib](https://colorlib.com)
 
 ### More info
-- [Boostrap min dashboards](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
+- [Boostrap dashboards](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
 - [Angular dashboards](https://colorlib.com/wp/angularjs-admin-templates/)
 - [Free Admin Dashboards](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)
 - [Website Templates](https://colorlib.com/wp/templates/)
