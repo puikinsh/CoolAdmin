@@ -37,7 +37,7 @@
 
 <body class="animsition">
     <div class="page-wrapper">
-        <!-- HEADER MOBILE -->
+        <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
             <div class="header-mobile__bar">
                 <div class="container-fluid">
@@ -56,9 +56,23 @@
             <nav class="navbar-mobile">
                 <div class="container-fluid">
                     <ul class="navbar-mobile__list list-unstyled">
-                        <li>
-                            <a href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard 1</a>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="index.html">Dashboard 1</a>
+                                </li>
+                                <li>
+                                    <a href="index2.html">Dashboard 2</a>
+                                </li>
+                                <li>
+                                    <a href="index3.html">Dashboard 3</a>
+                                </li>
+                                <li>
+                                    <a href="index4.html">Dashboard 4</a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
                             <a href="chart.html">
@@ -80,8 +94,8 @@
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
                         </li>
-                        <li class="has-sub js-arrow">
-                            <a href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
@@ -95,8 +109,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-sub js-arrow">
-                            <a href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
@@ -138,7 +152,7 @@
                 </div>
             </nav>
         </header>
-        <!-- END HEADER MOBILE -->
+        <!-- END HEADER MOBILE-->
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
@@ -150,8 +164,8 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub js-arrow">
-                            <a href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
@@ -188,8 +202,8 @@
                             <a href="map.html">
                                 <i class="fas fa-map-marker-alt"></i>Maps</a>
                         </li>
-                        <li class="has-sub js-arrow">
-                            <a href="#">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-copy"></i>Pages</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
@@ -203,8 +217,8 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="has-sub js-arrow">
-                            <a href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fas fa-desktop"></i>UI Elements</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
@@ -446,37 +460,49 @@
                                         <div class="au-task-list js-scrollbar3">
                                             <div class="au-task__item au-task__item--danger">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Meeting about plan for Admin Template 2018</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                    </h5>
                                                     <span class="time">10:00 AM</span>
                                                 </div>
                                             </div>
                                             <div class="au-task__item au-task__item--warning">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Create new task for Dashboard</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Create new task for Dashboard</a>
+                                                    </h5>
                                                     <span class="time">11:00 AM</span>
                                                 </div>
                                             </div>
                                             <div class="au-task__item au-task__item--primary">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Meeting about plan for Admin Template 2018</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                    </h5>
                                                     <span class="time">02:00 PM</span>
                                                 </div>
                                             </div>
                                             <div class="au-task__item au-task__item--success">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Create new task for Dashboard</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Create new task for Dashboard</a>
+                                                    </h5>
                                                     <span class="time">03:30 PM</span>
                                                 </div>
                                             </div>
                                             <div class="au-task__item au-task__item--danger js-load-item">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Meeting about plan for Admin Template 2018</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Meeting about plan for Admin Template 2018</a>
+                                                    </h5>
                                                     <span class="time">10:00 AM</span>
                                                 </div>
                                             </div>
                                             <div class="au-task__item au-task__item--warning js-load-item">
                                                 <div class="au-task__item-inner">
-                                                    <p class="task">Create new task for Dashboard</p>
+                                                    <h5 class="task">
+                                                        <a href="#">Create new task for Dashboard</a>
+                                                    </h5>
                                                     <span class="time">11:00 AM</span>
                                                 </div>
                                             </div>

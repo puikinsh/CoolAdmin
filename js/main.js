@@ -1487,11 +1487,6 @@
 
     }
 
-    // const ps3 = new PerfectScrollbar('.js-scrollbar3');
-
-    // const ps4 = new PerfectScrollbar('.js-scrollbar4');
-
-    // const ps5 = new PerfectScrollbar('.js-scrollbar5');
   } catch (error) {
     console.log(error);
   }
@@ -1591,7 +1586,7 @@
         e.preventDefault();
         that.find(".arrow").toggleClass("up");
         that.toggleClass("open");
-        that.find('.js-sub-list').slideToggle("250");
+        that.parent().find('.js-sub-list').slideToggle("250");
       });
     });
 
