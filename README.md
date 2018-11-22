@@ -7,7 +7,7 @@
 
 ![CoolAdmin admin dashboard template preview](https://colorlib.com/wp/wp-content/uploads/sites/2/Dashboard-v2.jpg)
 
-### Demo Site: [Sooon]
+### Demo Site: [[Here]](https://colorlib.com/polygon/cooladmin/index.html)
 
 ### TOC
 - [Built With](#built-with)
