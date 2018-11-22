@@ -1,5 +1,5 @@
-# CoolAdmnin Bootstrap 4.1 Admin Dashboard Template
-**CoolAdmnin** is a responsive Bootstrap 4.1 admin template. It provides you with a collection of ready to use code snippets and utilities, custom pages, loads of charts, 4 different dashboard variations, a collection of applications and some useful widgets. Preview of this awesome admin template available here: (soon)
+# CoolAdmin Bootstrap 4.1 Admin Dashboard Template
+**CoolAdmin** is a responsive Bootstrap 4.1 admin template. It provides you with a collection of ready to use code snippets and utilities, custom pages, loads of charts, 4 different dashboard variations, a collection of applications and some useful widgets. Preview of this awesome admin template available here: (soon)
 
 # Preview
 
@@ -45,7 +45,7 @@ Initial Release
 [Colorlib](https://colorlib.com)
 
 ### More info
-- [Boostrap dashboards](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
+- [Bootstrap dashboards](https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/)
 - [Angular dashboards](https://colorlib.com/wp/angularjs-admin-templates/)
 - [Free Admin Dashboards](https://colorlib.com/wp/free-html5-admin-dashboard-templates/)
 - [Website Templates](https://colorlib.com/wp/templates/)
