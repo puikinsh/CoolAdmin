@@ -36,8 +36,22 @@
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
 
+    <style type="text/css">
+    /* force class color to override the bootstrap base rule
+       NOTE: adding 'url: #' to calendar makes this unneeded
+     */
+    .fc-event, .fc-event:hover {
+          color: #fff !important;
+          text-decoration: none;
+    }
+    </style>
+
 </head>
 
+<!-- animsition overrides all click events on clickable things like a,
+      since calendar doesn't add href's be default,
+      it leads to odd behaviors like loading 'undefined'
+      moving the class to menus lead to only the menu having the effect -->
 <body class="animsition">
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
@@ -495,33 +509,49 @@
 
     <script type="text/javascript">
 $(function() {
-  // TODO: make for current month
+  // for now, there is something adding a click handler to 'a'
+  var tues = moment().day(2).hour(19);
+
+  // build trival night events for example data
+  var events = [
+    {
+      title: "Special Conference",
+      start: moment().format('YYYY-MM-DD'),
+      url: '#'
+    },
+    {
+      title: "Doctor Appt",
+      start: moment().hour(9).add(2, 'days').toISOString(),
+      url: '#'
+    }
+
+  ];
+
+  var trivia_nights = []
+
+  for(var i = 1; i <= 4; i++) {
+    var n = tues.clone().add(i, 'weeks');
+    console.log("isoString: " + n.toISOString());
+    trivia_nights.push({
+      title: 'Trival Night @ Pub XYZ',
+      start: n.toISOString(),
+      allDay: false,
+      url: '#'
+    });
+  }
+
+  // setup a few events
   $('#calendar').fullCalendar({
-    events: [
-      {
-        title: 'Sunday Fun Day!',
-        start: '2019-02-03'
-      },
-      {
-        title: 'Beers with Johnny',
-        start: '2019-02-23'
-      },
-      {
-        title: 'Sunday Fun Day!',
-        start: '2019-02-24'
-      }
-    ]
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'month,agendaWeek,agendaDay,listWeek'
+    },
+    events: events.concat(trivia_nights)
   });
 });
     </script>
 
-    <style type="text/css">
-    /* force class color to override the bootstrap base rule */
-    .fc-event, .fc-event:hover {
-          color: #fff !important;
-          text-decoration: none;
-    }
-    </style>
 
 </body>
 
