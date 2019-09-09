@@ -24,6 +24,7 @@
 - [Chart.js](http://www.chartjs.org/)
 - [Counter-Up](https://github.com/bfintal/Counter-Up)
 - [CSS Hamburgers](https://github.com/jonsuh/hamburgers)
+- [Full Calendar](https://fullcalendar.io)
 - [Fontawesome](http://fontawesome.io/)
 - [jquery-circle-progress](http://kottenator.github.io/jquery-circle-progress/)
 - [jQuery](https://jquery.com/)
