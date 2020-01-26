@@ -52,7 +52,7 @@ CoolAdmin admin dashboard template preview
 
 -   [jQuery](https://jquery.com/)
 
--   Date picker
+-   [Date picker](https://www.jqueryscript.net/time-clock/Date-Time-Picker-Bootstrap-4.html)
 
 -   [JQVMap](https://jqvmap.com/)
 
