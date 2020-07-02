@@ -1255,12 +1255,15 @@
 (function ($) {
     // USE STRICT
     "use strict";
+    var navbars = ['header', 'aside'];
+    var hrefSelector = 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])';
+    var linkElement = navbars.map(element => element + ' ' + hrefSelector).join(', ');
     $(".animsition").animsition({
       inClass: 'fade-in',
       outClass: 'fade-out',
       inDuration: 900,
       outDuration: 900,
-      linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
+      linkElement: linkElement,
       loading: true,
       loadingParentElement: 'html',
       loadingClass: 'page-loader',
