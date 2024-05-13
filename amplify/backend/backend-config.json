@@ -1,0 +1,82 @@
+{
+  "api": {
+    "KideChannels": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "amplifykideai"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authamplifykideai"
+              }
+            }
+          ],
+          "defaultAuthentication": {
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            },
+            "authenticationType": "API_KEY"
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
+  "auth": {
+    "amplifykideai": {
+      "customAuth": false,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "serviceType": "imported"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_auth_amplifykideai_nativeClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifykideai"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifykideai_userPoolId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifykideai"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifykideai_userPoolName": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifykideai"
+        }
+      ]
+    },
+    "AMPLIFY_auth_amplifykideai_webClientId": {
+      "usedBy": [
+        {
+          "category": "auth",
+          "resourceName": "amplifykideai"
+        }
+      ]
+    }
+  }
+}
