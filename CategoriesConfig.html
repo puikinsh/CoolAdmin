@@ -225,20 +225,17 @@
                     <div class="section__content section__content--p30">
                         <div class="container-fluid form-group">
                             <div class="row justify-content-center">
-                                <div class="col-md-12">
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <select class="form-control" id="selectOption">
-                                            <option value="option1">Option 1</option>
-                                            <option value="option2">Option 2</option>
-                                            <option value="option3">Option 3</option>
-                                        </select>
-                                    </div>
+                                <div class="row" style="margin-bottom: 20px">
+                                    <select class="form-control" id="selectOptionCategory">
+                                    </select>
+                                </div>
+                                <div class="col-md-12" id="divCategory">
                                     <div class="row" style="margin-bottom: 20px">
                                         <div class="col">
                                             <h4>Auto Response:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoResponse" />
                                         </div>
                                         <div class="col"></div>
                                         <div class="col"></div>
@@ -248,11 +245,11 @@
                                             <h4>Redirect:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoRedirect" />
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control" />
+                                            <input type="text" class="form-control" id="redirectTo" />
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 20px">
@@ -260,14 +257,11 @@
                                             <h4>Pre-quote:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoPrequote" />
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" id="selectOptionPreQuote">
                                             </select>
                                         </div>
                                     </div>
@@ -276,14 +270,11 @@
                                             <h4>Trigger:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoTrigger"/>
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" id="selectOptionTrigger">
                                             </select>
                                         </div>
                                     </div>
@@ -292,17 +283,14 @@
                                             <h4>Retargeting:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoRetargeting"/>
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="selectOption" />
+                                            <input type="text" class="form-control" id="DelayHour" />
                                             <label for="selectOption">Delay in hours</label>
                                         </div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" id="selectOptionRetargeting">
                                             </select>
                                         </div>
                                     </div>
@@ -474,6 +462,7 @@
         <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
         <!-- Main JS-->
+        <script src="js/graphQlQuery.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
