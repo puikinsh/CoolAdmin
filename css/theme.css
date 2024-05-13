@@ -488,6 +488,16 @@ section {
     background: #4272d7;
 }
 
+.au-btn--red {
+    background: #e62e21;
+}
+
+.au-btn--purple {
+    background: #a107a1;
+}
+
+
+
 .au-btn--green {
     background: #63c76a;
 }
