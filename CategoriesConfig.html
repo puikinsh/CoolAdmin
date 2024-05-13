@@ -31,6 +31,7 @@
         <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all" />
         <link href="https://cdn.datatables.net/v/bs4/dt-2.0.7/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/date-1.5.2/kt-2.12.0/r-3.0.2/sc-2.4.2/sb-1.7.1/sp-2.3.1/datatables.min.css" rel="stylesheet" />
         <link href="css/timeline.css" rel="stylesheet" media="all" />
+        <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet" />
         <!-- Main CSS-->
         <link href="css/theme.css" rel="stylesheet" media="all" />
     </head>
@@ -41,7 +42,7 @@
             <aside class="menu-sidebar2">
                 <div class="logo">
                     <a href="#">
-                        <img src="images/icon/logo-white.png" alt="KIDE Channels" />
+                        <img src="images/icon/logo-white.png" alt="Cool Admin" />
                     </a>
                 </div>
                 <div class="menu-sidebar2__content js-scrollbar1">
@@ -60,7 +61,7 @@
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-tags"></i>Categorías
+                                    <i class="fas fa-trophy"></i>Categorías
                                     <span class="arrow">
                                         <i class="fas fa-angle-down"></i>
                                     </span>
@@ -69,17 +70,17 @@
                             </li>
                             <li class="has-sub">
                                 <a class="js-arrow" href="#">
-                                    <i class="fas fa-cog"></i>Configuración
+                                    <i class="fas fa-copy"></i>Configuración
                                     <span class="arrow">
                                         <i class="fas fa-angle-down"></i>
                                     </span>
                                 </a>
                                 <ul class="list-unstyled navbar__sub-list js-sub-list">
                                     <li>
-                                        <a href="CategoriesConfig.html"> <i class="fas fa-cog"></i>Configurar Categorías</a>
+                                        <a href="form.html"> <i class="fas fa-sign-in-alt"></i>Configurar Categorías</a>
                                     </li>
                                     <li>
-                                        <a href="Authorizations.html"> <i class="fas fa-lock"></i>Autorizaciones</a>
+                                        <a href="register.html"> <i class="fas fa-user"></i>Autorizaciones</a>
                                     </li>
                                 </ul>
                             </li>
@@ -142,16 +143,16 @@
                 <aside class="menu-sidebar2 js-right-sidebar d-block d-lg-none">
                     <div class="logo">
                         <a href="#">
-                            <img src="images/icon/logo-white.png" alt="KIDE Channels" />
+                            <img src="images/icon/logo-white.png" alt="Cool Admin" />
                         </a>
                     </div>
-                    <div class="menu-sidebar2__content js-scrollbar1">
+                    <div class="menu-sidebar2__content js-scrollbar2">
                         <div class="account2">
                             <div class="image img-cir img-120">
-                                <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
+                                <img src="images/icon/avatar-big-01.jpg" alt="John Doe" />
                             </div>
-                            <h4 class="name">NOMBRE CLIENTE</h4>
-                            <a href="#">Salir</a>
+                            <h4 class="name">john doe</h4>
+                            <a href="#">Sign out</a>
                         </div>
                         <nav class="navbar-sidebar2">
                             <ul class="list-unstyled navbar__list">
@@ -161,7 +162,7 @@
                                 </li>
                                 <li class="has-sub">
                                     <a class="js-arrow" href="#">
-                                        <i class="fas fa-tags"></i>Categorías
+                                        <i class="fas fa-trophy"></i>Categorías
                                         <span class="arrow">
                                             <i class="fas fa-angle-down"></i>
                                         </span>
@@ -170,17 +171,20 @@
                                 </li>
                                 <li class="has-sub">
                                     <a class="js-arrow" href="#">
-                                        <i class="fas fa-cog"></i>Configuración
+                                        <i class="fas fa-copy"></i>Configuración
                                         <span class="arrow">
                                             <i class="fas fa-angle-down"></i>
                                         </span>
                                     </a>
                                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                                         <li>
-                                            <a href="CategoriesConfig.html"> <i class="fas fa-cog"></i>Configurar Categorías</a>
+                                            <a href="form.html"> <i class="fas fa-sign-in-alt"></i>Configurar Categorías</a>
                                         </li>
                                         <li>
-                                            <a href="Authorizations.html"> <i class="fas fa-lock"></i>Autorizaciones</a>
+                                            <a href="register.html"> <i class="fas fa-user"></i>Register</a>
+                                        </li>
+                                        <li>
+                                            <a href="forget-pass.html"> <i class="fas fa-unlock-alt"></i>Forget Password</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -201,12 +205,12 @@
                                             <span class="au-breadcrumb-span">Estas aquí:</span>
                                             <ul class="list-unstyled list-inline au-breadcrumb__list">
                                                 <li class="list-inline-item active">
-                                                    <a href="#">Home</a>
+                                                    <a href="#">Configuración</a>
                                                 </li>
                                                 <li class="list-inline-item seprate">
                                                     <span>/</span>
                                                 </li>
-                                                <li class="list-inline-item">Dashboard</li>
+                                                <li class="list-inline-item">Configurar categorias</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -217,149 +221,109 @@
                 </section>
                 <!-- END BREADCRUMB-->
 
-                <!-- STATISTIC-->
-                <section class="hidden-section" id="statistics">
-                    <div class="section__content section__content--p30">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="statistic__item">
-                                        <h2 class="number">10,368</h2>
-                                        <span class="desc">Correos recibidos</span>
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-account-o"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="statistic__item">
-                                        <h2 class="number">388,688</h2>
-                                        <span class="desc">Correos respondidos</span>
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-shopping-cart"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="statistic__item">
-                                        <h2 class="number">1,086</h2>
-                                        <span class="desc">Presupuestos realizados</span>
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-calendar-note"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-3">
-                                    <div class="statistic__item">
-                                        <h2 class="number">$1,060,386</h2>
-                                        <span class="desc">Correos descartados</span>
-                                        <div class="icon">
-                                            <i class="zmdi zmdi-money"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- END STATISTIC-->
-
                 <section>
                     <div class="section__content section__content--p30">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <!-- RECENT REPORT 2-->
-                                    <div class="recent-report2">
-                                        <h3 class="title-3">Comparativa de categorías</h3>
-                                        <div class="chart-info">
-                                            <div class="chart-info__left">
-                                                <div class="chart-note">
-                                                    <span class="dot dot--blue"></span>
-                                                    <span>Default1</span>
-                                                </div>
-                                                <div class="chart-note">
-                                                    <span class="dot dot--green"></span>
-                                                    <span>Default2</span>
-                                                </div>
-                                            </div>
-                                            <div class="chart-info-right">
-                                                <div class="rs-select2--dark rs-select2--md m-r-10">
-                                                    <select class="js-select2" name="property">
-                                                        <option selected="selected">Toda categoria</option>
-                                                        <option value="">Default1</option>
-                                                        <option value="">Default2</option>
-                                                    </select>
-                                                    <div class="dropDownSelect2"></div>
-                                                </div>
-                                                <div class="rs-select2--dark rs-select2--sm">
-                                                    <select class="js-select2 au-select-dark" name="time">
-                                                        <option selected="selected">Mes y dia</option>
-                                                        <option value="">Por mes</option>
-                                                        <option value="">Por día</option>
-                                                    </select>
-                                                    <div class="dropDownSelect2"></div>
-                                                </div>
-                                            </div>
+                        <div class="container-fluid form-group">
+                            <div class="row justify-content-center">
+                                <div class="col-md-12">
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <select class="form-control" id="selectOption">
+                                            <option value="option1">Option 1</option>
+                                            <option value="option2">Option 2</option>
+                                            <option value="option3">Option 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Auto Response:</h4>
                                         </div>
-                                        <div class="recent-report__chart">
-                                            <canvas id="recent-rep2-chart"></canvas>
+                                        <div class="col">
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Redirect:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" />
                                         </div>
                                     </div>
-                                    <!-- END RECENT REPORT 2             -->
-                                </div>
-                                <div class="col-xl-4">
-                                    <!-- TASK PROGRESS-->
-                                    <div class="task-progress">
-                                        <h3 class="title-3">Correos por categoría</h3>
-                                        <div class="au-skill-container">
-                                            <div class="au-progress">
-                                                <span class="au-progress__title">Default1</span>
-                                                <div class="au-progress__bar">
-                                                    <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="90">
-                                                        <span class="au-progress__value js-value"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="au-progress">
-                                                <span class="au-progress__title">Default2</span>
-                                                <div class="au-progress__bar">
-                                                    <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="85">
-                                                        <span class="au-progress__value js-value"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="au-progress">
-                                                <span class="au-progress__title">Default3</span>
-                                                <div class="au-progress__bar">
-                                                    <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="95">
-                                                        <span class="au-progress__value js-value"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="au-progress">
-                                                <span class="au-progress__title">Custom1</span>
-                                                <div class="au-progress__bar">
-                                                    <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="95">
-                                                        <span class="au-progress__value js-value"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Pre-quote:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <select class="form-control" id="selectOption">
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
+                                                <option value="option3">Option 3</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <!-- END TASK PROGRESS-->
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Trigger:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <select class="form-control" id="selectOption">
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
+                                                <option value="option3">Option 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Retargeting:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="selectOption" />
+                                            <label for="selectOption">Delay in hours</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control" id="selectOption">
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
+                                                <option value="option3">Option 3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col">
+                                            <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary btn-block" type="button">Reset to default</button>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary btn-block" type="button">Save changes</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section class="table" id="table">
-                    <div class="section__content section__content--p30">
-                        <div class="container-fluid">
-                            <table id="tabla" width="100%"></table>
-                        </div>
-                    </div>
-                </section>
+
                 <section>
                     <div class="container-fluid">
                         <div class="row">
@@ -376,7 +340,114 @@
         </div>
 
         <!-- Jquery JS-->
+        <script>
+            const categories = [{ name: "Category 1" }, { name: "Category 2" }, { name: "Category 3" }, { name: "Category 4" }, { name: "Category 5" }];
 
+            document.addEventListener("DOMContentLoaded", function () {
+                const editCategoriesBtn = document.querySelector(".edit_categories");
+                const categoryForm = document.createElement("form");
+                const addCategoryBtn = document.createElement("button");
+                addCategoryBtn.id = "addCategory";
+                addCategoryBtn.className = "btn btn-primary";
+                addCategoryBtn.textContent = "Agregar categoría";
+
+                const cancelBtn = document.createElement("button");
+                cancelBtn.id = "cancelCategory";
+                cancelBtn.className = "btn btn-secondary";
+                cancelBtn.textContent = "Cancelar";
+
+                editCategoriesBtn.addEventListener("click", function () {
+                    $("#myModal").modal("show");
+                });
+
+                addCategoryBtn.addEventListener("click", function () {
+                    const newCategory = document.createElement("div");
+                    newCategory.className = "form-group row";
+                    const inputWrapper = document.createElement("div");
+                    inputWrapper.className = "col-9";
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.className = "form-control";
+                    inputWrapper.appendChild(input);
+                    const deleteBtnWrapper = document.createElement("div");
+                    deleteBtnWrapper.className = "col-3";
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.className = "btn";
+                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+                    deleteBtn.addEventListener("click", function () {
+                        categoryForm.removeChild(newCategory);
+                    });
+                    deleteBtnWrapper.appendChild(deleteBtn);
+                    newCategory.appendChild(inputWrapper);
+                    newCategory.appendChild(deleteBtnWrapper);
+                    categoryForm.appendChild(newCategory);
+                });
+
+                cancelBtn.addEventListener("click", function () {
+                    $("#myModal").modal("hide");
+                });
+
+                const modalBody = document.createElement("div");
+                modalBody.className = "modal-body";
+                modalBody.appendChild(categoryForm);
+
+                const buttonsWrapper = document.createElement("div");
+                buttonsWrapper.className = "row";
+                const addBtnWrapper = document.createElement("div");
+                addBtnWrapper.className = "col-6";
+                addBtnWrapper.appendChild(addCategoryBtn);
+                const cancelBtnWrapper = document.createElement("div");
+                cancelBtnWrapper.className = "col-6";
+                cancelBtnWrapper.appendChild(cancelBtn);
+                buttonsWrapper.appendChild(addBtnWrapper);
+                buttonsWrapper.appendChild(cancelBtnWrapper);
+                modalBody.appendChild(buttonsWrapper);
+
+                const modalContent = document.createElement("div");
+                modalContent.className = "modal-content";
+                modalContent.appendChild(modalBody);
+
+                const modalDialog = document.createElement("div");
+                modalDialog.className = "modal-dialog";
+                modalDialog.role = "document";
+                modalDialog.appendChild(modalContent);
+
+                const modal = document.createElement("div");
+                modal.className = "modal fade";
+                modal.id = "myModal";
+                modal.tabIndex = -1;
+                modal.role = "dialog";
+                modal.setAttribute("aria-labelledby", "myModalLabel");
+                modal.setAttribute("aria-hidden", "true");
+                modal.appendChild(modalDialog);
+
+                document.body.appendChild(modal);
+
+                categories.forEach(function (category) {
+                    const newCategory = document.createElement("div");
+                    newCategory.className = "form-group row";
+                    const inputWrapper = document.createElement("div");
+                    inputWrapper.className = "col-9";
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.className = "form-control";
+                    input.value = category.name;
+                    inputWrapper.appendChild(input);
+                    const deleteBtnWrapper = document.createElement("div");
+                    deleteBtnWrapper.className = "col-3";
+                    const deleteBtn = document.createElement("button");
+                    deleteBtn.className = "btn";
+                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+                    deleteBtn.addEventListener("click", function () {
+                        categoryForm.removeChild(newCategory);
+                    });
+                    deleteBtnWrapper.appendChild(deleteBtn);
+                    newCategory.appendChild(inputWrapper);
+                    newCategory.appendChild(deleteBtnWrapper);
+                    categoryForm.appendChild(newCategory);
+                });
+            });
+        </script>
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -400,6 +471,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
         <script src="https://cdn.datatables.net/v/bs4/dt-2.0.7/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/date-1.5.2/kt-2.12.0/r-3.0.2/sc-2.4.2/sb-1.7.1/sp-2.3.1/datatables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
         <!-- Main JS-->
         <script src="js/main.js"></script>

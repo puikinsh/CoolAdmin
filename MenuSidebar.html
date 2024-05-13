@@ -1,0 +1,51 @@
+<template id="menu-sidebar-template">
+    <aside class="menu-sidebar2">
+        <div class="logo">
+            <a href="#">
+                <img src="images/icon/logo-white.png" alt="Cool Admin" />
+            </a>
+        </div>
+        <div class="menu-sidebar2__content js-scrollbar1">
+            <div class="account2">
+                <div class="image img-cir img-120">
+                    <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
+                </div>
+                <h4 class="name">NOMBRE CLIENTE</h4>
+                <a href="#">Salir</a>
+            </div>
+            <nav class="navbar-sidebar2">
+                <ul class="list-unstyled navbar__list">
+                    <li>
+                        <a href="index.html"> <i class="fas fa-chart-bar showTable"></i>Comunicaciones</a>
+                        <span class="inbox-num">3</span>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-tags"></i>Categorías
+                            <span class="arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list"></ul>
+                    </li>
+                    <li class="has-sub">
+                        <a class="js-arrow" href="#">
+                            <i class="fas fa-cog"></i>Configuración
+                            <span class="arrow">
+                                <i class="fas fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <li>
+                                <a href="CategoriesConfig.html"> <i class="fas fa-cog"></i>Configurar Categorías</a>
+                            </li>
+                            <li>
+                                <a href="Autorizations.html"> <i class="fas fa-lock"></i>Autorizaciones</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+</template>
