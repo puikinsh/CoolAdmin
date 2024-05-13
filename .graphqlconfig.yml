@@ -1,0 +1,15 @@
+projects:
+  KideChannels:
+    schemaPath: amplify/backend/api/KideChannels/build/schema.graphql
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: eu-west-3
+        apiId: null
+        maxDepth: 2

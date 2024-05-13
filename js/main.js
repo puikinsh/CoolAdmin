@@ -1177,9 +1177,27 @@
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(async function ($) {
     // USE STRICT
     "use strict";
+
+    // const { generateClient } = require("aws-amplify/api");
+    // const { listCommunications, getCommunications } = require("../src/graphql/queries");
+
+    // const client = generateClient()
+
+    // // List all items
+    // const allCommunications = await client.graphql({
+    //     query: listCommunications
+    // });
+    // console.log(allCommunications);
+
+    // // Get a specific item
+    // const oneCommunication = await client.graphql({
+    //     query: getCommunications,
+    //     variables: { id: 'YOUR_RECORD_ID' }
+    // });
+
     try {
         const dataSet = [
             ["000001", "Mail", "Active", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
