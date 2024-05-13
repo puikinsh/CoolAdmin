@@ -1177,19 +1177,21 @@
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(async function ($) {
     // USE STRICT
     "use strict";
     try {
-        const dataSet = [
-            ["000001", "Mail", "Active", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000002", "Mail", "Inactive", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000003", "Mail", "Pending", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000004", "Mail", "Blocked", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000005", "Mail", "On Hold", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-        ];
-
-        const categories = [{ name: "Default1" }, { name: "Default2" }, { name: "Default3" }, { name: "custom1" }];
+        const dataSet = await window.MyVars.then(async () => {
+            // Ahora `allCommunications` está disponible
+            const arr = await window.listCommunicationsTable();
+            const newArr = arr.map(e => {const values = Object.values(e); return values;})
+  
+            return newArr
+        });
+        const categories = await window.MyVars.then(async () => {
+            const arr = await window.listDefaultCategories();
+            return arr
+        })
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
 
         // Obtener el elemento ul donde se agregarán las categorías
@@ -1205,7 +1207,7 @@
             a.classList.add("showTable");
             icon.classList.add("fas", "fa-tags");
             a.appendChild(icon);
-            a.appendChild(document.createTextNode(category.name));
+            a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
         });
@@ -1237,7 +1239,7 @@
             }
 
             div1.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
-            r[1] = div1;
+            r[2] = div1;
 
             var div3 = document.createElement("div");
             div3.innerHTML = r[3];
@@ -2069,6 +2071,27 @@
                 $(this).parent().parent().parent().toggleClass("show-chat-box");
             });
         });
+    } catch (error) {
+        console.log(error);
+    }
+})(jQuery);
+(async function ($) {
+    // USE STRICT
+    "use strict"
+    try {
+        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory");
+        const categories = await window.MyVars.then(async () => {
+            const arr = await window.listDefaultCategories();
+            return arr
+        })
+        categories.forEach(e =>{
+            const option = document.createElement("option")
+            option.value = e.categoryName
+            option.innerHTML = e.categoryName
+            select.appendChild(option)
+
+            
+        })
     } catch (error) {
         console.log(error);
     }
