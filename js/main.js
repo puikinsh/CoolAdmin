@@ -1,9 +1,8 @@
-import { listCommunications } from "../src/graphql/queries";
+import { listCategories, listCommunications } from "../src/graphql/queries";
 import { client } from "./amplifyConfig";
-import { Auth } from "aws-amplify"
 
 (async function ($) {
-    
+
     // USE STRICT
     "use strict";
 
