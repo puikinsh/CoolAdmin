@@ -1177,24 +1177,21 @@
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(async function ($) {
     // USE STRICT
     "use strict";
 
-    window.globalVars(async (data) => {
-        const emailList = await data.listComunications()
-        console.log(emailList)
-        return emailList
-    })
 
     try {
-        const dataSet = [
-            ["000001", "Mail", "Active", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000002", "Mail", "Inactive", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000003", "Mail", "Pending", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000004", "Mail", "Blocked", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-            ["000005", "Mail", "On Hold", "2011/04/25", "asd@asd.com", "asd@asd.com", "https://asdasda", "https://asdasda"],
-        ];
+        const dataSet = await window.globalVars.then(async (data) => {
+            const emailList = await data.listComunications()
+            console.log(emailList)
+            const mappedEmails = emailList.map(email => {
+                const values = Object.values(email)
+                return values
+            })
+            return mappedEmails
+        })
 
         const categories = [{ name: "Default1" }, { name: "Default2" }, { name: "Default3" }, { name: "custom1" }];
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
