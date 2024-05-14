@@ -1180,18 +1180,17 @@
 (async function ($) {
     // USE STRICT
     "use strict";
-
-
     try {
-        const dataSet = await window.globalVars.then(async (data) => {
-            const emailList = await data.listComunications()
-            console.log(emailList)
+        const dataSet = await window.globalVars.then(async () => {
+            const emailList = await window.listCommunications()
             const mappedEmails = emailList.map(email => {
                 const values = Object.values(email)
                 return values
             })
             return mappedEmails
         })
+
+        console.log(dataSet)
 
         const categories = [{ name: "Default1" }, { name: "Default2" }, { name: "Default3" }, { name: "custom1" }];
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
