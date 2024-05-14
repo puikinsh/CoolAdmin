@@ -1,6 +1,6 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
-import { listCommunications, listDefaultCategories, listCategories } from "../src/graphql/queries";
+import { listCommunications, listDefaultCategories, listCategories, getMessageDetails, getResponseDetails } from "../src/graphql/queries";
 import backendConfig from '../src/amplifyconfiguration.json'
 
 

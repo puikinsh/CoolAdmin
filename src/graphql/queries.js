@@ -26,6 +26,7 @@ export const getDefaultCategories = /* GraphQL */ `
     }
   }
 `;
+
 export const listDefaultCategories = /* GraphQL */ `
   query ListDefaultCategories(
     $filter: ModelDefaultCategoriesFilterInput
@@ -45,6 +46,7 @@ export const listDefaultCategories = /* GraphQL */ `
     }
   }
 `;
+
 export const getCategories = /* GraphQL */ `
   query GetCategories($id: ID!) {
     getCategories(id: $id) {
@@ -70,6 +72,7 @@ export const getCategories = /* GraphQL */ `
     }
   }
 `;
+
 export const listCategories = /* GraphQL */ `
   query ListCategories(
     $filter: ModelCategoriesFilterInput
@@ -85,6 +88,7 @@ export const listCategories = /* GraphQL */ `
     }
   }
 `;
+
 export const getCommunications = /* GraphQL */ `
   query GetCommunications($id: ID!) {
     getCommunications(id: $id) {
@@ -115,6 +119,7 @@ export const getCommunications = /* GraphQL */ `
     }
   }
 `;
+
 export const listCommunications = /* GraphQL */ `
   query ListCommunications(
     $filter: ModelCommunicationsFilterInput
@@ -134,6 +139,32 @@ export const listCommunications = /* GraphQL */ `
       }
       nextToken
       __typename
+    }
+  }
+`;
+
+export const getMessageDetails = /* GraphQL */ `
+  query GetCommunications($id: ID!) {
+    getCommunications(id: $id) {
+      messageId
+      category
+      fromId
+      dateTime
+      messagSummary
+      messageSubject
+      messageBody
+      messageAttachment
+    }
+  }
+`;
+
+export const getResponseDetails = /* GraphQL */ `
+  query GetCommunications($id: ID!) {
+    getCommunications(id: $id) {
+      responseAttachment
+      responseAi
+      responseSubject
+      responseBody
     }
   }
 `;
