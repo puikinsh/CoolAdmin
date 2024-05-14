@@ -38,12 +38,7 @@ export const listDefaultCategories = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
-        id
-        clientId
         categoryName
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
@@ -83,12 +78,7 @@ export const listCategories = /* GraphQL */ `
   ) {
     listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
-        clientId
         categoryName
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
@@ -133,7 +123,6 @@ export const listCommunications = /* GraphQL */ `
   ) {
     listCommunications(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
         messageId
         channel
         category
@@ -141,22 +130,7 @@ export const listCommunications = /* GraphQL */ `
         fromId
         toId
         responseAi
-        messageSubject
-        messageBody
-        messagSummary
-        messageAttachment
-        responseBody
-        responseSubject
         responseAttachment
-        execute
-        clientId
-        threadId
-        thread
-        actions
-        status
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename

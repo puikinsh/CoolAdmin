@@ -1,5 +1,28 @@
 {
+  "name": "kidechannelsjs",
+  "description": "CoolAdmin Bootstrap 4.1 Admin Dashboard Template\r ================================================",
+  "version": "1.0.0",
+  "main": "MenuSidebar.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx webpack --watch"
+  },
   "dependencies": {
     "aws-amplify": "^6.3.1"
-  }
+  },
+  "devDependencies": {
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Datakalabs/KIDECHANNELSJS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Datakalabs/KIDECHANNELSJS/issues"
+  },
+  "homepage": "https://github.com/Datakalabs/KIDECHANNELSJS#readme"
 }

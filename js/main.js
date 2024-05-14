@@ -1,3 +1,9 @@
+import { Amplify } from 'aws-amplify'
+import { generateClient } from "aws-amplify/api";
+import { listCommunications, listDefaultCategories, listCategories } from "../src/graphql/queries";
+import backendConfig from '../src/amplifyconfiguration.json'
+
+
 (function ($) {
     // USE STRICT
     "use strict";
@@ -1181,24 +1187,35 @@
     // USE STRICT
     "use strict";
     try {
-        const dataSet = await window.globalVars.then(async () => {
-            const emailList = await window.listCommunications()
-            const objList = emailList.map(email => {
-                const values = Object.values(email)
-                return values
-            })
-            return objList
+
+        Amplify.configure(backendConfig)
+        const client = generateClient()
+        // List all items
+        const allCommunications = await client.graphql({
+            query: listCommunications
+        });
+
+        const allComsToMap = allCommunications.data.listCommunications.items
+        const communicationsObj = allComsToMap.map(email => {
+            const values = Object.values(email)
+            return values
         })
 
-        const categories = await window.globalVars.then(async() => {
-            const cats = await window.listDefaultCategories()
-            const objList = cats.map(cat => {
-                const values = Object.values(cat)
-                return values
-            })
-            return objList
-        })
-        ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
+        const dataSet = communicationsObj
+
+        const defaultCateg = await client.graphql({
+            query: listDefaultCategories
+        });
+
+        const customCateg = await client.graphql({
+            query: listCategories
+        });
+
+        const allCategoriesToMap = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
+
+        console.log(allCategoriesToMap)
+
+        const categories = allCategoriesToMap
 
         // Obtener el elemento ul donde se agregarán las categorías
         const ul2 = document.querySelector(".js-sub-list");
@@ -1213,7 +1230,7 @@
             a.classList.add("showTable");
             icon.classList.add("fas", "fa-tags");
             a.appendChild(icon);
-            a.appendChild(document.createTextNode(category.name));
+            a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
         });
@@ -1224,19 +1241,19 @@
             var badgeClass = "";
 
             switch (category) {
-                case "Active":
+                case "DefaultCategory1":
                     badgeClass = "badge-primary";
                     break;
-                case "Inactive":
+                case "DefaultCategory2":
                     badgeClass = "badge-success";
                     break;
-                case "Pending":
+                case "CustomCategory1":
                     badgeClass = "badge-warning";
                     break;
-                case "Blocked":
+                case "CustomCategory2":
                     badgeClass = "badge-danger";
                     break;
-                case "On Hold":
+                case "On CustomCategory3":
                     badgeClass = "badge-info";
                     break;
                 default:
@@ -1245,7 +1262,7 @@
             }
 
             div1.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
-            r[1] = div1;
+            r[2] = div1;
 
             var div3 = document.createElement("div");
             div3.innerHTML = r[3];
@@ -1307,15 +1324,14 @@
 
         let table = new DataTable("#tabla");
 
-        ////////////////////MODALES////////////////////////////////////////
-
+        ///////////// MODAL ACTION /////////////////////
         table.on("click", "tbody .edit", function () {
             let data = table.row($(this).closest("tr")).data();
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
             // Utiliza el modal de Bootstrap
 
-            // Crea el formulario con los campos de la fila
+            // MODAL => FORM ACTION
             let form = $("<form>");
             form.append(
                 $("<div>")
@@ -1369,15 +1385,14 @@
             // Abre el modal al hacer clic en el botón de editar
             $("#myModal").modal("show");
         });
-        /////////////vista 1 detalle del MAIL/////////////////////
+
+        ///////////// MODAL MAIL CONTENT /////////////////////
         table.on("click", "tbody .view1", function () {
-            //message content detail
             let data = table.row($(this).closest("tr")).data();
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
             // Utiliza el modal de Bootstrap
 
-            // Crea el formulario con los campos de la fila
             let form = $("<form>");
             form.append(
                 $("<div>")
@@ -1426,13 +1441,13 @@
             $("#myModal2").modal("show");
         });
 
+        ///////////// MODAL RESPONSE CONTENT /////////////////////
         table.on("click", "tbody .view2", function () {
             let data = table.row($(this).closest("tr")).data();
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
             // Utiliza el modal de Bootstrap
 
-            // Crea el formulario con los campos de la fila
             let form = $("<form>");
 
             form.append(
@@ -1467,6 +1482,7 @@
             $("#myModal3").modal("show");
         });
 
+        ///////////// MODAL THREAD /////////////////////
         table.on("click", "tbody .view3", function () {
             var data = [
                 {
@@ -1662,6 +1678,7 @@
             // Abre el modal al hacer clic en el botón de editar
             $("#myModal4").modal("show");
         });
+
         document.querySelector("#button").addEventListener("click", function () {
             table.row(".selected").remove().draw(false);
         });
