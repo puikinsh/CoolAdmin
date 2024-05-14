@@ -1183,16 +1183,21 @@
     try {
         const dataSet = await window.globalVars.then(async () => {
             const emailList = await window.listCommunications()
-            const mappedEmails = emailList.map(email => {
+            const objList = emailList.map(email => {
                 const values = Object.values(email)
                 return values
             })
-            return mappedEmails
+            return objList
         })
 
-        console.log(dataSet)
-
-        const categories = [{ name: "Default1" }, { name: "Default2" }, { name: "Default3" }, { name: "custom1" }];
+        const categories = await window.globalVars.then(async() => {
+            const cats = await window.listDefaultCategories()
+            const objList = cats.map(cat => {
+                const values = Object.values(cat)
+                return values
+            })
+            return objList
+        })
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
 
         // Obtener el elemento ul donde se agregarán las categorías
