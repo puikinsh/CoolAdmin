@@ -46,6 +46,5 @@ type Communications @model @auth(rules: [{allow: public}, {allow: private, opera
   threadId: String
   thread: AWSJSON
   actions: AWSJSON
-  status: String
 }
  

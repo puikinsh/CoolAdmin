@@ -1,4 +1,9 @@
-(function ($) {
+import { listCommunications } from "../src/graphql/queries";
+import { client } from "./amplifyConfig";
+import { Auth } from "aws-amplify"
+
+(async function ($) {
+    
     // USE STRICT
     "use strict";
 
@@ -1181,15 +1186,15 @@
     // USE STRICT
     "use strict";
     try {
-        const dataSet = await window.MyVars.then(async () => {
-            // Ahora `allCommunications` está disponible
-            const arr = await window.listCommunicationsTable();
-            const newArr = arr.map(e => {const values = Object.values(e); return values;})
-  
-            return newArr
+        const {data : {listCommunications: { items}}} = await client.graphql({
+            query: listCommunications
         });
-        const categories = await window.MyVars.then(async () => {
-            const arr = await window.listDefaultCategories();
+        const dataSet = items.map(e => {const values = Object.values(e); 
+            return values})
+        console.log('data set', dataSet);
+
+        const categories = await window.MyVars.then(async (data) => {
+            const arr = await data.listDefaultCategories();
             return arr
         })
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
@@ -1212,7 +1217,7 @@
             ul2.appendChild(li);
         });
 
-        dataSet.forEach((r) => {
+        dataSet.forEach((r, index) => {
             var div1 = document.createElement("div");
             var category = r[2];
             var badgeClass = "";
@@ -1274,6 +1279,7 @@
             r.push(buttonContainer2);
             r.push(buttonContainer3);
             r.push(buttonContainer);
+            
         });
 
         new DataTable("#tabla", {
@@ -1364,9 +1370,15 @@
             $("#myModal").modal("show");
         });
         /////////////vista 1 detalle del MAIL/////////////////////
-        table.on("click", "tbody .view1", function () {
+        table.on("click", "tbody .view1",async function () {
             //message content detail
             let data = table.row($(this).closest("tr")).data();
+
+            const content = await window.MyVars.then(async (data) => {
+                const arr = await data.showMessageContent();
+                return arr
+            })
+            
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
             // Utiliza el modal de Bootstrap
@@ -2080,10 +2092,11 @@
     "use strict"
     try {
         var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory");
-        const categories = await window.MyVars.then(async () => {
-            const arr = await window.listDefaultCategories();
+        const categories = await window.MyVars.then(async (data) => {
+            const arr = await data.listDefaultCategories();
             return arr
         })
+      
         categories.forEach(e =>{
             const option = document.createElement("option")
             option.value = e.categoryName

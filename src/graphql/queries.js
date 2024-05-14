@@ -118,7 +118,6 @@ export const getCommunications = /* GraphQL */ `
       threadId
       thread
       actions
-      status
       createdAt
       updatedAt
       __typename
@@ -133,7 +132,6 @@ export const listCommunications = /* GraphQL */ `
   ) {
     listCommunications(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
-        id
         messageId
         channel
         category
@@ -141,22 +139,7 @@ export const listCommunications = /* GraphQL */ `
         fromId
         toId
         responseAi
-        messageSubject
-        messageBody
-        messagSummary
-        messageAttachment
-        responseBody
-        responseSubject
         responseAttachment
-        execute
-        clientId
-        threadId
-        thread
-        actions
-        status
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
