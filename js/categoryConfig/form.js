@@ -5,7 +5,7 @@ export const form = (params) =>{
         <h4>Auto Response:</h4>
     </div>
     <div class="col">
-        <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoResponse" ${params?.autoResponse? "checked":null} />
+        <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="autoResponse" ${params?.autoResponse? "checked":null} />
     </div>
     <div class="col"></div>
     <div class="col"></div>
@@ -15,7 +15,7 @@ export const form = (params) =>{
         <h4>Redirect:</h4>
     </div>
     <div class="col">
-        <input type="checkbox"  ${params?.autoRedirect? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoRedirect" />
+        <input type="checkbox"  ${params?.autoRedirect? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="autoRedirect" />
     </div>
     <div class="col"></div>
     <div class="col">
@@ -27,7 +27,7 @@ export const form = (params) =>{
         <h4>Pre-quote:</h4>
     </div>
     <div class="col">
-        <input type="checkbox"  ${params?.autoPrequote? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoPrequote" />
+        <input type="checkbox"  ${params?.autoQuote? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="autoQuote" />
     </div>
     <div class="col"></div>
     <div class="col">
@@ -40,7 +40,7 @@ export const form = (params) =>{
         <h4>Trigger:</h4>
     </div>
     <div class="col">
-        <input type="checkbox"  ${params?.autoTrigger? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoTrigger"/>
+        <input type="checkbox"  ${params?.autoTrigger? "checked":null}  data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="autoTrigger"/>
     </div>
     <div class="col"></div>
     <div class="col">
@@ -53,7 +53,7 @@ export const form = (params) =>{
         <h4>Retargeting:</h4>
     </div>
     <div class="col">
-        <input type="checkbox"   ${params?.autoRetargeting? "checked":null} data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoRetargeting"/>
+        <input type="checkbox"   ${params?.autoRetargeting? "checked":null} data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="autoRetargeting"/>
     </div>
     <div class="col">
         <input type="text" class="form-control" id="DelayHour" />
@@ -63,5 +63,16 @@ export const form = (params) =>{
         <select class="form-control" id="selectOptionRetargeting">
         </select>
     </div>
+    
+</div>
+<div class="row justify-content-center">
+                                                          
+                                    
+<div class="col-md-3">
+<button class="btn btn-primary btn-block" type="button" id="resetDefault">Reset to default</button>
+</div>
+<div class="col-md-3">
+<button class="btn btn-primary btn-block" type="button" id="saveChange">Save changes</button>
+</div>
 </div>
 `}

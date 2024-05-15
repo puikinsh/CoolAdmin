@@ -1,4 +1,4 @@
-import { deleteDefaultCategories } from "../src/graphql/mutations.js";
+import { deleteDefaultCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
 import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries";
 import { client } from "./amplifyConfig";
 import {form} from './categoryConfig/form.js'
@@ -2094,7 +2094,7 @@ import {form} from './categoryConfig/form.js'
     // USE STRICT
     "use strict"
     try {
-        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory"), addCategory = document.getElementById("addCategory");
+        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory")
        
         let categories, defaultCategories = await client.graphql({
             query: listDefaultCategories
@@ -2117,11 +2117,35 @@ import {form} from './categoryConfig/form.js'
             if(e.target.value !== "Selecciona"){
                 const categ = categories.find(c => c.categoryName === e.target.value) 
                 let tempElement = document.createElement('div');
-                
-                const {data} = await client.graphql({query: getDefaultCategories, variables: {id: categ.id}}), params = data.getDefaultCategories.configuration
-                console.log(params)
+                let params = {
+                    autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: {}, quoteOption:{}, triggerOption:{}, retargetingOption:{},retargetingTime:""
+                },{data} = await client.graphql({query: getDefaultCategories, variables: {id: categ.id}}); 
+                params = data.getDefaultCategories.configuration ? {...params,...data.getDefaultCategories.configuration} : params
                 tempElement.innerHTML = form(params);
                 divCategory.appendChild(tempElement);
+                tempElement.addEventListener("change", async (e)=> {
+                    params[e.target.id] = e.target.checked 
+                })
+                const saveButton = document.getElementById("saveChange")
+                saveButton.addEventListener("click",async(e)=>{
+                    const {__typename, ...other} = params
+                    const a = await client.graphql({query: updateDefaultCategories, variables: {input: {id:categ.id ,configuration: other}}})
+                })
+                const resetButton = document.getElementById("resetDefault")
+                resetButton.addEventListener("click",async(e)=>{
+                    const {__typename, ...other} = params
+                    const a = await client.graphql({query: updateDefaultCategories, variables: {input: {id:categ.id ,configuration: {
+                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: null, quoteOption:null, triggerOption:null ,retargetingOption:null,retargetingTime:null
+                    }}}})
+                    console.log(a)
+                    divCategory.removeChild(divCategory.firstChild);
+                    tempElement = document.createElement('div');
+                    tempElement.innerHTML = form( {
+                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: null, quoteOption:null, triggerOption:null ,retargetingOption:null,retargetingTime:null
+                    });
+                    divCategory.appendChild(tempElement);
+                })
+
             }else{
                 let tempElement2 = document.createElement('div');
                 tempElement2.style.height = '50vh';
@@ -2132,7 +2156,7 @@ import {form} from './categoryConfig/form.js'
 
         const editCategoriesBtn = document.querySelector(".edit_categories");
         const categoryForm = document.createElement("form");
-        const initialCategories = categoryForm
+        // const initialCategories = document.createElement("form");
             const addCategoryBtn = document.createElement("button");
             addCategoryBtn.id = "addCategory";
             addCategoryBtn.className = "btn btn-primary";
@@ -2168,25 +2192,27 @@ import {form} from './categoryConfig/form.js'
                 deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
                 deleteBtn.addEventListener("click", function () {
                     categoryForm.removeChild(newCategory);
+                    // initialCategories.removeChild(newCategory);
                 });
                 deleteBtnWrapper.appendChild(deleteBtn);
                 newCategory.appendChild(inputWrapper);
                 newCategory.appendChild(deleteBtnWrapper);
+                // initialCategories.appendChild(newCategory);
                 categoryForm.appendChild(newCategory);
             });
-            saveBtn.addEventListener("click", function () {
-                const categFormChild = [...categoryForm.childNodes]
-                const initialCatChild = [...initialCategories.childNodes]
-                console.log("categFom", categFormChild)
-                console.log("init", initialCatChild)
-                const addedCategories = categFormChild.map(c => {
-                    console.log(c)
-                    if(initialCatChild.includes(c)){
-                        return c
-                    }
-                })
-                console.log("addedCategories: ",addedCategories)
-            })
+            // saveBtn.addEventListener("click", function () {
+            //     const categFormChild = [...categoryForm.childNodes]
+            //     const initialCatChild = [...initialCategories.childNodes]
+            //     console.log("categFom", categFormChild)
+            //     console.log("init", initialCatChild)
+            //     const addedCategories = categFormChild.map(c => {
+            //         console.log(c)
+            //         if(initialCatChild.includes(c)){
+            //             return c
+            //         }
+            //     })
+            //     console.log("addedCategories: ",addedCategories)
+            // })
             cancelBtn.addEventListener("click", function () {
                 $("#myModal").modal("hide");
             });
