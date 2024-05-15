@@ -12,13 +12,13 @@ export const createDefaultCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -40,13 +40,13 @@ export const updateDefaultCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -68,13 +68,13 @@ export const deleteDefaultCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -96,13 +96,13 @@ export const createCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -124,13 +124,13 @@ export const updateCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -152,13 +152,13 @@ export const deleteCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -195,7 +195,6 @@ export const createCommunications = /* GraphQL */ `
       threadId
       thread
       actions
-      status
       createdAt
       updatedAt
       __typename
@@ -228,7 +227,6 @@ export const updateCommunications = /* GraphQL */ `
       threadId
       thread
       actions
-      status
       createdAt
       updatedAt
       __typename
@@ -261,7 +259,6 @@ export const deleteCommunications = /* GraphQL */ `
       threadId
       thread
       actions
-      status
       createdAt
       updatedAt
       __typename

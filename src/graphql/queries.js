@@ -9,13 +9,13 @@ export const getDefaultCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -55,13 +55,13 @@ export const getCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -112,7 +112,6 @@ export const getCommunications = /* GraphQL */ `
       threadId
       thread
       actions
-      status
       createdAt
       updatedAt
       __typename

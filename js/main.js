@@ -1188,34 +1188,50 @@ import backendConfig from '../src/amplifyconfiguration.json'
     "use strict";
     try {
 
+        // Config de Amplify con la config del backend como prop
         Amplify.configure(backendConfig)
+
+        // Se genera el cliente para las llamadas
         const client = generateClient()
-        // List all items
+
+        // LISTA DE COMUNICACIONES
         const allCommunications = await client.graphql({
             query: listCommunications
         });
 
         const allComsToMap = allCommunications.data.listCommunications.items
-        const communicationsObj = allComsToMap.map(email => {
+        const communicationsArr = allComsToMap.map(email => {
             const values = Object.values(email)
             return values
         })
 
-        const dataSet = communicationsObj
+        const dataSet = communicationsArr
 
+        // CATEGORÍAS POR DEFAULT
         const defaultCateg = await client.graphql({
             query: listDefaultCategories
         });
 
+        // CATEGORÍAS CREADAS
         const customCateg = await client.graphql({
             query: listCategories
         });
 
-        const allCategoriesToMap = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
+        const categories = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
 
-        console.log(allCategoriesToMap)
+        // VISTA DE DETALLE DE MAIL
+        const messageDetails = await client.graphql({
+            query: getMessageDetails
+        });
 
-        const categories = allCategoriesToMap
+        console.log(messageDetails)
+
+        // VISTA DE DETALLE DE RESPUESTA
+        const responseDetails = await client.graphql({
+            query: getResponseDetails
+        });
+
+        console.log(responseDetails)
 
         // Obtener el elemento ul donde se agregarán las categorías
         const ul2 = document.querySelector(".js-sub-list");
