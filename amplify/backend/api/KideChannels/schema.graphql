@@ -7,13 +7,13 @@ type DefaultCategories @model @auth(rules: [{allow: public, operations: [read, c
 
 type CategoryConfiguration {
   autoResponse: Boolean
-  redirect: Boolean
+  autoRedirect: Boolean
   redirectTo: AWSJSON
-  quote: Boolean
+  autoQuote: Boolean
   quoteOption: AWSJSON
-  trigger: Boolean
+  autoTrigger: Boolean
   triggerOption: AWSJSON
-  retargeting: String
+  autoRetargeting: Boolean
   retargetingOption: AWSJSON
   retargetingTime: String
 }

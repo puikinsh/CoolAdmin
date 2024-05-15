@@ -1,5 +1,7 @@
-import { listCategories, listCommunications } from "../src/graphql/queries";
+import { deleteDefaultCategories } from "../src/graphql/mutations.js";
+import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries";
 import { client } from "./amplifyConfig";
+import {form} from './categoryConfig/form.js'
 
 (async function ($) {
 
@@ -1192,10 +1194,12 @@ import { client } from "./amplifyConfig";
             return values})
         console.log('data set', dataSet);
 
-        const categories = await window.MyVars.then(async (data) => {
-            const arr = await data.listDefaultCategories();
-            return arr
-        })
+        let categories, defaultCategories = await client.graphql({
+            query: listDefaultCategories
+        }), customCategories = await client.graphql({query: listCategories})
+      
+        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
+
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
 
         // Obtener el elemento ul donde se agregarán las categorías
@@ -2090,12 +2094,13 @@ import { client } from "./amplifyConfig";
     // USE STRICT
     "use strict"
     try {
-        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory");
-        const categories = await window.MyVars.then(async (data) => {
-            const arr = await data.listDefaultCategories();
-            return arr
-        })
+        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory"), addCategory = document.getElementById("addCategory");
+       
+        let categories, defaultCategories = await client.graphql({
+            query: listDefaultCategories
+        }), customCategories = await client.graphql({query: listCategories})
       
+        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
         categories.forEach(e =>{
             const option = document.createElement("option")
             option.value = e.categoryName
@@ -2104,6 +2109,160 @@ import { client } from "./amplifyConfig";
 
             
         })
+
+        select.addEventListener("change", async (e)=> {
+            if (divCategory.firstChild) {
+                divCategory.removeChild(divCategory.firstChild);
+            }
+            if(e.target.value !== "Selecciona"){
+                const categ = categories.find(c => c.categoryName === e.target.value) 
+                let tempElement = document.createElement('div');
+                
+                const {data} = await client.graphql({query: getDefaultCategories, variables: {id: categ.id}}), params = data.getDefaultCategories.configuration
+                console.log(params)
+                tempElement.innerHTML = form(params);
+                divCategory.appendChild(tempElement);
+            }else{
+                let tempElement2 = document.createElement('div');
+                tempElement2.style.height = '50vh';
+                divCategory.appendChild(tempElement2);
+            }
+
+        })
+
+        const editCategoriesBtn = document.querySelector(".edit_categories");
+        const categoryForm = document.createElement("form");
+        const initialCategories = categoryForm
+            const addCategoryBtn = document.createElement("button");
+            addCategoryBtn.id = "addCategory";
+            addCategoryBtn.className = "btn btn-primary";
+            addCategoryBtn.textContent = "Agregar categoría";
+
+            const saveBtn = document.createElement("button");
+            saveBtn.id = "saveBtn";
+            saveBtn.className = "btn btn-primary";
+            saveBtn.textContent = "Guardar";
+
+            const cancelBtn = document.createElement("button");
+            cancelBtn.id = "cancelCategory";
+            cancelBtn.className = "btn btn-secondary";
+            cancelBtn.textContent = "Cancelar";
+
+            editCategoriesBtn.addEventListener("click", function () {
+                $("#myModal").modal("show");
+            });
+         
+            addCategoryBtn.addEventListener("click", function () {
+                const newCategory = document.createElement("div");
+                newCategory.className = "form-group row";
+                const inputWrapper = document.createElement("div");
+                inputWrapper.className = "col-9";
+                const input = document.createElement("input");
+                input.type = "text";
+                input.className = "form-control";
+                inputWrapper.appendChild(input);
+                const deleteBtnWrapper = document.createElement("div");
+                deleteBtnWrapper.className = "col-3";
+                const deleteBtn = document.createElement("button");
+                deleteBtn.className = "btn";
+                deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+                deleteBtn.addEventListener("click", function () {
+                    categoryForm.removeChild(newCategory);
+                });
+                deleteBtnWrapper.appendChild(deleteBtn);
+                newCategory.appendChild(inputWrapper);
+                newCategory.appendChild(deleteBtnWrapper);
+                categoryForm.appendChild(newCategory);
+            });
+            saveBtn.addEventListener("click", function () {
+                const categFormChild = [...categoryForm.childNodes]
+                const initialCatChild = [...initialCategories.childNodes]
+                console.log("categFom", categFormChild)
+                console.log("init", initialCatChild)
+                const addedCategories = categFormChild.map(c => {
+                    console.log(c)
+                    if(initialCatChild.includes(c)){
+                        return c
+                    }
+                })
+                console.log("addedCategories: ",addedCategories)
+            })
+            cancelBtn.addEventListener("click", function () {
+                $("#myModal").modal("hide");
+            });
+
+            const modalBody = document.createElement("div");
+            modalBody.className = "modal-body";
+            modalBody.appendChild(categoryForm);
+
+            const buttonsWrapper = document.createElement("div");
+            buttonsWrapper.className = "row";
+            const addBtnWrapper = document.createElement("div");
+            addBtnWrapper.className = "col-4";
+            addBtnWrapper.appendChild(addCategoryBtn);
+            const saveBtnWrapper = document.createElement("div");
+            saveBtnWrapper.className = "col-4";
+            saveBtnWrapper.appendChild(saveBtn);
+            const cancelBtnWrapper = document.createElement("div");
+            cancelBtnWrapper.className = "col-4";
+            cancelBtnWrapper.appendChild(cancelBtn);
+            buttonsWrapper.appendChild(addBtnWrapper);
+            buttonsWrapper.appendChild(saveBtnWrapper);
+            buttonsWrapper.appendChild(cancelBtnWrapper);
+            modalBody.appendChild(buttonsWrapper);
+
+            const modalContent = document.createElement("div");
+            modalContent.className = "modal-content";
+            modalContent.appendChild(modalBody);
+
+            const modalDialog = document.createElement("div");
+            modalDialog.className = "modal-dialog";
+            modalDialog.role = "document";
+            modalDialog.appendChild(modalContent);
+
+            const modal = document.createElement("div");
+            modal.className = "modal fade";
+            modal.id = "myModal";
+            modal.tabIndex = -1;
+            modal.role = "dialog";
+            modal.setAttribute("aria-labelledby", "myModalLabel");
+            modal.setAttribute("aria-hidden", "true");
+            modal.appendChild(modalDialog);
+
+            document.body.appendChild(modal);
+
+            categories.forEach(function (category) {
+                const newCategory = document.createElement("div");
+                newCategory.className = "form-group row";
+                const inputWrapper = document.createElement("div");
+                inputWrapper.className = "col-9";
+                const input = document.createElement("input");
+                input.type = "text";
+                input.className = "form-control";
+                input.value = category.categoryName;
+                inputWrapper.appendChild(input);
+                const deleteBtnWrapper = document.createElement("div");
+                deleteBtnWrapper.className = "col-3";
+                const deleteBtn = document.createElement("button");
+                deleteBtn.className = "btn";
+                deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+                deleteBtn.addEventListener("click", async function () {
+                    categoryForm.removeChild(newCategory);
+                    await client.graphql({
+                        query: deleteDefaultCategories,
+                        variables: {
+                          input: {id: category.id}
+                        }
+                      });
+
+                });
+                deleteBtnWrapper.appendChild(deleteBtn);
+                newCategory.appendChild(inputWrapper);
+                newCategory.appendChild(deleteBtnWrapper);
+                categoryForm.appendChild(newCategory);
+            });
+     
+
     } catch (error) {
         console.log(error);
     }

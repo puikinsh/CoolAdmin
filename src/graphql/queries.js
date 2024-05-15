@@ -9,13 +9,13 @@ export const getDefaultCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -58,13 +58,13 @@ export const getCategories = /* GraphQL */ `
       categoryName
       configuration {
         autoResponse
-        redirect
+        autoRedirect
         redirectTo
-        quote
+        autoQuote
         quoteOption
-        trigger
+        autoTrigger
         triggerOption
-        retargeting
+        autoRetargeting
         retargetingOption
         retargetingTime
         __typename
@@ -132,6 +132,7 @@ export const listCommunications = /* GraphQL */ `
   ) {
     listCommunications(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
         messageId
         channel
         category
@@ -139,7 +140,21 @@ export const listCommunications = /* GraphQL */ `
         fromId
         toId
         responseAi
+        messageSubject
+        messageBody
+        messagSummary
+        messageAttachment
+        responseBody
+        responseSubject
         responseAttachment
+        execute
+        clientId
+        threadId
+        thread
+        actions
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
       __typename

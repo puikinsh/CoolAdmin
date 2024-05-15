@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: {main: './js/main.js', amplifyConfig: './js/amplifyConfig.js', authentication: './js/authentication.js'},
+    entry: {main: './js/main.js', amplifyConfig: './js/amplifyConfig.js', authentication: './js/authentication.js', authorizations: './js/authorizations.js'},
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js',

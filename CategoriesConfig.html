@@ -226,85 +226,23 @@
                         <div class="container-fluid form-group">
                             <div class="row justify-content-center">
                                 <div class="row" style="margin-bottom: 20px">
-                                    <select class="form-control" id="selectOptionCategory">
+                                    <select class="form-control text-center" id="selectOptionCategory">
+                                        <option value="Selecciona" selected>Selecciona Categoria</option>
                                     </select>
                                 </div>
                                 <div class="col-md-12" id="divCategory">
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
-                                            <h4>Auto Response:</h4>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoResponse" />
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col"></div>
+                                 
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
-                                            <h4>Redirect:</h4>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoRedirect" />
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="redirectTo" />
-                                        </div>
+                                    <div class="col"></div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary btn-block" type="button">Reset to default</button>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
-                                            <h4>Pre-quote:</h4>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" id="AutoPrequote" />
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <select class="form-control" id="selectOptionPreQuote">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
-                                            <h4>Trigger:</h4>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoTrigger"/>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col">
-                                            <select class="form-control" id="selectOptionTrigger">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
-                                            <h4>Retargeting:</h4>
-                                        </div>
-                                        <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled"  id="AutoRetargeting"/>
-                                        </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="DelayHour" />
-                                            <label for="selectOption">Delay in hours</label>
-                                        </div>
-                                        <div class="col">
-                                            <select class="form-control" id="selectOptionRetargeting">
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col">
-                                            <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary btn-block" type="button">Reset to default</button>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary btn-block" type="button">Save changes</button>
-                                        </div>
+                                    <div class="col-md-3">
+                                        <button class="btn btn-primary btn-block" type="button">Save changes</button>
                                     </div>
                                 </div>
                             </div>
@@ -328,114 +266,7 @@
         </div>
 
         <!-- Jquery JS-->
-        <script>
-            const categories = [{ name: "Category 1" }, { name: "Category 2" }, { name: "Category 3" }, { name: "Category 4" }, { name: "Category 5" }];
-
-            document.addEventListener("DOMContentLoaded", function () {
-                const editCategoriesBtn = document.querySelector(".edit_categories");
-                const categoryForm = document.createElement("form");
-                const addCategoryBtn = document.createElement("button");
-                addCategoryBtn.id = "addCategory";
-                addCategoryBtn.className = "btn btn-primary";
-                addCategoryBtn.textContent = "Agregar categoría";
-
-                const cancelBtn = document.createElement("button");
-                cancelBtn.id = "cancelCategory";
-                cancelBtn.className = "btn btn-secondary";
-                cancelBtn.textContent = "Cancelar";
-
-                editCategoriesBtn.addEventListener("click", function () {
-                    $("#myModal").modal("show");
-                });
-
-                addCategoryBtn.addEventListener("click", function () {
-                    const newCategory = document.createElement("div");
-                    newCategory.className = "form-group row";
-                    const inputWrapper = document.createElement("div");
-                    inputWrapper.className = "col-9";
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.className = "form-control";
-                    inputWrapper.appendChild(input);
-                    const deleteBtnWrapper = document.createElement("div");
-                    deleteBtnWrapper.className = "col-3";
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "btn";
-                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                    deleteBtn.addEventListener("click", function () {
-                        categoryForm.removeChild(newCategory);
-                    });
-                    deleteBtnWrapper.appendChild(deleteBtn);
-                    newCategory.appendChild(inputWrapper);
-                    newCategory.appendChild(deleteBtnWrapper);
-                    categoryForm.appendChild(newCategory);
-                });
-
-                cancelBtn.addEventListener("click", function () {
-                    $("#myModal").modal("hide");
-                });
-
-                const modalBody = document.createElement("div");
-                modalBody.className = "modal-body";
-                modalBody.appendChild(categoryForm);
-
-                const buttonsWrapper = document.createElement("div");
-                buttonsWrapper.className = "row";
-                const addBtnWrapper = document.createElement("div");
-                addBtnWrapper.className = "col-6";
-                addBtnWrapper.appendChild(addCategoryBtn);
-                const cancelBtnWrapper = document.createElement("div");
-                cancelBtnWrapper.className = "col-6";
-                cancelBtnWrapper.appendChild(cancelBtn);
-                buttonsWrapper.appendChild(addBtnWrapper);
-                buttonsWrapper.appendChild(cancelBtnWrapper);
-                modalBody.appendChild(buttonsWrapper);
-
-                const modalContent = document.createElement("div");
-                modalContent.className = "modal-content";
-                modalContent.appendChild(modalBody);
-
-                const modalDialog = document.createElement("div");
-                modalDialog.className = "modal-dialog";
-                modalDialog.role = "document";
-                modalDialog.appendChild(modalContent);
-
-                const modal = document.createElement("div");
-                modal.className = "modal fade";
-                modal.id = "myModal";
-                modal.tabIndex = -1;
-                modal.role = "dialog";
-                modal.setAttribute("aria-labelledby", "myModalLabel");
-                modal.setAttribute("aria-hidden", "true");
-                modal.appendChild(modalDialog);
-
-                document.body.appendChild(modal);
-
-                categories.forEach(function (category) {
-                    const newCategory = document.createElement("div");
-                    newCategory.className = "form-group row";
-                    const inputWrapper = document.createElement("div");
-                    inputWrapper.className = "col-9";
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.className = "form-control";
-                    input.value = category.name;
-                    inputWrapper.appendChild(input);
-                    const deleteBtnWrapper = document.createElement("div");
-                    deleteBtnWrapper.className = "col-3";
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "btn";
-                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                    deleteBtn.addEventListener("click", function () {
-                        categoryForm.removeChild(newCategory);
-                    });
-                    deleteBtnWrapper.appendChild(deleteBtn);
-                    newCategory.appendChild(inputWrapper);
-                    newCategory.appendChild(deleteBtnWrapper);
-                    categoryForm.appendChild(newCategory);
-                });
-            });
-        </script>
+        
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -462,8 +293,7 @@
         <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
         <!-- Main JS-->
-        <script src="js/graphQlQuery.js"></script>
-        <script src="js/main.js"></script>
+        <script src="dist/main.bundle.js"></script>
     </body>
 </html>
 <!-- end document-->
