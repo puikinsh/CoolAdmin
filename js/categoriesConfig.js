@@ -1,4 +1,4 @@
-import { deleteDefaultCategories, updateCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
+import { createCategories, deleteCategories, deleteDefaultCategories, updateCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
 import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries.js";
 import { client } from "./amplifyConfig.js";
 
@@ -2180,7 +2180,9 @@ import { client } from "./amplifyConfig.js";
 
         const editCategoriesBtn = document.querySelector(".edit_categories");
         const categoryForm = document.createElement("form");
-        // const initialCategories = document.createElement("form");
+        let newCategories =[];
+        let oldCategories = [],
+        deletedCategories = []
             const addCategoryBtn = document.createElement("button");
             addCategoryBtn.id = "addCategory";
             addCategoryBtn.className = "btn btn-primary";
@@ -2200,14 +2202,17 @@ import { client } from "./amplifyConfig.js";
                 $("#myModal").modal("show");
             });
          
+            let count = 1;
             addCategoryBtn.addEventListener("click", function () {
                 const newCategory = document.createElement("div");
                 newCategory.className = "form-group row";
+                newCategory.key = count
                 const inputWrapper = document.createElement("div");
                 inputWrapper.className = "col-9";
                 const input = document.createElement("input");
                 input.type = "text";
                 input.className = "form-control";
+                input.id = count;
                 inputWrapper.appendChild(input);
                 const deleteBtnWrapper = document.createElement("div");
                 deleteBtnWrapper.className = "col-3";
@@ -2216,27 +2221,40 @@ import { client } from "./amplifyConfig.js";
                 deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
                 deleteBtn.addEventListener("click", function () {
                     categoryForm.removeChild(newCategory);
-                    // initialCategories.removeChild(newCategory);
+                    newCategories = newCategories.filter(e => e.id !== newCategory.key)
                 });
                 deleteBtnWrapper.appendChild(deleteBtn);
                 newCategory.appendChild(inputWrapper);
                 newCategory.appendChild(deleteBtnWrapper);
-                // initialCategories.appendChild(newCategory);
+                newCategories.push({id:count});
                 categoryForm.appendChild(newCategory);
+                count += 1; 
             });
-            // saveBtn.addEventListener("click", function () {
-            //     const categFormChild = [...categoryForm.childNodes]
-            //     const initialCatChild = [...initialCategories.childNodes]
-            //     console.log("categFom", categFormChild)
-            //     console.log("init", initialCatChild)
-            //     const addedCategories = categFormChild.map(c => {
-            //         console.log(c)
-            //         if(initialCatChild.includes(c)){
-            //             return c
-            //         }
-            //     })
-            //     console.log("addedCategories: ",addedCategories)
-            // })
+            saveBtn.addEventListener("click", async function () {              
+                for (let i = 0; i < newCategories.length; i++) {
+                    let parameters = {
+                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: "{}", quoteOption:"{}", triggerOption:"{}", retargetingOption:"{}",retargetingTime:""
+                    }
+                    const c = newCategories[i]
+                    const element = document.getElementById(c.id)
+                    console.log("categoryAdded:", element.categoryName)
+                    await client.graphql({query: createCategories, variables: {input: {clientId: "0001", categoryName:element.value ,configuration: parameters}}})
+                }
+               
+                for (let i = 0; i < oldCategories.length; i++) {
+                const c = oldCategories[i]
+                const element = document.getElementById(c.id)
+                  await client.graphql({query: updateCategories, variables: {input: {id:c.id,categoryName:element.value}}})              
+                  console.log("categoryUpdated:", element.categoryName)
+                    
+                }
+
+                for (let i = 0; i < deletedCategories.length; i++) {
+                    const c = oldCategories[i]
+                    await client.graphql({query: deleteCategories, variables: {input: {id:c.id}}})  
+                    console.log("categoryDeleted:",c.id)   
+                 }
+            })
             cancelBtn.addEventListener("click", function () {
                 $("#myModal").modal("hide");
             });
@@ -2281,14 +2299,17 @@ import { client } from "./amplifyConfig.js";
 
             document.body.appendChild(modal);
 
-            categories.forEach(function (category) {
+            
+            customCategories.data.listCategories.items.forEach(function (category) {
                 const newCategory = document.createElement("div");
                 newCategory.className = "form-group row";
+                newCategory.key = category.id
                 const inputWrapper = document.createElement("div");
                 inputWrapper.className = "col-9";
                 const input = document.createElement("input");
                 input.type = "text";
                 input.className = "form-control";
+                input.id = category.id;
                 input.value = category.categoryName;
                 inputWrapper.appendChild(input);
                 const deleteBtnWrapper = document.createElement("div");
@@ -2296,20 +2317,16 @@ import { client } from "./amplifyConfig.js";
                 const deleteBtn = document.createElement("button");
                 deleteBtn.className = "btn";
                 deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                deleteBtn.addEventListener("click", async function () {
+                deleteBtn.addEventListener("click", function () {
                     categoryForm.removeChild(newCategory);
-                    await client.graphql({
-                        query: deleteDefaultCategories,
-                        variables: {
-                          input: {id: category.id}
-                        }
-                      });
-
+                    deletedCategories.push({categoryName: category.categoryName, id: newCategory.key});
+                    oldCategories = oldCategories.filter(e => e.id !== newCategory.key)
                 });
                 deleteBtnWrapper.appendChild(deleteBtn);
                 newCategory.appendChild(inputWrapper);
                 newCategory.appendChild(deleteBtnWrapper);
                 categoryForm.appendChild(newCategory);
+                oldCategories.push({id:category.id}); 
             });
      
 
