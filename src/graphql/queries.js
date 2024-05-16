@@ -155,6 +155,7 @@ export const listCommunications = /* GraphQL */ `
     }
   }
 `;
+
 export const messageDetails = `
   query listCommunications(
     $clientId: String
@@ -185,7 +186,21 @@ export const messageDetails = `
 }
 `
 export const responseDetails = `
-listCommunications(clientId: string, filter: {messageId: string}) {
+query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
     items {
       responseAttachment
       responseAi
@@ -195,4 +210,37 @@ listCommunications(clientId: string, filter: {messageId: string}) {
     nextToken
       __typename
   }
+}
+`
+export const actionsQuery = `
+  query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      fromId
+      dateTime
+      category
+      responseAttachment
+      responseAi
+      messageSubject
+      messageBody
+      responseSubject
+      responseBody
+    }
+    nextToken
+      __typename
+  }
+}
 `

@@ -1,6 +1,6 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
-import { listCommunications, listDefaultCategories, listCategories } from "../src/graphql/queries";
+import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery } from "../src/graphql/queries";
 import backendConfig from '../src/amplifyconfiguration.json'
 
 
@@ -1194,19 +1194,33 @@ import backendConfig from '../src/amplifyconfiguration.json'
         // Se genera el cliente para las llamadas
         const client = generateClient()
 
+        // FUNCIÓN PARA NORMALIZAR FECHA Y HORA A MOSTRAR
+        const normalizeDate = (dateString) => {
+            const date = new Date(dateString)
+            const year = date.getFullYear()
+            const month = (date.getMonth() + 1).toString().padStart(2, "0")
+            const day = date.getDate().toString().padStart(2, "0")
+            const hour = date.getHours().toString().padStart(2, "0")
+            const minutes = date.getMinutes().toString().padStart(2, "0")
+            const formattedDateTime = `${year}-${month}-${day} ${hour}:${minutes}`
+            return formattedDateTime
+        }
+
         // LISTA DE COMUNICACIONES
-        const allCommunications = await client.graphql({
+        let allCommunications = await client.graphql({
             query: listCommunications
         });
 
-        const allComsToMap = allCommunications.data.listCommunications.items
-        const communicationsArr = allComsToMap.map(email => {
+        // COMUNICACIONES CON FECHA NORMALIZADA
+        allCommunications = allCommunications.data.listCommunications.items.map(comm => {
+            return { ...comm, dateTime: normalizeDate(comm.dateTime) }
+        })
+
+        // COMUNICACIONES CONVERTIDAS A UN ARREGLO
+        const dataSet = allCommunications.map(email => {
             const values = Object.values(email)
             return values
         })
-
-        const dataSet = communicationsArr
-        console.log(dataSet)
 
         // CATEGORÍAS POR DEFAULT
         const defaultCateg = await client.graphql({
@@ -1218,11 +1232,8 @@ import backendConfig from '../src/amplifyconfiguration.json'
             query: listCategories
         });
 
+        // TODAS LAS CATEGORÍAS
         const categories = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
-
-        // VISTA DE DETALLE DE MAIL
-
-        // VISTA DE DETALLE DE RESPUESTA
 
         // Obtener el elemento ul donde se agregarán las categorías
         const ul2 = document.querySelector(".js-sub-list");
@@ -1257,10 +1268,10 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 case "CustomCategory1":
                     badgeClass = "badge-warning";
                     break;
-                case "CustomCategory2":
+                case "Leidos":
                     badgeClass = "badge-danger";
                     break;
-                case "On CustomCategory3":
+                case "Recibidos":
                     badgeClass = "badge-info";
                     break;
                 default:
@@ -1300,10 +1311,10 @@ import backendConfig from '../src/amplifyconfiguration.json'
               <button class="validate btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
             `;
 
-            r.push(buttonContainer1);
-            r.push(buttonContainer2);
-            r.push(buttonContainer3);
-            r.push(buttonContainer);
+            row.push(buttonContainer1);
+            row.push(buttonContainer2);
+            row.push(buttonContainer3);
+            row.push(buttonContainer);
         });
 
         new DataTable("#tabla", {
@@ -1332,19 +1343,26 @@ import backendConfig from '../src/amplifyconfiguration.json'
         let table = new DataTable("#tabla");
 
         ///////////// MODAL ACTION /////////////////////
-        table.on("click", "tbody .edit", function () {
+        table.on("click", "tbody .edit", async function () {
             let data = table.row($(this).closest("tr")).data();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+            let actions = await client.graphql({
+                query: actionsQuery,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
+            actions = actions.data.listCommunications.items[0]
 
-            // MODAL => FORM ACTION
             let form = $("<form>");
+            form.empty()
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
+                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.fromId)))
+                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.dateTime)))
             );
 
             form.append(
@@ -1357,19 +1375,19 @@ import backendConfig from '../src/amplifyconfiguration.json'
                                 $("<label>").text("Category:"),
                                 $("<select>")
                                     .addClass("form-control")
-                                    .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .val(actions.category)
+                                    .append($("<option>").text(actions.category).val(actions.category))
                             ),
 
-                        $("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4]))
+                        $("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
                     )
             );
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
 
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.messageSubject)));
+            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(actions.messageBody))); // Crea el modal con el formulario
+            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
+            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
             // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "myModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
@@ -1394,13 +1412,21 @@ import backendConfig from '../src/amplifyconfiguration.json'
         });
 
         ///////////// MODAL MAIL CONTENT /////////////////////
-        table.on("click", "tbody .view1", function () {
+        table.on("click", "tbody .view1", async function () {
             let data = table.row($(this).closest("tr")).data();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+            let message = await client.graphql({
+                query: messageDetails,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
+            message = message.data.listCommunications.items[0]
 
             let form = $("<form>");
+            form.empty() // VER XQ NO CAMBIA LA DATA
             form.append(
                 $("<div>")
                     .addClass("form-row")
@@ -1412,20 +1438,20 @@ import backendConfig from '../src/amplifyconfiguration.json'
                                 $("<select>")
                                     .addClass("form-control")
                                     .prop("disabled", true)
-                                    .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .val(message.category)
+                                    .append($("<option>").text(message.category).val(message.category))
                             )
                     )
             );
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[3])))
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[2])))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.fromId)))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.dateTime)))
             );
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messagSummary)));
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messageSubject)));
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(message.messageBody))); // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "myModal2");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
@@ -1449,23 +1475,31 @@ import backendConfig from '../src/amplifyconfiguration.json'
         });
 
         ///////////// MODAL RESPONSE CONTENT /////////////////////
-        table.on("click", "tbody .view2", function () {
+        table.on("click", "tbody .view2", async function () {
             let data = table.row($(this).closest("tr")).data();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+            let response = await client.graphql({
+                query: responseDetails,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
+            response = response.data.listCommunications.items[0]
 
             let form = $("<form>");
+            form.empty()
 
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4])))
+                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(response.responseAttachment)))
             );
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(response.responseAi)));
 
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(response.responseSubject)));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(response.responseBody)));
             // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "myModal3");
             let modalDialog = $("<div>").addClass("modal-dialog");
