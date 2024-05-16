@@ -19,6 +19,9 @@
           "userPoolName": "FuerteRRHH",
           "webClientId": "m7qd5d585r35oleco83u18nj8"
         }
+      },
+      "api": {
+        "KideChannels": {}
       }
     }
   }

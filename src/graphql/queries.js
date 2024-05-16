@@ -26,7 +26,6 @@ export const getDefaultCategories = /* GraphQL */ `
     }
   }
 `;
-
 export const listDefaultCategories = /* GraphQL */ `
   query ListDefaultCategories(
     $filter: ModelDefaultCategoriesFilterInput
@@ -39,14 +38,18 @@ export const listDefaultCategories = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
+        id
+        clientId
         categoryName
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
       __typename
     }
   }
 `;
-
 export const getCategories = /* GraphQL */ `
   query GetCategories($id: ID!) {
     getCategories(id: $id) {
@@ -72,7 +75,6 @@ export const getCategories = /* GraphQL */ `
     }
   }
 `;
-
 export const listCategories = /* GraphQL */ `
   query ListCategories(
     $filter: ModelCategoriesFilterInput
@@ -81,17 +83,22 @@ export const listCategories = /* GraphQL */ `
   ) {
     listCategories(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
+        id
+        clientId
         categoryName
+        createdAt
+        updatedAt
+        __typename
       }
       nextToken
       __typename
     }
   }
 `;
-
 export const getCommunications = /* GraphQL */ `
-  query GetCommunications($id: ID!) {
-    getCommunications(id: $id) {
+  query GetCommunications($clientId: String!, $dateTime: AWSDateTime!) {
+    getCommunications(clientId: $clientId, dateTime: $dateTime) {
+      clientId
       id
       messageId
       channel
@@ -108,7 +115,6 @@ export const getCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -118,14 +124,22 @@ export const getCommunications = /* GraphQL */ `
     }
   }
 `;
-
 export const listCommunications = /* GraphQL */ `
   query ListCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
     $filter: ModelCommunicationsFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listCommunications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
       items {
         messageId
         channel
@@ -141,29 +155,44 @@ export const listCommunications = /* GraphQL */ `
     }
   }
 `;
-
-export const getMessageDetails = /* GraphQL */ `
-  query GetCommunications($id: ID!) {
-    getCommunications(id: $id) {
-      messageId
+export const messageDetails = `
+  query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
       category
       fromId
       dateTime
       messagSummary
       messageSubject
       messageBody
-      messageAttachment
     }
+    nextToken
+      __typename
   }
-`;
-
-export const getResponseDetails = /* GraphQL */ `
-  query GetCommunications($id: ID!) {
-    getCommunications(id: $id) {
+}
+`
+export const responseDetails = `
+listCommunications(clientId: string, filter: {messageId: string}) {
+    items {
       responseAttachment
       responseAi
       responseSubject
       responseBody
     }
+    nextToken
+      __typename
   }
-`;
+`

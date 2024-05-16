@@ -1,6 +1,6 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
-import { listCommunications, listDefaultCategories, listCategories, getMessageDetails, getResponseDetails } from "../src/graphql/queries";
+import { listCommunications, listDefaultCategories, listCategories } from "../src/graphql/queries";
 import backendConfig from '../src/amplifyconfiguration.json'
 
 
@@ -1206,6 +1206,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
         })
 
         const dataSet = communicationsArr
+        console.log(dataSet)
 
         // CATEGORÍAS POR DEFAULT
         const defaultCateg = await client.graphql({
@@ -1220,18 +1221,8 @@ import backendConfig from '../src/amplifyconfiguration.json'
         const categories = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
 
         // VISTA DE DETALLE DE MAIL
-        const messageDetails = await client.graphql({
-            query: getMessageDetails
-        });
-
-        console.log(messageDetails)
 
         // VISTA DE DETALLE DE RESPUESTA
-        const responseDetails = await client.graphql({
-            query: getResponseDetails
-        });
-
-        console.log(responseDetails)
 
         // Obtener el elemento ul donde se agregarán las categorías
         const ul2 = document.querySelector(".js-sub-list");
@@ -1251,9 +1242,9 @@ import backendConfig from '../src/amplifyconfiguration.json'
             ul2.appendChild(li);
         });
 
-        dataSet.forEach((r) => {
+        dataSet.forEach((row) => {
             var div1 = document.createElement("div");
-            var category = r[2];
+            var category = row[2];
             var badgeClass = "";
 
             switch (category) {
@@ -1278,11 +1269,11 @@ import backendConfig from '../src/amplifyconfiguration.json'
             }
 
             div1.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
-            r[2] = div1;
+            row[2] = div1;
 
             var div3 = document.createElement("div");
-            div3.innerHTML = r[3];
-            r[3] = div3;
+            div3.innerHTML = row[3];
+            row[3] = div3;
 
             var buttonContainer1 = document.createElement("div");
             buttonContainer1.className = "view1  d-flex justify-content-center";
