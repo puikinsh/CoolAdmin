@@ -96,8 +96,9 @@ export const listCategories = /* GraphQL */ `
   }
 `;
 export const getCommunications = /* GraphQL */ `
-  query GetCommunications($id: ID!) {
-    getCommunications(id: $id) {
+  query GetCommunications($clientId: String!, $dateTime: AWSDateTime!) {
+    getCommunications(clientId: $clientId, dateTime: $dateTime) {
+      clientId
       id
       messageId
       channel
@@ -114,7 +115,6 @@ export const getCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -126,12 +126,23 @@ export const getCommunications = /* GraphQL */ `
 `;
 export const listCommunications = /* GraphQL */ `
   query ListCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
     $filter: ModelCommunicationsFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listCommunications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
       items {
+        clientId
         id
         messageId
         channel
@@ -148,7 +159,6 @@ export const listCommunications = /* GraphQL */ `
         responseSubject
         responseAttachment
         execute
-        clientId
         threadId
         thread
         actions

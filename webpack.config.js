@@ -5,8 +5,7 @@ module.exports = {
     amplifyConfig: './js/amplifyConfig.js', 
     authentication: './js/authentication.js', 
     authorizations: './js/authorizations.js',
-    categoryConfig: './js/categoriesConfig/categoriesConfig.js',
-    category: './js/category.js',
+    categoryConfig: './js/categoriesConfig.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

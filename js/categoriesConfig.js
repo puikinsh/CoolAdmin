@@ -1,7 +1,6 @@
-import { deleteDefaultCategories, updateDefaultCategories } from "../../src/graphql/mutations.js";
-import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../../src/graphql/queries";
-import { client } from "../amplifyConfig.js";
-import {form} from './form.js'
+import { deleteDefaultCategories, updateCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
+import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries.js";
+import { client } from "./amplifyConfig.js";
 
 (async function ($) {
 
@@ -2110,45 +2109,71 @@ import {form} from './form.js'
         })
 
         select.addEventListener("change", async (e)=> {
-            if (divCategory.firstChild) {
-                divCategory.removeChild(divCategory.firstChild);
-            }
             if(e.target.value !== "Selecciona"){
-                const categ = categories.find(c => c.categoryName === e.target.value) 
-                let tempElement = document.createElement('div');
-                let params = {
-                    autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: {}, quoteOption:{}, triggerOption:{}, retargetingOption:{},retargetingTime:""
-                },{data} = await client.graphql({query: getDefaultCategories, variables: {id: categ.id}}); 
-                params = data.getDefaultCategories.configuration ? {...params,...data.getDefaultCategories.configuration} : params
-                tempElement.innerHTML = form(params);
-                divCategory.appendChild(tempElement);
-                tempElement.addEventListener("change", async (e)=> {
-                    params[e.target.id] = e.target.checked 
-                })
+                const categ = categories.find(c => c.categoryName === e.target.value),
+                props = ["autoRedirect", "autoRetargeting", "autoTrigger" , "autoQuote", "autoResponse", "redirectTo", "quoteOption", "triggerOption", "retargetingOption","retargetingTime"];
+                let isDefault = true,
+                {data} = await client.graphql({query: getDefaultCategories, variables: {id:categ.id}}); 
+                !data.getDefaultCategories && ({data} = await client.graphql({query: getCategories, variables: {id:categ.id}})) && (isDefault = false);
+                const config = data?.getDefaultCategories ? data?.getDefaultCategories.configuration : data?.getCategories.configuration
+                console.log(data);
+                for (const key in config) {
+                    let value = config[key];    
+                    const element = document.getElementById(key)
+                    console.log("key",key,"value",value);
+                    if(element && key !== "__typename"){
+                        let valueParsed;
+                        switch (element.type) {
+                            case "checkbox":
+                                    element.checked = value;
+                                break;
+                            case "select-one":
+                                    valueParsed = JSON.parse(value)
+                                    element.value = valueParsed?.option ? valueParsed.option: value;
+                                break;
+                            default:
+                                    valueParsed = value? JSON.parse(value): {}
+                                element.value = valueParsed?.value? valueParsed.value : value === "{}" ? "": value;
+                                break;
+                        }
+                    }
+
+                    
+                }
+
+
                 const saveButton = document.getElementById("saveChange")
                 saveButton.addEventListener("click",async(e)=>{
-                    const {__typename, ...other} = params
-                    const a = await client.graphql({query: updateDefaultCategories, variables: {input: {id:categ.id ,configuration: other}}})
+                    let params = {}
+                    props.forEach(p => {
+                        let elem = document.getElementById(p)
+                        console.log(p, elem.type)
+                        switch (elem.type) {
+                            case "checkbox":
+                                   params[p] = elem.checked;
+                                break;
+                            case "select-one":
+                                console.log("hola",elem.value)
+                                params[p] = elem.value ? `{\"option\":\"${elem.value}\"}`: "{}";
+                                break;
+                            default:
+                                params[p] = p === "redirectTo" ? elem.value === "" ? `{}` :`{\"value\":[${elem.value.split(',').map(e => `\"${e}\"`)}]}`: elem.value
+                               
+                        }
+                    })
+                    console.log(params)
+                    isDefault? (await client.graphql({query: updateDefaultCategories, variables: {input: {id:categ.id ,configuration: params}}})):(await client.graphql({query: updateCategories, variables: {input: {id:categ.id ,configuration: params}}}))
+                    window.alert("Se guardo la configuracion");
+                    
                 })
                 const resetButton = document.getElementById("resetDefault")
                 resetButton.addEventListener("click",async(e)=>{
-                    const {__typename, ...other} = params
                     const a = await client.graphql({query: updateDefaultCategories, variables: {input: {id:categ.id ,configuration: {
-                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: null, quoteOption:null, triggerOption:null ,retargetingOption:null,retargetingTime:null
+                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: {}, quoteOption:{}, triggerOption:{} ,retargetingOption:{},retargetingTime:""
                     }}}})
-                    console.log(a)
-                    divCategory.removeChild(divCategory.firstChild);
-                    tempElement = document.createElement('div');
-                    tempElement.innerHTML = form( {
-                        autoRedirect: false, autoRetargeting: false, autoTrigger: false , autoQuote: false, autoResponse: false, redirectTo: null, quoteOption:null, triggerOption:null ,retargetingOption:null,retargetingTime:null
-                    });
-                    divCategory.appendChild(tempElement);
+ 
                 })
 
-            }else{
-                let tempElement2 = document.createElement('div');
-                tempElement2.style.height = '50vh';
-                divCategory.appendChild(tempElement2);
             }
 
         })

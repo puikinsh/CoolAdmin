@@ -175,6 +175,7 @@ export const createCommunications = /* GraphQL */ `
     $condition: ModelCommunicationsConditionInput
   ) {
     createCommunications(input: $input, condition: $condition) {
+      clientId
       id
       messageId
       channel
@@ -191,7 +192,6 @@ export const createCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -207,6 +207,7 @@ export const updateCommunications = /* GraphQL */ `
     $condition: ModelCommunicationsConditionInput
   ) {
     updateCommunications(input: $input, condition: $condition) {
+      clientId
       id
       messageId
       channel
@@ -223,7 +224,6 @@ export const updateCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -239,6 +239,7 @@ export const deleteCommunications = /* GraphQL */ `
     $condition: ModelCommunicationsConditionInput
   ) {
     deleteCommunications(input: $input, condition: $condition) {
+      clientId
       id
       messageId
       channel
@@ -255,7 +256,6 @@ export const deleteCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions

@@ -230,12 +230,96 @@
                                         <option value="Selecciona" selected>Selecciona Categoria</option>
                                     </select>
                                 </div>
-                                <div class="col">
-                                    <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
-                                </div>  
+                    
                                 <div class="col-md-12" id="divCategory">
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Auto Response:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" id="autoResponse"/>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col"></div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Redirect:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" ckecked="true" id="autoRedirect" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="redirectTo" />
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Pre-quote:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox"  ckecked="true" id="autoQuote" />
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <select class="form-control" type="select" id="quoteOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Trigger:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox"  id="autoTrigger"/>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col">
+                                            <select class="form-control" type="select" id="triggerOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-bottom: 20px">
+                                        <div class="col">
+                                            <h4>Retargeting:</h4>
+                                        </div>
+                                        <div class="col">
+                                            <input type="checkbox" type="select" id="autoRetargeting"/>
+                                            <!-- data-toggle="toggle" data-on="Enabled" data-off="Disabled"   -->
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="retargetingTime" />
+                                            <label for="retargetingTime">Delay in hours</label>
+                                        </div>
+                                        <div class="col">
+                                            <select class="form-control" type="select" id="retargetingOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
+                                        </div> 
+                                        <div class="col-3"></div>                                                
+                                    <div class="col-md-3">
+                                    <button class="btn btn-primary btn-block" type="button" id="resetDefault">Reset to default</button>
+                                    </div>
+                                    <div class="col-md-3">
+                                    <button class="btn btn-primary btn-block" type="button" id="saveChange">Save changes</button>
+                                    </div>
+                                    </div>
                                 </div>      
-                                
                             </div>
                         </div>
                     </div>

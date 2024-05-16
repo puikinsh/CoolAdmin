@@ -168,6 +168,7 @@ export const onCreateCommunications = /* GraphQL */ `
     $filter: ModelSubscriptionCommunicationsFilterInput
   ) {
     onCreateCommunications(filter: $filter) {
+      clientId
       id
       messageId
       channel
@@ -184,7 +185,6 @@ export const onCreateCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -199,6 +199,7 @@ export const onUpdateCommunications = /* GraphQL */ `
     $filter: ModelSubscriptionCommunicationsFilterInput
   ) {
     onUpdateCommunications(filter: $filter) {
+      clientId
       id
       messageId
       channel
@@ -215,7 +216,6 @@ export const onUpdateCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
@@ -230,6 +230,7 @@ export const onDeleteCommunications = /* GraphQL */ `
     $filter: ModelSubscriptionCommunicationsFilterInput
   ) {
     onDeleteCommunications(filter: $filter) {
+      clientId
       id
       messageId
       channel
@@ -246,7 +247,6 @@ export const onDeleteCommunications = /* GraphQL */ `
       responseSubject
       responseAttachment
       execute
-      clientId
       threadId
       thread
       actions
