@@ -1355,14 +1355,14 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 }
             });
             actions = actions.data.listCommunications.items[0]
+            const normalDate = normalizeDate(actions.dateTime)
 
             let form = $("<form>");
-            form.empty()
             form.append(
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.fromId)))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.dateTime)))
+                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalDate)))
             );
 
             form.append(
@@ -1389,26 +1389,27 @@ import backendConfig from '../src/amplifyconfiguration.json'
             form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
             form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal");
-            let modalDialog = $("<div>").addClass("modal-dialog");
+            // tabindex, role, aria,labelledby, aria-hidden para mejorar la accesibilidad y el comportamiento del modal
+            let modal = $("<div>").addClass("modal fade").attr("id", "actionModal").attr("tabindex", "-1").attr("role", "dialog").attr("aria-labelledby", "actionModalLabel").attr("aria-hidden", "true");
+            let modalDialog = $("<div>").addClass("modal-dialog").attr("role", "document");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "actionModalLabel").text("Editar"))
+                .append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
+                .append($("<button>").addClass("btn btn-primary").text("Guardar"))
                 .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#actionModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal").modal("show");
+            $("#actionModal").modal("show");
         });
 
         ///////////// MODAL MAIL CONTENT /////////////////////
@@ -1424,9 +1425,9 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 }
             });
             message = message.data.listCommunications.items[0]
+            const normalDate = normalizeDate(message.dateTime)
 
             let form = $("<form>");
-            form.empty() // VER XQ NO CAMBIA LA DATA
             form.append(
                 $("<div>")
                     .addClass("form-row")
@@ -1447,31 +1448,30 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.fromId)))
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.dateTime)))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalDate)))
             );
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messagSummary)));
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messageSubject)));
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(message.messageBody))); // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal2");
+            let modal = $("<div>").addClass("modal fade").attr("id", "messageModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la comunicación")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
                 .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
                 .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#messageModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal2").modal("show");
+            $("#messageModal").modal("show");
         });
 
         ///////////// MODAL RESPONSE CONTENT /////////////////////
@@ -1489,7 +1489,6 @@ import backendConfig from '../src/amplifyconfiguration.json'
             response = response.data.listCommunications.items[0]
 
             let form = $("<form>");
-            form.empty()
 
             form.append(
                 $("<div>")
@@ -1501,26 +1500,25 @@ import backendConfig from '../src/amplifyconfiguration.json'
             form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(response.responseSubject)));
             form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(response.responseBody)));
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal3");
+            let modal = $("<div>").addClass("modal fade").attr("id", "responseModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la respuesta")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
                 .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
                 .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#responseModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal3").modal("show");
+            $("#responseModal").modal("show");
         });
 
         ///////////// MODAL THREAD /////////////////////
@@ -1696,28 +1694,27 @@ import backendConfig from '../src/amplifyconfiguration.json'
             col.appendChild(card);
             row.appendChild(col);
             bootdeyContainer.appendChild(row);
-            container.appendChild(table);
-            container.appendChild(bootdeyContainer);
+            container.appendChild(table, bootdeyContainer);
             section.appendChild(container);
 
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal4");
+            let modal = $("<div>").addClass("modal fade").attr("id", "threadModal");
             let modalDialog = $("<div>").addClass("modal-dialog Modal_BIG"); // Cambia "modal-lg" por "modal-sm" si quieres un modal más pequeño
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "threadModalLabel").text("Hilo de la conversación")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
             let modalBody = $("<div>").addClass("modal-body");
             modalBody.append(section);
             let modalFooter = $("<div>").addClass("modal-footer").append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
-            // Agrega el modal al documento
+
+            // Elimina cualquier modal previo y agrega el nuevo modal al documento
+            // $("#threadModal").remove(); // CUANDO TRAIGAMOS DATA DEL BACK
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal4").modal("show");
+            $("#threadModal").modal("show");
         });
 
         document.querySelector("#button").addEventListener("click", function () {
