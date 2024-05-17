@@ -185,6 +185,7 @@ export const messageDetails = `
   }
 }
 `
+
 export const responseDetails = `
 query listCommunications(
     $clientId: String
@@ -212,6 +213,32 @@ query listCommunications(
   }
 }
 `
+
+export const threadQuery = `
+query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      thread
+    }
+    nextToken
+      __typename
+  }
+}
+`
+
 export const actionsQuery = `
   query listCommunications(
     $clientId: String

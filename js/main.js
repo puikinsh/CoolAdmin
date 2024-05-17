@@ -1,6 +1,6 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
-import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery } from "../src/graphql/queries";
+import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery } from "../src/graphql/queries";
 import backendConfig from '../src/amplifyconfiguration.json'
 
 
@@ -1522,64 +1522,19 @@ import backendConfig from '../src/amplifyconfiguration.json'
         });
 
         ///////////// MODAL THREAD /////////////////////
-        table.on("click", "tbody .view3", function () {
-            var data = [
-                {
-                    time: "7:45PM",
-                    date: "May 10",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.",
-                    badges: ["Envío presupuesto"],
-                    dotClass: "fb-bg",
-                },
-                {
-                    time: "8:00 AM",
-                    date: "May 10",
-                    who: "client",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.",
-                    badges: ["Peticion de presupuesto"],
-                    dotClass: "green-one-bg",
-                },
-                {
-                    time: "7:25 PM",
-                    date: "May 11",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Best Admin Template!",
-                    content: "Custom C3 graphs, Custom flot graphs, flot graphs, small graphs, Sass, profile and timeline.",
-                    badges: ["Retargeting"],
-                    dotClass: "green-two-bg",
-                },
-                {
-                    time: "3:55 PM",
-                    date: "May 11",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Milestone Admin",
-                    content: "Admin theme includes graphs, invoice, timeline, widgets, projects, calendar, components, layouts, todo's.",
-                    badges: ["Retargeting"],
-                    dotClass: "green-three-bg",
-                },
-                {
-                    time: "5:24 PM",
-                    date: "May 12",
-                    who: "client",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Milestone Dashboard",
-                    content: "Milestone Admin Dashboard includes invoice, profile, tasks, gallery, projects, maintanence.",
-                    badges: ["Aeptación presupuesto"],
-                    dotClass: "green-four-bg",
-                },
-            ];
+        table.on("click", "tbody .view3", async function () {
+            let data = table.row($(this).closest("tr")).data();
+
+            let thread = await client.graphql({
+                query: threadQuery,
+                variables: {
+                    filter: {
+                        messageId: {
+                            eq: data[0]
+                        }
+                    }
+                }
+            })
 
             var section = document.createElement("div");
             section.className = "section__content section__content--p30";
@@ -1610,7 +1565,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
             timeline.className = "timeline";
 
             // Crear los elementos de la sección a partir del JSON
-            data.forEach(function (item) {
+            thread.forEach(function (item) {
                 var timelineRow = document.createElement("div");
                 timelineRow.className = "timeline-row";
 
