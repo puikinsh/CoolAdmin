@@ -1,70 +1,95 @@
-import AWS from 'aws-sdk'
-import {AWS_ACCESS_KEY,AWS_COGNITO_POOL_CLIENT_ID,AWS_COGNITO_POOL_ID,AWS_REGION,AWS_SECRET_ACCESS_KEY } from '../secrets'
-document.getElementById('login-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const username= document.getElementById('username').value, password= document.getElementById('password').value;
-    AWS.config.update({
-        region: AWS_REGION,
-        accessKeyId: AWS_ACCESS_KEY,
-        secretAccessKey: AWS_SECRET_ACCESS_KEY
-    });
+// import AWS from 'aws-sdk'
+import {signIn, signOut, confirmSignIn,confirmResetPassword, fetchAuthSession,resetPassword, updatePassword, sendUserAttributeVerificationCode, confirmUserAttribute} from "@aws-amplify/auth"
+// import {AWS_ACCESS_KEY,AWS_COGNITO_POOL_CLIENT_ID,AWS_COGNITO_POOL_ID,AWS_REGION,AWS_SECRET_ACCESS_KEY } from '../secrets'
+import { Amplify } from "aws-amplify";
+import backendConfig from "../src/amplifyconfiguration.json"
 
-    const cognitoIdentity = new AWS.CognitoIdentityServiceProvider();
+Amplify.configure(backendConfig);
 
+
+export async function login({username, password}){
     const params = {
-        AuthFlow: 'USER_PASSWORD_AUTH',
-        ClientId:AWS_COGNITO_POOL_CLIENT_ID,
-    
-        AuthParameters: {
-          USERNAME: username,
-          PASSWORD: password
+        authFlowType: 'USER_PASSWORD_AUTH',
+        username,
+        password
+    };
+
+    try {       
+        const data = await signIn(params);
+        if (data.nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED') {
+           return await confirmSignInWithNewPassword();
+        }else if (data.nextStep.signInStep === "DONE"){
+            return `Successfully logged in`
         }
-      };
-      
-      
+    } catch (error) {
+        throw new Error('Error to login:', error);
+    }
+}
+export async function logout(){
     try {
-    // Inicia sesión en Cognito
-        cognitoIdentity.initiateAuth(params, (err, data) => {
-            if (err) {
-            console.error('Error al iniciar sesión en Cognito:', err);
-            } else {
-            console.log('Sesión iniciada en Cognito:', data);
-            localStorage.setItem('CognitoSession', data.Session)
-            window.location ='index.html'
+        const data = await signOut()
+    } catch (error) {
+        throw new Error('Error to logout:', error)
+    }
+
+}
+
+const confirmSignInWithNewPassword = async () => {
+    const newPassword = prompt('Please enter a new password:'),
+    name = prompt('Indica tu nombre'),
+    family_name = prompt('Indica tu apellido')
+    try {
+        
+        const data = await confirmSignIn({
+            challengeResponse: newPassword,
+            options:{
+                userAttributes:{
+                    name,
+                    family_name,
+
+                },
+                friendlyDeviceName: 'kideChannel',
             }
         });
+        return data
     } catch (error) {
-        console.error('Error al registrar:', error);
-        // Muestra un mensaje de error al usuario
+        throw new Error('Error to set new password:', error)
+        
     }
-})
+}
 
-document.getElementById('logout').addEventListener('click', async () => {
-    // Cerrar sesión en Cognito
-    const cognitoIdentity = new AWS.CognitoIdentityServiceProvider();
-    const params = {
-        ClientId: AWS_COGNITO_POOL_CLIENT_ID
-    };
+
+
+export const refreshAndGetTokens = async () =>{
+    return await fetchAuthSession({ forceRefresh: true })
+}
+
+
+
+export const recoveryPassword = async ({ username }) => {
     try {
-        await cognitoIdentity.globalSignOut(params).promise();
-        console.log('Usuario desconectado de Cognito');
+        const  CodeDeliveryDetails  = await resetPassword({username});
+        console.log(CodeDeliveryDetails)
+        const confirmationCode = prompt(`Coloca el codigo recibido`);
+        const newPassword = prompt(`Coloca tu nueva contraseña`);
+        await confirmResetPassword({username, confirmationCode, newPassword});
+        return "Successfully Reset Password"
     } catch (error) {
-        console.error('Error al cerrar sesión en Cognito:', error);
-        // Manejar errores según sea necesario
+        console.error('Error during password recovery:', error);
+        alert('Error during password recovery. Please try again.');
     }
+}
 
-    // Eliminar tokens almacenados
-    if (localStorage.getItem('CognitoSession') !== null) {
-        localStorage.removeItem('CognitoSession');
-        console.log('Elemento eliminado correctamente del localStorage');
-    } else {
-        console.log('La clave "CognitoSession" no está presente en el localStorage');
+  
+export const verifyEmail = async () => {
+    try {
+        await sendUserAttributeVerificationCode({userAttributeKey:'email'});
+        const code = prompt('Ingrese el codigo de verificación enviado al correo electrónico.');
+        if(code){
+            await confirmUserAttribute({ userAttributeKey: 'email', confirmationCode:code });
+        }
+    } catch (error) {
+        console.error('Error al enviar el código de verificación:', error);
+        alert('Error al enviar el código de verificación. Intenta nuevamente.');
     }
-    
-    // Redirigir al usuario a la página de inicio de sesión
-    window.location.href = '/login'; // Cambia '/login' por la ruta de tu página de inicio de sesión
-});
-  
-  
-
-
+};

@@ -3,6 +3,9 @@ const path = require('path');
 module.exports = {
     entry: {main: './js/main.js', 
     amplifyConfig: './js/amplifyConfig.js', 
+    loginLogout: './js/auth/loginLogout.js', 
+    verifyMmail: './js/auth/verifyMail.js', 
+    forgetPass: './js/auth/forgetPass.js',
     authentication: './js/authentication.js', 
     authorizations: './js/authorizations.js',
     categoryConfig: './js/categoriesConfig.js',
