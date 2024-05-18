@@ -1,6 +1,7 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
 import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery } from "../src/graphql/queries";
+import { updateOneCommunication } from "../src/graphql/mutations";
 import backendConfig from '../src/amplifyconfiguration.json'
 
 
@@ -1493,12 +1494,12 @@ import backendConfig from '../src/amplifyconfiguration.json'
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(response.responseAttachment)))
+                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseAttachment)))
             );
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(response.responseAi)));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseAi)));
 
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(response.responseSubject)));
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(response.responseBody)));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseSubject)));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(response.responseBody)));
             // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "responseModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
@@ -1524,7 +1525,6 @@ import backendConfig from '../src/amplifyconfiguration.json'
         ///////////// MODAL THREAD /////////////////////
         table.on("click", "tbody .view3", async function () {
             let data = table.row($(this).closest("tr")).data();
-
             let thread = await client.graphql({
                 query: threadQuery,
                 variables: {
@@ -1535,16 +1535,13 @@ import backendConfig from '../src/amplifyconfiguration.json'
                     }
                 }
             })
+            thread = JSON.parse(thread.data.listCommunications.items[0].thread)
 
             var section = document.createElement("div");
             section.className = "section__content section__content--p30";
 
             var container = document.createElement("div");
             container.className = "container-fluid";
-
-            var table = document.createElement("table");
-            table.id = "tabla";
-            table.width = "100%";
 
             var bootdeyContainer = document.createElement("div");
             bootdeyContainer.className = "container bootdey";
@@ -1564,7 +1561,6 @@ import backendConfig from '../src/amplifyconfiguration.json'
             var timeline = document.createElement("div");
             timeline.className = "timeline";
 
-            // Crear los elementos de la sección a partir del JSON
             thread.forEach(function (item) {
                 var timelineRow = document.createElement("div");
                 timelineRow.className = "timeline-row";
@@ -1649,7 +1645,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
             col.appendChild(card);
             row.appendChild(col);
             bootdeyContainer.appendChild(row);
-            container.appendChild(table, bootdeyContainer);
+            container.appendChild(bootdeyContainer);
             section.appendChild(container);
 
             // Crea el modal con el formulario
@@ -1665,7 +1661,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
             modal.append(modalDialog);
 
             // Elimina cualquier modal previo y agrega el nuevo modal al documento
-            // $("#threadModal").remove(); // CUANDO TRAIGAMOS DATA DEL BACK
+            $("#threadModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar

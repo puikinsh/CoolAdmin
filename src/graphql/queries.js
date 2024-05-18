@@ -156,6 +156,40 @@ export const listCommunications = /* GraphQL */ `
   }
 `;
 
+export const newList = /* GraphQL */ `
+  query ListCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+      items {
+        messageId
+        channel
+        category
+        dateTime
+        fromId
+        toId
+        responseAi
+        responseAttachment
+        threadId
+        thread
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+
 export const messageDetails = `
   query listCommunications(
     $clientId: String
