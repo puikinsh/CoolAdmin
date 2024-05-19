@@ -1287,35 +1287,36 @@ import backendConfig from '../src/amplifyconfiguration.json'
             div3.innerHTML = row[3];
             row[3] = div3;
 
-            var buttonContainer1 = document.createElement("div");
-            buttonContainer1.className = "view1  d-flex justify-content-center";
-            buttonContainer1.innerHTML = `
+            var messageButtonContainer = document.createElement("div");
+            messageButtonContainer.className = "view1  d-flex justify-content-center";
+            messageButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer2 = document.createElement("div");
-            buttonContainer2.className = "view2  d-flex justify-content-center";
-            buttonContainer2.innerHTML = `
+            var responseButtonContainer = document.createElement("div");
+            responseButtonContainer.className = "view2  d-flex justify-content-center";
+            responseButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer3 = document.createElement("div");
-            buttonContainer3.className = "view3 d-flex justify-content-center";
-            buttonContainer3.innerHTML = `
+            var threadButtonContainer = document.createElement("div");
+            threadButtonContainer.className = "view3 d-flex justify-content-center";
+            threadButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer = document.createElement("div");
+            var actionButtonContainer = document.createElement("div");
 
-            buttonContainer.innerHTML = `
+            actionButtonContainer.innerHTML = `
                 <button  class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
-              <button class="validate btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
+              <button class="
+               btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
             `;
 
-            row.push(buttonContainer1);
-            row.push(buttonContainer2);
-            row.push(buttonContainer3);
-            row.push(buttonContainer);
+            row.push(messageButtonContainer);
+            row.push(responseButtonContainer);
+            row.push(threadButtonContainer);
+            row.push(actionButtonContainer);
         });
 
         new DataTable("#tabla", {
@@ -1355,15 +1356,19 @@ import backendConfig from '../src/amplifyconfiguration.json'
                     }
                 }
             });
-            actions = actions.data.listCommunications.items[0]
-            const normalDate = normalizeDate(actions.dateTime)
 
-            let form = $("<form>");
+            actions = actions.data.listCommunications.items[0]
+
+            const normalizedDate = normalizeDate(actions.dateTime)
+            let selectedCategory = categories.filter(category => category.categoryName === actions.category)
+
+            selectedCategory = selectedCategory[0]
+            let form = $("<form>").attr("id", "actionForm");
             form.append(
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.fromId)))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalDate)))
+                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalizedDate)))
             );
 
             form.append(
@@ -1375,32 +1380,33 @@ import backendConfig from '../src/amplifyconfiguration.json'
                             .append(
                                 $("<label>").text("Category:"),
                                 $("<select>")
-                                    .addClass("form-control")
-                                    .val(actions.category)
-                                    .append($("<option>").text(actions.category).val(actions.category))
+                                    .addClass("form-control").attr("id", "category")
+                                    .append(categories.map(category => $("<option>").text(category.categoryName).val(category.id))
+                                    ).val(selectedCategory.id)
                             ),
 
-                        $("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
+                        $("<div>").addClass("form-group1 col-md-6").attr("id", "responseAttachment").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
                     )
             );
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
+            // REEMPLAZAR EL INPUT TEXT DE RESPONSE ATTACHMENT POR UN INPUT FILE
+            // form.append($("<div>").addClass("form-group1").append($("<label>").text("ADJUNTO:"), $("<input>").attr("type", "file").addClass("form-control")))
+            form.append($("<div>").addClass("form-group1").attr("id", "responseAi").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
 
             form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.messageSubject)));
             form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(actions.messageBody))); // Crea el modal con el formulario
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
+            form.append($("<div>").addClass("form-group1").attr("id", "responseSubject").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
+            form.append($("<div>").addClass("form-group1").attr("id", "responseBody").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
             // Crea el modal con el formulario
             // tabindex, role, aria,labelledby, aria-hidden para mejorar la accesibilidad y el comportamiento del modal
             let modal = $("<div>").addClass("modal fade").attr("id", "actionModal").attr("tabindex", "-1").attr("role", "dialog").attr("aria-labelledby", "actionModalLabel").attr("aria-hidden", "true");
             let modalDialog = $("<div>").addClass("modal-dialog").attr("role", "document");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "actionModalLabel").text("Editar"))
-                .append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "actionModalLabel").text("Editar"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("type", "button").attr("id", "saveBtn"))
+                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal").attr("id", "cancelBtn"));
             modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
@@ -1411,6 +1417,48 @@ import backendConfig from '../src/amplifyconfiguration.json'
 
             // Abre el modal al hacer clic en el botón de editar
             $("#actionModal").modal("show");
+
+            $("#category").on("change", function () {
+                let selectedValue = $(this).val();
+                console.log("Selected category:", selectedValue);
+            });
+            $("#responseAttachment input").on("change", function () {
+                let entryValue = $(this).val();
+                console.log("responseAttachment:", entryValue);
+            });
+            $("#responseAi input").on("change", function () {
+                let entryValue = $(this).val();
+                console.log("responseAi:", entryValue);
+            });
+            $("#responseSubject input").on("change", function () {
+                let entryValue = $(this).val();
+                console.log("responseSubject:", entryValue);
+            });
+            $("#responseBody textarea").on("change", function () {
+                let entryValue = $(this).val();
+                console.log("responseBody:", entryValue);
+            });
+
+            $("#saveBtn").on("click", function () {
+                $("#actionForm").submit()
+            })
+
+            $("body").on("submit", "#actionForm", async function (event) {
+                event.preventDefault(); // Previene el envío normal del formulario
+
+                // Recoge los datos del formulario
+                let formData = {
+                    ...form, // VER CÓMO CAPTURAR EL RESTO DEL FORMULARIO
+                    category: $("#category").val(),
+                    responseAttachment: $("#responseAttachment input").val(),
+                    responseAi: $("#responseAi input").val(),
+                    responseSubject: $("#responseSubject input").val(),
+                    responseBody: $("#responseBody textarea").val()
+                };
+
+                console.log("Data a enviarse:", formData);
+                // REALIZAR LA LLAMADA CON LA MUTATION DE GRAPHQL
+            })
         });
 
         ///////////// MODAL MAIL CONTENT /////////////////////
@@ -1426,7 +1474,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 }
             });
             message = message.data.listCommunications.items[0]
-            const normalDate = normalizeDate(message.dateTime)
+            const normalizedDate = normalizeDate(message.dateTime)
 
             let form = $("<form>");
             form.append(
@@ -1449,7 +1497,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.fromId)))
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalDate)))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalizedDate)))
             );
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messagSummary)));
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messageSubject)));
@@ -1457,12 +1505,11 @@ import backendConfig from '../src/amplifyconfiguration.json'
             let modal = $("<div>").addClass("modal fade").attr("id", "messageModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la comunicación")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la comunicación"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
             modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
@@ -1504,12 +1551,11 @@ import backendConfig from '../src/amplifyconfiguration.json'
             let modal = $("<div>").addClass("modal fade").attr("id", "responseModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la respuesta")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la respuesta"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
             modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
@@ -1652,7 +1698,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
             let modal = $("<div>").addClass("modal fade").attr("id", "threadModal");
             let modalDialog = $("<div>").addClass("modal-dialog Modal_BIG"); // Cambia "modal-lg" por "modal-sm" si quieres un modal más pequeño
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header").append($("<h5>").addClass("modal-title").attr("id", "threadModalLabel").text("Hilo de la conversación")).append($("<button>").addClass("close").attr("type", "button").attr("data-dismiss", "modal").attr("aria-label", "Close").append($("<span>").attr("aria-hidden", "true").html("&times;")));
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "threadModalLabel").text("Hilo de la conversación"));
             let modalBody = $("<div>").addClass("modal-body");
             modalBody.append(section);
             let modalFooter = $("<div>").addClass("modal-footer").append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
