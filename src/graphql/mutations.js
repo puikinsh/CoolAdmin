@@ -265,22 +265,3 @@ export const deleteCommunications = /* GraphQL */ `
     }
   }
 `;
-
-export const updateOneCommunication = /* GraphQL */ `
-  mutation UpdateCommunications(
-    $input: UpdateCommunicationsInput!
-    $condition: ModelCommunicationsConditionInput
-  ) {
-    updateCommunications(input: $input, condition: $condition) {
-      fromId
-      dateTime
-      category
-      responseAttachment
-      responseAi
-      messageSubject
-      messageBody
-      responseSubject
-      responseBody
-    }
-  }
-`;
