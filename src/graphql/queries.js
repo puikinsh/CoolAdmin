@@ -139,11 +139,8 @@ export const listCommunications = /* GraphQL */ `
       filter: $filter
       limit: $limit
       nextToken: $nextToken
-      sortDirection: $sortDirection
-    ) {
+      sortDirection: $sortDirection) {
       items {
-        clientId
-        id
         messageId
         channel
         category
@@ -151,23 +148,126 @@ export const listCommunications = /* GraphQL */ `
         fromId
         toId
         responseAi
-        messageSubject
-        messageBody
-        messagSummary
-        messageAttachment
-        responseBody
-        responseSubject
         responseAttachment
-        execute
-        threadId
-        thread
-        actions
-        createdAt
-        updatedAt
-        __typename
       }
       nextToken
       __typename
     }
   }
 `;
+
+export const messageDetails = `
+  query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      category
+      fromId
+      dateTime
+      messagSummary
+      messageSubject
+      messageBody
+    }
+    nextToken
+      __typename
+  }
+}
+`
+
+export const responseDetails = `
+query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      responseAttachment
+      responseAi
+      responseSubject
+      responseBody
+    }
+    nextToken
+      __typename
+  }
+}
+`
+
+export const threadQuery = `
+query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      thread
+    }
+    nextToken
+      __typename
+  }
+}
+`
+
+export const actionsQuery = `
+  query listCommunications(
+    $clientId: String
+    $dateTime: ModelStringKeyConditionInput
+    $filter: ModelCommunicationsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listCommunications(
+      clientId: $clientId
+      dateTime: $dateTime
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection) {
+    items {
+      fromId
+      dateTime
+      category
+      responseAttachment
+      responseAi
+      messageSubject
+      messageBody
+      responseSubject
+      responseBody
+    }
+    nextToken
+      __typename
+  }
+}
+`

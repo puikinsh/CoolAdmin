@@ -1,9 +1,11 @@
-import { createCategories, deleteCategories, deleteDefaultCategories, updateCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
-import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries.js";
-import { client } from "./amplifyConfig.js";
+import { Amplify } from 'aws-amplify'
+import { generateClient } from "aws-amplify/api";
+import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery } from "../src/graphql/queries";
+import { updateOneCommunication } from "../src/graphql/mutations";
+import backendConfig from '../src/amplifyconfiguration.json'
 
-(async function ($) {
 
+(function ($) {
     // USE STRICT
     "use strict";
 
@@ -1186,59 +1188,105 @@ import { client } from "./amplifyConfig.js";
     // USE STRICT
     "use strict";
     try {
-        const { data: { listCommunications: { items } } } = await client.graphql({
-            query: listCommunications
-        });
-        const dataSet = items.map(e => {
-            const values = Object.values(e);
-            return values
-        })
 
-        let categories, defaultCategories = await client.graphql({
+        // Config de Amplify con la config del backend como prop
+        Amplify.configure(backendConfig)
+
+        // Se genera el cliente para las llamadas
+        const client = generateClient()
+
+        // FUNCIÓN PARA NORMALIZAR FECHA Y HORA A MOSTRAR
+        const normalizeDate = (dateString) => {
+            const date = new Date(dateString)
+            const year = date.getFullYear()
+            const month = (date.getMonth() + 1).toString().padStart(2, "0")
+            const day = date.getDate().toString().padStart(2, "0")
+            const hour = date.getHours().toString().padStart(2, "0")
+            const minutes = date.getMinutes().toString().padStart(2, "0")
+            const formattedDateTime = `${year}-${month}-${day} ${hour}:${minutes}`
+            return formattedDateTime
+        }
+
+        // CATEGORÍAS POR DEFAULT
+        const defaultCateg = await client.graphql({
             query: listDefaultCategories
-        }), customCategories = await client.graphql({ query: listCategories })
+        });
 
-        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
+        // CATEGORÍAS CREADAS
+        const customCateg = await client.graphql({
+            query: listCategories
+        });
 
-        ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
+        // TODAS LAS CATEGORÍAS
+        const categories = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
 
         // Obtener el elemento ul donde se agregarán las categorías
         const ul2 = document.querySelector(".js-sub-list");
         // Crear las categorías y agregarlas al elemento ul
 
+        console.log(window.selectedCategoryName)
         categories.forEach((category) => {
             const li = document.createElement("li");
             const a = document.createElement("a");
             const icon = document.createElement("i");
 
-            a.href = "Categories.html";
+            // a.href = "Categories.html";
             a.classList.add("showTable");
             icon.classList.add("fas", "fa-tags");
             a.appendChild(icon);
             a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
+            a.setAttribute("data-category-name", category.categoryName);
+
+            a.addEventListener("click", function (event) {
+                event.preventDefault()
+                selectedCategoryName = this.getAttribute("data-category-name");
+                console.log("name de la categoría seleccionada:", selectedCategoryName);
+            });
         });
 
-        dataSet.forEach((r, index) => {
+        // LISTA DE COMUNICACIONES
+        let allCommunications = await client.graphql({
+            query: listCommunications,
+            variables: {
+                filter: {
+                    category: { eq: selectedCategoryName }
+                }
+            }
+        });
+
+        // COMUNICACIONES CON FECHA NORMALIZADA
+        allCommunications = allCommunications.data.listCommunications.items.map(comm => {
+            return { ...comm, dateTime: normalizeDate(comm.dateTime) }
+        })
+
+        // COMUNICACIONES CONVERTIDAS A UN ARREGLO
+        const dataSet = allCommunications.map(email => {
+            const values = Object.values(email)
+            return values
+        })
+
+
+        dataSet.forEach((row) => {
             var div1 = document.createElement("div");
-            var category = r[2];
+            var category = row[2];
             var badgeClass = "";
 
             switch (category) {
-                case "Active":
+                case "DefaultCategory1":
                     badgeClass = "badge-primary";
                     break;
-                case "Inactive":
+                case "DefaultCategory2":
                     badgeClass = "badge-success";
                     break;
-                case "Pending":
+                case "CustomCategory1":
                     badgeClass = "badge-warning";
                     break;
-                case "Blocked":
+                case "Leidos":
                     badgeClass = "badge-danger";
                     break;
-                case "On Hold":
+                case "Recibidos":
                     badgeClass = "badge-info";
                     break;
                 default:
@@ -1247,42 +1295,42 @@ import { client } from "./amplifyConfig.js";
             }
 
             div1.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
-            r[2] = div1;
+            row[2] = div1;
 
             var div3 = document.createElement("div");
-            div3.innerHTML = r[3];
-            r[3] = div3;
+            div3.innerHTML = row[3];
+            row[3] = div3;
 
-            var buttonContainer1 = document.createElement("div");
-            buttonContainer1.className = "view1  d-flex justify-content-center";
-            buttonContainer1.innerHTML = `
+            var messageButtonContainer = document.createElement("div");
+            messageButtonContainer.className = "view1  d-flex justify-content-center";
+            messageButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer2 = document.createElement("div");
-            buttonContainer2.className = "view2  d-flex justify-content-center";
-            buttonContainer2.innerHTML = `
+            var responseButtonContainer = document.createElement("div");
+            responseButtonContainer.className = "view2  d-flex justify-content-center";
+            responseButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer3 = document.createElement("div");
-            buttonContainer3.className = "view3 d-flex justify-content-center";
-            buttonContainer3.innerHTML = `
+            var threadButtonContainer = document.createElement("div");
+            threadButtonContainer.className = "view3 d-flex justify-content-center";
+            threadButtonContainer.innerHTML = `
                 <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
             `;
 
-            var buttonContainer = document.createElement("div");
+            var actionButtonContainer = document.createElement("div");
 
-            buttonContainer.innerHTML = `
+            actionButtonContainer.innerHTML = `
                 <button  class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
-              <button class="validate btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
+              <button class="
+               btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
             `;
 
-            r.push(buttonContainer1);
-            r.push(buttonContainer2);
-            r.push(buttonContainer3);
-            r.push(buttonContainer);
-
+            row.push(messageButtonContainer);
+            row.push(responseButtonContainer);
+            row.push(threadButtonContainer);
+            row.push(actionButtonContainer);
         });
 
         new DataTable("#tabla", {
@@ -1310,21 +1358,31 @@ import { client } from "./amplifyConfig.js";
 
         let table = new DataTable("#tabla");
 
-        ////////////////////MODALES////////////////////////////////////////
-
-        table.on("click", "tbody .edit", function () {
+        ///////////// MODAL ACTION /////////////////////
+        table.on("click", "tbody .edit", async function () {
             let data = table.row($(this).closest("tr")).data();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+            let actions = await client.graphql({
+                query: actionsQuery,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
 
-            // Crea el formulario con los campos de la fila
-            let form = $("<form>");
+            actions = actions.data.listCommunications.items[0]
+
+            const normalizedDate = normalizeDate(actions.dateTime)
+            let selectedCategory = categories.filter(category => category.categoryName === actions.category)
+
+            selectedCategory = selectedCategory[0]
+            let form = $("<form>").attr("id", "actionForm");
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "fromId").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "fromId").val(actions.fromId)))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "normalizedDate").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "datetime").val(normalizedDate)))
             );
 
             form.append(
@@ -1336,57 +1394,110 @@ import { client } from "./amplifyConfig.js";
                             .append(
                                 $("<label>").text("Category:"),
                                 $("<select>")
-                                    .addClass("form-control")
-                                    .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .addClass("form-control").attr("id", "category")
+                                    .append(categories.map(category => $("<option>").text(category.categoryName).val(category.categoryName))
+                                    ).val(selectedCategory.categoryName)
                             ),
 
-                        $("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4]))
+                        $("<div>").addClass("form-group1 col-md-6").attr("id", "responseAttachment").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
                     )
             );
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            // REEMPLAZAR EL INPUT TEXT DE RESPONSE ATTACHMENT POR UN INPUT FILE
+            // form.append($("<div>").addClass("form-group1").append($("<label>").text("ADJUNTO:"), $("<input>").attr("type", "file").addClass("form-control")))
+            form.append($("<div>").addClass("form-group1").attr("id", "responseAi").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
 
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append($("<div>").addClass("form-group1").attr("id", "messageSubject").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "messageSubject").val(actions.messageSubject)));
+            form.append($("<div>").addClass("form-group1").attr("id", "messageBody").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).attr("name", "messageBody").val(actions.messageBody))); // Crea el modal con el formulario
+            form.append($("<div>").addClass("form-group1").attr("id", "responseSubject").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
+            form.append($("<div>").addClass("form-group1").attr("id", "responseBody").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal");
-            let modalDialog = $("<div>").addClass("modal-dialog");
+            // tabindex, role, aria,labelledby, aria-hidden para mejorar la accesibilidad y el comportamiento del modal
+            let modal = $("<div>").addClass("modal fade").attr("id", "actionModal").attr("tabindex", "-1").attr("role", "dialog").attr("aria-labelledby", "actionModalLabel").attr("aria-hidden", "true");
+            let modalDialog = $("<div>").addClass("modal-dialog").attr("role", "document");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "actionModalLabel").text("Editar"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("type", "button").attr("id", "saveBtn"))
+                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal").attr("id", "cancelBtn"));
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#actionModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal").modal("show");
-        });
-        /////////////vista 1 detalle del MAIL/////////////////////
-        table.on("click", "tbody .view1", async function () {
-            //message content detail
-            let data = table.row($(this).closest("tr")).data();
+            $("#actionModal").modal("show");
 
-            const content = await window.MyVars.then(async (data) => {
-                const arr = await data.showMessageContent();
-                return arr
+            // $("#category").on("change", function () {
+            //     let selectedValue = $(this).val();
+            //     console.log("Selected category:", selectedValue);
+            // });
+            // $("#responseAttachment input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseAttachment:", entryValue);
+            // });
+            // $("#responseAi input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseAi:", entryValue);
+            // });
+            // $("#responseSubject input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseSubject:", entryValue);
+            // });
+            // $("#responseBody textarea").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseBody:", entryValue);
+            // });
+
+            $("#saveBtn").on("click", function () {
+                $("#actionForm").submit()
             })
 
+            $("body").on("submit", "#actionForm", async function (event) {
+                event.preventDefault();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+                let formData = {};
 
-            // Crea el formulario con los campos de la fila
+                $("#actionForm").find(":input:disabled").each(function () {
+                    let name = $(this).attr("name")
+                    if (name) {
+                        formData[name] = $(this).val()
+                    }
+                })
+
+                formData = {
+                    ...formData,
+                    category: $("#category").val(),
+                    responseAttachment: $("#responseAttachment input").val(),
+                    responseAi: $("#responseAi input").val(),
+                    responseSubject: $("#responseSubject input").val(),
+                    responseBody: $("#responseBody textarea").val()
+                };
+
+                console.log("Data a enviarse:", formData);
+                // REALIZAR LA LLAMADA CON LA MUTATION DE GRAPHQL
+            })
+        });
+
+        ///////////// MODAL MAIL CONTENT /////////////////////
+        table.on("click", "tbody .view1", async function () {
+            let data = table.row($(this).closest("tr")).data();
+
+            let message = await client.graphql({
+                query: messageDetails,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
+            message = message.data.listCommunications.items[0]
+            const normalizedDate = normalizeDate(message.dateTime)
+
             let form = $("<form>");
             form.append(
                 $("<div>")
@@ -1399,151 +1510,106 @@ import { client } from "./amplifyConfig.js";
                                 $("<select>")
                                     .addClass("form-control")
                                     .prop("disabled", true)
-                                    .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .val(message.category)
+                                    .append($("<option>").text(message.category).val(message.category))
                             )
                     )
             );
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[3])))
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[2])))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.fromId)))
+                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalizedDate)))
             );
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal2");
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messagSummary)));
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messageSubject)));
+            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(message.messageBody))); // Crea el modal con el formulario
+            let modal = $("<div>").addClass("modal fade").attr("id", "messageModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la comunicación"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+                .append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#messageModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal2").modal("show");
+            $("#messageModal").modal("show");
         });
 
-        table.on("click", "tbody .view2", function () {
+        ///////////// MODAL RESPONSE CONTENT /////////////////////
+        table.on("click", "tbody .view2", async function () {
             let data = table.row($(this).closest("tr")).data();
 
-            // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
-            // Utiliza el modal de Bootstrap
+            let response = await client.graphql({
+                query: responseDetails,
+                variables: {
+                    filter: {
+                        messageId: { eq: data[0] }
+                    }
+                }
+            });
+            response = response.data.listCommunications.items[0]
 
-            // Crea el formulario con los campos de la fila
             let form = $("<form>");
 
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4])))
+                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseAttachment)))
             );
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseAi)));
 
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(response.responseSubject)));
+            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(response.responseBody)));
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal3");
+            let modal = $("<div>").addClass("modal fade").attr("id", "responseModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la respuesta"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+                .append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento
+            // Agrega el modal al documento luego de eliminar cualquiera anterior
+            $("#responseModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal3").modal("show");
+            $("#responseModal").modal("show");
         });
 
-        table.on("click", "tbody .view3", function () {
-            var data = [
-                {
-                    time: "7:45PM",
-                    date: "May 10",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.",
-                    badges: ["Envío presupuesto"],
-                    dotClass: "fb-bg",
-                },
-                {
-                    time: "8:00 AM",
-                    date: "May 10",
-                    who: "client",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.",
-                    badges: ["Peticion de presupuesto"],
-                    dotClass: "green-one-bg",
-                },
-                {
-                    time: "7:25 PM",
-                    date: "May 11",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Best Admin Template!",
-                    content: "Custom C3 graphs, Custom flot graphs, flot graphs, small graphs, Sass, profile and timeline.",
-                    badges: ["Retargeting"],
-                    dotClass: "green-two-bg",
-                },
-                {
-                    time: "3:55 PM",
-                    date: "May 11",
-                    who: "company",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Milestone Admin",
-                    content: "Admin theme includes graphs, invoice, timeline, widgets, projects, calendar, components, layouts, todo's.",
-                    badges: ["Retargeting"],
-                    dotClass: "green-three-bg",
-                },
-                {
-                    time: "5:24 PM",
-                    date: "May 12",
-                    who: "client",
-                    from: "sadasd@asda.com",
-                    to: "sadasd@asda.com",
-                    title: "Milestone Dashboard",
-                    content: "Milestone Admin Dashboard includes invoice, profile, tasks, gallery, projects, maintanence.",
-                    badges: ["Aeptación presupuesto"],
-                    dotClass: "green-four-bg",
-                },
-            ];
+        ///////////// MODAL THREAD /////////////////////
+        table.on("click", "tbody .view3", async function () {
+            let data = table.row($(this).closest("tr")).data();
+            let thread = await client.graphql({
+                query: threadQuery,
+                variables: {
+                    filter: {
+                        messageId: {
+                            eq: data[0]
+                        }
+                    }
+                }
+            })
+            thread = JSON.parse(thread.data.listCommunications.items[0].thread)
 
             var section = document.createElement("div");
             section.className = "section__content section__content--p30";
 
             var container = document.createElement("div");
             container.className = "container-fluid";
-
-            var table = document.createElement("table");
-            table.id = "tabla";
-            table.width = "100%";
 
             var bootdeyContainer = document.createElement("div");
             bootdeyContainer.className = "container bootdey";
@@ -1563,8 +1629,7 @@ import { client } from "./amplifyConfig.js";
             var timeline = document.createElement("div");
             timeline.className = "timeline";
 
-            // Crear los elementos de la sección a partir del JSON
-            data.forEach(function (item) {
+            thread.forEach(function (item) {
                 var timelineRow = document.createElement("div");
                 timelineRow.className = "timeline-row";
 
@@ -1648,29 +1713,29 @@ import { client } from "./amplifyConfig.js";
             col.appendChild(card);
             row.appendChild(col);
             bootdeyContainer.appendChild(row);
-            container.appendChild(table);
             container.appendChild(bootdeyContainer);
             section.appendChild(container);
 
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal4");
+            let modal = $("<div>").addClass("modal fade").attr("id", "threadModal");
             let modalDialog = $("<div>").addClass("modal-dialog Modal_BIG"); // Cambia "modal-lg" por "modal-sm" si quieres un modal más pequeño
             let modalContent = $("<div>").addClass("modal-content");
-            let modalHeader = $("<div>").addClass("modal-header");
+            let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "threadModalLabel").text("Hilo de la conversación"));
             let modalBody = $("<div>").addClass("modal-body");
             modalBody.append(section);
             let modalFooter = $("<div>").addClass("modal-footer").append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
-            modalContent.append(modalHeader);
-            modalContent.append(modalBody);
-            modalContent.append(modalFooter);
+            modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
-            // Agrega el modal al documento
+
+            // Elimina cualquier modal previo y agrega el nuevo modal al documento
+            $("#threadModal").remove();
             $("body").append(modal);
 
             // Abre el modal al hacer clic en el botón de editar
-            $("#myModal4").modal("show");
+            $("#threadModal").modal("show");
         });
+
         document.querySelector("#button").addEventListener("click", function () {
             table.row(".selected").remove().draw(false);
         });
@@ -2086,258 +2151,6 @@ import { client } from "./amplifyConfig.js";
                 $(this).parent().parent().parent().toggleClass("show-chat-box");
             });
         });
-    } catch (error) {
-        console.log(error);
-    }
-})(jQuery);
-(async function ($) {
-    // USE STRICT
-    "use strict"
-    try {
-        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory")
-
-        let categories, defaultCategories = await client.graphql({
-            query: listDefaultCategories
-        }), customCategories = await client.graphql({ query: listCategories })
-
-        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
-        categories.forEach(e => {
-            const option = document.createElement("option")
-            option.value = e.categoryName
-            option.innerHTML = e.categoryName
-            select.appendChild(option)
-
-
-        })
-
-        select.addEventListener("change", async (e) => {
-            if (e.target.value !== "Selecciona") {
-                const categ = categories.find(c => c.categoryName === e.target.value),
-                    props = ["autoRedirect", "autoRetargeting", "autoTrigger", "autoQuote", "autoResponse", "redirectTo", "quoteOption", "triggerOption", "retargetingOption", "retargetingTime"];
-                let isDefault = true,
-                    { data } = await client.graphql({ query: getDefaultCategories, variables: { id: categ.id } });
-                !data.getDefaultCategories && ({ data } = await client.graphql({ query: getCategories, variables: { id: categ.id } })) && (isDefault = false);
-                const config = data?.getDefaultCategories ? data?.getDefaultCategories.configuration : data?.getCategories.configuration
-                console.log(data);
-                for (const key in config) {
-                    let value = config[key];
-                    const element = document.getElementById(key)
-                    console.log("key", key, "value", value);
-                    if (element && key !== "__typename") {
-                        let valueParsed;
-                        switch (element.type) {
-                            case "checkbox":
-                                element.checked = value;
-                                break;
-                            case "select-one":
-                                valueParsed = JSON.parse(value)
-                                element.value = valueParsed?.option ? valueParsed.option : value;
-                                break;
-                            default:
-                                valueParsed = value ? JSON.parse(value) : {}
-                                element.value = valueParsed?.value ? valueParsed.value : value === "{}" ? "" : value;
-                                break;
-                        }
-                    }
-
-
-                }
-
-
-                const saveButton = document.getElementById("saveChange")
-                saveButton.addEventListener("click", async (e) => {
-                    let params = {}
-                    props.forEach(p => {
-                        let elem = document.getElementById(p)
-                        console.log(p, elem.type)
-                        switch (elem.type) {
-                            case "checkbox":
-                                params[p] = elem.checked;
-                                break;
-                            case "select-one":
-                                console.log("hola", elem.value)
-                                params[p] = elem.value ? `{\"option\":\"${elem.value}\"}` : "{}";
-                                break;
-                            default:
-                                params[p] = p === "redirectTo" ? elem.value === "" ? `{}` : `{\"value\":[${elem.value.split(',').map(e => `\"${e}\"`)}]}` : elem.value
-
-                        }
-                    })
-                    console.log(params)
-                    isDefault ? (await client.graphql({ query: updateDefaultCategories, variables: { input: { id: categ.id, configuration: params } } })) : (await client.graphql({ query: updateCategories, variables: { input: { id: categ.id, configuration: params } } }))
-                    window.alert("Se guardo la configuracion");
-
-                })
-                const resetButton = document.getElementById("resetDefault")
-                resetButton.addEventListener("click", async (e) => {
-                    const a = await client.graphql({
-                        query: updateDefaultCategories, variables: {
-                            input: {
-                                id: categ.id, configuration: {
-                                    autoRedirect: false, autoRetargeting: false, autoTrigger: false, autoQuote: false, autoResponse: false, redirectTo: {}, quoteOption: {}, triggerOption: {}, retargetingOption: {}, retargetingTime: ""
-                                }
-                            }
-                        }
-                    })
-
-                })
-
-            }
-
-        })
-
-        const editCategoriesBtn = document.querySelector(".edit_categories");
-        const categoryForm = document.createElement("form");
-        let newCategories = [];
-        let oldCategories = [],
-            deletedCategories = []
-        const addCategoryBtn = document.createElement("button");
-        addCategoryBtn.id = "addCategory";
-        addCategoryBtn.className = "btn btn-primary";
-        addCategoryBtn.textContent = "Agregar categoría";
-
-        const saveBtn = document.createElement("button");
-        saveBtn.id = "saveBtn";
-        saveBtn.className = "btn btn-primary";
-        saveBtn.textContent = "Guardar";
-
-        const cancelBtn = document.createElement("button");
-        cancelBtn.id = "cancelCategory";
-        cancelBtn.className = "btn btn-secondary";
-        cancelBtn.textContent = "Cancelar";
-
-        editCategoriesBtn.addEventListener("click", function () {
-            $("#myModal").modal("show");
-        });
-
-        let count = 1;
-        addCategoryBtn.addEventListener("click", function () {
-            const newCategory = document.createElement("div");
-            newCategory.className = "form-group row";
-            newCategory.key = count
-            const inputWrapper = document.createElement("div");
-            inputWrapper.className = "col-9";
-            const input = document.createElement("input");
-            input.type = "text";
-            input.className = "form-control";
-            input.id = count;
-            inputWrapper.appendChild(input);
-            const deleteBtnWrapper = document.createElement("div");
-            deleteBtnWrapper.className = "col-3";
-            const deleteBtn = document.createElement("button");
-            deleteBtn.className = "btn";
-            deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-            deleteBtn.addEventListener("click", function () {
-                categoryForm.removeChild(newCategory);
-                newCategories = newCategories.filter(e => e.id !== newCategory.key)
-            });
-            deleteBtnWrapper.appendChild(deleteBtn);
-            newCategory.appendChild(inputWrapper);
-            newCategory.appendChild(deleteBtnWrapper);
-            newCategories.push({ id: count });
-            categoryForm.appendChild(newCategory);
-            count += 1;
-        });
-        saveBtn.addEventListener("click", async function () {
-            for (let i = 0; i < newCategories.length; i++) {
-                let parameters = {
-                    autoRedirect: false, autoRetargeting: false, autoTrigger: false, autoQuote: false, autoResponse: false, redirectTo: "{}", quoteOption: "{}", triggerOption: "{}", retargetingOption: "{}", retargetingTime: ""
-                }
-                const c = newCategories[i]
-                const element = document.getElementById(c.id)
-                console.log("categoryAdded:", element.categoryName)
-                await client.graphql({ query: createCategories, variables: { input: { clientId: "0001", categoryName: element.value, configuration: parameters } } })
-            }
-
-            for (let i = 0; i < oldCategories.length; i++) {
-                const c = oldCategories[i]
-                const element = document.getElementById(c.id)
-                await client.graphql({ query: updateCategories, variables: { input: { id: c.id, categoryName: element.value } } })
-                console.log("categoryUpdated:", element.categoryName)
-
-            }
-
-            for (let i = 0; i < deletedCategories.length; i++) {
-                const c = oldCategories[i]
-                await client.graphql({ query: deleteCategories, variables: { input: { id: c.id } } })
-                console.log("categoryDeleted:", c.id)
-            }
-        })
-        cancelBtn.addEventListener("click", function () {
-            $("#myModal").modal("hide");
-        });
-
-        const modalBody = document.createElement("div");
-        modalBody.className = "modal-body";
-        modalBody.appendChild(categoryForm);
-
-        const buttonsWrapper = document.createElement("div");
-        buttonsWrapper.className = "row";
-        const addBtnWrapper = document.createElement("div");
-        addBtnWrapper.className = "col-4";
-        addBtnWrapper.appendChild(addCategoryBtn);
-        const saveBtnWrapper = document.createElement("div");
-        saveBtnWrapper.className = "col-4";
-        saveBtnWrapper.appendChild(saveBtn);
-        const cancelBtnWrapper = document.createElement("div");
-        cancelBtnWrapper.className = "col-4";
-        cancelBtnWrapper.appendChild(cancelBtn);
-        buttonsWrapper.appendChild(addBtnWrapper);
-        buttonsWrapper.appendChild(saveBtnWrapper);
-        buttonsWrapper.appendChild(cancelBtnWrapper);
-        modalBody.appendChild(buttonsWrapper);
-
-        const modalContent = document.createElement("div");
-        modalContent.className = "modal-content";
-        modalContent.appendChild(modalBody);
-
-        const modalDialog = document.createElement("div");
-        modalDialog.className = "modal-dialog";
-        modalDialog.role = "document";
-        modalDialog.appendChild(modalContent);
-
-        const modal = document.createElement("div");
-        modal.className = "modal fade";
-        modal.id = "myModal";
-        modal.tabIndex = -1;
-        modal.role = "dialog";
-        modal.setAttribute("aria-labelledby", "myModalLabel");
-        modal.setAttribute("aria-hidden", "true");
-        modal.appendChild(modalDialog);
-
-        document.body.appendChild(modal);
-
-
-        customCategories.data.listCategories.items.forEach(function (category) {
-            const newCategory = document.createElement("div");
-            newCategory.className = "form-group row";
-            newCategory.key = category.id
-            const inputWrapper = document.createElement("div");
-            inputWrapper.className = "col-9";
-            const input = document.createElement("input");
-            input.type = "text";
-            input.className = "form-control";
-            input.id = category.id;
-            input.value = category.categoryName;
-            inputWrapper.appendChild(input);
-            const deleteBtnWrapper = document.createElement("div");
-            deleteBtnWrapper.className = "col-3";
-            const deleteBtn = document.createElement("button");
-            deleteBtn.className = "btn";
-            deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-            deleteBtn.addEventListener("click", function () {
-                categoryForm.removeChild(newCategory);
-                deletedCategories.push({ categoryName: category.categoryName, id: newCategory.key });
-                oldCategories = oldCategories.filter(e => e.id !== newCategory.key)
-            });
-            deleteBtnWrapper.appendChild(deleteBtn);
-            newCategory.appendChild(inputWrapper);
-            newCategory.appendChild(deleteBtnWrapper);
-            categoryForm.appendChild(newCategory);
-            oldCategories.push({ id: category.id });
-        });
-
-
     } catch (error) {
         console.log(error);
     }
