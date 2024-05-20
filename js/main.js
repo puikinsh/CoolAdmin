@@ -1236,10 +1236,18 @@ import { getUserInfo } from "./authentication";
         const ul2 = document.querySelector(".js-sub-list");
         // Crear las categorías y agregarlas al elemento ul
 
+        let allCommsCount = allCommunications.length
         categories.forEach((category) => {
             const li = document.createElement("li");
             const a = document.createElement("a");
             const icon = document.createElement("i");
+
+            let commsByCategoryCount = allCommunications.filter(email => {
+                return email.category === category.categoryName
+            }).length
+
+            let countPortion = parseFloat((commsByCategoryCount * 100 / allCommsCount).toFixed(2))
+            console.log(category.categoryName, countPortion)
 
             a.href = "index.html";
             a.classList.add("showTable");
@@ -1248,6 +1256,16 @@ import { getUserInfo } from "./authentication";
             a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
+            document.getElementById("skill-container").innerHTML += `
+                <div class="au-progress">
+                    <span class="au-progress__title">${category.categoryName}</span>
+                    <div class="au-progress__bar">
+                        <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="${countPortion}">
+                            <span class="au-progress__value js-value"></span>
+                        </div>
+                    </div>
+                </div>
+            `
 
             a.addEventListener("click", async function (event) {
                 event.preventDefault()
@@ -1266,7 +1284,7 @@ import { getUserInfo } from "./authentication";
                     }
                 });
 
-                console.log("COMUNICACIONES FILTRADAS: ",allCommunications.data.listCommunications.items) // Encontrar forma de filtrar sin que recargue el DOM
+                console.log("COMUNICACIONES FILTRADAS: ", allCommunications.data.listCommunications.items) // Encontrar forma de filtrar sin que recargue el DOM
 
             });
         });
