@@ -50,8 +50,8 @@
                         <div class="image img-cir img-120">
                             <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
                         </div>
-                        <h4 class="name">NOMBRE CLIENTE</h4>
-                        <a href="#">Salir</a>
+                        <h4 class="name" id="name">NOMBRE CLIENTE</h4>
+                        <button type="button" id="logout-button" >Salir</button>
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
@@ -80,7 +80,7 @@
                                         <a href="form.html"> <i class="fas fa-sign-in-alt"></i>Configurar Categorías</a>
                                     </li>
                                     <li>
-                                        <a href="register.html"> <i class="fas fa-user"></i>Autorizaciones</a>
+                                        <a href="Authorizations.html"> <i class="fas fa-user"></i>Autorizaciones</a>
                                     </li>
                                 </ul>
                             </li>
@@ -225,20 +225,19 @@
                     <div class="section__content section__content--p30">
                         <div class="container-fluid form-group">
                             <div class="row justify-content-center">
-                                <div class="col-md-12">
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <select class="form-control" id="selectOption">
-                                            <option value="option1">Option 1</option>
-                                            <option value="option2">Option 2</option>
-                                            <option value="option3">Option 3</option>
-                                        </select>
-                                    </div>
+                                <div class="row" style="margin-bottom: 20px">
+                                    <select class="form-control text-center" id="selectOptionCategory">
+                                        <option value="Selecciona" selected>Selecciona Categoria</option>
+                                    </select>
+                                </div>
+                    
+                                <div class="col-md-12" id="divCategory">
                                     <div class="row" style="margin-bottom: 20px">
                                         <div class="col">
                                             <h4>Auto Response:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" id="autoResponse"/>
                                         </div>
                                         <div class="col"></div>
                                         <div class="col"></div>
@@ -248,11 +247,11 @@
                                             <h4>Redirect:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" ckecked="true" id="autoRedirect" />
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <input type="text" class="form-control" />
+                                            <input type="text" class="form-control" id="redirectTo" />
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 20px">
@@ -260,14 +259,14 @@
                                             <h4>Pre-quote:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox"  ckecked="true" id="autoQuote" />
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" type="select" id="quoteOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
                                             </select>
                                         </div>
                                     </div>
@@ -276,14 +275,14 @@
                                             <h4>Trigger:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox"  id="autoTrigger"/>
                                         </div>
                                         <div class="col"></div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" type="select" id="triggerOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
                                             </select>
                                         </div>
                                     </div>
@@ -292,33 +291,35 @@
                                             <h4>Retargeting:</h4>
                                         </div>
                                         <div class="col">
-                                            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled" />
+                                            <input type="checkbox" type="select" id="autoRetargeting"/>
+                                            <!-- data-toggle="toggle" data-on="Enabled" data-off="Disabled"   -->
                                         </div>
                                         <div class="col">
-                                            <input type="text" class="form-control" id="selectOption" />
-                                            <label for="selectOption">Delay in hours</label>
+                                            <input type="text" class="form-control" id="retargetingTime" />
+                                            <label for="retargetingTime">Delay in hours</label>
                                         </div>
                                         <div class="col">
-                                            <select class="form-control" id="selectOption">
-                                                <option value="option1">Option 1</option>
-                                                <option value="option2">Option 2</option>
-                                                <option value="option3">Option 3</option>
+                                            <select class="form-control" type="select" id="retargetingOption">
+                                                <option value="Opcion1">Opcion1</option>
+                                                <option value="Opcion2">Opcion2</option>
+                                                <option value="Opcion3">Opcion3</option>
                                             </select>
                                         </div>
+                                        
                                     </div>
                                     <div class="row justify-content-center">
-                                        <div class="col">
+                                        <div class="col-md-3">
                                             <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
-                                        </div>
-                                        <div class="col"></div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary btn-block" type="button">Reset to default</button>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary btn-block" type="button">Save changes</button>
-                                        </div>
+                                        </div> 
+                                        <div class="col-3"></div>                                                
+                                    <div class="col-md-3">
+                                    <button class="btn btn-primary btn-block" type="button" id="resetDefault">Reset to default</button>
                                     </div>
-                                </div>
+                                    <div class="col-md-3">
+                                    <button class="btn btn-primary btn-block" type="button" id="saveChange">Save changes</button>
+                                    </div>
+                                    </div>
+                                </div>      
                             </div>
                         </div>
                     </div>
@@ -340,114 +341,7 @@
         </div>
 
         <!-- Jquery JS-->
-        <script>
-            const categories = [{ name: "Category 1" }, { name: "Category 2" }, { name: "Category 3" }, { name: "Category 4" }, { name: "Category 5" }];
-
-            document.addEventListener("DOMContentLoaded", function () {
-                const editCategoriesBtn = document.querySelector(".edit_categories");
-                const categoryForm = document.createElement("form");
-                const addCategoryBtn = document.createElement("button");
-                addCategoryBtn.id = "addCategory";
-                addCategoryBtn.className = "btn btn-primary";
-                addCategoryBtn.textContent = "Agregar categoría";
-
-                const cancelBtn = document.createElement("button");
-                cancelBtn.id = "cancelCategory";
-                cancelBtn.className = "btn btn-secondary";
-                cancelBtn.textContent = "Cancelar";
-
-                editCategoriesBtn.addEventListener("click", function () {
-                    $("#myModal").modal("show");
-                });
-
-                addCategoryBtn.addEventListener("click", function () {
-                    const newCategory = document.createElement("div");
-                    newCategory.className = "form-group row";
-                    const inputWrapper = document.createElement("div");
-                    inputWrapper.className = "col-9";
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.className = "form-control";
-                    inputWrapper.appendChild(input);
-                    const deleteBtnWrapper = document.createElement("div");
-                    deleteBtnWrapper.className = "col-3";
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "btn";
-                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                    deleteBtn.addEventListener("click", function () {
-                        categoryForm.removeChild(newCategory);
-                    });
-                    deleteBtnWrapper.appendChild(deleteBtn);
-                    newCategory.appendChild(inputWrapper);
-                    newCategory.appendChild(deleteBtnWrapper);
-                    categoryForm.appendChild(newCategory);
-                });
-
-                cancelBtn.addEventListener("click", function () {
-                    $("#myModal").modal("hide");
-                });
-
-                const modalBody = document.createElement("div");
-                modalBody.className = "modal-body";
-                modalBody.appendChild(categoryForm);
-
-                const buttonsWrapper = document.createElement("div");
-                buttonsWrapper.className = "row";
-                const addBtnWrapper = document.createElement("div");
-                addBtnWrapper.className = "col-6";
-                addBtnWrapper.appendChild(addCategoryBtn);
-                const cancelBtnWrapper = document.createElement("div");
-                cancelBtnWrapper.className = "col-6";
-                cancelBtnWrapper.appendChild(cancelBtn);
-                buttonsWrapper.appendChild(addBtnWrapper);
-                buttonsWrapper.appendChild(cancelBtnWrapper);
-                modalBody.appendChild(buttonsWrapper);
-
-                const modalContent = document.createElement("div");
-                modalContent.className = "modal-content";
-                modalContent.appendChild(modalBody);
-
-                const modalDialog = document.createElement("div");
-                modalDialog.className = "modal-dialog";
-                modalDialog.role = "document";
-                modalDialog.appendChild(modalContent);
-
-                const modal = document.createElement("div");
-                modal.className = "modal fade";
-                modal.id = "myModal";
-                modal.tabIndex = -1;
-                modal.role = "dialog";
-                modal.setAttribute("aria-labelledby", "myModalLabel");
-                modal.setAttribute("aria-hidden", "true");
-                modal.appendChild(modalDialog);
-
-                document.body.appendChild(modal);
-
-                categories.forEach(function (category) {
-                    const newCategory = document.createElement("div");
-                    newCategory.className = "form-group row";
-                    const inputWrapper = document.createElement("div");
-                    inputWrapper.className = "col-9";
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.className = "form-control";
-                    input.value = category.name;
-                    inputWrapper.appendChild(input);
-                    const deleteBtnWrapper = document.createElement("div");
-                    deleteBtnWrapper.className = "col-3";
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "btn";
-                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                    deleteBtn.addEventListener("click", function () {
-                        categoryForm.removeChild(newCategory);
-                    });
-                    deleteBtnWrapper.appendChild(deleteBtn);
-                    newCategory.appendChild(inputWrapper);
-                    newCategory.appendChild(deleteBtnWrapper);
-                    categoryForm.appendChild(newCategory);
-                });
-            });
-        </script>
+        
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -474,7 +368,10 @@
         <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
         <!-- Main JS-->
-        <script src="dist/main.bundle.js"></script>
+        <script src="dist/categoryConfig.bundle.js"></script>
+        <script src="dist/loginLogout.bundle.js"></script>
+        <script src="dist/menuSidebar.bundle.js"></script>
+        
     </body>
 </html>
 <!-- end document-->
