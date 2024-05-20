@@ -1367,8 +1367,8 @@ import backendConfig from '../src/amplifyconfiguration.json'
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.fromId)))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(normalizedDate)))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "fromId").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "fromId").val(actions.fromId)))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "normalizedDate").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "datetime").val(normalizedDate)))
             );
 
             form.append(
@@ -1381,8 +1381,8 @@ import backendConfig from '../src/amplifyconfiguration.json'
                                 $("<label>").text("Category:"),
                                 $("<select>")
                                     .addClass("form-control").attr("id", "category")
-                                    .append(categories.map(category => $("<option>").text(category.categoryName).val(category.id))
-                                    ).val(selectedCategory.id)
+                                    .append(categories.map(category => $("<option>").text(category.categoryName).val(category.categoryName))
+                                    ).val(selectedCategory.categoryName)
                             ),
 
                         $("<div>").addClass("form-group1 col-md-6").attr("id", "responseAttachment").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
@@ -1392,8 +1392,8 @@ import backendConfig from '../src/amplifyconfiguration.json'
             // form.append($("<div>").addClass("form-group1").append($("<label>").text("ADJUNTO:"), $("<input>").attr("type", "file").addClass("form-control")))
             form.append($("<div>").addClass("form-group1").attr("id", "responseAi").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
 
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(actions.messageSubject)));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(actions.messageBody))); // Crea el modal con el formulario
+            form.append($("<div>").addClass("form-group1").attr("id", "messageSubject").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "messageSubject").val(actions.messageSubject)));
+            form.append($("<div>").addClass("form-group1").attr("id", "messageBody").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).attr("name", "messageBody").val(actions.messageBody))); // Crea el modal con el formulario
             form.append($("<div>").addClass("form-group1").attr("id", "responseSubject").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
             form.append($("<div>").addClass("form-group1").attr("id", "responseBody").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
             // Crea el modal con el formulario
@@ -1418,37 +1418,45 @@ import backendConfig from '../src/amplifyconfiguration.json'
             // Abre el modal al hacer clic en el botón de editar
             $("#actionModal").modal("show");
 
-            $("#category").on("change", function () {
-                let selectedValue = $(this).val();
-                console.log("Selected category:", selectedValue);
-            });
-            $("#responseAttachment input").on("change", function () {
-                let entryValue = $(this).val();
-                console.log("responseAttachment:", entryValue);
-            });
-            $("#responseAi input").on("change", function () {
-                let entryValue = $(this).val();
-                console.log("responseAi:", entryValue);
-            });
-            $("#responseSubject input").on("change", function () {
-                let entryValue = $(this).val();
-                console.log("responseSubject:", entryValue);
-            });
-            $("#responseBody textarea").on("change", function () {
-                let entryValue = $(this).val();
-                console.log("responseBody:", entryValue);
-            });
+            // $("#category").on("change", function () {
+            //     let selectedValue = $(this).val();
+            //     console.log("Selected category:", selectedValue);
+            // });
+            // $("#responseAttachment input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseAttachment:", entryValue);
+            // });
+            // $("#responseAi input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseAi:", entryValue);
+            // });
+            // $("#responseSubject input").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseSubject:", entryValue);
+            // });
+            // $("#responseBody textarea").on("change", function () {
+            //     let entryValue = $(this).val();
+            //     console.log("responseBody:", entryValue);
+            // });
 
             $("#saveBtn").on("click", function () {
                 $("#actionForm").submit()
             })
 
             $("body").on("submit", "#actionForm", async function (event) {
-                event.preventDefault(); // Previene el envío normal del formulario
+                event.preventDefault();
 
-                // Recoge los datos del formulario
-                let formData = {
-                    ...form, // VER CÓMO CAPTURAR EL RESTO DEL FORMULARIO
+                let formData = {};
+
+                $("#actionForm").find(":input:disabled").each(function () {
+                    let name = $(this).attr("name")
+                    if (name) {
+                        formData[name] = $(this).val()
+                    }
+                })
+
+                formData = {
+                    ...formData,
                     category: $("#category").val(),
                     responseAttachment: $("#responseAttachment input").val(),
                     responseAi: $("#responseAi input").val(),
