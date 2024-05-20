@@ -1,8 +1,14 @@
-const { verifyEmail } = require("../authentication");
+const { verifyEmail, getUserInfo } = require("../authentication");
 
 (async ()=>{
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+     try {
+        const info = await getUserInfo()
+        console.log(info)
         const verifyButton = document.getElementById("verify-mail");
+        if(info.email_verified){
+            verifyButton.hidden = true
+        }
         if (verifyButton) {
             verifyButton.addEventListener('click', async (e) => {
                 e.preventDefault();
@@ -10,5 +16,10 @@ const { verifyEmail } = require("../authentication");
                 alert("Email has been verified")               
             });
         }
+     } catch (error) {
+        if(error.message == "User needs to be authenticated to call this API."){
+            window.location.href = "/login.html";
+        }
+     }
     })
 })()
