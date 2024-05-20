@@ -1,9 +1,9 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
 import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery } from "../src/graphql/queries";
-import { updateOneCommunication } from "../src/graphql/mutations";
+import { updateCommunications } from "../src/graphql/mutations";
 import backendConfig from '../src/amplifyconfiguration.json'
-
+import { getUserInfo } from "./authentication";
 
 (function ($) {
     // USE STRICT
@@ -1207,6 +1207,18 @@ import backendConfig from '../src/amplifyconfiguration.json'
             return formattedDateTime
         }
 
+        let selectedCategoryName
+
+        // LISTA DE COMUNICACIONES
+        let allCommunications = await client.graphql({
+            query: listCommunications
+        });
+
+        // COMUNICACIONES CON FECHA NORMALIZADA
+        allCommunications = allCommunications.data.listCommunications.items.map(comm => {
+            return { ...comm, dateTime: normalizeDate(comm.dateTime) }
+        })
+
         // CATEGORÍAS POR DEFAULT
         const defaultCateg = await client.graphql({
             query: listDefaultCategories
@@ -1224,49 +1236,44 @@ import backendConfig from '../src/amplifyconfiguration.json'
         const ul2 = document.querySelector(".js-sub-list");
         // Crear las categorías y agregarlas al elemento ul
 
-        console.log(window.selectedCategoryName)
         categories.forEach((category) => {
             const li = document.createElement("li");
             const a = document.createElement("a");
             const icon = document.createElement("i");
 
-            // a.href = "Categories.html";
+            a.href = "index.html";
             a.classList.add("showTable");
             icon.classList.add("fas", "fa-tags");
             a.appendChild(icon);
             a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
-            a.setAttribute("data-category-name", category.categoryName);
 
-            a.addEventListener("click", function (event) {
+            a.addEventListener("click", async function (event) {
                 event.preventDefault()
-                selectedCategoryName = this.getAttribute("data-category-name");
+                selectedCategoryName = category.categoryName
+
+                document.getElementById("step1").innerHTML = "categories" // cambiar ruta del breadcrumb
+                document.getElementById("step2").innerHTML = selectedCategoryName
+
+                allCommunications = await client.graphql({
+                    query: listCommunications,
+                    variables: {
+                        filter: {
+                            category: { eq: selectedCategoryName }
+                        }
+                    }
+                });
+
                 console.log("name de la categoría seleccionada:", selectedCategoryName);
             });
         });
-
-        // LISTA DE COMUNICACIONES
-        let allCommunications = await client.graphql({
-            query: listCommunications,
-            variables: {
-                filter: {
-                    category: { eq: selectedCategoryName }
-                }
-            }
-        });
-
-        // COMUNICACIONES CON FECHA NORMALIZADA
-        allCommunications = allCommunications.data.listCommunications.items.map(comm => {
-            return { ...comm, dateTime: normalizeDate(comm.dateTime) }
-        })
 
         // COMUNICACIONES CONVERTIDAS A UN ARREGLO
         const dataSet = allCommunications.map(email => {
             const values = Object.values(email)
             return values
         })
-
 
         dataSet.forEach((row) => {
             var div1 = document.createElement("div");
@@ -1382,7 +1389,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group1 col-md-6").attr("id", "fromId").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "fromId").val(actions.fromId)))
-                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "normalizedDate").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "datetime").val(normalizedDate)))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "normalizedDate").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "dateTime").val(actions.dateTime)))
             );
 
             form.append(
@@ -1432,30 +1439,13 @@ import backendConfig from '../src/amplifyconfiguration.json'
             // Abre el modal al hacer clic en el botón de editar
             $("#actionModal").modal("show");
 
-            // $("#category").on("change", function () {
-            //     let selectedValue = $(this).val();
-            //     console.log("Selected category:", selectedValue);
-            // });
-            // $("#responseAttachment input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseAttachment:", entryValue);
-            // });
-            // $("#responseAi input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseAi:", entryValue);
-            // });
-            // $("#responseSubject input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseSubject:", entryValue);
-            // });
-            // $("#responseBody textarea").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseBody:", entryValue);
-            // });
-
             $("#saveBtn").on("click", function () {
                 $("#actionForm").submit()
             })
+
+            // REEMPLAZAR EN FORMDATA CUANDO TENGAMOS DATA REAL
+            // const userInfo = await getUserInfo()
+            // let clientId = userInfo.sub
 
             $("body").on("submit", "#actionForm", async function (event) {
                 event.preventDefault();
@@ -1471,6 +1461,7 @@ import backendConfig from '../src/amplifyconfiguration.json'
 
                 formData = {
                     ...formData,
+                    clientId: "0001", // Traer con getUserInfo()
                     category: $("#category").val(),
                     responseAttachment: $("#responseAttachment input").val(),
                     responseAi: $("#responseAi input").val(),
@@ -1478,8 +1469,20 @@ import backendConfig from '../src/amplifyconfiguration.json'
                     responseBody: $("#responseBody textarea").val()
                 };
 
-                console.log("Data a enviarse:", formData);
-                // REALIZAR LA LLAMADA CON LA MUTATION DE GRAPHQL
+                await client.graphql({
+                    query: updateCommunications,
+                    variables: {
+                        input: formData,
+                        condition: {
+                            messageId: {
+                                eq: data[0]
+                            }
+                        }
+                    }
+                })
+
+                $("#actionModal").modal("hide"); // Ver cómo actualizar la data sin recargar la página
+                window.location.href = "index.html"
             })
         });
 
@@ -1736,9 +1739,10 @@ import backendConfig from '../src/amplifyconfiguration.json'
             $("#threadModal").modal("show");
         });
 
-        document.querySelector("#button").addEventListener("click", function () {
-            table.row(".selected").remove().draw(false);
-        });
+        // ESTO SE VA
+        // document.querySelector("#button").addEventListener("click", function () {
+        //     table.row(".selected").remove().draw(false);
+        // });
     } catch (error) {
         console.log(error);
     }

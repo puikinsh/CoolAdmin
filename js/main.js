@@ -1252,6 +1252,7 @@ import { getUserInfo } from "./authentication";
             a.addEventListener("click", async function (event) {
                 event.preventDefault()
                 selectedCategoryName = category.categoryName
+                console.log("categoría seleccionada:", selectedCategoryName);
 
                 document.getElementById("step1").innerHTML = "categories" // cambiar ruta del breadcrumb
                 document.getElementById("step2").innerHTML = selectedCategoryName
@@ -1265,7 +1266,8 @@ import { getUserInfo } from "./authentication";
                     }
                 });
 
-                console.log("name de la categoría seleccionada:", selectedCategoryName);
+                console.log("COMUNICACIONES FILTRADAS: ",allCommunications.data.listCommunications.items) // Encontrar forma de filtrar sin que recargue el DOM
+
             });
         });
 
@@ -1439,32 +1441,11 @@ import { getUserInfo } from "./authentication";
             // Abre el modal al hacer clic en el botón de editar
             $("#actionModal").modal("show");
 
-            // $("#category").on("change", function () {
-            //     let selectedValue = $(this).val();
-            //     console.log("Selected category:", selectedValue);
-            // });
-            // $("#responseAttachment input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseAttachment:", entryValue);
-            // });
-            // $("#responseAi input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseAi:", entryValue);
-            // });
-            // $("#responseSubject input").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseSubject:", entryValue);
-            // });
-            // $("#responseBody textarea").on("change", function () {
-            //     let entryValue = $(this).val();
-            //     console.log("responseBody:", entryValue);
-            // });
-
             $("#saveBtn").on("click", function () {
                 $("#actionForm").submit()
             })
 
-
+            // REEMPLAZAR EN FORMDATA CUANDO TENGAMOS DATA REAL
             // const userInfo = await getUserInfo()
             // let clientId = userInfo.sub
 
@@ -1482,7 +1463,7 @@ import { getUserInfo } from "./authentication";
 
                 formData = {
                     ...formData,
-                    clientId: "0001",
+                    clientId: "0001", // Traer con getUserInfo()
                     category: $("#category").val(),
                     responseAttachment: $("#responseAttachment input").val(),
                     responseAi: $("#responseAi input").val(),
@@ -1490,11 +1471,20 @@ import { getUserInfo } from "./authentication";
                     responseBody: $("#responseBody textarea").val()
                 };
 
-
-                await client.graphql({ query: updateCommunications, variables: { input: formData, condition: { messageId: { eq: data[0] } } } })
+                await client.graphql({
+                    query: updateCommunications,
+                    variables: {
+                        input: formData,
+                        condition: {
+                            messageId: {
+                                eq: data[0]
+                            }
+                        }
+                    }
+                })
 
                 $("#actionModal").modal("hide"); // Ver cómo actualizar la data sin recargar la página
-                // window.location.href = "index.html"
+                window.location.href = "index.html"
             })
         });
 
@@ -1751,9 +1741,10 @@ import { getUserInfo } from "./authentication";
             $("#threadModal").modal("show");
         });
 
-        document.querySelector("#button").addEventListener("click", function () {
-            table.row(".selected").remove().draw(false);
-        });
+        // ESTO SE VA
+        // document.querySelector("#button").addEventListener("click", function () {
+        //     table.row(".selected").remove().draw(false);
+        // });
     } catch (error) {
         console.log(error);
     }
