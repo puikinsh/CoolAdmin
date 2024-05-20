@@ -49,8 +49,9 @@
                         <div class="image img-cir img-120">
                             <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
                         </div>
-                        <h4 class="name">NOMBRE CLIENTE</h4>
-                        <a href="#">Salir</a>
+                        <h4 class="name" id="name">NOMBRE CLIENTE</h4>
+                        <button type="button" id="logout-button" >Salir</button>
+                        <button type="button" id="verify-mail" >Verificar Mail</button>
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
@@ -150,8 +151,9 @@
                             <div class="image img-cir img-120">
                                 <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
                             </div>
-                            <h4 class="name">NOMBRE CLIENTE</h4>
-                            <a href="#">Salir</a>
+                            <h4 class="name" id="name">NOMBRE CLIENTE</h4>
+                            <button type="button" id="logout-button" >Salir</button>
+                            <button type="button" id="verify-mail" >Verificar Mail</button>
                         </div>
                         <nav class="navbar-sidebar2">
                             <ul class="list-unstyled navbar__list">
@@ -375,7 +377,9 @@
             </div>
         </div>
 
-        <!-- Jquery JS-->
+
+        <!-- Jquery JS-->  
+        <script src="https://cdn.amplify.aws/packages/core/4.2.1-geo.20/aws-amplify-core.js" integrity="sha384-zuWNEbJP0c26QjATtBT9jjODmIjC0LUqurM0J0H1+DsRgaydqy0vLoBNlfsofmkx" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
@@ -402,9 +406,10 @@
         <script src="https://cdn.datatables.net/v/bs4/dt-2.0.7/af-2.7.0/b-3.0.2/b-html5-3.0.2/b-print-3.0.2/date-1.5.2/kt-2.12.0/r-3.0.2/sc-2.4.2/sb-1.7.1/sp-2.3.1/datatables.min.js"></script>
 
         <!--MenuSidebar-->
-        <script src="MenuSidebar.js"></script>
-        <!-- Main JS-->
-        <script src="js/main.js"></script>
+        <script src="dist/main.bundle.js"></script>
+        <script src="dist/loginLogout.bundle.js"></script>        
+        <script src="dist/verifyMmail.bundle.js"></script>        
+        <script src="dist/menuSidebar.bundle.js"></script>        
     </body>
 </html>
 <!-- end document-->

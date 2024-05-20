@@ -1,0 +1,63 @@
+type DefaultCategories
+    @model
+    @auth(
+        rules: [
+            { allow: public, operations: [read, create, update] }
+            { allow: private, operations: [read] }
+        ]
+    ) {
+    id: ID!
+    clientId: String
+    categoryName: String
+    configuration: CategoryConfiguration
+}
+
+type CategoryConfiguration {
+    autoResponse: Boolean
+    autoRedirect: Boolean
+    redirectTo: AWSJSON
+    autoQuote: Boolean
+    quoteOption: AWSJSON
+    autoTrigger: Boolean
+    triggerOption: AWSJSON
+    autoRetargeting: Boolean
+    retargetingOption: AWSJSON
+    retargetingTime: String
+}
+
+type Categories @model @auth(rules: [{ allow: public }, { allow: private }]) {
+    id: ID!
+    clientId: String
+    categoryName: String
+    configuration: CategoryConfiguration
+}
+
+type Communications
+    @model
+    @auth(
+        rules: [
+            { allow: public }
+            { allow: private, operations: [read, update, delete] }
+        ]
+    ) {
+    clientId: String! @primaryKey(sortKeyFields: ["dateTime"])
+    id: ID!
+    messageId: String
+    channel: String
+    category: String
+    dateTime: AWSDateTime!
+    fromId: String
+    toId: String
+    responseAi: String
+    messageSubject: String
+    messageBody: String
+    messagSummary: String
+    messageAttachment: String
+    responseBody: String
+    responseSubject: String
+    responseAttachment: String
+    execute: Boolean
+    threadId: String
+    thread: AWSJSON
+    actions: AWSJSON
+}

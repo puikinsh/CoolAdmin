@@ -50,8 +50,8 @@
                         <div class="image img-cir img-120">
                             <img src="images/icon/avatar-big-01.jpg" alt="NOMBRE CLIENTE" />
                         </div>
-                        <h4 class="name">NOMBRE CLIENTE</h4>
-                        <a href="#">Salir</a>
+                        <h4 class="name" id="name">NOMBRE CLIENTE</h4>
+                        <button type="button" id="logout-button" >Salir</button>
                     </div>
                     <nav class="navbar-sidebar2">
                         <ul class="list-unstyled navbar__list">
@@ -207,10 +207,7 @@
                                                 <li class="list-inline-item active">
                                                     <a href="#">Authorizations</a>
                                                 </li>
-                                                <li class="list-inline-item seprate">
-                                                    <span>/</span>
-                                                </li>
-                                                <li class="list-inline-item">Categories Config</li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -231,15 +228,15 @@
                                     </a>
                                 </div>
                                 <div class="login-form">
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="gmail-auth">
                                         <div class="form-group">
                                             <h4>Autorizations list</h4>
                                         </div>
-                                        <button class="au-btn au-btn--block au-btn--red m-b-20" type="submit">Gmail</button>
+                                        <button class="au-btn au-btn--block au-btn--red m-b-20" type="submit" >Gmail</button>
                                         <div class="social-login-content">
                                             <div class="social-button">
-                                                <button class="au-btn au-btn--block au-btn--blue m-b-20">Outlook</button>
-                                                <button class="au-btn au-btn--block au-btn--purple">Yahoo</button>
+                                                <button class="au-btn au-btn--block au-btn--blue m-b-20" type="submit" >Outlook</button>
+                                                <button class="au-btn au-btn--block au-btn--purple" type="submit">Yahoo</button>
                                             </div>
                                         </div>
                                     </form>
@@ -265,68 +262,7 @@
         </div>
 
         <!-- Jquery JS-->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const editCategoriesBtn = document.querySelector(".edit_categories");
-                const categoryForm = document.createElement("form");
-                const addCategoryBtn = document.createElement("button");
-                addCategoryBtn.id = "addCategory";
-                addCategoryBtn.className = "btn btn-primary";
-                addCategoryBtn.textContent = "Agregar Item";
-
-                editCategoriesBtn.addEventListener("click", function () {
-                    $("#myModal").modal("show");
-                });
-
-                addCategoryBtn.addEventListener("click", function () {
-                    const newCategory = document.createElement("div");
-                    newCategory.className = "form-group row";
-                    const inputWrapper = document.createElement("div");
-                    inputWrapper.className = "col-9";
-                    const input = document.createElement("input");
-                    input.type = "text";
-                    input.className = "form-control";
-                    inputWrapper.appendChild(input);
-                    const deleteBtnWrapper = document.createElement("div");
-                    deleteBtnWrapper.className = "col-3";
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "btn";
-                    deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-                    deleteBtn.addEventListener("click", function () {
-                        categoryForm.removeChild(newCategory);
-                    });
-                    deleteBtnWrapper.appendChild(deleteBtn);
-                    newCategory.appendChild(inputWrapper);
-                    newCategory.appendChild(deleteBtnWrapper);
-                    categoryForm.appendChild(newCategory);
-                });
-
-                const modalBody = document.createElement("div");
-                modalBody.className = "modal-body";
-                modalBody.appendChild(categoryForm);
-                modalBody.appendChild(addCategoryBtn);
-
-                const modalContent = document.createElement("div");
-                modalContent.className = "modal-content";
-                modalContent.appendChild(modalBody);
-
-                const modalDialog = document.createElement("div");
-                modalDialog.className = "modal-dialog";
-                modalDialog.role = "document";
-                modalDialog.appendChild(modalContent);
-
-                const modal = document.createElement("div");
-                modal.className = "modal fade";
-                modal.id = "myModal";
-                modal.tabIndex = -1;
-                modal.role = "dialog";
-                modal.setAttribute("aria-labelledby", "myModalLabel");
-                modal.setAttribute("aria-hidden", "true");
-                modal.appendChild(modalDialog);
-
-                document.body.appendChild(modal);
-            });
-        </script>
+      
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -353,7 +289,11 @@
         <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
         <!-- Main JS-->
-        <script src="js/main.js"></script>
+        <script src="dist/authorizations.bundle.js"></script>
+        <script src="dist/loginLogout.bundle.js"></script>
+        <script src="dist/menuSidebar.bundle.js"></script>
+        <script src="dist/main.bundle.js"></script>
+
     </body>
 </html>
 <!-- end document-->
