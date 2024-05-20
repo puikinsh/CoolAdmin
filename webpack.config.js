@@ -9,6 +9,7 @@ module.exports = {
     authentication: './js/authentication.js', 
     authorizations: './js/authorizations.js',
     categoryConfig: './js/categoriesConfig.js',
+    menuSidebar: './js/menuSidebar.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
