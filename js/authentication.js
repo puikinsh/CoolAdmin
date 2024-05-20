@@ -1,5 +1,5 @@
 // import AWS from 'aws-sdk'
-import {signIn, signOut, confirmSignIn,confirmResetPassword, fetchAuthSession,resetPassword, updatePassword, sendUserAttributeVerificationCode, confirmUserAttribute} from "@aws-amplify/auth"
+import {signIn, signOut, confirmSignIn,confirmResetPassword, fetchAuthSession,resetPassword, updatePassword, fetchUserAttributes,sendUserAttributeVerificationCode, confirmUserAttribute, getCurrentUser} from "@aws-amplify/auth"
 // import {AWS_ACCESS_KEY,AWS_COGNITO_POOL_CLIENT_ID,AWS_COGNITO_POOL_ID,AWS_REGION,AWS_SECRET_ACCESS_KEY } from '../secrets'
 import { Amplify } from "aws-amplify";
 import backendConfig from "../src/amplifyconfiguration.json"
@@ -51,7 +51,7 @@ const confirmSignInWithNewPassword = async () => {
                 friendlyDeviceName: 'kideChannel',
             }
         });
-        return data
+        return "Successfully logged in"
     } catch (error) {
         throw new Error('Error to set new password:', error)
         
@@ -93,3 +93,9 @@ export const verifyEmail = async () => {
         alert('Error al enviar el código de verificación. Intenta nuevamente.');
     }
 };
+
+
+export const getUserInfo = async  () =>{
+    const attributes = await fetchUserAttributes(), userData = await getCurrentUser()
+    return { ...attributes, userData}
+} 
