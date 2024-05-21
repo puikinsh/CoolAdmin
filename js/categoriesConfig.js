@@ -1,9 +1,20 @@
-import { createCategories, deleteCategories, deleteDefaultCategories, updateCategories, updateDefaultCategories } from "../src/graphql/mutations.js";
-import { getCategories, getDefaultCategories, listCategories, listCommunications, listDefaultCategories } from "../src/graphql/queries.js";
+import {
+    createCategories,
+    deleteCategories,
+    deleteDefaultCategories,
+    updateCategories,
+    updateDefaultCategories,
+} from "../src/graphql/mutations.js";
+import {
+    getCategories,
+    getDefaultCategories,
+    listCategories,
+    listCommunications,
+    listDefaultCategories,
+} from "../src/graphql/queries.js";
 import { client } from "./amplifyConfig.js";
 
-(async function ($) {
-
+(async function($) {
     // USE STRICT
     "use strict";
 
@@ -15,7 +26,15 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                    ],
                     type: "line",
                     datasets: [
                         {
@@ -86,7 +105,14 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                    ],
                     type: "line",
                     datasets: [
                         {
@@ -161,7 +187,14 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                    ],
                     type: "line",
                     datasets: [
                         {
@@ -235,11 +268,37 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "bar",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
-                            data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
+                            data: [
+                                78,
+                                81,
+                                80,
+                                65,
+                                58,
+                                75,
+                                60,
+                                75,
+                                65,
+                                60,
+                                60,
+                                75,
+                            ],
                             borderColor: "transparent",
                             borderWidth: "0",
                             backgroundColor: "rgba(255,255,255,.3)",
@@ -283,7 +342,18 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", ""],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -411,7 +481,18 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", ""],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -501,7 +582,16 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", ""],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -582,11 +672,37 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "bar",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                        "August",
+                        "September",
+                        "October",
+                        "November",
+                        "December",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
-                            data: [78, 81, 80, 64, 65, 80, 70, 75, 67, 85, 66, 68],
+                            data: [
+                                78,
+                                81,
+                                80,
+                                64,
+                                65,
+                                80,
+                                70,
+                                75,
+                                67,
+                                85,
+                                66,
+                                68,
+                            ],
                             borderColor: "transparent",
                             borderWidth: "0",
                             backgroundColor: "#ccc",
@@ -677,7 +793,15 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                    labels: [
+                        "2010",
+                        "2011",
+                        "2012",
+                        "2013",
+                        "2014",
+                        "2015",
+                        "2016",
+                    ],
                     type: "line",
                     defaultFontFamily: "Poppins",
                     datasets: [
@@ -779,7 +903,15 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                    labels: [
+                        "2010",
+                        "2011",
+                        "2012",
+                        "2013",
+                        "2014",
+                        "2015",
+                        "2016",
+                    ],
                     type: "line",
                     defaultFontFamily: "Poppins",
                     datasets: [
@@ -871,7 +1003,15 @@ import { client } from "./amplifyConfig.js";
                 type: "bar",
                 defaultFontFamily: "Poppins",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                    ],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -930,7 +1070,15 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "radar",
                 data: {
-                    labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
+                    labels: [
+                        ["Eating", "Dinner"],
+                        ["Drinking", "Water"],
+                        "Sleeping",
+                        ["Designing", "Graphics"],
+                        "Coding",
+                        "Cycling",
+                        "Running",
+                    ],
                     defaultFontFamily: "Poppins",
                     datasets: [
                         {
@@ -977,7 +1125,15 @@ import { client } from "./amplifyConfig.js";
             var myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: [
+                        "January",
+                        "February",
+                        "March",
+                        "April",
+                        "May",
+                        "June",
+                        "July",
+                    ],
                     defaultFontFamily: "Poppins",
                     datasets: [
                         {
@@ -1048,8 +1204,18 @@ import { client } from "./amplifyConfig.js";
                     datasets: [
                         {
                             data: [45, 25, 20, 10],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                            hoverBackgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
+                            backgroundColor: [
+                                "rgba(0, 123, 255,0.9)",
+                                "rgba(0, 123, 255,0.7)",
+                                "rgba(0, 123, 255,0.5)",
+                                "rgba(0,0,0,0.07)",
+                            ],
+                            hoverBackgroundColor: [
+                                "rgba(0, 123, 255,0.9)",
+                                "rgba(0, 123, 255,0.7)",
+                                "rgba(0, 123, 255,0.5)",
+                                "rgba(0,0,0,0.07)",
+                            ],
                         },
                     ],
                     labels: ["Green", "Green", "Green", "Green"],
@@ -1080,8 +1246,18 @@ import { client } from "./amplifyConfig.js";
                     datasets: [
                         {
                             data: [45, 25, 20, 10],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                            hoverBackgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
+                            backgroundColor: [
+                                "rgba(0, 123, 255,0.9)",
+                                "rgba(0, 123, 255,0.7)",
+                                "rgba(0, 123, 255,0.5)",
+                                "rgba(0,0,0,0.07)",
+                            ],
+                            hoverBackgroundColor: [
+                                "rgba(0, 123, 255,0.9)",
+                                "rgba(0, 123, 255,0.7)",
+                                "rgba(0, 123, 255,0.5)",
+                                "rgba(0,0,0,0.07)",
+                            ],
                         },
                     ],
                     labels: ["Green", "Green", "Green"],
@@ -1112,7 +1288,13 @@ import { client } from "./amplifyConfig.js";
                     datasets: [
                         {
                             data: [15, 18, 9, 6, 19],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.8)", "rgba(0, 123, 255,0.7)", "rgba(0,0,0,0.2)", "rgba(0, 123, 255,0.5)"],
+                            backgroundColor: [
+                                "rgba(0, 123, 255,0.9)",
+                                "rgba(0, 123, 255,0.8)",
+                                "rgba(0, 123, 255,0.7)",
+                                "rgba(0,0,0,0.2)",
+                                "rgba(0, 123, 255,0.5)",
+                            ],
                         },
                     ],
                     labels: ["Green", "Green", "Green", "Green"],
@@ -1182,23 +1364,32 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(async function ($) {
+(async function($) {
     // USE STRICT
     "use strict";
     try {
-        const { data: { listCommunications: { items } } } = await client.graphql({
-            query: listCommunications
+        const {
+            data: {
+                listCommunications: { items },
+            },
+        } = await client.graphql({
+            query: listCommunications,
         });
-        const dataSet = items.map(e => {
+        const dataSet = items.map((e) => {
             const values = Object.values(e);
-            return values
-        })
+            return values;
+        });
 
-        let categories, defaultCategories = await client.graphql({
-            query: listDefaultCategories
-        }), customCategories = await client.graphql({ query: listCategories })
+        let categories,
+            defaultCategories = await client.graphql({
+                query: listDefaultCategories,
+            }),
+            customCategories = await client.graphql({ query: listCategories });
 
-        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
+        categories = [
+            ...defaultCategories.data.listDefaultCategories.items,
+            ...customCategories.data.listCategories.items,
+        ];
 
         ///007 ERROR NO FUNCIONAN EL SIDEBAR LAS CATEGORIAS AL AHCERSE PARA MIVL EN EL HTML CATEGORIES
 
@@ -1282,7 +1473,6 @@ import { client } from "./amplifyConfig.js";
             r.push(buttonContainer2);
             r.push(buttonContainer3);
             r.push(buttonContainer);
-
         });
 
         new DataTable("#tabla", {
@@ -1312,7 +1502,7 @@ import { client } from "./amplifyConfig.js";
 
         ////////////////////MODALES////////////////////////////////////////
 
-        table.on("click", "tbody .edit", function () {
+        table.on("click", "tbody .edit", function() {
             let data = table.row($(this).closest("tr")).data();
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
@@ -1323,8 +1513,30 @@ import { client } from "./amplifyConfig.js";
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
-                    .append($("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])))
+                    .append(
+                        $("<div>")
+                            .addClass("form-group1 col-md-6")
+                            .append($("<label>").text("From:"))
+                            .append(
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .prop("disabled", true)
+                                    .val(data[0])
+                            )
+                    )
+                    .append(
+                        $("<div>")
+                            .addClass("form-group1 col-md-6")
+                            .append($("<label>").text("Datetime:"))
+                            .append(
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .prop("disabled", true)
+                                    .val(data[0])
+                            )
+                    )
             );
 
             form.append(
@@ -1338,28 +1550,110 @@ import { client } from "./amplifyConfig.js";
                                 $("<select>")
                                     .addClass("form-control")
                                     .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .append(
+                                        $("<option>")
+                                            .text("Opción 1")
+                                            .val("opcion1"),
+                                        $("<option>")
+                                            .text("Opción 2")
+                                            .val("opcion2"),
+                                        $("<option>")
+                                            .text("Opción 3")
+                                            .val("opcion3")
+                                    )
                             ),
 
-                        $("<div>").addClass("form-group1 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4]))
+                        $("<div>")
+                            .addClass("form-group1 col-md-6")
+                            .append(
+                                $("<label>").text("Response attachment"),
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .val(data[4])
+                            )
                     )
             );
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            form.append(
+                $("<div>")
+                    .addClass("form-group1")
+                    .append($("<label>").text("Response AI:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .val(data[5])
+                    )
+            );
 
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group1").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append(
+                $("<div>")
+                    .addClass("form-group1")
+                    .append($("<label>").text("Message subjet:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .prop("disabled", true)
+                            .val(data[0])
+                    )
+            );
+            form.append(
+                $("<div>")
+                    .addClass("form-group1")
+                    .append($("<label>").text("Message Body:"))
+                    .append(
+                        $("<textarea>")
+                            .addClass("form-control")
+                            .prop("disabled", true)
+                            .val(data[1])
+                    )
+            ); // Crea el modal con el formulario
+            form.append(
+                $("<div>")
+                    .addClass("form-group1")
+                    .append($("<label>").text("Response Subjet:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .val(data[2])
+                    )
+            );
+            form.append(
+                $("<div>")
+                    .addClass("form-group1")
+                    .append($("<label>").text("Response Body:"))
+                    .append(
+                        $("<textarea>")
+                            .addClass("form-control")
+                            .val(data[3])
+                    )
+            );
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal");
+            let modal = $("<div>")
+                .addClass("modal fade")
+                .attr("id", "myModal");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header");
-            let modalBody = $("<div>").addClass("modal-body").append(form);
+            let modalBody = $("<div>")
+                .addClass("modal-body")
+                .append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-primary")
+                        .text("Guardar")
+                        .attr("data-dismiss", "modal")
+                )
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-secondary")
+                        .text("Cancelar")
+                        .attr("data-dismiss", "modal")
+                );
             modalContent.append(modalHeader);
             modalContent.append(modalBody);
             modalContent.append(modalFooter);
@@ -1373,15 +1667,14 @@ import { client } from "./amplifyConfig.js";
             $("#myModal").modal("show");
         });
         /////////////vista 1 detalle del MAIL/////////////////////
-        table.on("click", "tbody .view1", async function () {
+        table.on("click", "tbody .view1", async function() {
             //message content detail
             let data = table.row($(this).closest("tr")).data();
 
             const content = await window.MyVars.then(async (data) => {
                 const arr = await data.showMessageContent();
-                return arr
-            })
-
+                return arr;
+            });
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
             // Utiliza el modal de Bootstrap
@@ -1400,28 +1693,106 @@ import { client } from "./amplifyConfig.js";
                                     .addClass("form-control")
                                     .prop("disabled", true)
                                     .val(data[0])
-                                    .append($("<option>").text("Opción 1").val("opcion1"), $("<option>").text("Opción 2").val("opcion2"), $("<option>").text("Opción 3").val("opcion3"))
+                                    .append(
+                                        $("<option>")
+                                            .text("Opción 1")
+                                            .val("opcion1"),
+                                        $("<option>")
+                                            .text("Opción 2")
+                                            .val("opcion2"),
+                                        $("<option>")
+                                            .text("Opción 3")
+                                            .val("opcion3")
+                                    )
                             )
                     )
             );
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[3])))
-                    .append($("<div>").addClass("form-group2 col-md-6").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[2])))
+                    .append(
+                        $("<div>")
+                            .addClass("form-group2 col-md-6")
+                            .append($("<label>").text("From:"))
+                            .append(
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .prop("disabled", true)
+                                    .val(data[3])
+                            )
+                    )
+                    .append(
+                        $("<div>")
+                            .addClass("form-group2 col-md-6")
+                            .append($("<label>").text("Datetime:"))
+                            .append(
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .prop("disabled", true)
+                                    .val(data[2])
+                            )
+                    )
             );
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Summary:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(data[0])));
-            form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(data[1]))); // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal2");
+            form.append(
+                $("<div>")
+                    .addClass("form-group2")
+                    .append($("<label>").text("Message Summary:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .prop("disabled", true)
+                            .val(data[0])
+                    )
+            );
+            form.append(
+                $("<div>")
+                    .addClass("form-group2")
+                    .append($("<label>").text("Message Subjet:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .prop("disabled", true)
+                            .val(data[0])
+                    )
+            );
+            form.append(
+                $("<div>")
+                    .addClass("form-group2")
+                    .append($("<label>").text("Message Body:"))
+                    .append(
+                        $("<textarea>")
+                            .addClass("form-control")
+                            .prop("disabled", true)
+                            .val(data[1])
+                    )
+            ); // Crea el modal con el formulario
+            let modal = $("<div>")
+                .addClass("modal fade")
+                .attr("id", "myModal2");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header");
-            let modalBody = $("<div>").addClass("modal-body").append(form);
+            let modalBody = $("<div>")
+                .addClass("modal-body")
+                .append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-primary")
+                        .text("Guardar")
+                        .attr("data-dismiss", "modal")
+                )
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-secondary")
+                        .text("Cancelar")
+                        .attr("data-dismiss", "modal")
+                );
             modalContent.append(modalHeader);
             modalContent.append(modalBody);
             modalContent.append(modalFooter);
@@ -1435,7 +1806,7 @@ import { client } from "./amplifyConfig.js";
             $("#myModal2").modal("show");
         });
 
-        table.on("click", "tbody .view2", function () {
+        table.on("click", "tbody .view2", function() {
             let data = table.row($(this).closest("tr")).data();
 
             // Aquí puedes abrir el modal y mostrar el formulario con los campos de la fila
@@ -1447,22 +1818,75 @@ import { client } from "./amplifyConfig.js";
             form.append(
                 $("<div>")
                     .addClass("form-row")
-                    .append($("<div>").addClass("form-group3 col-md-6").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(data[4])))
+                    .append(
+                        $("<div>")
+                            .addClass("form-group3 col-md-6")
+                            .append(
+                                $("<label>").text("Response attachment"),
+                                $("<input>")
+                                    .attr("type", "text")
+                                    .addClass("form-control")
+                                    .val(data[4])
+                            )
+                    )
             );
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[5])));
+            form.append(
+                $("<div>")
+                    .addClass("form-group3")
+                    .append($("<label>").text("Response AI:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .val(data[5])
+                    )
+            );
 
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(data[2])));
-            form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(data[3])));
+            form.append(
+                $("<div>")
+                    .addClass("form-group3")
+                    .append($("<label>").text("Response Subjet:"))
+                    .append(
+                        $("<input>")
+                            .attr("type", "text")
+                            .addClass("form-control")
+                            .val(data[2])
+                    )
+            );
+            form.append(
+                $("<div>")
+                    .addClass("form-group3")
+                    .append($("<label>").text("Response Body:"))
+                    .append(
+                        $("<textarea>")
+                            .addClass("form-control")
+                            .val(data[3])
+                    )
+            );
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal3");
+            let modal = $("<div>")
+                .addClass("modal fade")
+                .attr("id", "myModal3");
             let modalDialog = $("<div>").addClass("modal-dialog");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header");
-            let modalBody = $("<div>").addClass("modal-body").append(form);
+            let modalBody = $("<div>")
+                .addClass("modal-body")
+                .append(form);
             let modalFooter = $("<div>")
                 .addClass("modal-footer")
-                .append($("<button>").addClass("btn btn-primary").text("Guardar").attr("data-dismiss", "modal"))
-                .append($("<button>").addClass("btn btn-secondary").text("Cancelar").attr("data-dismiss", "modal"));
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-primary")
+                        .text("Guardar")
+                        .attr("data-dismiss", "modal")
+                )
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-secondary")
+                        .text("Cancelar")
+                        .attr("data-dismiss", "modal")
+                );
             modalContent.append(modalHeader);
             modalContent.append(modalBody);
             modalContent.append(modalFooter);
@@ -1476,7 +1900,7 @@ import { client } from "./amplifyConfig.js";
             $("#myModal3").modal("show");
         });
 
-        table.on("click", "tbody .view3", function () {
+        table.on("click", "tbody .view3", function() {
             var data = [
                 {
                     time: "7:45PM",
@@ -1485,7 +1909,8 @@ import { client } from "./amplifyConfig.js";
                     from: "sadasd@asda.com",
                     to: "sadasd@asda.com",
                     title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.",
+                    content:
+                        "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar, drag &amp; drop and ion slider.",
                     badges: ["Envío presupuesto"],
                     dotClass: "fb-bg",
                 },
@@ -1496,7 +1921,8 @@ import { client } from "./amplifyConfig.js";
                     from: "sadasd@asda.com",
                     to: "sadasd@asda.com",
                     title: "Admin theme!",
-                    content: "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.",
+                    content:
+                        "Milestone Admin Dashboard contains C3 graphs, flot graphs, data tables, calendar.",
                     badges: ["Peticion de presupuesto"],
                     dotClass: "green-one-bg",
                 },
@@ -1507,7 +1933,8 @@ import { client } from "./amplifyConfig.js";
                     from: "sadasd@asda.com",
                     to: "sadasd@asda.com",
                     title: "Best Admin Template!",
-                    content: "Custom C3 graphs, Custom flot graphs, flot graphs, small graphs, Sass, profile and timeline.",
+                    content:
+                        "Custom C3 graphs, Custom flot graphs, flot graphs, small graphs, Sass, profile and timeline.",
                     badges: ["Retargeting"],
                     dotClass: "green-two-bg",
                 },
@@ -1518,7 +1945,8 @@ import { client } from "./amplifyConfig.js";
                     from: "sadasd@asda.com",
                     to: "sadasd@asda.com",
                     title: "Milestone Admin",
-                    content: "Admin theme includes graphs, invoice, timeline, widgets, projects, calendar, components, layouts, todo's.",
+                    content:
+                        "Admin theme includes graphs, invoice, timeline, widgets, projects, calendar, components, layouts, todo's.",
                     badges: ["Retargeting"],
                     dotClass: "green-three-bg",
                 },
@@ -1529,7 +1957,8 @@ import { client } from "./amplifyConfig.js";
                     from: "sadasd@asda.com",
                     to: "sadasd@asda.com",
                     title: "Milestone Dashboard",
-                    content: "Milestone Admin Dashboard includes invoice, profile, tasks, gallery, projects, maintanence.",
+                    content:
+                        "Milestone Admin Dashboard includes invoice, profile, tasks, gallery, projects, maintanence.",
                     badges: ["Aeptación presupuesto"],
                     dotClass: "green-four-bg",
                 },
@@ -1564,13 +1993,14 @@ import { client } from "./amplifyConfig.js";
             timeline.className = "timeline";
 
             // Crear los elementos de la sección a partir del JSON
-            data.forEach(function (item) {
+            data.forEach(function(item) {
                 var timelineRow = document.createElement("div");
                 timelineRow.className = "timeline-row";
 
                 var timelineTime = document.createElement("div");
                 timelineTime.className = "timeline-time";
-                timelineTime.innerHTML = item.time + "<small>" + item.date + "</small>";
+                timelineTime.innerHTML =
+                    item.time + "<small>" + item.date + "</small>";
 
                 var timelineDot = document.createElement("div");
                 timelineDot.className = "timeline-dot " + item.dotClass;
@@ -1616,7 +2046,7 @@ import { client } from "./amplifyConfig.js";
 
                 var badgesDiv = document.createElement("div");
 
-                item.badges.forEach(function (badge) {
+                item.badges.forEach(function(badge) {
                     var badgeSpan = document.createElement("span");
                     badgeSpan.className = "badge badge-light";
                     badgeSpan.innerHTML = badge;
@@ -1653,13 +2083,22 @@ import { client } from "./amplifyConfig.js";
             section.appendChild(container);
 
             // Crea el modal con el formulario
-            let modal = $("<div>").addClass("modal fade").attr("id", "myModal4");
+            let modal = $("<div>")
+                .addClass("modal fade")
+                .attr("id", "myModal4");
             let modalDialog = $("<div>").addClass("modal-dialog Modal_BIG"); // Cambia "modal-lg" por "modal-sm" si quieres un modal más pequeño
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header");
             let modalBody = $("<div>").addClass("modal-body");
             modalBody.append(section);
-            let modalFooter = $("<div>").addClass("modal-footer").append($("<button>").addClass("btn btn-secondary").text("Cerrar").attr("data-dismiss", "modal"));
+            let modalFooter = $("<div>")
+                .addClass("modal-footer")
+                .append(
+                    $("<button>")
+                        .addClass("btn btn-secondary")
+                        .text("Cerrar")
+                        .attr("data-dismiss", "modal")
+                );
             modalContent.append(modalHeader);
             modalContent.append(modalBody);
             modalContent.append(modalFooter);
@@ -1671,19 +2110,25 @@ import { client } from "./amplifyConfig.js";
             // Abre el modal al hacer clic en el botón de editar
             $("#myModal4").modal("show");
         });
-        document.querySelector("#button").addEventListener("click", function () {
-            table.row(".selected").remove().draw(false);
+        document.querySelector("#button").addEventListener("click", function() {
+            table
+                .row(".selected")
+                .remove()
+                .draw(false);
         });
     } catch (error) {
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
     var navbars = ["header", "aside"];
-    var hrefSelector = 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])';
-    var linkElement = navbars.map((element) => element + " " + hrefSelector).join(", ");
+    var hrefSelector =
+        'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])';
+    var linkElement = navbars
+        .map((element) => element + " " + hrefSelector)
+        .join(", ");
     $(".animsition").animsition({
         inClass: "fade-in",
         outClass: "fade-out",
@@ -1701,12 +2146,12 @@ import { client } from "./amplifyConfig.js";
         overlay: false,
         overlayClass: "animsition-overlay-slide",
         overlayParentElement: "html",
-        transition: function (url) {
+        transition: function(url) {
             window.location.href = url;
         },
     });
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -1767,7 +2212,7 @@ import { client } from "./amplifyConfig.js";
                     fl: "#001BFF",
                     or: "#001BFF",
                 },
-                onRegionClick: function (event, code, region) {
+                onRegionClick: function(event, code, region) {
                     event.preventDefault();
                 },
             });
@@ -1785,8 +2230,12 @@ import { client } from "./amplifyConfig.js";
                 color: "#007BFF",
                 borderColor: "#fff",
                 backgroundColor: "#fff",
-                onRegionClick: function (element, code, region) {
-                    var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
+                onRegionClick: function(element, code, region) {
+                    var message =
+                        'You clicked "' +
+                        region +
+                        '" which has the code: ' +
+                        code.toUpperCase();
 
                     alert(message);
                 },
@@ -1843,8 +2292,12 @@ import { client } from "./amplifyConfig.js";
                 color: "#007BFF",
                 borderColor: "#fff",
                 backgroundColor: "#fff",
-                onRegionClick: function (element, code, region) {
-                    var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
+                onRegionClick: function(element, code, region) {
+                    var message =
+                        'You clicked "' +
+                        region +
+                        '" which has the code: ' +
+                        code.toUpperCase();
                     alert(message);
                 },
             });
@@ -1853,23 +2306,25 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // Use Strict
     "use strict";
     try {
         var progressbarSimple = $(".js-progressbar-simple");
-        progressbarSimple.each(function () {
+        progressbarSimple.each(function() {
             var that = $(this);
             var executed = false;
-            $(window).on("load", function () {
+            $(window).on("load", function() {
                 that.waypoint(
-                    function () {
+                    function() {
                         if (!executed) {
                             executed = true;
                             /*progress bar*/
                             that.progressbar({
-                                update: function (current_percentage, $this) {
-                                    $this.find(".js-value").html(current_percentage + "%");
+                                update: function(current_percentage, $this) {
+                                    $this
+                                        .find(".js-value")
+                                        .html(current_percentage + "%");
                                 },
                             });
                         }
@@ -1884,7 +2339,7 @@ import { client } from "./amplifyConfig.js";
         console.log(err);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -1903,13 +2358,13 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
     // Select 2
     try {
-        $(".js-select2").each(function () {
+        $(".js-select2").each(function() {
             $(this).select2({
                 minimumResultsForSearch: 20,
                 dropdownParent: $(this).next(".dropDownSelect2"),
@@ -1919,7 +2374,7 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -1929,7 +2384,7 @@ import { client } from "./amplifyConfig.js";
         var sub_menu_is_showed = -1;
 
         for (var i = 0; i < menu.length; i++) {
-            $(menu[i]).on("click", function (e) {
+            $(menu[i]).on("click", function(e) {
                 e.preventDefault();
                 $(".js-right-sidebar").removeClass("show-sidebar");
                 if (jQuery.inArray(this, menu) == sub_menu_is_showed) {
@@ -1944,11 +2399,11 @@ import { client } from "./amplifyConfig.js";
                 }
             });
         }
-        $(".js-item-menu, .js-dropdown").click(function (event) {
+        $(".js-item-menu, .js-dropdown").click(function(event) {
             event.stopPropagation();
         });
 
-        $("body,html").on("click", function () {
+        $("body,html").on("click", function() {
             for (var i = 0; i < menu.length; i++) {
                 menu[i].classList.remove("show-dropdown");
             }
@@ -1963,7 +2418,7 @@ import { client } from "./amplifyConfig.js";
     var right_sidebar = $(".js-right-sidebar");
     var sidebar_btn = $(".js-sidebar-btn");
 
-    sidebar_btn.on("click", function (e) {
+    sidebar_btn.on("click", function(e) {
         e.preventDefault();
         for (var i = 0; i < menu.length; i++) {
             menu[i].classList.remove("show-dropdown");
@@ -1972,24 +2427,26 @@ import { client } from "./amplifyConfig.js";
         right_sidebar.toggleClass("show-sidebar");
     });
 
-    $(".js-right-sidebar, .js-sidebar-btn").click(function (event) {
+    $(".js-right-sidebar, .js-sidebar-btn").click(function(event) {
         event.stopPropagation();
     });
 
-    $("body,html").on("click", function () {
+    $("body,html").on("click", function() {
         right_sidebar.removeClass("show-sidebar");
     });
 
     // Sublist Sidebar
     try {
         var arrow = $(".js-arrow");
-        arrow.each(function () {
+        arrow.each(function() {
             var that = $(this);
-            that.on("click", function (e) {
+            that.on("click", function(e) {
                 e.preventDefault();
                 that.find(".arrow").toggleClass("up");
                 that.toggleClass("open");
-                that.parent().find(".js-sub-list").slideToggle("250");
+                that.parent()
+                    .find(".js-sub-list")
+                    .slideToggle("250");
             });
         });
     } catch (error) {
@@ -1998,11 +2455,11 @@ import { client } from "./amplifyConfig.js";
 
     try {
         // Hamburger Menu
-        $(".hamburger").on("click", function () {
+        $(".hamburger").on("click", function() {
             $(this).toggleClass("is-active");
             $(".navbar-mobile").slideToggle("500");
         });
-        $(".navbar-mobile__list li.has-dropdown > a").on("click", function () {
+        $(".navbar-mobile__list li.has-dropdown > a").on("click", function() {
             var dropdown = $(this).siblings("ul.navbar-mobile__dropdown");
             $(this).toggleClass("active");
             $(dropdown).slideToggle("500");
@@ -2013,22 +2470,24 @@ import { client } from "./amplifyConfig.js";
     }
     /////////////////////////////////////////007
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
     try {
         var showTablebutton = document.getElementsByClassName("showTable")[0];
-        var showstatisticbutton = document.getElementsByClassName("showstatistic");
+        var showstatisticbutton = document.getElementsByClassName(
+            "showstatistic"
+        );
         var statistic = document.getElementById("statistics");
         var table = document.getElementById("table");
 
-        showTablebutton.addEventListener("click", function () {
+        showTablebutton.addEventListener("click", function() {
             statistic.style.display = "none";
             table.style.display = "block";
         });
         for (var i = 0; i < showstatisticbutton.length; i++) {
-            showstatisticbutton[i].addEventListener("click", function (event) {
+            showstatisticbutton[i].addEventListener("click", function(event) {
                 statistic.style.display = "block";
                 table.style.display = "none";
             });
@@ -2037,7 +2496,7 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -2045,17 +2504,20 @@ import { client } from "./amplifyConfig.js";
     try {
         var list_load = $(".js-list-load");
         if (list_load[0]) {
-            list_load.each(function () {
+            list_load.each(function() {
                 var that = $(this);
                 that.find(".js-load-item").hide();
                 var load_btn = that.find(".js-load-btn");
-                load_btn.on("click", function (e) {
+                load_btn.on("click", function(e) {
                     $(this)
                         .text("Loading...")
                         .delay(1500)
-                        .queue(function (next) {
+                        .queue(function(next) {
                             $(this).hide();
-                            that.find(".js-load-item").fadeToggle("slow", "swing");
+                            that.find(".js-load-item").fadeToggle(
+                                "slow",
+                                "swing"
+                            );
                         });
                     e.preventDefault();
                 });
@@ -2065,7 +2527,7 @@ import { client } from "./amplifyConfig.js";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
+(function($) {
     // USE STRICT
     "use strict";
 
@@ -2079,49 +2541,80 @@ import { client } from "./amplifyConfig.js";
     try {
         var inbox_wrap = $(".js-inbox");
         var message = $(".au-message__item");
-        message.each(function () {
+        message.each(function() {
             var that = $(this);
 
-            that.on("click", function () {
-                $(this).parent().parent().parent().toggleClass("show-chat-box");
+            that.on("click", function() {
+                $(this)
+                    .parent()
+                    .parent()
+                    .parent()
+                    .toggleClass("show-chat-box");
             });
         });
     } catch (error) {
         console.log(error);
     }
 })(jQuery);
-(async function ($) {
+(async function($) {
     // USE STRICT
-    "use strict"
+    "use strict";
     try {
-        var select = document.getElementById("selectOptionCategory"), divCategory = document.getElementById("divCategory")
+        var select = document.getElementById("selectOptionCategory"),
+            divCategory = document.getElementById("divCategory");
 
-        let categories, defaultCategories = await client.graphql({
-            query: listDefaultCategories
-        }), customCategories = await client.graphql({ query: listCategories })
+        let categories,
+            defaultCategories = await client.graphql({
+                query: listDefaultCategories,
+            }),
+            customCategories = await client.graphql({ query: listCategories });
 
-        categories = [...defaultCategories.data.listDefaultCategories.items, ...customCategories.data.listCategories.items]
-        categories.forEach(e => {
-            const option = document.createElement("option")
-            option.value = e.categoryName
-            option.innerHTML = e.categoryName
-            select.appendChild(option)
-
-
-        })
+        categories = [
+            ...defaultCategories.data.listDefaultCategories.items,
+            ...customCategories.data.listCategories.items,
+        ];
+        categories.forEach((e) => {
+            const option = document.createElement("option");
+            option.value = e.categoryName;
+            option.innerHTML = e.categoryName;
+            select.appendChild(option);
+        });
 
         select.addEventListener("change", async (e) => {
             if (e.target.value !== "Selecciona") {
-                const categ = categories.find(c => c.categoryName === e.target.value),
-                    props = ["autoRedirect", "autoRetargeting", "autoTrigger", "autoQuote", "autoResponse", "redirectTo", "quoteOption", "triggerOption", "retargetingOption", "retargetingTime"];
+                const categ = categories.find(
+                        (c) => c.categoryName === e.target.value
+                    ),
+                    props = [
+                        "autoRedirect",
+                        "autoRetargeting",
+                        "autoTrigger",
+                        "autoQuote",
+                        "autoResponse",
+                        "redirectTo",
+                        "quoteOption",
+                        "triggerOption",
+                        "retargetingOption",
+                        "retargetingTime",
+                    ];
                 let isDefault = true,
-                    { data } = await client.graphql({ query: getDefaultCategories, variables: { id: categ.id } });
-                !data.getDefaultCategories && ({ data } = await client.graphql({ query: getCategories, variables: { id: categ.id } })) && (isDefault = false);
-                const config = data?.getDefaultCategories ? data?.getDefaultCategories.configuration : data?.getCategories.configuration
+                    { data } = await client.graphql({
+                        query: getDefaultCategories,
+                        variables: { id: categ.id },
+                    });
+                !data.getDefaultCategories &&
+                    ({ data } = await client.graphql({
+                        query: getCategories,
+                        variables: { id: categ.id },
+                    })) &&
+                    (isDefault = false);
+                const config = data?.getDefaultCategories
+                    ? data?.getDefaultCategories.configuration
+                    : data?.getCategories.configuration;
                 console.log(data);
                 for (const key in config) {
                     let value = config[key];
-                    const element = document.getElementById(key)
+                    const element = document.getElementById(key);
                     console.log("key", key, "value", value);
                     if (element && key !== "__typename") {
                         let valueParsed;
@@ -2130,67 +2623,103 @@ import { client } from "./amplifyConfig.js";
                                 element.checked = value;
                                 break;
                             case "select-one":
-                                valueParsed = JSON.parse(value)
-                                element.value = valueParsed?.option ? valueParsed.option : value;
+                                valueParsed = JSON.parse(value);
+                                element.value = valueParsed?.option
+                                    ? valueParsed.option
+                                    : value;
                                 break;
                             default:
-                                valueParsed = value ? JSON.parse(value) : {}
-                                element.value = valueParsed?.value ? valueParsed.value : value === "{}" ? "" : value;
+                                valueParsed = value ? JSON.parse(value) : {};
+                                element.value = valueParsed?.value
+                                    ? valueParsed.value
+                                    : value === "{}"
+                                    ? ""
+                                    : value;
                                 break;
                         }
                     }
-
-
                 }
 
-
-                const saveButton = document.getElementById("saveChange")
+                const saveButton = document.getElementById("saveChange");
                 saveButton.addEventListener("click", async (e) => {
-                    let params = {}
-                    props.forEach(p => {
-                        let elem = document.getElementById(p)
-                        console.log(p, elem.type)
+                    let params = {};
+                    props.forEach((p) => {
+                        let elem = document.getElementById(p);
+                        console.log(p, elem.type);
                         switch (elem.type) {
                             case "checkbox":
                                 params[p] = elem.checked;
                                 break;
                             case "select-one":
-                                console.log("hola", elem.value)
-                                params[p] = elem.value ? `{\"option\":\"${elem.value}\"}` : "{}";
+                                console.log("hola", elem.value);
+                                params[p] = elem.value
+                                    ? `{\"option\":\"${elem.value}\"}`
+                                    : "{}";
                                 break;
                             default:
-                                params[p] = p === "redirectTo" ? elem.value === "" ? `{}` : `{\"value\":[${elem.value.split(',').map(e => `\"${e}\"`)}]}` : elem.value
-
+                                params[p] =
+                                    p === "redirectTo"
+                                        ? elem.value === ""
+                                            ? `{}`
+                                            : `{\"value\":[${elem.value
+                                                  .split(",")
+                                                  .map((e) => `\"${e}\"`)}]}`
+                                        : elem.value;
                         }
-                    })
-                    console.log(params)
-                    isDefault ? (await client.graphql({ query: updateDefaultCategories, variables: { input: { id: categ.id, configuration: params } } })) : (await client.graphql({ query: updateCategories, variables: { input: { id: categ.id, configuration: params } } }))
+                    });
+                    console.log(params);
+                    isDefault
+                        ? await client.graphql({
+                              query: updateDefaultCategories,
+                              variables: {
+                                  input: {
+                                      id: categ.id,
+                                      configuration: params,
+                                  },
+                              },
+                          })
+                        : await client.graphql({
+                              query: updateCategories,
+                              variables: {
+                                  input: {
+                                      id: categ.id,
+                                      configuration: params,
+                                  },
+                              },
+                          });
                     window.alert("Se guardo la configuracion");
-
-                })
-                const resetButton = document.getElementById("resetDefault")
+                });
+                const resetButton = document.getElementById("resetDefault");
                 resetButton.addEventListener("click", async (e) => {
                     const a = await client.graphql({
-                        query: updateDefaultCategories, variables: {
+                        query: updateDefaultCategories,
+                        variables: {
                             input: {
-                                id: categ.id, configuration: {
-                                    autoRedirect: false, autoRetargeting: false, autoTrigger: false, autoQuote: false, autoResponse: false, redirectTo: {}, quoteOption: {}, triggerOption: {}, retargetingOption: {}, retargetingTime: ""
-                                }
-                            }
-                        }
-                    })
-
-                })
-
+                                id: categ.id,
+                                configuration: {
+                                    autoRedirect: false,
+                                    autoRetargeting: false,
+                                    autoTrigger: false,
+                                    autoQuote: false,
+                                    autoResponse: false,
+                                    redirectTo: {},
+                                    quoteOption: {},
+                                    triggerOption: {},
+                                    retargetingOption: {},
+                                    retargetingTime: "",
+                                },
+                            },
+                        },
+                    });
+                });
             }
-
-        })
+        });
 
         const editCategoriesBtn = document.querySelector(".edit_categories");
         const categoryForm = document.createElement("form");
         let newCategories = [];
         let oldCategories = [],
-            deletedCategories = []
+            deletedCategories = [];
         const addCategoryBtn = document.createElement("button");
         addCategoryBtn.id = "addCategory";
         addCategoryBtn.className = "btn btn-primary";
@@ -2206,15 +2735,15 @@ import { client } from "./amplifyConfig.js";
         cancelBtn.className = "btn btn-secondary";
         cancelBtn.textContent = "Cancelar";
 
-        editCategoriesBtn.addEventListener("click", function () {
+        editCategoriesBtn.addEventListener("click", function() {
             $("#myModal").modal("show");
         });
 
         let count = 1;
-        addCategoryBtn.addEventListener("click", function () {
+        addCategoryBtn.addEventListener("click", function() {
             const newCategory = document.createElement("div");
             newCategory.className = "form-group row";
-            newCategory.key = count
+            newCategory.key = count;
             const inputWrapper = document.createElement("div");
             inputWrapper.className = "col-9";
             const input = document.createElement("input");
@@ -2226,10 +2755,13 @@ import { client } from "./amplifyConfig.js";
             deleteBtnWrapper.className = "col-3";
             const deleteBtn = document.createElement("button");
             deleteBtn.className = "btn";
-            deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-            deleteBtn.addEventListener("click", function () {
+            deleteBtn.innerHTML =
+                '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+            deleteBtn.addEventListener("click", function() {
                 categoryForm.removeChild(newCategory);
-                newCategories = newCategories.filter(e => e.id !== newCategory.key)
+                newCategories = newCategories.filter(
+                    (e) => e.id !== newCategory.key
+                );
             });
             deleteBtnWrapper.appendChild(deleteBtn);
             newCategory.appendChild(inputWrapper);
@@ -2238,32 +2770,71 @@ import { client } from "./amplifyConfig.js";
             categoryForm.appendChild(newCategory);
             count += 1;
         });
-        saveBtn.addEventListener("click", async function () {
+        saveBtn.addEventListener("click", async function() {
+            let elementRepeted = [];
+
             for (let i = 0; i < newCategories.length; i++) {
                 let parameters = {
-                    autoRedirect: false, autoRetargeting: false, autoTrigger: false, autoQuote: false, autoResponse: false, redirectTo: "{}", quoteOption: "{}", triggerOption: "{}", retargetingOption: "{}", retargetingTime: ""
+                    autoRedirect: false,
+                    autoRetargeting: false,
+                    autoTrigger: false,
+                    autoQuote: false,
+                    autoResponse: false,
+                    redirectTo: "{}",
+                    quoteOption: "{}",
+                    triggerOption: "{}",
+                    retargetingOption: "{}",
+                    retargetingTime: "",
+                };
+                const c = newCategories[i],
+                    element = document.getElementById(c.id);
+                oldCategories.forEach((categ) => {
+                    let categElement = document.getElementById(categ.id);
+                    categElement.value === element.value &&
+                        elementRepeted.push(element);
+                });
+
+                console.log("categoryAdded:", element.categoryName);
+                if (!elementRepeted.includes(element)) {
+                    await client.graphql({
+                        query: createCategories,
+                        variables: {
+                            input: {
+                                clientId: "0001",
+                                categoryName: element.value,
+                                configuration: parameters,
+                            },
+                        },
+                    });
+                } else {
+                    window.alert(
+                        `Ya existe una categoria con el nombre ${element.value}`
+                    );
                 }
-                const c = newCategories[i]
-                const element = document.getElementById(c.id)
-                console.log("categoryAdded:", element.categoryName)
-                await client.graphql({ query: createCategories, variables: { input: { clientId: "0001", categoryName: element.value, configuration: parameters } } })
             }
 
             for (let i = 0; i < oldCategories.length; i++) {
-                const c = oldCategories[i]
-                const element = document.getElementById(c.id)
-                await client.graphql({ query: updateCategories, variables: { input: { id: c.id, categoryName: element.value } } })
-                console.log("categoryUpdated:", element.categoryName)
-
+                const c = oldCategories[i];
+                const element = document.getElementById(c.id);
+                await client.graphql({
+                    query: updateCategories,
+                    variables: {
+                        input: { id: c.id, categoryName: element.value },
+                    },
+                });
             }
 
             for (let i = 0; i < deletedCategories.length; i++) {
-                const c = oldCategories[i]
-                await client.graphql({ query: deleteCategories, variables: { input: { id: c.id } } })
-                console.log("categoryDeleted:", c.id)
+                const c = deletedCategories[i];
+                await client.graphql({
+                    query: deleteCategories,
+                    variables: { input: { id: c.id } },
+                });
             }
-        })
-        cancelBtn.addEventListener("click", function () {
+
+            location.reload();
+        });
+        cancelBtn.addEventListener("click", function() {
             $("#myModal").modal("hide");
         });
 
@@ -2307,11 +2878,10 @@ import { client } from "./amplifyConfig.js";
 
         document.body.appendChild(modal);
 
-
-        customCategories.data.listCategories.items.forEach(function (category) {
+        customCategories.data.listCategories.items.forEach(function(category) {
             const newCategory = document.createElement("div");
             newCategory.className = "form-group row";
-            newCategory.key = category.id
+            newCategory.key = category.id;
             const inputWrapper = document.createElement("div");
             inputWrapper.className = "col-9";
             const input = document.createElement("input");
@@ -2324,11 +2894,17 @@ import { client } from "./amplifyConfig.js";
             deleteBtnWrapper.className = "col-3";
             const deleteBtn = document.createElement("button");
             deleteBtn.className = "btn";
-            deleteBtn.innerHTML = '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
-            deleteBtn.addEventListener("click", function () {
+            deleteBtn.innerHTML =
+                '<i class="fa fa-times" style="color: red;" data-toggle="tooltip" data-placement="top" title="Borrar categoría"></i>';
+            deleteBtn.addEventListener("click", function() {
                 categoryForm.removeChild(newCategory);
-                deletedCategories.push({ categoryName: category.categoryName, id: newCategory.key });
-                oldCategories = oldCategories.filter(e => e.id !== newCategory.key)
+                deletedCategories.push({
+                    categoryName: category.categoryName,
+                    id: newCategory.key,
+                });
+                oldCategories = oldCategories.filter(
+                    (e) => e.id !== newCategory.key
+                );
             });
             deleteBtnWrapper.appendChild(deleteBtn);
             newCategory.appendChild(inputWrapper);
@@ -2336,8 +2912,6 @@ import { client } from "./amplifyConfig.js";
             categoryForm.appendChild(newCategory);
             oldCategories.push({ id: category.id });
         });
-
-
     } catch (error) {
         console.log(error);
     }

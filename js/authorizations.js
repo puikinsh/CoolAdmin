@@ -1,22 +1,64 @@
 import axios from "axios";
-import { URL_MS_GOOGLE } from "../secrets";
-import { getSessionTokensWithRefresh } from "./authentication";
+import { URL_MS_GOOGLE, X_API_KEY } from "../secrets";
+import { getUserInfo, refreshAndGetTokens } from "./authentication";
 
-(async function($){
-    try {
-        document.getElementById('gmail-auth').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            console.log("hola")
+(async function($) {
+    async function handleFormSubmit(event) {
+        event.preventDefault();
+        try {
+            const { data } = await axios.get(
+                `${URL_MS_GOOGLE}/google-auth-webhook`,
+                {
+                    headers: {
+                        "x-api-key": X_API_KEY,
+                    },
+                }
+            );
 
-            await refreshAndGetTokens()
-            // const {data} = await axios.get({url:`${URL_MS_GOOGLE}/google-auth-webhook`, headers:{
-            //     accessT: localStorage.getItem('AccessToken'),
-            //     refreshT: localStorage.getItem('RefreshToken'),
-            //     idT: localStorage.getItem('IdToken'),
-            // }})
-            // console.log(data)
-        })
-    } catch (error) {
-        console.log(error);
+            if (data.url) {
+                openAuthorizationWindow(data.url);
+            } else {
+                console.error(
+                    "URL de Gmail no encontrada en la respuesta",
+                    data
+                );
+            }
+        } catch (error) {
+            console.error("Error to handle form:", error);
+        }
     }
-})()
+
+    function openAuthorizationWindow(url) {
+        const nuevaVentana = window.open(
+            url,
+            "Authorizacion",
+            "width=800,height=600,_blank"
+        );
+
+        const chequeoVentana = setInterval(async () => {
+            if (nuevaVentana.closed) {
+                clearInterval(chequeoVentana);
+                await handleWindowClosed();
+                location.reload();
+            }
+        }, 1000);
+    }
+
+    async function handleWindowClosed() {
+        try {
+            const button = document.getElementById("gmailButton");
+            if (button) {
+                const info = await getUserInfo();
+                if (info.gmailAuthorization) {
+                    button.innerHTML = "GMAIL AUTHORIZED";
+                }
+            }
+        } catch (error) {
+            console.error("Error to handle windwow's close", error);
+        }
+    }
+
+    document
+        .getElementById("gmail-auth")
+        .addEventListener("submit", handleFormSubmit);
+})();
