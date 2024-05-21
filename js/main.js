@@ -1308,7 +1308,7 @@ import { getUserInfo } from "./authentication";
                 case "DefaultCategory2":
                     badgeClass = "badge-success";
                     break;
-                case "CustomCategory1":
+                case "custom 1":
                     badgeClass = "badge-warning";
                     break;
                 case "Leidos":
@@ -1427,11 +1427,21 @@ import { getUserInfo } from "./authentication";
                                     ).val(selectedCategory.categoryName)
                             ),
 
-                        $("<div>").addClass("form-group1 col-md-6").attr("id", "responseAttachment").append($("<label>").text("Response attachment"), $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment))
-                    )
-            );
-            // REEMPLAZAR EL INPUT TEXT DE RESPONSE ATTACHMENT POR UN INPUT FILE
-            // form.append($("<div>").addClass("form-group1").append($("<label>").text("ADJUNTO:"), $("<input>").attr("type", "file").addClass("form-control")))
+                        $("<div>").addClass("form-group1 col-md-6").attr("id", "responseAttachment").append($("<label>").text("Response attachment"),
+                            $("<div>").addClass("input-group")
+                                .append(
+                                    $("<input>").attr("type", "text").addClass("form-control").val(actions.responseAttachment).prop("readonly", true),
+                                    $("<div>").addClass("input-group-append")
+                                        .append(
+                                            $("<button>").addClass("btn").attr("type", "button").append($("<i>").addClass("fa fa-times").css({ "color": "red" }))
+                                                .on("click", function () {
+                                                    $(this).closest(".input-group").find("input").val("");
+                                                })
+                                        )
+                                )
+                        )
+                    ))
+
             form.append($("<div>").addClass("form-group1").attr("id", "responseAi").append($("<label>").text("Response AI:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseAi)));
 
             form.append($("<div>").addClass("form-group1").attr("id", "messageSubject").append($("<label>").text("Message subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "messageSubject").val(actions.messageSubject)));
@@ -1760,10 +1770,6 @@ import { getUserInfo } from "./authentication";
             $("#threadModal").modal("show");
         });
 
-        // ESTO SE VA
-        // document.querySelector("#button").addEventListener("click", function () {
-        //     table.row(".selected").remove().draw(false);
-        // });
     } catch (error) {
         console.log(error);
     }
