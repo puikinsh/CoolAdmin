@@ -1256,6 +1256,7 @@ import { getUserInfo } from "./authentication";
             a.appendChild(document.createTextNode(category.categoryName));
             li.appendChild(a);
             ul2.appendChild(li);
+            // NO ESTÁ TOMANDO DATA-TRANSITIONGOAL
             document.getElementById("skill-container").innerHTML += `
                 <div class="au-progress">
                     <span class="au-progress__title">${category.categoryName}</span>
@@ -1501,8 +1502,8 @@ import { getUserInfo } from "./authentication";
                     }
                 })
 
-                $("#actionModal").modal("hide"); // Ver cómo actualizar la data sin recargar la página
-                window.location.href = "index.html"
+                $("#actionModal").modal("hide");
+                location.reload()
             })
         });
 
