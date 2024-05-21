@@ -222,47 +222,54 @@
                 <!-- END BREADCRUMB-->
 
                 <section>
-                    <div class="section__content section__content--p30">
+                    <div class="section__content section__content--p30" style="width: fit-content;">
                         <div class="container-fluid form-group">
                             <div class="row justify-content-center">
-                                <div class="row" style="margin-bottom: 20px">
-                                    <select class="form-control text-center" id="selectOptionCategory">
-                                        <option value="Selecciona" selected>Selecciona Categoria</option>
-                                    </select>
+                                <div class="col-md-10">
+                                    <div class="row p-t-20 p-b-20">
+                                        <select class=" col-md-4 form-control text-center" id="selectOptionCategory">
+                                            <option value="Selecciona" selected>Seleccionar Categoría</option>
+                                        </select>
+                                        <div class="col-md-2">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-warning edit_categories btn-block" type="button">Editar categorías</button>
+                                        </div>
+                                    </div>
                                 </div>
-                    
-                                <div class="col-md-12" id="divCategory">
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
+                                <div class="col-md-10" id="divCategory">
+                                    <div class="row p-b-20">
+                                        <div class="col-md-3">
                                             <h4>Auto Response:</h4>
                                         </div>
-                                        <div class="col">
-                                            <input type="checkbox" id="autoResponse"/>
+                                        <div class="col-md-2">
+                                            <input type="checkbox" id="autoResponse"
+                                            />
+                                            <!-- data-toggle="toggle" data-on="Enabled" data-off="Disabled" -->
                                         </div>
-                                        <div class="col"></div>
-                                        <div class="col"></div>
+                                        <div class="col-md-1"></div>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
+                                    <div class="row p-b-20">
+                                        <div class="col-md-3">
                                             <h4>Redirect:</h4>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-2">
                                             <input type="checkbox" ckecked="true" id="autoRedirect" />
                                         </div>
-                                        <div class="col"></div>
-                                        <div class="col">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-3">
                                             <input type="text" class="form-control" id="redirectTo" />
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
+                                    <div class="row p-b-20">
+                                        <div class="col-md-3">
                                             <h4>Pre-quote:</h4>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-2">
                                             <input type="checkbox"  ckecked="true" id="autoQuote" />
                                         </div>
-                                        <div class="col"></div>
-                                        <div class="col">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-3">
                                             <select class="form-control" type="select" id="quoteOption">
                                                 <option value="Opcion1">Opcion1</option>
                                                 <option value="Opcion2">Opcion2</option>
@@ -270,15 +277,15 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
+                                    <div class="row p-b-20">
+                                        <div class="col-md-3">
                                             <h4>Trigger:</h4>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-2">
                                             <input type="checkbox"  id="autoTrigger"/>
                                         </div>
-                                        <div class="col"></div>
-                                        <div class="col">
+                                        <div class="col-md-1"></div>
+                                        <div class="col-md-3">
                                             <select class="form-control" type="select" id="triggerOption">
                                                 <option value="Opcion1">Opcion1</option>
                                                 <option value="Opcion2">Opcion2</option>
@@ -286,40 +293,36 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="row" style="margin-bottom: 20px">
-                                        <div class="col">
+                                    <div class="row p-b-20">
+                                        <div class="col-md-3">
                                             <h4>Retargeting:</h4>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-1">
                                             <input type="checkbox" type="select" id="autoRetargeting"/>
-                                            <!-- data-toggle="toggle" data-on="Enabled" data-off="Disabled"   -->
                                         </div>
-                                        <div class="col">
-                                            <input type="text" class="form-control" id="retargetingTime" />
+                                        <div class="col-md-2">
+                                            <input type="number" class="form-control" id="retargetingTime" />
                                             <label for="retargetingTime">Delay in hours</label>
                                         </div>
-                                        <div class="col">
+                                        <div class="col-md-3">
                                             <select class="form-control" type="select" id="retargetingOption">
                                                 <option value="Opcion1">Opcion1</option>
                                                 <option value="Opcion2">Opcion2</option>
                                                 <option value="Opcion3">Opcion3</option>
                                             </select>
                                         </div>
-                                        
                                     </div>
+                                </div>
+                                <div class="col-10">
                                     <div class="row justify-content-center">
+                                        <div class="col-md-2">
+                                            <button class="btn btn-danger btn-block" type="button" id="resetDefault">Restaurar valores</button>
+                                        </div>
                                         <div class="col-md-3">
-                                            <button class="btn btn-primary edit_categories" type="button">Edit Categories</button>
-                                        </div> 
-                                        <div class="col-3"></div>                                                
-                                    <div class="col-md-3">
-                                    <button class="btn btn-primary btn-block" type="button" id="resetDefault">Reset to default</button>
+                                            <button class="btn btn-primary btn-block" type="button" id="saveChange">Guardar cambios</button>
+                                        </div>
                                     </div>
-                                    <div class="col-md-3">
-                                    <button class="btn btn-primary btn-block" type="button" id="saveChange">Save changes</button>
-                                    </div>
-                                    </div>
-                                </div>      
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -340,8 +343,7 @@
             </div>
         </div>
 
-        <!-- Jquery JS-->
-        
+        <!-- Jquery JS-->o09
         <script src="vendor/jquery-3.2.1.min.js"></script>
         <!-- Bootstrap JS-->
         <script src="vendor/bootstrap-4.1/popper.min.js"></script>
@@ -369,9 +371,9 @@
 
         <!-- Main JS-->
         <script src="dist/categoryConfig.bundle.js"></script>
+        <script src="dist/main.bundle.js"></script>
         <script src="dist/loginLogout.bundle.js"></script>
         <script src="dist/menuSidebar.bundle.js"></script>
-        
     </body>
 </html>
 <!-- end document-->
