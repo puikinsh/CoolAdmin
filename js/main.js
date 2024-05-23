@@ -369,8 +369,11 @@ import { getUserInfo } from "./authentication";
         function renderProgressBar(categoryName, countPortion) {
             const skillContainer = document.getElementById("skill-container");
             // Crear los elementos necesarios
+            const progressContainer = document.createElement("div");
+            progressContainer.className = "progress-cont";
+
             const progressDiv = document.createElement("div");
-            progressDiv.className = "progress au-progress";
+            progressDiv.className = "progress";
 
             const titleSpan = document.createElement("span");
             titleSpan.className = "progress__title";
@@ -390,9 +393,10 @@ import { getUserInfo } from "./authentication";
 
             // Añadir los elementos al DOM en el orden correcto
             barDiv.appendChild(valueSpan);
-            progressDiv.appendChild(titleSpan);
             progressDiv.appendChild(barDiv);
-            skillContainer.appendChild(progressDiv);
+            progressContainer.appendChild(titleSpan);
+            progressContainer.appendChild(progressDiv);
+            skillContainer.appendChild(progressContainer);
 
             // Inicializar la barra de progreso de Bootstrap
             $(barDiv).progressbar();
@@ -459,6 +463,7 @@ import { getUserInfo } from "./authentication";
         // Función para crear el contenedor de acciones
         function createActionButtonContainer() {
             const container = document.createElement("div");
+            container.className = "headerCenter"
             container.innerHTML = `
         <button class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
         <button class="btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>`;

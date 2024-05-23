@@ -3894,9 +3894,9 @@ section {
     border: 1px solid #e5e5e5;
     background: #fff;
     padding: 40px;
-    padding-top: 42px;
+    /* padding-top: 42px;
     padding-right: 55px;
-    padding-bottom: 74px;
+    padding-bottom: 74px; */
     margin-bottom: 40px;
 }
 
@@ -5093,6 +5093,11 @@ section {
 }
 
 /* ----- Progress ----- */
+
+.progress-cont {
+    padding-bottom: 7px;
+}
+
 .au-progress .au-progress__bar {
     height: 10px;
     position: relative;
@@ -5120,10 +5125,11 @@ section {
 }
 
 .au-progress__title {
-    font-size: 14px;
+    display: flex;
+    font-size: 18px;
     color: #808080;
-    display: inline-block;
-    margin-bottom: 9px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .au-progress__value {
