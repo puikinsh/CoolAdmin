@@ -10,428 +10,19 @@ import { getUserInfo } from "./authentication";
     "use strict";
 
     try {
-        //WidgetChart 1
-        var ctx = document.getElementById("widgetChart1");
-        if (ctx) {
-            ctx.height = 130;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    type: "line",
-                    datasets: [
-                        {
-                            data: [78, 81, 80, 45, 34, 12, 40],
-                            label: "Dataset",
-                            backgroundColor: "rgba(255,255,255,.1)",
-                            borderColor: "rgba(255,255,255,.55)",
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: true,
-                    legend: {
-                        display: false,
-                    },
-                    layout: {
-                        padding: {
-                            left: 0,
-                            right: 0,
-                            top: 0,
-                            bottom: 0,
-                        },
-                    },
-                    responsive: true,
-                    scales: {
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    color: "transparent",
-                                    zeroLineColor: "transparent",
-                                },
-                                ticks: {
-                                    fontSize: 2,
-                                    fontColor: "transparent",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                                ticks: {
-                                    display: false,
-                                },
-                            },
-                        ],
-                    },
-                    title: {
-                        display: false,
-                    },
-                    elements: {
-                        line: {
-                            borderWidth: 0,
-                        },
-                        point: {
-                            radius: 0,
-                            hitRadius: 10,
-                            hoverRadius: 4,
-                        },
-                    },
-                },
-            });
-        }
-
-        //WidgetChart 2
-        var ctx = document.getElementById("widgetChart2");
-        if (ctx) {
-            ctx.height = 130;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June"],
-                    type: "line",
-                    datasets: [
-                        {
-                            data: [1, 18, 9, 17, 34, 22],
-                            label: "Dataset",
-                            backgroundColor: "transparent",
-                            borderColor: "rgba(255,255,255,.55)",
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    tooltips: {
-                        mode: "index",
-                        titleFontSize: 12,
-                        titleFontColor: "#000",
-                        bodyFontColor: "#000",
-                        backgroundColor: "#fff",
-                        titleFontFamily: "Montserrat",
-                        bodyFontFamily: "Montserrat",
-                        cornerRadius: 3,
-                        intersect: false,
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    color: "transparent",
-                                    zeroLineColor: "transparent",
-                                },
-                                ticks: {
-                                    fontSize: 2,
-                                    fontColor: "transparent",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                                ticks: {
-                                    display: false,
-                                },
-                            },
-                        ],
-                    },
-                    title: {
-                        display: false,
-                    },
-                    elements: {
-                        line: {
-                            tension: 0.00001,
-                            borderWidth: 1,
-                        },
-                        point: {
-                            radius: 4,
-                            hitRadius: 10,
-                            hoverRadius: 4,
-                        },
-                    },
-                },
-            });
-        }
-
-        //WidgetChart 3
-        var ctx = document.getElementById("widgetChart3");
-        if (ctx) {
-            ctx.height = 130;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June"],
-                    type: "line",
-                    datasets: [
-                        {
-                            data: [65, 59, 84, 84, 51, 55],
-                            label: "Dataset",
-                            backgroundColor: "transparent",
-                            borderColor: "rgba(255,255,255,.55)",
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    tooltips: {
-                        mode: "index",
-                        titleFontSize: 12,
-                        titleFontColor: "#000",
-                        bodyFontColor: "#000",
-                        backgroundColor: "#fff",
-                        titleFontFamily: "Montserrat",
-                        bodyFontFamily: "Montserrat",
-                        cornerRadius: 3,
-                        intersect: false,
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    color: "transparent",
-                                    zeroLineColor: "transparent",
-                                },
-                                ticks: {
-                                    fontSize: 2,
-                                    fontColor: "transparent",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                                ticks: {
-                                    display: false,
-                                },
-                            },
-                        ],
-                    },
-                    title: {
-                        display: false,
-                    },
-                    elements: {
-                        line: {
-                            borderWidth: 1,
-                        },
-                        point: {
-                            radius: 4,
-                            hitRadius: 10,
-                            hoverRadius: 4,
-                        },
-                    },
-                },
-            });
-        }
-
-        //WidgetChart 4
-        var ctx = document.getElementById("widgetChart4");
-        if (ctx) {
-            ctx.height = 115;
-            var myChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
-                            borderColor: "transparent",
-                            borderWidth: "0",
-                            backgroundColor: "rgba(255,255,255,.3)",
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: true,
-                    legend: {
-                        display: false,
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                display: false,
-                                categoryPercentage: 1,
-                                barPercentage: 0.65,
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                            },
-                        ],
-                    },
-                },
-            });
-        }
-
-        // Recent Report
-        const brandProduct = "rgba(0,181,233,0.8)";
-        const brandService = "rgba(0,173,95,0.8)";
-
-        var elements = 10;
-        var data1 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115];
-        var data2 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90];
-
-        var ctx = document.getElementById("recent-rep-chart");
-        if (ctx) {
-            ctx.height = 250;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", ""],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            backgroundColor: brandService,
-                            borderColor: "transparent",
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data1,
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: brandProduct,
-                            borderColor: "transparent",
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data2,
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: true,
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    scales: {
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    drawOnChartArea: true,
-                                    color: "#f2f2f2",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                    fontSize: 12,
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true,
-                                    maxTicksLimit: 5,
-                                    stepSize: 50,
-                                    max: 150,
-                                    fontFamily: "Poppins",
-                                    fontSize: 12,
-                                },
-                                gridLines: {
-                                    display: true,
-                                    color: "#f2f2f2",
-                                },
-                            },
-                        ],
-                    },
-                    elements: {
-                        point: {
-                            radius: 0,
-                            hitRadius: 10,
-                            hoverRadius: 4,
-                            hoverBorderWidth: 3,
-                        },
-                    },
-                },
-            });
-        }
-
-        // Percent Chart
-        var ctx = document.getElementById("percent-chart");
-        if (ctx) {
-            ctx.height = 280;
-            var myChart = new Chart(ctx, {
-                type: "doughnut",
-                data: {
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [60, 40],
-                            backgroundColor: ["#00b5e9", "#fa4251"],
-                            hoverBackgroundColor: ["#00b5e9", "#fa4251"],
-                            borderWidth: [0, 0],
-                            hoverBorderColor: ["transparent", "transparent"],
-                        },
-                    ],
-                    labels: ["Products", "Services"],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    cutoutPercentage: 55,
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true,
-                    },
-                    legend: {
-                        display: false,
-                    },
-                    tooltips: {
-                        titleFontFamily: "Poppins",
-                        xPadding: 15,
-                        yPadding: 10,
-                        caretPadding: 0,
-                        bodyFontSize: 16,
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
         // Recent Report 2
-        const bd_brandProduct2 = "rgba(0,181,233,0.9)";
-        const bd_brandService2 = "rgba(0,173,95,0.9)";
-        const brandProduct2 = "rgba(0,181,233,0.2)";
-        const brandService2 = "rgba(0,173,95,0.2)";
 
-        var data3 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115];
-        var data4 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90];
+        // var data3 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115, 40, 130];
+        // var data4 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90, 110, 75];
 
         var ctx = document.getElementById("recent-rep2-chart");
         if (ctx) {
             ctx.height = 230;
-            var myChart = new Chart(ctx, {
+            window.myChart = new Chart(ctx, {
                 type: "line",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", ""],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            backgroundColor: brandService2,
-                            borderColor: bd_brandService2,
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data3,
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: brandProduct2,
-                            borderColor: bd_brandProduct2,
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data4,
-                        },
-                    ],
+                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+                    datasets: [],
                 },
                 options: {
                     maintainAspectRatio: true,
@@ -488,383 +79,6 @@ import { getUserInfo } from "./authentication";
     }
 
     try {
-        // Recent Report 3
-        const bd_brandProduct3 = "rgba(0,181,233,0.9)";
-        const bd_brandService3 = "rgba(0,173,95,0.9)";
-        const brandProduct3 = "transparent";
-        const brandService3 = "transparent";
-
-        var data5 = [52, 60, 55, 50, 65, 80, 57, 115];
-        var data6 = [102, 70, 80, 100, 56, 53, 80, 90];
-
-        var ctx = document.getElementById("recent-rep3-chart");
-        if (ctx) {
-            ctx.height = 230;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", ""],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            backgroundColor: brandService3,
-                            borderColor: bd_brandService3,
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data5,
-                            pointBackgroundColor: bd_brandService3,
-                        },
-                        {
-                            label: "My Second dataset",
-                            backgroundColor: brandProduct3,
-                            borderColor: bd_brandProduct3,
-                            pointHoverBackgroundColor: "#fff",
-                            borderWidth: 0,
-                            data: data6,
-                            pointBackgroundColor: bd_brandProduct3,
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    legend: {
-                        display: false,
-                    },
-                    responsive: true,
-                    scales: {
-                        xAxes: [
-                            {
-                                gridLines: {
-                                    drawOnChartArea: true,
-                                    color: "#f2f2f2",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                    fontSize: 12,
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true,
-                                    maxTicksLimit: 5,
-                                    stepSize: 50,
-                                    max: 150,
-                                    fontFamily: "Poppins",
-                                    fontSize: 12,
-                                },
-                                gridLines: {
-                                    display: false,
-                                    color: "#f2f2f2",
-                                },
-                            },
-                        ],
-                    },
-                    elements: {
-                        point: {
-                            radius: 3,
-                            hoverRadius: 4,
-                            hoverBorderWidth: 3,
-                            backgroundColor: "#333",
-                        },
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //WidgetChart 5
-        var ctx = document.getElementById("widgetChart5");
-        if (ctx) {
-            ctx.height = 220;
-            var myChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [78, 81, 80, 64, 65, 80, 70, 75, 67, 85, 66, 68],
-                            borderColor: "transparent",
-                            borderWidth: "0",
-                            backgroundColor: "#ccc",
-                        },
-                    ],
-                },
-                options: {
-                    maintainAspectRatio: true,
-                    legend: {
-                        display: false,
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                display: false,
-                                categoryPercentage: 1,
-                                barPercentage: 0.65,
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: false,
-                            },
-                        ],
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        // Percent Chart 2
-        var ctx = document.getElementById("percent-chart2");
-        if (ctx) {
-            ctx.height = 209;
-            var myChart = new Chart(ctx, {
-                type: "doughnut",
-                data: {
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [60, 40],
-                            backgroundColor: ["#00b5e9", "#fa4251"],
-                            hoverBackgroundColor: ["#00b5e9", "#fa4251"],
-                            borderWidth: [0, 0],
-                            hoverBorderColor: ["transparent", "transparent"],
-                        },
-                    ],
-                    labels: ["Products", "Services"],
-                },
-                options: {
-                    maintainAspectRatio: false,
-                    responsive: true,
-                    cutoutPercentage: 87,
-                    animation: {
-                        animateScale: true,
-                        animateRotate: true,
-                    },
-                    legend: {
-                        display: false,
-                        position: "bottom",
-                        labels: {
-                            fontSize: 14,
-                            fontFamily: "Poppins,sans-serif",
-                        },
-                    },
-                    tooltips: {
-                        titleFontFamily: "Poppins",
-                        xPadding: 15,
-                        yPadding: 10,
-                        caretPadding: 0,
-                        bodyFontSize: 16,
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //Sales chart
-        var ctx = document.getElementById("sales-chart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-                    type: "line",
-                    defaultFontFamily: "Poppins",
-                    datasets: [
-                        {
-                            label: "Foods",
-                            data: [0, 30, 10, 120, 50, 63, 10],
-                            backgroundColor: "transparent",
-                            borderColor: "rgba(220,53,69,0.75)",
-                            borderWidth: 3,
-                            pointStyle: "circle",
-                            pointRadius: 5,
-                            pointBorderColor: "transparent",
-                            pointBackgroundColor: "rgba(220,53,69,0.75)",
-                        },
-                        {
-                            label: "Electronics",
-                            data: [0, 50, 40, 80, 40, 79, 120],
-                            backgroundColor: "transparent",
-                            borderColor: "rgba(40,167,69,0.75)",
-                            borderWidth: 3,
-                            pointStyle: "circle",
-                            pointRadius: 5,
-                            pointBorderColor: "transparent",
-                            pointBackgroundColor: "rgba(40,167,69,0.75)",
-                        },
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    tooltips: {
-                        mode: "index",
-                        titleFontSize: 12,
-                        titleFontColor: "#000",
-                        bodyFontColor: "#000",
-                        backgroundColor: "#fff",
-                        titleFontFamily: "Poppins",
-                        bodyFontFamily: "Poppins",
-                        cornerRadius: 3,
-                        intersect: false,
-                    },
-                    legend: {
-                        display: false,
-                        labels: {
-                            usePointStyle: true,
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                display: true,
-                                gridLines: {
-                                    display: false,
-                                    drawBorder: false,
-                                },
-                                scaleLabel: {
-                                    display: false,
-                                    labelString: "Month",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: true,
-                                gridLines: {
-                                    display: false,
-                                    drawBorder: false,
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: "Value",
-                                    fontFamily: "Poppins",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                    },
-                    title: {
-                        display: false,
-                        text: "Normal Legend",
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //Team chart
-        var ctx = document.getElementById("team-chart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-                    type: "line",
-                    defaultFontFamily: "Poppins",
-                    datasets: [
-                        {
-                            data: [0, 7, 3, 5, 2, 10, 7],
-                            label: "Expense",
-                            backgroundColor: "rgba(0,103,255,.15)",
-                            borderColor: "rgba(0,103,255,0.5)",
-                            borderWidth: 3.5,
-                            pointStyle: "circle",
-                            pointRadius: 5,
-                            pointBorderColor: "transparent",
-                            pointBackgroundColor: "rgba(0,103,255,0.5)",
-                        },
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    tooltips: {
-                        mode: "index",
-                        titleFontSize: 12,
-                        titleFontColor: "#000",
-                        bodyFontColor: "#000",
-                        backgroundColor: "#fff",
-                        titleFontFamily: "Poppins",
-                        bodyFontFamily: "Poppins",
-                        cornerRadius: 3,
-                        intersect: false,
-                    },
-                    legend: {
-                        display: false,
-                        position: "top",
-                        labels: {
-                            usePointStyle: true,
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                display: true,
-                                gridLines: {
-                                    display: false,
-                                    drawBorder: false,
-                                },
-                                scaleLabel: {
-                                    display: false,
-                                    labelString: "Month",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                display: true,
-                                gridLines: {
-                                    display: false,
-                                    drawBorder: false,
-                                },
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: "Value",
-                                    fontFamily: "Poppins",
-                                },
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                    },
-                    title: {
-                        display: false,
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
         //bar chart
         var ctx = document.getElementById("barChart");
         if (ctx) {
@@ -873,7 +87,7 @@ import { getUserInfo } from "./authentication";
                 type: "bar",
                 defaultFontFamily: "Poppins",
                 data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio"],
                     datasets: [
                         {
                             label: "My First dataset",
@@ -924,265 +138,6 @@ import { getUserInfo } from "./authentication";
         console.log(error);
     }
 
-    try {
-        //radar chart
-        var ctx = document.getElementById("radarChart");
-        if (ctx) {
-            ctx.height = 200;
-            var myChart = new Chart(ctx, {
-                type: "radar",
-                data: {
-                    labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
-                    defaultFontFamily: "Poppins",
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [65, 59, 66, 45, 56, 55, 40],
-                            borderColor: "rgba(0, 123, 255, 0.6)",
-                            borderWidth: "1",
-                            backgroundColor: "rgba(0, 123, 255, 0.4)",
-                        },
-                        {
-                            label: "My Second dataset",
-                            data: [28, 12, 40, 19, 63, 27, 87],
-                            borderColor: "rgba(0, 123, 255, 0.7",
-                            borderWidth: "1",
-                            backgroundColor: "rgba(0, 123, 255, 0.5)",
-                        },
-                    ],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    scale: {
-                        ticks: {
-                            beginAtZero: true,
-                            fontFamily: "Poppins",
-                        },
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //line chart
-        var ctx = document.getElementById("lineChart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: "line",
-                data: {
-                    labels: ["January", "February", "March", "April", "May", "June", "July"],
-                    defaultFontFamily: "Poppins",
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            borderColor: "rgba(0,0,0,.09)",
-                            borderWidth: "1",
-                            backgroundColor: "rgba(0,0,0,.07)",
-                            data: [22, 44, 67, 43, 76, 45, 12],
-                        },
-                        {
-                            label: "My Second dataset",
-                            borderColor: "rgba(0, 123, 255, 0.9)",
-                            borderWidth: "1",
-                            backgroundColor: "rgba(0, 123, 255, 0.5)",
-                            pointHighlightStroke: "rgba(26,179,148,1)",
-                            data: [16, 32, 18, 26, 42, 33, 44],
-                        },
-                    ],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    responsive: true,
-                    tooltips: {
-                        mode: "index",
-                        intersect: false,
-                    },
-                    hover: {
-                        mode: "nearest",
-                        intersect: true,
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true,
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //doughut chart
-        var ctx = document.getElementById("doughutChart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: "doughnut",
-                data: {
-                    datasets: [
-                        {
-                            data: [45, 25, 20, 10],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                            hoverBackgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                        },
-                    ],
-                    labels: ["Green", "Green", "Green", "Green"],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    responsive: true,
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        //pie chart
-        var ctx = document.getElementById("pieChart");
-        if (ctx) {
-            ctx.height = 200;
-            var myChart = new Chart(ctx, {
-                type: "pie",
-                data: {
-                    datasets: [
-                        {
-                            data: [45, 25, 20, 10],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                            hoverBackgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.7)", "rgba(0, 123, 255,0.5)", "rgba(0,0,0,0.07)"],
-                        },
-                    ],
-                    labels: ["Green", "Green", "Green"],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    responsive: true,
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        // polar chart
-        var ctx = document.getElementById("polarChart");
-        if (ctx) {
-            ctx.height = 200;
-            var myChart = new Chart(ctx, {
-                type: "polarArea",
-                data: {
-                    datasets: [
-                        {
-                            data: [15, 18, 9, 6, 19],
-                            backgroundColor: ["rgba(0, 123, 255,0.9)", "rgba(0, 123, 255,0.8)", "rgba(0, 123, 255,0.7)", "rgba(0,0,0,0.2)", "rgba(0, 123, 255,0.5)"],
-                        },
-                    ],
-                    labels: ["Green", "Green", "Green", "Green"],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    responsive: true,
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
-
-    try {
-        // single bar chart
-        var ctx = document.getElementById("singelBarChart");
-        if (ctx) {
-            ctx.height = 150;
-            var myChart = new Chart(ctx, {
-                type: "bar",
-                data: {
-                    labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            data: [40, 55, 75, 81, 56, 55, 40],
-                            borderColor: "rgba(0, 123, 255, 0.9)",
-                            borderWidth: "0",
-                            backgroundColor: "rgba(0, 123, 255, 0.5)",
-                        },
-                    ],
-                },
-                options: {
-                    legend: {
-                        position: "top",
-                        labels: {
-                            fontFamily: "Poppins",
-                        },
-                    },
-                    scales: {
-                        xAxes: [
-                            {
-                                ticks: {
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                        yAxes: [
-                            {
-                                ticks: {
-                                    beginAtZero: true,
-                                    fontFamily: "Poppins",
-                                },
-                            },
-                        ],
-                    },
-                },
-            });
-        }
-    } catch (error) {
-        console.log(error);
-    }
 })(jQuery);
 (async function ($) {
     // USE STRICT
@@ -1195,7 +150,21 @@ import { getUserInfo } from "./authentication";
         // Se genera el cliente para las llamadas
         const client = generateClient()
 
-        // FUNCIÓN PARA NORMALIZAR FECHA Y HORA A MOSTRAR
+        let selectedCategoryName;
+        let categories
+        const select1 = document.createElement('select');
+
+        const colorObjects = [
+            { category_line: "rgba(0,181,233,0.9)", bg: "rgba(0,181,233,0.2)", class: "dot dot--blue" },
+            { category_line: "rgba(0,173,95,0.9)", bg: "rgba(0,173,95,0.2)", class: "dot dot--green" },
+            { category_line: "rgba(255,99,132,0.9)", bg: "rgba(255,99,132,0.2)", class: "dot dot--red" },
+            { category_line: "rgba(255,159,64,0.9)", bg: "rgba(255,159,64,0.2)", class: "dot dot--orange" },
+            { category_line: "rgba(75,192,192,0.9)", bg: "rgba(75,192,192,0.2)", class: "dot dot--turquoise" },
+            { category_line: "rgba(153,102,255,0.9)", bg: "rgba(153,102,255,0.2)", class: "dot dot--purple" },
+            { category_line: "rgba(255,205,86,0.9)", bg: "rgba(255,205,86,0.2)", class: "dot dot--yellow" }
+        ]
+
+        // Función para normalizar la fecha
         const normalizeDate = (dateString) => {
             const date = new Date(dateString)
             const year = date.getFullYear()
@@ -1207,189 +176,342 @@ import { getUserInfo } from "./authentication";
             return formattedDateTime
         }
 
-        let selectedCategoryName
+        // Función para obtener comunicaciones
+        async function fetchCommunications(selectedCategoryName) {
+            let allCommunications;
+            const variables = selectedCategoryName ? { filter: { category: { eq: selectedCategoryName } } } : {};
 
-        // LISTA DE COMUNICACIONES
-        let allCommunications = await client.graphql({
-            query: listCommunications
-        });
-
-        // COMUNICACIONES CON FECHA NORMALIZADA
-        allCommunications = allCommunications.data.listCommunications.items.map(comm => {
-            return { ...comm, dateTime: normalizeDate(comm.dateTime) }
-        })
-
-        // CATEGORÍAS POR DEFAULT
-        const defaultCateg = await client.graphql({
-            query: listDefaultCategories
-        });
-
-        // CATEGORÍAS CREADAS
-        const customCateg = await client.graphql({
-            query: listCategories
-        });
-
-        // TODAS LAS CATEGORÍAS
-        const categories = defaultCateg.data.listDefaultCategories.items.concat(customCateg.data.listCategories.items)
-
-        // Obtener el elemento ul donde se agregarán las categorías
-        const ul2 = document.querySelector(".js-sub-list");
-        // Crear las categorías y agregarlas al elemento ul
-
-        let allCommsCount = allCommunications.length
-        categories.forEach((category) => {
-            const li = document.createElement("li");
-            const a = document.createElement("a");
-            const icon = document.createElement("i");
-
-            let commsByCategoryCount = allCommunications.filter(email => {
-                return email.category === category.categoryName
-            }).length
-
-            let countPortion = parseFloat((commsByCategoryCount * 100 / allCommsCount).toFixed(2))
-            console.log(category.categoryName, countPortion)
-
-            a.href = "index.html";
-            a.classList.add("showTable");
-            icon.classList.add("fas", "fa-tags");
-            a.appendChild(icon);
-            a.appendChild(document.createTextNode(category.categoryName));
-            li.appendChild(a);
-            ul2.appendChild(li);
-            // NO ESTÁ TOMANDO DATA-TRANSITIONGOAL
-            document.getElementById("skill-container").innerHTML += `
-                <div class="au-progress">
-                    <span class="au-progress__title">${category.categoryName}</span>
-                    <div class="au-progress__bar">
-                        <div class="au-progress__inner js-progressbar-simple" role="progressbar" data-transitiongoal="${countPortion}">
-                            <span class="au-progress__value js-value"></span>
-                        </div>
-                    </div>
-                </div>
-            `
-
-            a.addEventListener("click", async function (event) {
-                event.preventDefault()
-                selectedCategoryName = category.categoryName
-                console.log("categoría seleccionada:", selectedCategoryName);
-
-                document.getElementById("step1").innerHTML = "categories" // cambiar ruta del breadcrumb
-                document.getElementById("step2").innerHTML = selectedCategoryName
-
-                allCommunications = await client.graphql({
+            try {
+                const response = await client.graphql({
                     query: listCommunications,
-                    variables: {
-                        filter: {
-                            category: { eq: selectedCategoryName }
-                        }
-                    }
+                    variables
                 });
 
-                console.log("COMUNICACIONES FILTRADAS: ", allCommunications.data.listCommunications.items) // Encontrar forma de filtrar sin que recargue el DOM
+                allCommunications = response.data.listCommunications.items.map(comm => ({
+                    ...comm,
+                    dateTime: normalizeDate(comm.dateTime)
+                }));
+                return allCommunications;
+            } catch (error) {
+                console.error("Error fetching communications:", error);
+            }
+        }
 
-            });
-        });
+        // Función para renderizar las comunicaciones y categorías
+        async function renderCommunications() {
+            try {
+                let allCommunications = await fetchCommunications(selectedCategoryName);
+                let allCommsCount = allCommunications.length;
 
-        // COMUNICACIONES CONVERTIDAS A UN ARREGLO
-        const dataSet = allCommunications.map(email => {
-            const values = Object.values(email)
-            return values
-        })
+                const [defaultCateg, customCateg] = await Promise.all([
+                    client.graphql({ query: listDefaultCategories }),
+                    client.graphql({ query: listCategories })
+                ]);
 
-        dataSet.forEach((row) => {
-            var div1 = document.createElement("div");
-            var category = row[2];
-            var badgeClass = "";
+                categories = [...defaultCateg.data.listDefaultCategories.items, ...customCateg.data.listCategories.items];
 
-            switch (category) {
-                case "DefaultCategory1":
-                    badgeClass = "badge-primary";
-                    break;
-                case "DefaultCategory2":
-                    badgeClass = "badge-success";
-                    break;
-                case "custom 1":
-                    badgeClass = "badge-warning";
-                    break;
-                case "Leidos":
-                    badgeClass = "badge-danger";
-                    break;
-                case "Recibidos":
-                    badgeClass = "badge-info";
-                    break;
-                default:
-                    badgeClass = "badge-secondary";
-                    break;
+                renderCategoryList(categories, allCommunications, allCommsCount);
+                renderTable(allCommunications);
+
+            } catch (error) {
+                console.error("Error rendering communications:", error);
+            }
+        }
+
+        // Función para renderizar la lista de categorías
+        function renderCategoryList(categories, allCommunications, allCommsCount) {
+            const ul2 = document.querySelector(".js-sub-list");
+            ul2.innerHTML = '';
+            const chartRightRef = document.getElementById("chart-info__right");
+
+            if (!chartRightRef.querySelector('.rs-select2--dark')) {
+                // Crear el primer div
+                const div1 = document.createElement('div');
+                div1.classList.add('rs-select2--dark', 'rs-select2--md', 'm-r-10');
+
+                // Crear el primer select
+                select1.classList.add('js-select2');
+                select1.setAttribute('name', 'property');
+
+                // Crear las opciones del primer select dinámicamente
+                const option1_default = document.createElement('option');
+                option1_default.selected = true;
+                option1_default.textContent = 'Todas';
+                select1.appendChild(option1_default);
+
+                // Crear el div de dropDownSelect2 para el primer select
+                const dropDown1 = document.createElement('div');
+                dropDown1.classList.add('dropDownSelect2');
+
+                // Añadir el select y el dropdown al primer div
+                div1.appendChild(select1);
+                div1.appendChild(dropDown1);
+
+                // Crear el segundo div
+                const div2 = document.createElement('div');
+                div2.classList.add('rs-select2--dark', 'rs-select2--sm');
+
+                // Crear el segundo select
+                const select2 = document.createElement('select');
+                select2.classList.add('js-select2', 'au-select-dark');
+                select2.setAttribute('name', 'time');
+
+                // Crear las opciones del segundo select
+                const option2_1 = document.createElement('option');
+                option2_1.selected = true;
+                option2_1.textContent = 'Mes y dia';
+
+                const option2_2 = document.createElement('option');
+                option2_2.value = '';
+                option2_2.textContent = 'Por mes';
+
+                const option2_3 = document.createElement('option');
+                option2_3.value = '';
+                option2_3.textContent = 'Por día';
+
+                // Añadir las opciones al segundo select
+                select2.appendChild(option2_1);
+                select2.appendChild(option2_2);
+                select2.appendChild(option2_3);
+
+                // Crear el div de dropDownSelect2 para el segundo select
+                const dropDown2 = document.createElement('div');
+                dropDown2.classList.add('dropDownSelect2');
+
+                // Añadir el select y el dropdown al segundo div
+                div2.appendChild(select2);
+                div2.appendChild(dropDown2);
+
+                // Añadir ambos divs al elemento chartRightRef
+                chartRightRef.appendChild(div1);
+                chartRightRef.appendChild(div2);
+            } else {
+                // Actualizar select1 con nuevas opciones de categoría sin duplicar
+                const select1 = chartRightRef.querySelector('select[name="property"]');
+                select1.innerHTML = '';
+                const option1_default = document.createElement('option');
+                option1_default.selected = true;
+                option1_default.textContent = 'Todas';
+                select1.appendChild(option1_default);
             }
 
-            div1.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
-            row[2] = div1;
+            categories.forEach((category, index) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                const icon = document.createElement("i");
 
-            var div3 = document.createElement("div");
-            div3.innerHTML = row[3];
-            row[3] = div3;
+                const commsByCategoryCount = allCommunications.filter(email => email.category === category.categoryName).length;
+                const countPortion = parseFloat((commsByCategoryCount * 100 / allCommsCount).toFixed(2));
 
-            var messageButtonContainer = document.createElement("div");
-            messageButtonContainer.className = "view1  d-flex justify-content-center";
-            messageButtonContainer.innerHTML = `
-                <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
-            `;
+                const colorObj = colorObjects[index];
 
-            var responseButtonContainer = document.createElement("div");
-            responseButtonContainer.className = "view2  d-flex justify-content-center";
-            responseButtonContainer.innerHTML = `
-                <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
-            `;
+                const categoryDataset = {
+                    label: category.categoryName,
+                    backgroundColor: colorObj.bg,
+                    borderColor: colorObj.category_line,
+                    pointHoverBackgroundColor: colorObj.category_line,
+                    borderWidth: 0,
+                    data: [52, 60, 55, 50, 65, 80, 57, 70, 105, 115, 40, 130], // Placeholder data
+                };
 
-            var threadButtonContainer = document.createElement("div");
-            threadButtonContainer.className = "view3 d-flex justify-content-center";
-            threadButtonContainer.innerHTML = `
-                <button  class="btn btn-outline-primary" style="margin-right: 5px;" ><i class="fas fa-eye"></i></button>
-            `;
+                a.href = "#";
+                a.classList.add("showTable");
+                icon.classList.add("fas", "fa-tags");
+                a.appendChild(icon);
+                a.appendChild(document.createTextNode(category.categoryName));
+                li.appendChild(a);
+                ul2.appendChild(li);
 
-            var actionButtonContainer = document.createElement("div");
+                const option = document.createElement('option');
+                option.value = category.categoryName;
+                option.textContent = category.categoryName;
+                select1.appendChild(option);
 
-            actionButtonContainer.innerHTML = `
-                <button  class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
-              <button class="
-               btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>
-            `;
+                if (!selectedCategoryName) {
+                    renderProgressBar(category.categoryName, countPortion);
+                    window.myChart.data.datasets.push(categoryDataset);
+                    renderChartInfo(category, colorObj);
 
-            row.push(messageButtonContainer);
-            row.push(responseButtonContainer);
-            row.push(threadButtonContainer);
-            row.push(actionButtonContainer);
-        });
+                }
 
-        new DataTable("#tabla", {
-            columns: [
-                { title: "Com ID" },
-                { title: "Channel" },
-                { title: "Category" },
-                { title: "Datetime" },
-                { title: "From" },
-                { title: "To" },
-                { title: "Response AI" },
-                { title: "Response Attachment" },
-                { title: "Message Content" },
-                { title: "Response Content" },
-                { title: "Thread" },
-                { title: "Acciones" },
-            ],
-            data: dataSet,
-            layout: {
-                topStart: {
-                    buttons: ["csv", "excel", "pdf", "print"],
+                a.addEventListener("click", async function (event) {
+                    event.preventDefault();
+                    selectedCategoryName = category.categoryName;
+
+                    document.getElementById("step1").innerHTML = "categories";
+                    document.getElementById("step2").innerHTML = selectedCategoryName;
+
+                    await renderCommunications();
+                });
+            });
+        }
+
+        // Función para renderizar la información del gráfico
+        function renderChartInfo(category, colorObj) {
+            const chartLeftRef = document.getElementById("chart-info__left");
+
+            const chartNote = document.createElement("div");
+            chartNote.className = "chart-note";
+
+            const colorSpan = document.createElement("span");
+            colorSpan.className = colorObj.class;
+
+            const labelSpan = document.createElement("span");
+            labelSpan.textContent = category.categoryName;
+
+            chartNote.appendChild(colorSpan);
+            chartNote.appendChild(labelSpan);
+            chartLeftRef.appendChild(chartNote);
+
+        }
+
+        // Función para renderizar la barra de progreso
+        function renderProgressBar(categoryName, countPortion) {
+            const skillContainer = document.getElementById("skill-container");
+            // Crear los elementos necesarios
+            const progressDiv = document.createElement("div");
+            progressDiv.className = "progress au-progress";
+
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "progress__title";
+            titleSpan.textContent = categoryName;
+
+            const barDiv = document.createElement("div");
+            barDiv.className = "progress-bar";
+            barDiv.setAttribute("role", "progressbar");
+            barDiv.setAttribute("aria-valuenow", countPortion);
+            barDiv.setAttribute("aria-valuemin", "0");
+            barDiv.setAttribute("aria-valuemax", "100");
+            barDiv.style.width = countPortion + "%";
+
+            const valueSpan = document.createElement("span");
+            valueSpan.className = "progress__value js-value";
+            valueSpan.textContent = countPortion + "%";
+
+            // Añadir los elementos al DOM en el orden correcto
+            barDiv.appendChild(valueSpan);
+            progressDiv.appendChild(titleSpan);
+            progressDiv.appendChild(barDiv);
+            skillContainer.appendChild(progressDiv);
+
+            // Inicializar la barra de progreso de Bootstrap
+            $(barDiv).progressbar();
+        }
+
+        // Función para renderizar la tabla de comunicaciones
+        function renderTable(allCommunications) {
+            const dataSet = allCommunications.map(email => {
+                const values = Object.values(email);
+                if (selectedCategoryName) {
+                    values.splice(2, 1);
+                }
+                return values;
+            });
+
+            dataSet.forEach((row) => {
+                row[2] = createBadge(row[2]);
+                row[3] = createDiv(row[3]);
+                row.push(createButtonContainer("view1", "eye"));
+                row.push(createButtonContainer("view2", "eye"));
+                row.push(createButtonContainer("view3", "eye"));
+                row.push(createActionButtonContainer());
+            });
+
+            if ($.fn.DataTable.isDataTable('#tabla')) {
+                // Si DataTables ya está aplicado, destruir la instancia existente antes de volver a inicializarla
+                $('#tabla').DataTable().destroy();
+            }
+
+            const table = new DataTable("#tabla", {
+                columns: [
+                    { title: "Com ID" },
+                    { title: "Channel" },
+                    ...(selectedCategoryName ? [] : [{ title: "Category" }]),
+                    { title: "Datetime" },
+                    { title: "From" },
+                    { title: "To" },
+                    { title: "Response AI" },
+                    { title: "Response Attachment" },
+                    { title: "Message Content" },
+                    { title: "Response Content" },
+                    { title: "Thread" },
+                    { title: "Acciones" },
+                ],
+                data: dataSet,
+                layout: {
+                    topStart: {
+                        buttons: ["csv", "excel", "pdf", "print"],
+                    },
                 },
-            },
-        });
+            });
 
-        let table = new DataTable("#tabla");
+            initializeTableEvents(table);
+        }
 
-        ///////////// MODAL ACTION /////////////////////
-        table.on("click", "tbody .edit", async function () {
-            let data = table.row($(this).closest("tr")).data();
+        // Función para crear un contenedor de botones
+        function createButtonContainer(className, icon) {
+            const container = document.createElement("div");
+            container.className = `${className} d-flex justify-content-center`;
+            container.innerHTML = `<button class="btn btn-outline-primary" style="margin-right: 5px;"><i class="fas fa-${icon}"></i></button>`;
+            return container;
+        }
 
+        // Función para crear el contenedor de acciones
+        function createActionButtonContainer() {
+            const container = document.createElement("div");
+            container.innerHTML = `
+        <button class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>`;
+            return container;
+        }
+
+        // Función para crear una div con contenido
+        function createDiv(content) {
+            const div = document.createElement("div");
+            div.innerHTML = content;
+            return div;
+        }
+
+        // Función para crear un badge
+        function createBadge(category) {
+            const badgeClass = {
+                "DefaultCategory1": "badge-primary",
+                "DefaultCategory2": "badge-success",
+                "custom 1": "badge-warning",
+                "Leidos": "badge-danger",
+                "Recibidos": "badge-info",
+                "default": "badge-secondary"
+            }[category] || "badge-secondary";
+
+            const div = document.createElement("div");
+            div.innerHTML = `<span class="badge ${badgeClass}">${category}</span>`;
+            return div;
+        }
+
+        // Función para inicializar eventos de la tabla
+        function initializeTableEvents(table) {
+            table.on("click", "tbody .edit", async function () {
+                const data = table.row($(this).closest("tr")).data();
+                await openEditModal(data);
+            });
+
+            table.on("click", "tbody .view1", async function () {
+                const data = table.row($(this).closest("tr")).data();
+                await openMessageModal(data);
+            });
+
+            table.on("click", "tbody .view2", async function () {
+                const data = table.row($(this).closest("tr")).data();
+                await openResponseModal(data);
+            });
+
+            table.on("click", "tbody .view3", async function () {
+                const data = table.row($(this).closest("tr")).data();
+                await openThreadModal(data);
+            });
+        }
+
+        async function openEditModal(data) {
             let actions = await client.graphql({
                 query: actionsQuery,
                 variables: {
@@ -1401,7 +523,7 @@ import { getUserInfo } from "./authentication";
 
             actions = actions.data.listCommunications.items[0]
 
-            const normalizedDate = normalizeDate(actions.dateTime)
+            // const normalizedDate = normalizeDate(actions.dateTime)
             let selectedCategory = categories.filter(category => category.categoryName === actions.category)
 
             selectedCategory = selectedCategory[0]
@@ -1410,7 +532,7 @@ import { getUserInfo } from "./authentication";
                 $("<div>")
                     .addClass("form-row")
                     .append($("<div>").addClass("form-group1 col-md-6").attr("id", "fromId").append($("<label>").text("From:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "fromId").val(actions.fromId)))
-                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "normalizedDate").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "dateTime").val(actions.dateTime)))
+                    .append($("<div>").addClass("form-group1 col-md-6").attr("id", "dateTime").append($("<label>").text("Datetime:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).attr("name", "dateTime").val(actions.dateTime)))
             );
 
             form.append(
@@ -1463,11 +585,9 @@ import { getUserInfo } from "./authentication";
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento luego de eliminar cualquiera anterior
             $("#actionModal").remove();
             $("body").append(modal);
 
-            // Abre el modal al hacer clic en el botón de editar
             $("#actionModal").modal("show");
 
             $("#saveBtn").on("click", function () {
@@ -1515,12 +635,9 @@ import { getUserInfo } from "./authentication";
                 $("#actionModal").modal("hide");
                 location.reload()
             })
-        });
+        }
 
-        ///////////// MODAL MAIL CONTENT /////////////////////
-        table.on("click", "tbody .view1", async function () {
-            let data = table.row($(this).closest("tr")).data();
-
+        async function openMessageModal(data) {
             let message = await client.graphql({
                 query: messageDetails,
                 variables: {
@@ -1530,9 +647,10 @@ import { getUserInfo } from "./authentication";
                 }
             });
             message = message.data.listCommunications.items[0]
-            const normalizedDate = normalizeDate(message.dateTime)
+            const normalizedDate = normalizeDate(message.dateTime);
 
-            let form = $("<form>");
+            let form = $("<form>").attr("id", "messageForm");
+
             form.append(
                 $("<div>")
                     .addClass("form-row")
@@ -1570,18 +688,13 @@ import { getUserInfo } from "./authentication";
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento luego de eliminar cualquiera anterior
             $("#messageModal").remove();
             $("body").append(modal);
 
-            // Abre el modal al hacer clic en el botón de editar
             $("#messageModal").modal("show");
-        });
+        }
 
-        ///////////// MODAL RESPONSE CONTENT /////////////////////
-        table.on("click", "tbody .view2", async function () {
-            let data = table.row($(this).closest("tr")).data();
-
+        async function openResponseModal(data) {
             let response = await client.graphql({
                 query: responseDetails,
                 variables: {
@@ -1590,9 +703,9 @@ import { getUserInfo } from "./authentication";
                     }
                 }
             });
-            response = response.data.listCommunications.items[0]
+            response = response.data.listCommunications.items[0];
 
-            let form = $("<form>");
+            let form = $("<form>").attr("id", "responseForm");
 
             form.append(
                 $("<div>")
@@ -1616,28 +729,23 @@ import { getUserInfo } from "./authentication";
             modalDialog.append(modalContent);
             modal.append(modalDialog);
 
-            // Agrega el modal al documento luego de eliminar cualquiera anterior
             $("#responseModal").remove();
             $("body").append(modal);
 
-            // Abre el modal al hacer clic en el botón de editar
             $("#responseModal").modal("show");
-        });
+        }
 
-        ///////////// MODAL THREAD /////////////////////
-        table.on("click", "tbody .view3", async function () {
-            let data = table.row($(this).closest("tr")).data();
+        async function openThreadModal(data) {
             let thread = await client.graphql({
                 query: threadQuery,
                 variables: {
                     filter: {
-                        messageId: {
-                            eq: data[0]
-                        }
+                        messageId: { eq: data[0] }
                     }
                 }
-            })
+            });
             thread = JSON.parse(thread.data.listCommunications.items[0].thread)
+            const normalizedDate = normalizeDate(thread.dateTime);
 
             var section = document.createElement("div");
             section.className = "section__content section__content--p30";
@@ -1761,14 +869,15 @@ import { getUserInfo } from "./authentication";
             modalContent.append(modalHeader, modalBody, modalFooter);
             modalDialog.append(modalContent);
             modal.append(modalDialog);
-
-            // Elimina cualquier modal previo y agrega el nuevo modal al documento
             $("#threadModal").remove();
             $("body").append(modal);
 
-            // Abre el modal al hacer clic en el botón de editar
             $("#threadModal").modal("show");
-        });
+        }
+
+        window.onload = function () {
+            renderCommunications()
+        }
 
     } catch (error) {
         console.log(error);
@@ -1949,37 +1058,37 @@ import { getUserInfo } from "./authentication";
         console.log(error);
     }
 })(jQuery);
-(function ($) {
-    // Use Strict
-    "use strict";
-    try {
-        var progressbarSimple = $(".js-progressbar-simple");
-        progressbarSimple.each(function () {
-            var that = $(this);
-            var executed = false;
-            $(window).on("load", function () {
-                that.waypoint(
-                    function () {
-                        if (!executed) {
-                            executed = true;
-                            /*progress bar*/
-                            that.progressbar({
-                                update: function (current_percentage, $this) {
-                                    $this.find(".js-value").html(current_percentage + "%");
-                                },
-                            });
-                        }
-                    },
-                    {
-                        offset: "bottom-in-view",
-                    }
-                );
-            });
-        });
-    } catch (err) {
-        console.log(err);
-    }
-})(jQuery);
+// (function ($) {
+//     // Use Strict
+//     "use strict";
+//     try {
+//         var progressbarSimple = $(".js-progressbar-simple");
+//         progressbarSimple.each(function () {
+//             var that = $(this);
+//             var executed = false;
+//             $(window).on("load", function () {
+//                 that.waypoint(
+//                     function () {
+//                         if (!executed) {
+//                             executed = true;
+//                             /*progress bar*/
+//                             that.progressbar({
+//                                 update: function (current_percentage, $this) {
+//                                     $this.find(".js-value").html(current_percentage + "%");
+//                                 },
+//                             });
+//                         }
+//                     },
+//                     {
+//                         offset: "bottom-in-view",
+//                     }
+//                 );
+//             });
+//         });
+//     } catch (err) {
+//         console.log(err);
+//     }
+// })(jQuery);
 (function ($) {
     // USE STRICT
     "use strict";
