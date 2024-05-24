@@ -6,11 +6,12 @@ import { getUserInfo, refreshAndGetTokens } from "./authentication";
     async function handleFormSubmit(event) {
         event.preventDefault();
         try {
+            const { tokens } = await refreshAndGetTokens();
             const { data } = await axios.get(
                 `${URL_MS_GOOGLE}/google-auth-webhook`,
                 {
                     headers: {
-                        "x-api-key": X_API_KEY,
+                        "X-Cognito-Auth": tokens.idToken,
                     },
                 }
             );
