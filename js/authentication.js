@@ -43,7 +43,7 @@ export async function logout() {
     try {
         const data = await signOut();
     } catch (error) {
-        throw new Error(`Error to logout:${error}`);
+        throw new Error(`Error to logout:${error.message}`);
     }
 }
 
@@ -64,7 +64,7 @@ const confirmSignInWithNewPassword = async () => {
         });
         return "Successfully logged in";
     } catch (error) {
-        throw new Error(`Error to set new password:${error}`);
+        throw new Error(`Error to set new password:${error.message}`);
     }
 };
 
