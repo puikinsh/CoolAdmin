@@ -1,6 +1,6 @@
 import { Amplify } from 'aws-amplify'
 import { generateClient } from "aws-amplify/api";
-import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery } from "../src/graphql/queries";
+import { listCommunications, listDefaultCategories, listCategories, messageDetails, responseDetails, actionsQuery, threadQuery, executeQuery } from "../src/graphql/queries";
 import { updateCommunications } from "../src/graphql/mutations";
 import backendConfig from '../src/amplifyconfiguration.json'
 import { getUserInfo } from "./authentication";
@@ -418,7 +418,8 @@ import { getUserInfo } from "./authentication";
                 row.push(createButtonContainer("view1", "eye"));
                 row.push(createButtonContainer("view2", "eye"));
                 row.push(createButtonContainer("view3", "eye"));
-                row.push(createActionButtonContainer());
+                row.push(createButtonContainer("edit", "pencil-alt", "full"));
+                // row.push(createActionButtonContainer());
             });
 
             if ($.fn.DataTable.isDataTable('#tabla')) {
@@ -453,22 +454,22 @@ import { getUserInfo } from "./authentication";
         }
 
         // Función para crear un contenedor de botones
-        function createButtonContainer(className, icon) {
+        function createButtonContainer(className, icon, full) {
             const container = document.createElement("div");
             container.className = `${className} d-flex justify-content-center`;
-            container.innerHTML = `<button class="btn btn-outline-primary" style="margin-right: 5px;"><i class="fas fa-${icon}"></i></button>`;
+            container.innerHTML = `<button class="btn ${full ? "btn-primary" : "btn-outline-primary"}" style="margin-right: 5px;"><i class="fas fa-${icon}"></i></button>`;
             return container;
         }
 
         // Función para crear el contenedor de acciones
-        function createActionButtonContainer() {
-            const container = document.createElement("div");
-            container.className = "headerCenter"
-            container.innerHTML = `
-        <button class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
-        <button class="btn btn-success" style="background-color: #86dfc4e7;"><i class="fas fa-check"></i></button>`;
-            return container;
-        }
+        // function createActionButtonContainer() {
+        //     const container = document.createElement("div");
+        //     container.className = "headerCenter"
+        //     container.innerHTML = `
+        // <button class="edit btn btn-primary" style="margin-right: 5px;"><i class="fas fa-pencil-alt"></i></button>
+        // <button class="check btn btn-success" style="background-color: #00ad5f;"><i class="fas fa-check"></i></button>`;
+        //     return container;
+        // }
 
         // Función para crear una div con contenido
         function createDiv(content) {
@@ -500,6 +501,11 @@ import { getUserInfo } from "./authentication";
                 await openEditModal(data);
             });
 
+            // table.on("click", "tbody .check", async function () {
+            //     const data = table.row($(this).closest("tr")).data();
+            //     await executeFunc(data);
+            // });
+
             table.on("click", "tbody .view1", async function () {
                 const data = table.row($(this).closest("tr")).data();
                 await openMessageModal(data);
@@ -527,8 +533,6 @@ import { getUserInfo } from "./authentication";
             });
 
             actions = actions.data.listCommunications.items[0]
-
-            // const normalizedDate = normalizeDate(actions.dateTime)
             let selectedCategory = categories.filter(category => category.categoryName === actions.category)
 
             selectedCategory = selectedCategory[0]
@@ -575,8 +579,32 @@ import { getUserInfo } from "./authentication";
             form.append($("<div>").addClass("form-group1").attr("id", "messageBody").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).attr("name", "messageBody").val(actions.messageBody))); // Crea el modal con el formulario
             form.append($("<div>").addClass("form-group1").attr("id", "responseSubject").append($("<label>").text("Response Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").val(actions.responseSubject)));
             form.append($("<div>").addClass("form-group1").attr("id", "responseBody").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").val(actions.responseBody)));
-            // Crea el modal con el formulario
-            // tabindex, role, aria,labelledby, aria-hidden para mejorar la accesibilidad y el comportamiento del modal
+
+            const formGroup = $("<div>").addClass("form-group1").attr("id", "execute");
+            const label = $("<label>").html(`<strong>${!actions.execute ? "Activar IA:" : "Desactivar IA:"}</strong>`);
+            const button = $("<button>")
+                .addClass(`form-control ${!actions.execute ? "btn-success" : "btn-danger"}`)
+                .attr("type", "button")
+                .css({ "background-color": !actions.execute ? "#00ad5f" : "#fa4251", "width": "auto" })
+                .append($("<i>").addClass(!actions.execute ? "fas fa-check" : "fas fa-stop"))
+                .on("click", function () {
+                    actions.execute = !actions.execute;
+                    if (!actions.execute) {
+                        button.removeClass("btn-danger").addClass("btn-success");
+                        button.find("i").removeClass("fas fa-stop").addClass("fas fa-check");
+                        button.css("background-color", "#00ad5f");
+                        label.html(`<strong>Activar IA:</strong>`);
+                    } else {
+                        button.removeClass("btn-success").addClass("btn-danger");
+                        button.find("i").removeClass("fas fa-check").addClass("fas fa-stop");
+                        button.css("background-color", "#fa4251");
+                        label.html(`<strong>Desactivar IA:</strong>`);
+                    }
+                });
+
+            formGroup.append(label).append(button);
+            form.append(formGroup);
+
             let modal = $("<div>").addClass("modal fade").attr("id", "actionModal").attr("tabindex", "-1").attr("role", "dialog").attr("aria-labelledby", "actionModalLabel").attr("aria-hidden", "true");
             let modalDialog = $("<div>").addClass("modal-dialog").attr("role", "document");
             let modalContent = $("<div>").addClass("modal-content");
@@ -622,7 +650,8 @@ import { getUserInfo } from "./authentication";
                     responseAttachment: $("#responseAttachment input").val(),
                     responseAi: $("#responseAi input").val(),
                     responseSubject: $("#responseSubject input").val(),
-                    responseBody: $("#responseBody textarea").val()
+                    responseBody: $("#responseBody textarea").val(),
+                    execute: actions.execute
                 };
 
                 await client.graphql({
