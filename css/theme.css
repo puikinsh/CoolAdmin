@@ -14699,3 +14699,7 @@ section {
 .Modal_BIG {
     max-width: 1200px;
 }
+
+.modal-med {
+    max-width: 800px;
+}

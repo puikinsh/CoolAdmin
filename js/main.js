@@ -606,7 +606,7 @@ import { getUserInfo } from "./authentication";
             form.append(formGroup);
 
             let modal = $("<div>").addClass("modal fade").attr("id", "actionModal").attr("tabindex", "-1").attr("role", "dialog").attr("aria-labelledby", "actionModalLabel").attr("aria-hidden", "true");
-            let modalDialog = $("<div>").addClass("modal-dialog").attr("role", "document");
+            let modalDialog = $("<div>").addClass("modal-dialog modal-med").attr("role", "document");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "actionModalLabel").text("Editar"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
@@ -711,7 +711,7 @@ import { getUserInfo } from "./authentication";
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Subjet:")).append($("<input>").attr("type", "text").addClass("form-control").prop("disabled", true).val(message.messageSubject)));
             form.append($("<div>").addClass("form-group2").append($("<label>").text("Message Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(message.messageBody))); // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "messageModal");
-            let modalDialog = $("<div>").addClass("modal-dialog");
+            let modalDialog = $("<div>").addClass("modal-dialog modal-med");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la comunicación"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
@@ -752,7 +752,7 @@ import { getUserInfo } from "./authentication";
             form.append($("<div>").addClass("form-group3").append($("<label>").text("Response Body:")).append($("<textarea>").addClass("form-control").prop("disabled", true).val(response.responseBody)));
             // Crea el modal con el formulario
             let modal = $("<div>").addClass("modal fade").attr("id", "responseModal");
-            let modalDialog = $("<div>").addClass("modal-dialog");
+            let modalDialog = $("<div>").addClass("modal-dialog modal-med");
             let modalContent = $("<div>").addClass("modal-content");
             let modalHeader = $("<div>").addClass("modal-header headerCenter").append($("<h3>").addClass("modal-title").attr("id", "myModalLabel").text("Contenido de la respuesta"));
             let modalBody = $("<div>").addClass("modal-body").append(form);
