@@ -6,20 +6,12 @@
 // Initialize modern plugins when DOM is ready
 ready(() => {
     
-    // Choices.js - Replace Select2
+    // Bootstrap 5 Native Selects - No initialization needed
     try {
-        const selectElements = $$('.js-select2');
-        selectElements.forEach(element => {
-            const choices = new Choices(element, {
-                searchEnabled: true,
-                itemSelectText: '',
-                removeItemButton: true,
-                shouldSort: false
-            });
-        });
-        console.log('Choices.js initialized for select elements');
+        const selectElements = $$('.form-select, .js-select2');
+        console.log(`Found ${selectElements.length} select elements using Bootstrap 5 native form controls`);
     } catch (error) {
-        console.log('Choices.js initialization error:', error);
+        console.log('Bootstrap select verification error:', error);
     }
 
     // AOS - Replace WOW.js
@@ -229,6 +221,84 @@ function animateProgressBar(element, targetPercentage, duration) {
     requestAnimationFrame(animate);
 }
 
+// Add necessary CSS for Bootstrap select customization
+const bootstrapSelectCSS = `
+    .select-wrapper {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: top;
+    }
+    
+    .form-select {
+        display: inline-block;
+        width: auto;
+        min-width: 120px;
+        padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    .form-select:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    .form-select-sm {
+        padding: 0.25rem 1.75rem 0.25rem 0.5rem;
+        font-size: 0.8125rem;
+        min-width: 100px;
+    }
+    
+    .form-select-lg {
+        padding: 0.5rem 2.75rem 0.5rem 1rem;
+        font-size: 1rem;
+        min-width: 140px;
+    }
+    
+    .table-data__tool-left .select-wrapper {
+        margin-right: 15px;
+    }
+    
+    .table-data__tool-right .select-wrapper {
+        margin-left: 10px;
+    }
+`;
+
+// Add CSS for progress bars
+const progressBarCSS = `
+    .au-progress__inner {
+        background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+        transition: width 0.3s ease-in-out;
+    }
+    
+    .au-progress:nth-child(1) .au-progress__inner {
+        background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+    }
+    
+    .au-progress:nth-child(2) .au-progress__inner {
+        background: linear-gradient(90deg, #28a745 0%, #1e7e34 100%);
+    }
+    
+    .au-progress:nth-child(3) .au-progress__inner {
+        background: linear-gradient(90deg, #17a2b8 0%, #138496 100%);
+    }
+    
+    .au-progress:nth-child(4) .au-progress__inner {
+        background: linear-gradient(90deg, #ffc107 0%, #e0a800 100%);
+    }
+`;
+
 // Add necessary CSS for lightbox
 const lightboxCSS = `
     .modern-lightbox {
@@ -285,8 +355,16 @@ const lightboxCSS = `
 `;
 
 // Inject CSS
-const style = document.createElement('style');
-style.textContent = lightboxCSS;
-document.head.appendChild(style);
+const bootstrapStyle = document.createElement('style');
+bootstrapStyle.textContent = bootstrapSelectCSS;
+document.head.appendChild(bootstrapStyle);
+
+const progressStyle = document.createElement('style');
+progressStyle.textContent = progressBarCSS;
+document.head.appendChild(progressStyle);
+
+const lightboxStyle = document.createElement('style');
+lightboxStyle.textContent = lightboxCSS;
+document.head.appendChild(lightboxStyle);
 
 console.log('Modern plugins initialized successfully');

@@ -24,7 +24,6 @@
     <link href="css/aos.css" rel="stylesheet" media="all">
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
-    <link href="css/choices.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
@@ -574,21 +573,21 @@
                                     <h3 class="title-3 m-b-30">
                                         <i class="zmdi zmdi-account-calendar"></i>user data</h3>
                                     <div class="filters m-b-45">
-                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                            <select class="js-select2" name="property">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="property">
                                                 <option selected="selected">All Properties</option>
                                                 <option value="">Products</option>
                                                 <option value="">Services</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                            <select class="js-select2 au-select-dark" name="time">
-                                                <option selected="selected">All Time</option>
-                                                <option value="">By Month</option>
-                                                <option value="">By Day</option>
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="time">
+                                                <option selected="selected" value="all">All Time</option>
+                                                <option value="month">By Month</option>
+                                                <option value="day">By Day</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
                                     </div>
                                     <div class="table-responsive table-data">
@@ -627,13 +626,13 @@
                                                         <span class="role admin">admin</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option selected="selected">Full Control</option>
                                                                 <option value="">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -661,13 +660,13 @@
                                                         <span class="role user">user</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option value="">Full Control</option>
                                                                 <option value="" selected="selected">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -695,13 +694,13 @@
                                                         <span class="role user">user</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option value="">Full Control</option>
                                                                 <option value="" selected="selected">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -729,13 +728,13 @@
                                                         <span class="role member">member</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option selected="selected">Full Control</option>
                                                                 <option value="">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -821,21 +820,21 @@
                                 <h3 class="title-5 m-b-35">data table</h3>
                                 <div class="table-data__tool">
                                     <div class="table-data__tool-left">
-                                        <div class="rs-select2--light rs-select2--md">
-                                            <select class="js-select2" name="property">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="property">
                                                 <option selected="selected">All Properties</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
-                                        <div class="rs-select2--light rs-select2--sm">
-                                            <select class="js-select2" name="time">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="time">
                                                 <option selected="selected">Today</option>
                                                 <option value="">3 Days</option>
                                                 <option value="">1 Week</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
                                         <button class="au-btn-filter">
                                             <i class="zmdi zmdi-filter-list"></i>filters</button>
@@ -843,13 +842,13 @@
                                     <div class="table-data__tool-right">
                                         <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                             <i class="zmdi zmdi-plus"></i>add item</button>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                            <select class="js-select2" name="type">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="type">
                                                 <option selected="selected">Export</option>
-                                                <option value="">Option 1</option>
-                                                <option value="">Option 2</option>
+                                                <option value="option1">Option 1</option>
+                                                <option value="option2">Option 2</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -1120,7 +1119,6 @@
     <!-- Main JS-->
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
-    <script src="js/choices.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/modern-plugins.js"></script>

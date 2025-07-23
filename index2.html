@@ -24,9 +24,10 @@
     <link href="css/aos.css" rel="stylesheet" media="all">
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
-    <link href="css/choices.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
-    <link href="vendor/vector-map/jqvmap.min.css" rel="stylesheet" media="all">
+
+    <!-- Leaflet CSS-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
@@ -554,21 +555,21 @@
                                             </div>
                                         </div>
                                         <div class="chart-info-right">
-                                            <div class="rs-select2--dark rs-select2--md m-r-10">
-                                                <select class="js-select2" name="property">
+                                            <div class="select-wrapper">
+                                                <select class="form-select form-select-lg" name="property">
                                                     <option selected="selected">All Properties</option>
                                                     <option value="">Products</option>
                                                     <option value="">Services</option>
                                                 </select>
-                                                <div class="dropDownSelect2"></div>
+                                                
                                             </div>
-                                            <div class="rs-select2--dark rs-select2--sm">
-                                                <select class="js-select2 au-select-dark" name="time">
-                                                    <option selected="selected">All Time</option>
-                                                    <option value="">By Month</option>
-                                                    <option value="">By Day</option>
+                                            <div class="select-wrapper">
+                                                <select class="form-select form-select-lg" name="time">
+                                                    <option selected="selected" value="all">All Time</option>
+                                                    <option value="month">By Month</option>
+                                                    <option value="day">By Day</option>
                                                 </select>
-                                                <div class="dropDownSelect2"></div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -634,21 +635,21 @@
                                     <h3 class="title-3 m-b-30">
                                         <i class="zmdi zmdi-account-calendar"></i>user data</h3>
                                     <div class="filters m-b-45">
-                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                            <select class="js-select2" name="property">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="property">
                                                 <option selected="selected">All Properties</option>
                                                 <option value="">Products</option>
                                                 <option value="">Services</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                            <select class="js-select2 au-select-dark" name="time">
-                                                <option selected="selected">All Time</option>
-                                                <option value="">By Month</option>
-                                                <option value="">By Day</option>
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="time">
+                                                <option selected="selected" value="all">All Time</option>
+                                                <option value="month">By Month</option>
+                                                <option value="day">By Day</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
                                     </div>
                                     <div class="table-responsive table-data">
@@ -687,13 +688,13 @@
                                                         <span class="role admin">admin</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option selected="selected">Full Control</option>
                                                                 <option value="">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -721,13 +722,13 @@
                                                         <span class="role user">user</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option value="">Full Control</option>
                                                                 <option value="" selected="selected">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -755,13 +756,13 @@
                                                         <span class="role user">user</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option value="">Full Control</option>
                                                                 <option value="" selected="selected">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -789,13 +790,13 @@
                                                         <span class="role member">member</span>
                                                     </td>
                                                     <td>
-                                                        <div class="rs-select2--trans rs-select2--sm">
-                                                            <select class="js-select2" name="property">
+                                                        <div class="select-wrapper">
+                                                            <select class="form-select form-select-lg" name="property">
                                                                 <option selected="selected">Full Control</option>
                                                                 <option value="">Post</option>
                                                                 <option value="">Watch</option>
                                                             </select>
-                                                            <div class="dropDownSelect2"></div>
+                                                            
                                                         </div>
                                                     </td>
                                                     <td>
@@ -819,25 +820,25 @@
                                     <h3 class="title-3 m-b-30">
                                         <i class="zmdi zmdi-map"></i>map data</h3>
                                     <div class="filters">
-                                        <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                            <select class="js-select2" name="property">
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="property">
                                                 <option selected="selected">All Worldwide</option>
                                                 <option value="">Products</option>
                                                 <option value="">Services</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
-                                        <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                            <select class="js-select2 au-select-dark" name="time">
-                                                <option selected="selected">All Time</option>
-                                                <option value="">By Month</option>
-                                                <option value="">By Day</option>
+                                        <div class="select-wrapper">
+                                            <select class="form-select form-select-lg" name="time">
+                                                <option selected="selected" value="all">All Time</option>
+                                                <option value="month">By Month</option>
+                                                <option value="day">By Day</option>
                                             </select>
-                                            <div class="dropDownSelect2"></div>
+                                            
                                         </div>
                                     </div>
                                     <div class="map-wrap m-t-45 m-b-80">
-                                        <div id="vmap" style="height: 284px;"></div>
+                                        <div id="vmap" style="height: 284px; border-radius: 8px; overflow: hidden;"></div>
                                     </div>
                                     <div class="table-wrap">
                                         <div class="table-responsive table-style1">
@@ -908,18 +909,111 @@
     <!-- Vendor JS       -->
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.min.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.sampledata.js"></script>
-    <script src="vendor/vector-map/jquery.vmap.world.js"></script>
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
     <!-- Main JS-->
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
-    <script src="js/choices.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/modern-plugins.js"></script>
+
+    <!-- Initialize Leaflet Map -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mapContainer = document.getElementById('vmap');
+        if (mapContainer && typeof L !== 'undefined') {
+            try {
+                // Initialize the map
+                const map = L.map('vmap', {
+                    center: [20, 0], // Center of the world
+                    zoom: 2,
+                    zoomControl: true,
+                    scrollWheelZoom: false,
+                    doubleClickZoom: true,
+                    attributionControl: false
+                });
+
+                // Add tile layer (OpenStreetMap)
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '',
+                    maxZoom: 10,
+                    minZoom: 1
+                }).addTo(map);
+
+                // Sample data points for major cities/regions
+                const worldData = [
+                    { name: 'United States', lat: 39.8283, lng: -98.5795, value: 45000, color: '#00b5e9' },
+                    { name: 'United Kingdom', lat: 55.3781, lng: -3.4360, value: 32000, color: '#4caf50' },
+                    { name: 'Germany', lat: 51.1657, lng: 10.4515, value: 28000, color: '#ff9800' },
+                    { name: 'Japan', lat: 36.2048, lng: 138.2529, value: 35000, color: '#e91e63' },
+                    { name: 'Australia', lat: -25.2744, lng: 133.7751, value: 22000, color: '#9c27b0' },
+                    { name: 'Brazil', lat: -14.2350, lng: -51.9253, value: 18000, color: '#f44336' },
+                    { name: 'India', lat: 20.5937, lng: 78.9629, value: 25000, color: '#3f51b5' },
+                    { name: 'China', lat: 35.8617, lng: 104.1954, value: 40000, color: '#00bcd4' }
+                ];
+
+                // Add markers for each data point
+                worldData.forEach(point => {
+                    const marker = L.circleMarker([point.lat, point.lng], {
+                        radius: Math.sqrt(point.value / 1000) + 5, // Size based on value
+                        fillColor: point.color,
+                        color: '#fff',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.7
+                    }).addTo(map);
+
+                    // Add popup with country info
+                    marker.bindPopup(`
+                        <div style="text-align: center; padding: 5px;">
+                            <strong>${point.name}</strong><br>
+                            <span style="color: ${point.color}; font-weight: bold;">$${point.value.toLocaleString()}</span>
+                        </div>
+                    `);
+
+                    // Hover effects
+                    marker.on('mouseover', function() {
+                        this.setStyle({
+                            fillOpacity: 0.9,
+                            weight: 3
+                        });
+                    });
+
+                    marker.on('mouseout', function() {
+                        this.setStyle({
+                            fillOpacity: 0.7,
+                            weight: 2
+                        });
+                    });
+                });
+
+                // Add custom controls
+                const info = L.control({position: 'topright'});
+                info.onAdd = function() {
+                    const div = L.DomUtil.create('div', 'info');
+                    div.innerHTML = '<div style="background: rgba(255,255,255,0.9); padding: 8px; border-radius: 4px; font-size: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Global Revenue Distribution</div>';
+                    return div;
+                };
+                info.addTo(map);
+
+                console.log('Leaflet world map initialized successfully');
+            } catch (error) {
+                console.error('Error initializing world map:', error);
+                // Fallback content
+                mapContainer.innerHTML = `
+                    <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f9fa; color: #666; border-radius: 8px;">
+                        <div style="text-align: center;">
+                            <i class="fas fa-globe-americas" style="font-size: 32px; margin-bottom: 10px;"></i>
+                            <div>Map loading failed</div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+    });
+    </script>
 
 </body>
 

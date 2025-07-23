@@ -24,7 +24,6 @@
     <link href="css/aos.css" rel="stylesheet" media="all">
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
     <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
-    <link href="css/choices.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
@@ -376,21 +375,21 @@
                                                 </div>
                                             </div>
                                             <div class="filters m-b-55">
-                                                <div class="rs-select2--dark rs-select2--md m-r-10 rs-select2--border">
-                                                    <select class="js-select2" name="property">
+                                                <div class="select-wrapper">
+                                                    <select class="form-select form-select-lg" name="property">
                                                         <option selected="selected">Products Sales</option>
                                                         <option value="">Products</option>
                                                         <option value="">Services</option>
                                                     </select>
-                                                    <div class="dropDownSelect2"></div>
+                                                    
                                                 </div>
-                                                <div class="rs-select2--dark rs-select2--sm rs-select2--border">
-                                                    <select class="js-select2 au-select-dark" name="time">
-                                                        <option selected="selected">All Time</option>
-                                                        <option value="">By Month</option>
-                                                        <option value="">By Day</option>
+                                                <div class="select-wrapper">
+                                                    <select class="form-select form-select-lg" name="time">
+                                                        <option selected="selected" value="all">All Time</option>
+                                                        <option value="month">By Month</option>
+                                                        <option value="day">By Day</option>
                                                     </select>
-                                                    <div class="dropDownSelect2"></div>
+                                                    
                                                 </div>
                                             </div>
                                             <div class="chart-wrap">
@@ -654,7 +653,6 @@
     <!-- Main JS-->
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
-    <script src="js/choices.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="js/aos.js"></script>
     <script src="js/modern-plugins.js"></script>
