@@ -150,18 +150,7 @@
   }
 })();
 
-// Animsition initialization
-ready(() => {
-  try {
-    const animElements = $$(".animsition");
-    animElements.forEach(element => {
-      // Replace with CSS transitions or modern animation library
-      addClass(element, 'fade-in');
-    });
-  } catch (error) {
-    console.log(error);
-  }
-});
+// Animsition removed - using CSS transitions instead
 
 // Vector Map initialization (keeping original structure but removing jQuery wrapper)
 (() => {
