@@ -3302,9 +3302,11 @@ section {
 }
 
 .au-card--bg-blue {
-    background-image: -moz-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
-    background-image: -webkit-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
-    background-image: -ms-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
+    background-image: -moz-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: -webkit-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: -ms-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-color: #396afc !important;
 }
 
 .au-card-top-countries {
@@ -4280,10 +4282,29 @@ section {
 .table-top-countries tbody td {
     white-space: nowrap;
     font-size: 14px;
-    color: #fff;
+    color: #fff !important;
     padding: 14px 5px;
-    border-top: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Additional specificity for Bootstrap 5 override */
+.au-card--bg-blue .table-top-countries tbody td {
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+.au-card--bg-blue .table-top-countries tbody tr {
+    background-color: transparent !important;
+}
+
+/* Remove link underlines globally for cleaner design */
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
 }
 
 .table-top-countries tbody tr:last-child td {

@@ -142,8 +142,262 @@
       });
     }
 
-    // Additional charts would go here following the same pattern...
-    // (Keeping only the first two for brevity, but the pattern is clear)
+    //WidgetChart 3
+    var ctx = document.getElementById("widgetChart3");
+    if (ctx) {
+      ctx.height = 130;
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+          type: 'line',
+          datasets: [{
+            data: [65, 59, 84, 84, 51, 55],
+            label: 'Dataset',
+            backgroundColor: 'transparent',
+            borderColor: 'rgba(255,255,255,.55)',
+          },]
+        },
+        options: {
+          maintainAspectRatio: false,
+          legend: {
+            display: false
+          },
+          responsive: true,
+          tooltips: {
+            mode: 'index',
+            titleFontSize: 12,
+            titleFontColor: '#000',
+            bodyFontColor: '#000',
+            backgroundColor: '#fff',
+            titleFontFamily: 'Poppins',
+            bodyFontFamily: 'Poppins',
+            cornerRadius: 3,
+            intersect: false,
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: 'transparent',
+                zeroLineColor: 'transparent'
+              },
+              ticks: {
+                fontSize: 2,
+                fontColor: 'transparent'
+              }
+            }],
+            yAxes: [{
+              display: false,
+              ticks: {
+                display: false,
+              }
+            }]
+          },
+          title: {
+            display: false,
+          },
+          elements: {
+            line: {
+              borderWidth: 1
+            },
+            point: {
+              radius: 4,
+              hitRadius: 10,
+              hoverRadius: 4
+            }
+          }
+        }
+      });
+    }
+
+    //WidgetChart 4
+    var ctx = document.getElementById("widgetChart4");
+    if (ctx) {
+      ctx.height = 115;
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+          datasets: [{
+            label: "My First dataset",
+            data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
+            borderColor: "transparent",
+            borderWidth: "0",
+            backgroundColor: "rgba(255,255,255,.3)"
+          }]
+        },
+        options: {
+          maintainAspectRatio: true,
+          legend: {
+            display: false
+          },
+          responsive: true,
+          scales: {
+            xAxes: [{
+              gridLines: {
+                color: 'transparent',
+                zeroLineColor: 'transparent'
+              },
+              ticks: {
+                fontSize: 2,
+                fontColor: 'transparent'
+              }
+            }],
+            yAxes: [{
+              display: false,
+              ticks: {
+                display: false,
+              }
+            }]
+          },
+          title: {
+            display: false,
+          },
+          elements: {
+            rectangle: {
+              borderWidth: 0,
+            }
+          }
+        }
+      });
+    }
+
+    //Recent Report Chart
+    var ctx = document.getElementById("recent-rep-chart");
+    if (ctx) {
+      ctx.height = 250;
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', ''],
+          datasets: [{
+            label: 'Products',
+            backgroundColor: 'rgba(0, 181, 233, 0.4)',
+            borderColor: '#00b5e9',
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 2,
+            data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 70]
+          }, {
+            label: 'Services',
+            backgroundColor: 'rgba(250, 66, 81, 0.4)',
+            borderColor: '#fa4251',
+            pointHoverBackgroundColor: '#fff',
+            borderWidth: 2,
+            data: [65, 59, 84, 84, 51, 55, 40, 45, 50, 55]
+          }]
+        },
+        options: {
+          maintainAspectRatio: false,
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              usePointStyle: true,
+              padding: 15,
+              fontSize: 12
+            }
+          },
+          responsive: true,
+          scales: {
+            xAxes: [{
+              gridLines: {
+                drawOnChartArea: false,
+              }
+            }],
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          },
+          elements: {
+            point: {
+              radius: 0,
+              hitRadius: 10,
+              hoverRadius: 4,
+              hoverBorderWidth: 3,
+            }
+          }
+        }
+      });
+    }
+
+    //Percent Chart
+    var ctx = document.getElementById("percent-chart");
+    if (ctx) {
+      ctx.height = 280;
+      var myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          datasets: [{
+            label: "Revenue Distribution",
+            data: [35, 25, 20, 12, 8],
+            backgroundColor: [
+              '#00b5e9',
+              '#fa4251',
+              '#28a745',
+              '#ff6b35',
+              '#6f42c1'
+            ],
+            hoverBackgroundColor: [
+              '#0099cc',
+              '#e63946',
+              '#20a745',
+              '#ff5722',
+              '#5e35b1'
+            ],
+            borderWidth: [2, 2, 2, 2, 2],
+            hoverBorderColor: [
+              '#ffffff',
+              '#ffffff',
+              '#ffffff',
+              '#ffffff',
+              '#ffffff'
+            ]
+          }],
+          labels: [
+            'Products',
+            'Services',
+            'Consulting',
+            'Support',
+            'Training'
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          responsive: true,
+          cutoutPercentage: 75,
+          legend: {
+            display: true,
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 15,
+              fontSize: 12
+            }
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true
+          },
+          tooltips: {
+            backgroundColor: '#fff',
+            titleFontColor: '#333',
+            bodyFontColor: '#666',
+            borderColor: '#ddd',
+            borderWidth: 1,
+            callbacks: {
+              label: function(tooltipItem, data) {
+                var dataset = data.datasets[tooltipItem.datasetIndex];
+                var value = dataset.data[tooltipItem.index];
+                var label = data.labels[tooltipItem.index];
+                return label + ': ' + value + '%';
+              }
+            }
+          }
+        }
+      });
+    }
 
   } catch (error) {
     console.log(error);
