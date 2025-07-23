@@ -19,7 +19,7 @@
 	<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
 	<!-- Bootstrap CSS-->
-	<link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+	<link href="vendor/bootstrap-5.3.3.min.css" rel="stylesheet" media="all">
 
 	<!-- Vendor CSS-->
 	<link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
@@ -446,26 +446,26 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<i class="mr-2 fa fa-align-justify"></i>
+										<i class="me-2 fa fa-align-justify"></i>
 										<strong class="card-title" v-if="headerText">Modals</strong>
 									</div>
 									<div class="card-body">
 
 										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#smallmodal">
+										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#smallmodal">
 											Small
 										</button>
 
-										<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#mediumModal">
+										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#mediumModal">
 											Medium
 										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#largeModal">
+										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#largeModal">
 											Large
 										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#scrollmodal">
+										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#scrollmodal">
 											Scrolling
 										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-toggle="modal" data-target="#staticModal">
+										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#staticModal">
 											Static
 										</button>
 
@@ -488,9 +488,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="smallmodalLabel">Small Modal</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<p>
@@ -501,7 +499,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 							<button type="button" class="btn btn-primary">Confirm</button>
 						</div>
 					</div>
@@ -515,9 +513,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="mediumModalLabel">Medium Modal</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<p>
@@ -528,7 +524,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 							<button type="button" class="btn btn-primary">Confirm</button>
 						</div>
 					</div>
@@ -542,9 +538,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="largeModalLabel">Large Modal</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<p>
@@ -555,7 +549,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 							<button type="button" class="btn btn-primary">Confirm</button>
 						</div>
 					</div>
@@ -569,9 +563,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="scrollmodalLabel">Scrolling Long Content Modal</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<p>
@@ -614,7 +606,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 							<button type="button" class="btn btn-primary">Confirm</button>
 						</div>
 					</div>
@@ -628,9 +620,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title" id="staticModalLabel">Static Modal</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 						</div>
 						<div class="modal-body">
 							<p>
@@ -638,7 +628,7 @@
 							</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 							<button type="button" class="btn btn-primary">Confirm</button>
 						</div>
 					</div>
@@ -651,11 +641,8 @@
 
 	</div>
 
-	<!-- Jquery JS-->
-	<script src="vendor/jquery-3.2.1.min.js"></script>
 	<!-- Bootstrap JS-->
-	<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-	<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+	<script src="vendor/bootstrap-5.3.3.bundle.min.js"></script>
 	<!-- Vendor JS       -->
 	<script src="vendor/slick/slick.min.js">
 	</script>
