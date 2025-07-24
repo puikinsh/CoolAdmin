@@ -26,8 +26,10 @@
         },
         options: {
           maintainAspectRatio: true,
-          legend: {
-            display: false
+          plugins: {
+            legend: {
+              display: false
+            }
           },
           layout: {
             padding: {
@@ -39,25 +41,23 @@
           },
           responsive: true,
           scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
+            x: {
+              grid: {
+                color: 'transparent'
               },
               ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
+                font: {
+                  size: 2
+                },
+                color: 'transparent'
               }
-            }],
-            yAxes: [{
+            },
+            y: {
               display: false,
               ticks: {
                 display: false,
               }
-            }]
-          },
-          title: {
-            display: false,
+            }
           },
           elements: {
             line: {
@@ -91,41 +91,45 @@
         },
         options: {
           maintainAspectRatio: false,
-          legend: {
-            display: false
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              mode: 'index',
+              titleFont: {
+                size: 12,
+                family: 'Poppins'
+              },
+              titleColor: '#000',
+              bodyColor: '#000',
+              bodyFont: {
+                family: 'Poppins'
+              },
+              backgroundColor: '#fff',
+              cornerRadius: 3,
+              intersect: false,
+            }
           },
           responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Poppins',
-            bodyFontFamily: 'Poppins',
-            cornerRadius: 3,
-            intersect: false,
-          },
           scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
+            x: {
+              grid: {
+                color: 'transparent'
               },
               ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
+                font: {
+                  size: 2
+                },
+                color: 'transparent'
               }
-            }],
-            yAxes: [{
+            },
+            y: {
               display: false,
               ticks: {
                 display: false,
               }
-            }]
-          },
-          title: {
-            display: false,
+            }
           },
           elements: {
             line: {
@@ -160,41 +164,45 @@
         },
         options: {
           maintainAspectRatio: false,
-          legend: {
-            display: false
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              mode: 'index',
+              titleFont: {
+                size: 12,
+                family: 'Poppins'
+              },
+              titleColor: '#000',
+              bodyColor: '#000',
+              backgroundColor: '#fff',
+              bodyFont: {
+                family: 'Poppins'
+              },
+              cornerRadius: 3,
+              intersect: false,
+            }
           },
           responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Poppins',
-            bodyFontFamily: 'Poppins',
-            cornerRadius: 3,
-            intersect: false,
-          },
           scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
+            x: {
+              grid: {
+                color: 'transparent'
               },
               ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
+                font: {
+                  size: 2
+                },
+                color: 'transparent'
               }
-            }],
-            yAxes: [{
+            },
+            y: {
               display: false,
               ticks: {
                 display: false,
               }
-            }]
-          },
-          title: {
-            display: false,
+            }
           },
           elements: {
             line: {
@@ -228,30 +236,30 @@
         },
         options: {
           maintainAspectRatio: true,
-          legend: {
-            display: false
+          plugins: {
+            legend: {
+              display: false
+            }
           },
           responsive: true,
           scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
+            x: {
+              grid: {
+                color: 'transparent'
               },
               ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
+                font: {
+                  size: 2
+                },
+                color: 'transparent'
               }
-            }],
-            yAxes: [{
+            },
+            y: {
               display: false,
               ticks: {
                 display: false,
               }
-            }]
-          },
-          title: {
-            display: false,
+            }
           },
           elements: {
             rectangle: {
@@ -288,27 +296,31 @@
         },
         options: {
           maintainAspectRatio: false,
-          legend: {
-            display: true,
-            position: 'top',
-            labels: {
-              usePointStyle: true,
-              padding: 15,
-              fontSize: 12
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+                font: {
+                  size: 12
+                }
+              }
             }
           },
           responsive: true,
           scales: {
-            xAxes: [{
-              gridLines: {
+            x: {
+              grid: {
                 drawOnChartArea: false,
               }
-            }],
-            yAxes: [{
+            },
+            y: {
               ticks: {
                 beginAtZero: true,
               }
-            }]
+            }
           },
           elements: {
             point: {
@@ -366,34 +378,38 @@
         options: {
           maintainAspectRatio: false,
           responsive: true,
-          cutoutPercentage: 75,
-          legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-              usePointStyle: true,
-              padding: 15,
-              fontSize: 12
+          cutout: '75%',
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+                font: {
+                  size: 12
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: '#fff',
+              titleColor: '#333',
+              bodyColor: '#666',
+              borderColor: '#ddd',
+              borderWidth: 1,
+              callbacks: {
+                label: function(tooltipItem) {
+                  var dataset = tooltipItem.dataset;
+                  var value = dataset.data[tooltipItem.dataIndex];
+                  var label = tooltipItem.chart.data.labels[tooltipItem.dataIndex];
+                  return label + ': ' + value + '%';
+                }
+              }
             }
           },
           animation: {
             animateScale: true,
             animateRotate: true
-          },
-          tooltips: {
-            backgroundColor: '#fff',
-            titleFontColor: '#333',
-            bodyFontColor: '#666',
-            borderColor: '#ddd',
-            borderWidth: 1,
-            callbacks: {
-              label: function(tooltipItem, data) {
-                var dataset = data.datasets[tooltipItem.datasetIndex];
-                var value = dataset.data[tooltipItem.index];
-                var label = data.labels[tooltipItem.index];
-                return label + ': ' + value + '%';
-              }
-            }
           }
         }
       });
@@ -526,21 +542,20 @@
         },
         options: {
           maintainAspectRatio: true,
-          legend: {
-            display: false
+          plugins: {
+            legend: {
+              display: false
+            }
           },
           scales: {
-            xAxes: [{
+            x: {
               display: false,
               categoryPercentage: 1,
               barPercentage: 0.65
-            }],
-            yAxes: [{
+            },
+            y: {
               display: false
-            }]
-          },
-          title: {
-            display: false,
+            }
           }
         }
       });
@@ -578,34 +593,38 @@
         options: {
           maintainAspectRatio: false,
           responsive: true,
-          cutoutPercentage: 80,
-          legend: {
-            display: true,
-            position: 'bottom',
-            labels: {
-              usePointStyle: true,
-              padding: 15,
-              fontSize: 12
+          cutout: '80%',
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+                font: {
+                  size: 12
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: '#fff',
+              titleColor: '#333',
+              bodyColor: '#666',
+              borderColor: '#ddd',
+              borderWidth: 1,
+              callbacks: {
+                label: function(tooltipItem) {
+                  var dataset = tooltipItem.dataset;
+                  var value = dataset.data[tooltipItem.dataIndex];
+                  var label = tooltipItem.chart.data.labels[tooltipItem.dataIndex];
+                  return label + ': ' + value + '%';
+                }
+              }
             }
           },
           animation: {
             animateScale: true,
             animateRotate: true
-          },
-          tooltips: {
-            backgroundColor: '#fff',
-            titleFontColor: '#333',
-            bodyFontColor: '#666',
-            borderColor: '#ddd',
-            borderWidth: 1,
-            callbacks: {
-              label: function(tooltipItem, data) {
-                var dataset = data.datasets[tooltipItem.datasetIndex];
-                var value = dataset.data[tooltipItem.index];
-                var label = data.labels[tooltipItem.index];
-                return label + ': ' + value + '%';
-              }
-            }
           }
         }
       });
@@ -644,46 +663,58 @@
         options: {
           maintainAspectRatio: false,
           responsive: true,
-          legend: {
-            display: true,
-            position: 'top',
-            labels: {
-              usePointStyle: true,
-              padding: 15,
-              fontSize: 12
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+                font: {
+                  size: 12
+                }
+              }
+            },
+            tooltip: {
+              backgroundColor: '#fff',
+              titleColor: '#333',
+              bodyColor: '#666',
+              borderColor: '#ddd',
+              borderWidth: 1,
+              titleFont: {
+                family: 'Poppins'
+              },
+              bodyFont: {
+                family: 'Poppins'
+              }
             }
           },
           scales: {
-            xAxes: [{
-              gridLines: {
+            x: {
+              grid: {
                 display: false
               },
               ticks: {
-                fontFamily: "Poppins",
-                fontSize: 12
+                font: {
+                  family: "Poppins",
+                  size: 12
+                }
               }
-            }],
-            yAxes: [{
-              gridLines: {
+            },
+            y: {
+              grid: {
                 borderDash: [3, 3],
                 color: '#e0e0e0'
               },
               ticks: {
                 beginAtZero: true,
                 maxTicksLimit: 6,
-                fontFamily: "Poppins",
-                fontSize: 12
+                font: {
+                  family: "Poppins",
+                  size: 12
+                }
               }
-            }]
-          },
-          tooltips: {
-            backgroundColor: '#fff',
-            titleFontColor: '#333',
-            bodyFontColor: '#666',
-            borderColor: '#ddd',
-            borderWidth: 1,
-            titleFontFamily: 'Poppins',
-            bodyFontFamily: 'Poppins'
+            }
           }
         }
       });
