@@ -14,20 +14,16 @@
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="vendor/fontawesome-6.7.2/css/all.min.css" rel="stylesheet" media="all">
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="vendor/bootstrap-5.3.7.min.css" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="css/aos.css" rel="stylesheet" media="all">
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="css/swiper-bundle.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
@@ -35,7 +31,7 @@
 
 </head>
 
-<body class="animsition">
+<body>
     <div class="page-wrapper">
         <!-- HEADER DESKTOP-->
         <header class="header-desktop3 d-none d-lg-block">
@@ -149,7 +145,7 @@
                                     </div>
                                     <div class="content">
                                         <p>You got a email notification</p>
-                                        <span class="date">April 12, 2018 06:50</span>
+                                        <span class="date">January 15, 2025 14:30</span>
                                     </div>
                                 </div>
                                 <div class="notifi__item">
@@ -158,7 +154,7 @@
                                     </div>
                                     <div class="content">
                                         <p>Your account has been blocked</p>
-                                        <span class="date">April 12, 2018 06:50</span>
+                                        <span class="date">January 15, 2025 14:30</span>
                                     </div>
                                 </div>
                                 <div class="notifi__item">
@@ -167,7 +163,7 @@
                                     </div>
                                     <div class="content">
                                         <p>You got a new file</p>
-                                        <span class="date">April 12, 2018 06:50</span>
+                                        <span class="date">January 15, 2025 14:30</span>
                                     </div>
                                 </div>
                                 <div class="notifi__footer">
@@ -390,7 +386,7 @@
                             </div>
                             <div class="content">
                                 <p>You got a email notification</p>
-                                <span class="date">April 12, 2018 06:50</span>
+                                <span class="date">January 15, 2025 14:30</span>
                             </div>
                         </div>
                         <div class="notifi__item">
@@ -399,7 +395,7 @@
                             </div>
                             <div class="content">
                                 <p>Your account has been blocked</p>
-                                <span class="date">April 12, 2018 06:50</span>
+                                <span class="date">January 15, 2025 14:30</span>
                             </div>
                         </div>
                         <div class="notifi__item">
@@ -408,7 +404,7 @@
                             </div>
                             <div class="content">
                                 <p>You got a new file</p>
-                                <span class="date">April 12, 2018 06:50</span>
+                                <span class="date">January 15, 2025 14:30</span>
                             </div>
                         </div>
                         <div class="notifi__footer">
@@ -685,21 +681,20 @@
                             <h3 class="title-5 m-b-35">data table</h3>
                             <div class="table-data__tool">
                                 <div class="table-data__tool-left">
-                                    <div class="rs-select2--light rs-select2--md">
-                                        <select class="js-select2" name="property">
-                                            <option selected="selected">All Properties</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
+                                    <div class="select-wrapper">
+                                        <select class="form-select form-select-lg" name="property">
+                                            <option selected="selected" value="all">All Properties</option>
+                                            <option value="sales">Sales Data</option>
+                                            <option value="analytics">User Analytics</option>
                                         </select>
-                                        <div class="dropDownSelect2"></div>
                                     </div>
-                                    <div class="rs-select2--light rs-select2--sm">
-                                        <select class="js-select2" name="time">
-                                            <option selected="selected">Today</option>
-                                            <option value="">3 Days</option>
-                                            <option value="">1 Week</option>
+                                    <div class="select-wrapper">
+                                        <select class="form-select form-select-lg" name="time">
+                                            <option selected="selected" value="today">Today</option>
+                                            <option value="3days">3 Days</option>
+                                            <option value="1week">1 Week</option>
+                                            <option value="1month">1 Month</option>
                                         </select>
-                                        <div class="dropDownSelect2"></div>
                                     </div>
                                     <button class="au-btn-filter">
                                         <i class="zmdi zmdi-filter-list"></i>filters</button>
@@ -707,13 +702,13 @@
                                 <div class="table-data__tool-right">
                                     <button class="au-btn au-btn-icon au-btn--green au-btn--small">
                                         <i class="zmdi zmdi-plus"></i>add item</button>
-                                    <div class="rs-select2--dark rs-select2--sm rs-select2--dark2">
-                                        <select class="js-select2" name="type">
-                                            <option selected="selected">Export</option>
-                                            <option value="">Option 1</option>
-                                            <option value="">Option 2</option>
+                                    <div class="select-wrapper">
+                                        <select class="form-select form-select-lg" name="type">
+                                            <option selected="selected" value="export">Export</option>
+                                            <option value="csv">Export as CSV</option>
+                                            <option value="pdf">Export as PDF</option>
+                                            <option value="xlsx">Export as Excel</option>
                                         </select>
-                                        <div class="dropDownSelect2"></div>
                                     </div>
                                 </div>
                             </div>
@@ -748,8 +743,8 @@
                                             <td>
                                                 <span class="block-email">lori@example.com</span>
                                             </td>
-                                            <td class="desc">Samsung S8 Black</td>
-                                            <td>2018-09-27 02:12</td>
+                                            <td class="desc">Samsung Galaxy S25 Ultra</td>
+                                            <td>2025-01-15 14:32</td>
                                             <td>
                                                 <span class="status--process">Processed</span>
                                             </td>
@@ -783,8 +778,8 @@
                                             <td>
                                                 <span class="block-email">john@example.com</span>
                                             </td>
-                                            <td class="desc">iPhone X 64Gb Grey</td>
-                                            <td>2018-09-29 05:57</td>
+                                            <td class="desc">iPhone 17 128GB Titanium</td>
+                                            <td>2025-01-15 14:32</td>
                                             <td>
                                                 <span class="status--process">Processed</span>
                                             </td>
@@ -818,8 +813,8 @@
                                             <td>
                                                 <span class="block-email">lyn@example.com</span>
                                             </td>
-                                            <td class="desc">iPhone X 256Gb Black</td>
-                                            <td>2018-09-25 19:03</td>
+                                            <td class="desc">iPhone 17 Pro Max 1TB Space Black</td>
+                                            <td>2025-01-15 14:32</td>
                                             <td>
                                                 <span class="status--denied">Denied</span>
                                             </td>
@@ -854,7 +849,7 @@
                                                 <span class="block-email">doe@example.com</span>
                                             </td>
                                             <td class="desc">Camera C430W 4k</td>
-                                            <td>2018-09-24 19:10</td>
+                                            <td>2025-01-15 14:32</td>
                                             <td>
                                                 <span class="status--process">Processed</span>
                                             </td>
@@ -891,7 +886,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                <p>Copyright © 2025 Colorlib. All rights reserved. Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -903,28 +898,19 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery-3.2.1.min.js"></script>
+    <script src="js/vanilla-utils.js"></script>
     <!-- Bootstrap JS-->
-    <script src="vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="vendor/bootstrap-5.3.7.bundle.min.js"></script>
     <!-- Vendor JS       -->
-    <script src="vendor/slick/slick.min.js">
-    </script>
-    <script src="vendor/wow/wow.min.js"></script>
-    <script src="vendor/animsition/animsition.min.js"></script>
-    <script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
-    </script>
-    <script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendor/counter-up/jquery.counterup.min.js">
-    </script>
-    <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
 
     <!-- Main JS-->
-    <script src="js/main.js"></script>
+    <script src="js/bootstrap5-init.js"></script>
+    <script src="js/main-vanilla.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/modern-plugins.js"></script>
 
 </body>
 

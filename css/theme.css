@@ -81,8 +81,37 @@ p {
     margin: 0;
 }
 
-.table-responsive {
-    padding-right: 1px;
+/* Simple scrollbar enhancement for table-responsive and general scrollbars */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+/* Thin scrollbars for all content */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
 .card {
@@ -1646,6 +1675,44 @@ section {
 
 .navbar-sidebar .navbar__list li.active > a {
     color: #4272d7;
+}
+
+/* Ensure no bullet points in sidebar navigation */
+.navbar-sidebar .navbar__list,
+.navbar-sidebar .navbar__list .navbar__sub-list {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+.navbar-sidebar .navbar__list li {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+/* Chevron arrows for submenu indicators */
+.navbar-sidebar .navbar__list li.has-sub {
+    position: relative;
+}
+
+.navbar-sidebar .navbar__list li.has-sub > a {
+    position: relative;
+}
+
+.navbar-sidebar .navbar__list li.has-sub > a::after {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+    transition: transform 0.3s ease;
+}
+
+.navbar-sidebar .navbar__list li.has-sub.open > a::after {
+    transform: translateY(-50%) rotate(90deg);
 }
 
 .has-sub {
@@ -3302,9 +3369,11 @@ section {
 }
 
 .au-card--bg-blue {
-    background-image: -moz-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
-    background-image: -webkit-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
-    background-image: -ms-linear-gradient(90deg, #396afc 0%, #2948ff 100%);
+    background-image: -moz-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: -webkit-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: -ms-linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-image: linear-gradient(90deg, #396afc 0%, #2948ff 100%) !important;
+    background-color: #396afc !important;
 }
 
 .au-card-top-countries {
@@ -4280,10 +4349,29 @@ section {
 .table-top-countries tbody td {
     white-space: nowrap;
     font-size: 14px;
-    color: #fff;
+    color: #fff !important;
     padding: 14px 5px;
-    border-top: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    border-top: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Additional specificity for Bootstrap 5 override */
+.au-card--bg-blue .table-top-countries tbody td {
+    color: #fff !important;
+    background-color: transparent !important;
+}
+
+.au-card--bg-blue .table-top-countries tbody tr {
+    background-color: transparent !important;
+}
+
+/* Remove link underlines globally for cleaner design */
+a {
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
 }
 
 .table-top-countries tbody tr:last-child td {
