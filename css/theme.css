@@ -81,8 +81,18 @@ p {
     margin: 0;
 }
 
-.table-responsive {
-    padding-right: 1px;
+/* Simple scrollbar enhancement for table-responsive */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0,0,0,0.3);
 }
 
 .card {
@@ -1646,6 +1656,44 @@ section {
 
 .navbar-sidebar .navbar__list li.active > a {
     color: #4272d7;
+}
+
+/* Ensure no bullet points in sidebar navigation */
+.navbar-sidebar .navbar__list,
+.navbar-sidebar .navbar__list .navbar__sub-list {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+.navbar-sidebar .navbar__list li {
+    list-style: none !important;
+    list-style-type: none !important;
+}
+
+/* Chevron arrows for submenu indicators */
+.navbar-sidebar .navbar__list li.has-sub {
+    position: relative;
+}
+
+.navbar-sidebar .navbar__list li.has-sub > a {
+    position: relative;
+}
+
+.navbar-sidebar .navbar__list li.has-sub > a::after {
+    content: '\f054';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+    transition: transform 0.3s ease;
+}
+
+.navbar-sidebar .navbar__list li.has-sub.open > a::after {
+    transform: translateY(-50%) rotate(90deg);
 }
 
 .has-sub {

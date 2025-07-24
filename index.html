@@ -33,122 +33,100 @@
 
 <body>
     <div class="page-wrapper">
-        <!-- HEADER MOBILE-->
-        <header class="header-mobile d-block d-lg-none">
-            <div class="header-mobile__bar">
-                <div class="container-fluid">
-                    <div class="header-mobile-inner">
-                        <a class="logo" href="index.html">
-                            <img src="images/icon/logo.png" alt="CoolAdmin" />
-                        </a>
-                        <button class="hamburger hamburger--slider" type="button">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <nav class="navbar-mobile">
-                <div class="container-fluid">
-                    <ul class="navbar-mobile__list list-unstyled">
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
+        <!-- MODERN BOOTSTRAP 5 NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary d-lg-none fixed-top shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="images/icon/logo.png" alt="CoolAdmin" height="32" class="me-2">
+                    <span class="fw-bold">CoolAdmin</span>
+                </a>
+                
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.html"><i class="fas fa-home me-2"></i>Dashboard 1</a></li>
+                                <li><a class="dropdown-item" href="index2.html"><i class="fas fa-chart-line me-2"></i>Dashboard 2</a></li>
+                                <li><a class="dropdown-item" href="index3.html"><i class="fas fa-analytics me-2"></i>Dashboard 3</a></li>
+                                <li><a class="dropdown-item" href="index4.html"><i class="fas fa-chart-pie me-2"></i>Dashboard 4</a></li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="chart.html">
+                                <i class="fas fa-chart-bar me-2"></i>Charts
+                            </a>
                         </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="table.html">
+                                <i class="fas fa-table me-2"></i>Tables
+                            </a>
                         </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="form.html">
+                                <i class="far fa-check-square me-2"></i>Forms
+                            </a>
                         </li>
-                        <li>
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="calendar.html">
+                                <i class="fas fa-calendar-alt me-2"></i>Calendar
+                            </a>
                         </li>
-                        <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                        <li class="nav-item">
+                            <a class="nav-link d-flex align-items-center" href="map.html">
+                                <i class="fas fa-map-marker-alt me-2"></i>Maps
+                            </a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-copy me-2"></i>Pages
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
+                                <li><a class="dropdown-item" href="register.html"><i class="fas fa-user-plus me-2"></i>Register</a></li>
+                                <li><a class="dropdown-item" href="forget-pass.html"><i class="fas fa-key me-2"></i>Forget Password</a></li>
                             </ul>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
-                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-desktop me-2"></i>UI Elements
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="button.html"><i class="fas fa-mouse-pointer me-2"></i>Buttons</a></li>
+                                <li><a class="dropdown-item" href="badge.html"><i class="fas fa-tag me-2"></i>Badges</a></li>
+                                <li><a class="dropdown-item" href="tab.html"><i class="fas fa-folder me-2"></i>Tabs</a></li>
+                                <li><a class="dropdown-item" href="card.html"><i class="fas fa-id-card me-2"></i>Cards</a></li>
+                                <li><a class="dropdown-item" href="alert.html"><i class="fas fa-exclamation-triangle me-2"></i>Alerts</a></li>
+                                <li><a class="dropdown-item" href="progress-bar.html"><i class="fas fa-tasks me-2"></i>Progress Bars</a></li>
+                                <li><a class="dropdown-item" href="modal.html"><i class="fas fa-window-restore me-2"></i>Modals</a></li>
+                                <li><a class="dropdown-item" href="switch.html"><i class="fas fa-toggle-on me-2"></i>Switches</a></li>
+                                <li><a class="dropdown-item" href="grid.html"><i class="fas fa-th me-2"></i>Grids</a></li>
+                                <li><a class="dropdown-item" href="fontawesome.html"><i class="fas fa-icons me-2"></i>Font Awesome</a></li>
+                                <li><a class="dropdown-item" href="typo.html"><i class="fas fa-font me-2"></i>Typography</a></li>
                             </ul>
                         </li>
                     </ul>
+                    
+                    <!-- Mobile Search -->
+                    <form class="d-flex mt-3 mt-lg-0" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
-            </nav>
-        </header>
-        <!-- END HEADER MOBILE-->
+            </div>
+        </nav>
+        <!-- END MODERN NAVBAR -->
+        
+        <!-- Spacer for fixed navbar on mobile -->
+        <div class="d-lg-none" style="height: 76px;"></div>
 
         <!-- MENU SIDEBAR-->
         <aside class="menu-sidebar d-none d-lg-block">
@@ -260,179 +238,144 @@
 
         <!-- PAGE CONTAINER-->
         <div class="page-container">
-            <!-- HEADER DESKTOP-->
-            <header class="header-desktop">
-                <div class="section__content section__content--p30">
-                    <div class="container-fluid">
-                        <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
-                            </form>
-                            <div class="header-button">
-                                <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Michelle Moreno</h6>
-                                                    <p>Have sent a photo</p>
-                                                    <span class="time">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
-                                                <div class="content">
-                                                    <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
-                                                    <span class="time">Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
-                                        <span class="quantity">1</span>
-                                        <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, 3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, January 15, 2025</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
-                                        <span class="quantity">3</span>
-                                        <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
-                                                <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
-                                                </div>
-                                            </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
-                                        </div>
-                                    </div>
+            <!-- MODERN BOOTSTRAP 5 DESKTOP HEADER-->
+            <header class="header-desktop bg-white shadow-sm border-bottom d-none d-lg-block">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between py-3">
+                        <!-- Search Bar -->
+                        <div class="flex-grow-1 me-4" style="max-width: 500px;">
+                            <form class="d-flex" role="search">
+                                <div class="input-group">
+                                    <input class="form-control border-0 bg-light" type="search" placeholder="Search for data & reports..." aria-label="Search">
+                                    <button class="btn btn-outline-secondary border-0 bg-light" type="submit">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </button>
                                 </div>
-                                <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
-                                                </div>
-                                                <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
-                                                    <span class="email">johndoe@example.com</span>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
-                                            </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                            </form>
+                        </div>
+
+                        <!-- Notification & User Actions -->
+                        <div class="d-flex align-items-center gap-3">
+                            <!-- Messages Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none position-relative p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-comment-alt fs-5 text-muted"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">2</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 320px;">
+                                    <div class="dropdown-header bg-light">
+                                        <strong>Messages (2)</strong>
+                                    </div>
+                                    <div class="dropdown-item-text p-3 border-bottom">
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/icon/avatar-06.jpg" class="rounded-circle me-3" width="40" height="40" alt="Michelle">
+                                            <div class="flex-grow-1">
+                                                <div class="fw-semibold">Michelle Moreno</div>
+                                                <div class="text-muted small">Have sent a photo</div>
+                                                <div class="text-muted small">3 min ago</div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="dropdown-item-text p-3">
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/icon/avatar-04.jpg" class="rounded-circle me-3" width="40" height="40" alt="Diane">
+                                            <div class="flex-grow-1">
+                                                <div class="fw-semibold">Diane Myers</div>
+                                                <div class="text-muted small">You are now connected</div>
+                                                <div class="text-muted small">Yesterday</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-center text-primary" href="#">View all messages</a>
                                 </div>
                             </div>
+
+                            <!-- Email Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none position-relative p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-envelope fs-5 text-muted"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success" style="font-size: 0.6rem;">3</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 320px;">
+                                    <div class="dropdown-header bg-light">
+                                        <strong>Emails (3)</strong>
+                                    </div>
+                                    <div class="dropdown-item-text p-3 border-bottom">
+                                        <div class="d-flex align-items-center">
+                                            <img src="images/icon/avatar-06.jpg" class="rounded-circle me-3" width="40" height="40" alt="Cynthia">
+                                            <div class="flex-grow-1">
+                                                <div class="text-muted small">Meeting about new dashboard...</div>
+                                                <div class="text-muted small">Cynthia Harvey, 3 min ago</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-center text-primary" href="#">See all emails</a>
+                                </div>
+                            </div>
+
+                            <!-- Notifications Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none position-relative p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-bell fs-5 text-muted"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning" style="font-size: 0.6rem;">3</span>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 320px;">
+                                    <div class="dropdown-header bg-light">
+                                        <strong>Notifications (3)</strong>
+                                    </div>
+                                    <div class="dropdown-item-text p-3 border-bottom">
+                                        <div class="d-flex align-items-center">
+                                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                                <i class="fas fa-envelope-open text-white"></i>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <div class="text-muted small">You got an email notification</div>
+                                                <div class="text-muted small">January 15, 2025 14:30</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item text-center text-primary" href="#">All notifications</a>
+                                </div>
+                            </div>
+
+                            <!-- User Profile Dropdown -->
+                            <div class="dropdown">
+                                <button class="btn btn-link text-decoration-none d-flex align-items-center p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="images/icon/avatar-01.jpg" class="rounded-circle me-2" width="32" height="32" alt="John Doe">
+                                    <span class="text-dark d-none d-xl-inline">John Doe</span>
+                                    <i class="fas fa-chevron-down ms-2 text-muted"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 250px;">
+                                    <div class="dropdown-header bg-light text-center">
+                                        <img src="images/icon/avatar-01.jpg" class="rounded-circle mb-2" width="60" height="60" alt="John Doe">
+                                        <div class="fw-semibold">John Doe</div>
+                                        <div class="text-muted small">johndoe@example.com</div>
+                                    </div>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <i class="fas fa-user me-3 text-muted"></i>Profile
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <i class="fas fa-cog me-3 text-muted"></i>Settings
+                                    </a>
+                                    <a class="dropdown-item d-flex align-items-center" href="#">
+                                        <i class="fas fa-credit-card me-3 text-muted"></i>Billing
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item d-flex align-items-center text-danger" href="#">
+                                        <i class="fas fa-sign-out-alt me-3"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
             </header>
-            <!-- HEADER DESKTOP-->
+            <!-- END MODERN BOOTSTRAP 5 DESKTOP HEADER-->
 
             <!-- MAIN CONTENT-->
             <div class="main-content">

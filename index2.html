@@ -919,11 +919,14 @@
     <script src="js/aos.js"></script>
     <script src="js/modern-plugins.js"></script>
 
-    <!-- Initialize Leaflet Map -->
+    <!-- Initialize Leaflet Map for index2.html only -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        // Only initialize if this is index2.html and the vmap container exists
         const mapContainer = document.getElementById('vmap');
-        if (mapContainer && typeof L !== 'undefined') {
+        const isIndex2 = window.location.pathname.includes('index2.html') || document.title.includes('Dashboard 2');
+        
+        if (mapContainer && typeof L !== 'undefined' && isIndex2 && !mapContainer._leaflet_id) {
             try {
                 // Initialize the map
                 const map = L.map('vmap', {

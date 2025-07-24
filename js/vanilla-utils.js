@@ -159,6 +159,29 @@ const findAll = (element, selector) => {
     return element.querySelectorAll(selector);
 };
 
+// Make functions globally available
+window.$ = $;
+window.$$ = $$;
+window.addClass = addClass;
+window.removeClass = removeClass;
+window.toggleClass = toggleClass;
+window.hasClass = hasClass;
+window.on = on;
+window.off = off;
+window.slideUp = slideUp;
+window.slideDown = slideDown;
+window.slideToggle = slideToggle;
+window.fadeIn = fadeIn;
+window.fadeOut = fadeOut;
+window.fadeToggle = fadeToggle;
+window.ready = ready;
+window.hide = hide;
+window.show = show;
+window.siblings = siblings;
+window.closest = closest;
+window.find = find;
+window.findAll = findAll;
+
 // Export for module usage if needed
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {

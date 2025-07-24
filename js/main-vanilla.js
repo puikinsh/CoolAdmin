@@ -789,6 +789,35 @@ ready(() => {
   } catch (error) {
     console.log(error);
   }
+  
+  // Enhanced table scrolling visibility
+  const tableResponsive = $$('.table-responsive');
+  tableResponsive.forEach(container => {
+    // Check if table is wider than container
+    const checkScroll = () => {
+      const table = find(container, 'table');
+      if (table && table.scrollWidth > container.clientWidth) {
+        addClass(container, 'has-scroll');
+      } else {
+        removeClass(container, 'has-scroll');
+      }
+    };
+    
+    // Add scroll event listener to update shadow
+    on(container, 'scroll', function() {
+      if (this.scrollLeft > 0) {
+        addClass(this, 'scrolled');
+      } else {
+        removeClass(this, 'scrolled');
+      }
+    });
+    
+    // Initial check
+    checkScroll();
+    
+    // Recheck on window resize
+    on(window, 'resize', checkScroll);
+  });
 });
 
 // Select2 - Vanilla JS Version (would need replacement)
@@ -943,100 +972,5 @@ on(window, 'resize', function() {
   }, 250);
 });
 
-// Initialize Leaflet World Map for index2.html
-(() => {
-  "use strict";
-  
-  const mapContainer = document.getElementById('vmap');
-  if (mapContainer) {
-    try {
-      // Initialize the map
-      const map = L.map('vmap', {
-        center: [20, 0], // Center of the world
-        zoom: 2,
-        zoomControl: true,
-        scrollWheelZoom: false,
-        doubleClickZoom: true,
-        attributionControl: false
-      });
-
-      // Add tile layer (OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '',
-        maxZoom: 10,
-        minZoom: 1
-      }).addTo(map);
-
-      // Sample data points for major cities/regions
-      const worldData = [
-        { name: 'United States', lat: 39.8283, lng: -98.5795, value: 45000, color: '#00b5e9' },
-        { name: 'United Kingdom', lat: 55.3781, lng: -3.4360, value: 32000, color: '#4caf50' },
-        { name: 'Germany', lat: 51.1657, lng: 10.4515, value: 28000, color: '#ff9800' },
-        { name: 'Japan', lat: 36.2048, lng: 138.2529, value: 35000, color: '#e91e63' },
-        { name: 'Australia', lat: -25.2744, lng: 133.7751, value: 22000, color: '#9c27b0' },
-        { name: 'Brazil', lat: -14.2350, lng: -51.9253, value: 18000, color: '#f44336' },
-        { name: 'India', lat: 20.5937, lng: 78.9629, value: 25000, color: '#3f51b5' },
-        { name: 'China', lat: 35.8617, lng: 104.1954, value: 40000, color: '#00bcd4' }
-      ];
-
-      // Add markers for each data point
-      worldData.forEach(point => {
-        const marker = L.circleMarker([point.lat, point.lng], {
-          radius: Math.sqrt(point.value / 1000) + 5, // Size based on value
-          fillColor: point.color,
-          color: '#fff',
-          weight: 2,
-          opacity: 1,
-          fillOpacity: 0.7
-        }).addTo(map);
-
-        // Add popup with country info
-        marker.bindPopup(`
-          <div style="text-align: center; padding: 5px;">
-            <strong>${point.name}</strong><br>
-            <span style="color: ${point.color}; font-weight: bold;">$${point.value.toLocaleString()}</span>
-          </div>
-        `);
-
-        // Hover effects
-        marker.on('mouseover', function() {
-          this.setStyle({
-            fillOpacity: 0.9,
-            weight: 3
-          });
-        });
-
-        marker.on('mouseout', function() {
-          this.setStyle({
-            fillOpacity: 0.7,
-            weight: 2
-          });
-        });
-      });
-
-      // Add custom controls
-      const info = L.control({position: 'topright'});
-      info.onAdd = function() {
-        const div = L.DomUtil.create('div', 'info');
-        div.innerHTML = '<div style="background: rgba(255,255,255,0.9); padding: 8px; border-radius: 4px; font-size: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">Global Revenue Distribution</div>';
-        return div;
-      };
-      info.addTo(map);
-
-      console.log('Leaflet world map initialized successfully');
-    } catch (error) {
-      console.error('Error initializing world map:', error);
-      // Fallback content
-      document.getElementById('vmap').innerHTML = `
-        <div style="height: 100%; display: flex; align-items: center; justify-content: center; background: #f8f9fa; color: #666; border-radius: 8px;">
-          <div style="text-align: center;">
-            <i class="fas fa-globe-americas" style="font-size: 32px; margin-bottom: 10px;"></i>
-            <div>Map loading failed</div>
-          </div>
-        </div>
-      `;
-    }
-  }
-})();
 
 console.log('CoolAdmin Vanilla JS initialized successfully');
