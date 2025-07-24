@@ -11,21 +11,20 @@
     //WidgetChart 1
     var ctx = document.getElementById("widgetChart1");
     if (ctx) {
-      ctx.height = 130;
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          type: 'line',
           datasets: [{
             data: [78, 81, 80, 45, 34, 12, 40],
             label: 'Dataset',
             backgroundColor: 'rgba(255,255,255,.1)',
             borderColor: 'rgba(255,255,255,.55)',
-          },]
+          }]
         },
         options: {
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
+          aspectRatio: 2,
           plugins: {
             legend: {
               display: false
@@ -81,7 +80,6 @@
         type: 'line',
         data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-          type: 'line',
           datasets: [{
             data: [1, 18, 9, 17, 34, 22],
             label: 'Dataset',
@@ -154,7 +152,6 @@
         type: 'line',
         data: {
           labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-          type: 'line',
           datasets: [{
             data: [65, 59, 84, 84, 51, 55],
             label: 'Dataset',
