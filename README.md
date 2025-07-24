@@ -470,7 +470,7 @@ This project is licensed under the **MIT License** - see the [LICENSE.md](LICENS
 
 - 🌐 **Website**: [colorlib.com](https://colorlib.com)
 - 🛒 **Marketplace**: [DashboardPack.com](https://dashboardpack.com)
-- 🐦 **Twitter**: [@colorlibcom](https://twitter.com/colorlib)
+- 🐦 **Twitter**: [@colorlib](https://twitter.com/colorlib)
 
 ---
 
