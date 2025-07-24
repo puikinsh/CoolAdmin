@@ -469,10 +469,8 @@ This project is licensed under the **MIT License** - see the [LICENSE.md](LICENS
 ## 📞 **Get in Touch**
 
 - 🌐 **Website**: [colorlib.com](https://colorlib.com)
-- 🛒 **Marketplace**: [dashboardpack.com](https://dashboardpack.com)
-- 💬 **Support**: [colorlib.com/support](https://colorlib.com/support)
-- 📧 **Email**: support@colorlib.com
-- 🐦 **Twitter**: [@colorlibcom](https://twitter.com/colorlibcom)
+- 🛒 **Marketplace**: [DashboardPack.com](https://dashboardpack.com)
+- 🐦 **Twitter**: [@colorlibcom](https://twitter.com/colorlib)
 
 ---
 
