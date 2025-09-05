@@ -143,7 +143,7 @@ CoolAdmin/
 │   ├── switch.html              # Toggle switches and checkboxes
 │   ├── grid.html                # Grid system demonstration
 │   ├── typo.html                # Typography showcase
-│   ├── fontawesome.html         # 🔄 FontAwesome 6.7.2 icons
+│   ├── fontawesome.html         # 🔄 FontAwesome 7.0.1 icons
 │   ├── map.html                 # Interactive maps
 │   ├── inbox.html               # Email interface layout
 │   ├── login.html               # Authentication pages
@@ -206,7 +206,7 @@ Navigate to `http://localhost:8000` and start exploring!
 ### **Utilities & Examples**
 - **grid.html** - Bootstrap 5 grid system demonstration
 - **typo.html** - Typography hierarchy and styles
-- **fontawesome.html** - FontAwesome 6.7.2 icon showcase
+- **fontawesome.html** - FontAwesome 7.0.1 icon showcase
 - **progress-bar.html** - Progress indicators and animations
 
 ## 🎨 **Customization Guide**
@@ -478,7 +478,7 @@ This project is licensed under the **MIT License** - see the [LICENSE.md](LICENS
 
 **Made with ❤️ by [Colorlib](https://colorlib.com)**
 
-**Updated for 2025 with Bootstrap 5.3.7 + Vanilla JavaScript**
+**Updated for 2025 with Bootstrap 5.3.8 + FontAwesome 7.0.1 + Vanilla JavaScript**
 
 [⬆ Back to Top](#cooladmin---modern-bootstrap-5-admin-dashboard-template)
 
