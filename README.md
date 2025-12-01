@@ -2,21 +2,22 @@
 
 ![CoolAdmin Dashboard](screenshots/cooladmin-bootstrap-dashboard-2.png)
 
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.7-7952b3?style=flat-square&logo=bootstrap)](https://getbootstrap.com/)
-[![Chart.js](https://img.shields.io/badge/Chart.js-4.5.0-ff6384?style=flat-square&logo=chart.js)](https://www.chartjs.org/)
-[![FontAwesome](https://img.shields.io/badge/FontAwesome-6.7.2-339af0?style=flat-square&logo=fontawesome)](https://fontawesome.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952b3?style=flat-square&logo=bootstrap)](https://getbootstrap.com/)
+[![Chart.js](https://img.shields.io/badge/Chart.js-4.5.1-ff6384?style=flat-square&logo=chart.js)](https://www.chartjs.org/)
+[![FontAwesome](https://img.shields.io/badge/FontAwesome-7.1.0-339af0?style=flat-square&logo=fontawesome)](https://fontawesome.com/)
+[![Swiper](https://img.shields.io/badge/Swiper-12.0.3-6332f6?style=flat-square&logo=swiper)](https://swiperjs.com/)
 [![Vanilla JS](https://img.shields.io/badge/JavaScript-Vanilla-f7df1e?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
 
 **CoolAdmin** is a modern, responsive, and feature-rich admin dashboard template built with **Bootstrap 5.3.8** and **vanilla JavaScript**. Completely rewritten in 2025 for optimal performance, modern web standards, and future-proofing.
 
-## What's New in v2.1.0 (September 2025)
+## What's New in v2.2.0 (December 2025)
 
 ### Latest Dependencies & Performance Improvements
 - **Bootstrap 5.3.8** - Latest stable framework with bug fixes and improvements
-- **FontAwesome 7.0.1** - Major upgrade with new icons and modern syntax
-- **Chart.js 4.5.0 UMD** - Fixed module compatibility issues
-- **Swiper.js 11.2.10** - Latest modern carousel with hardware acceleration
+- **Font Awesome 7.1.0** - Latest FA7 release with 4,500+ new icons
+- **Chart.js 4.5.1** - Latest patch with performance improvements
+- **Swiper.js 12.0.3** - Major upgrade with CSS-only theming and lighter bundle
 - **Perfect Scrollbar 1.5.6** - Enhanced scrollbar with passive touch events
 - **Complete Icon Migration** - All icons updated to FA7 syntax for perfect display
 
@@ -38,14 +39,14 @@
 ## Key Features
 
 ### Modern Architecture
-- **Bootstrap 5.3.7** with the latest utilities and components
+- **Bootstrap 5.3.8** with the latest utilities and components
 - **Vanilla JavaScript** - No jQuery dependency for better performance
 - **ES6+ Code** - Modern JavaScript patterns and best practices
 - **Modular Design** - Easy to customize and extend
 - **SEO Optimized** - Clean markup and semantic HTML5
 
 ### Advanced Data Visualization
-- **Chart.js 4.5.0** - Latest version with enhanced performance
+- **Chart.js 4.5.1** - Latest version with enhanced performance
 - **6 Pre-built Chart Types** - Line, Bar, Doughnut, Area, and more
 - **Responsive Charts** - Perfect display on all screen sizes
 - **Real-time Updates** - Dynamic data visualization capabilities
@@ -70,9 +71,10 @@
 ### **Core Technologies**
 ```json
 {
-  "bootstrap": "5.3.7",
-  "chart.js": "4.5.0",
-  "fontawesome": "6.7.2",
+  "bootstrap": "5.3.8",
+  "chart.js": "4.5.1",
+  "fontawesome": "7.1.0",
+  "swiper": "12.0.3",
   "javascript": "ES6+ Vanilla",
   "css": "CSS3 + Custom Properties",
   "html": "HTML5 Semantic Markup"
@@ -112,10 +114,10 @@ CoolAdmin/
 │   ├── swiper-bundle.min.js      # Touch slider functionality
 │   └── aos.js                    # Scroll animations
 ├── 📁 vendor/
-│   ├── bootstrap-5.3.7.min.css  # 🆕 Latest Bootstrap framework
-│   ├── bootstrap-5.3.7.bundle.min.js
-│   ├── fontawesome-6.7.2/       # 🆕 Latest FontAwesome icons
-│   ├── chartjs/Chart.bundle.min.js # 🔄 Updated to v4.5.0
+│   ├── bootstrap-5.3.8.min.css  # Latest Bootstrap framework
+│   ├── bootstrap-5.3.8.bundle.min.js
+│   ├── fontawesome-7.1.0/       # Latest Font Awesome icons
+│   ├── chartjs/chart.umd.js-4.5.1.min.js # Chart.js v4.5.1 UMD bundle
 │   ├── perfect-scrollbar/        # Custom scrollbar functionality
 │   ├── css-hamburgers/           # Animated hamburger menu icons
 │   └── mdi-font/                 # Material Design Icons

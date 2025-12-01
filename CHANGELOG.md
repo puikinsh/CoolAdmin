@@ -5,6 +5,48 @@ All notable changes to the CoolAdmin Bootstrap 5 Admin Dashboard Template will b
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2025-12-01
+
+### Minor Release - December 2025 Dependency Updates
+
+This release brings all dependencies to their latest December 2025 versions, including a major Swiper.js upgrade to v12 with CSS-only theming.
+
+### Added
+
+#### **Dependency Upgrades**
+
+- **Font Awesome 7.1.0** - Latest FA7 release with 4,500+ new icons and improved architecture
+- **Chart.js 4.5.1** - Latest patch with performance improvements and bug fixes
+- **Swiper.js 12.0.3** - Major upgrade with CSS-only theming, lighter bundle, and no preprocessor dependencies
+
+### Changed
+
+#### **Framework Updates**
+
+- **Font Awesome 7.0.1 to 7.1.0** - Latest FA7 patch with icon improvements
+- **Chart.js 4.5.0 to 4.5.1** - Latest stable with Chrome zoom fixes
+- **Swiper.js 11.2.10 to 12.0.3** - Major version upgrade with modern CSS architecture
+
+#### **Swiper.js v12 Migration**
+
+- Switched from LESS/SCSS to pure CSS custom properties for theming
+- Navigation icons reworked to eliminate font-icon issues and CSP false positives
+- Virtual Slides improvements for `slidesPerView: 'auto'` scenarios
+
+### Technical Details
+
+#### **Dependency Versions**
+
+| Dependency | Previous | Current | Status |
+|------------|----------|---------|--------|
+| Bootstrap | 5.3.8 | **5.3.8** | Current |
+| Font Awesome | 7.0.1 | **7.1.0** | Updated |
+| Chart.js | 4.5.0 | **4.5.1** | Updated |
+| Swiper.js | 11.2.10 | **12.0.3** | Major Upgrade |
+| Perfect Scrollbar | 1.5.6 | **1.5.6** | Current |
+
+---
+
 ## [2.1.0] - 2025-09-05
 
 ### Minor Release - Latest Dependencies & Performance Boost
