@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="generator" content="CoolAdmin 3.0.0">
-    <meta name="description" content="Marketing analytics dashboard with traffic trend, source breakdown, and top pages.">
-    <title>Marketing analytics | CoolAdmin Bootstrap 5 Admin Dashboard</title>
+    <meta name="description" content="Activity log with date grouping and category filters.">
+    <title>Notifications | CoolAdmin Bootstrap 5 Admin Dashboard</title>
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Marketing analytics | CoolAdmin Bootstrap 5 Admin Dashboard">
-    <meta property="og:description" content="Marketing analytics dashboard with traffic trend, source breakdown, and top pages.">
+    <meta property="og:title" content="Notifications | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta property="og:description" content="Activity log with date grouping and category filters.">
     <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Marketing analytics | CoolAdmin Bootstrap 5 Admin Dashboard">
-    <meta name="twitter:description" content="Marketing analytics dashboard with traffic trend, source breakdown, and top pages.">
+    <meta name="twitter:title" content="Notifications | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta name="twitter:description" content="Activity log with date grouping and category filters.">
     <meta name="theme-color" content="#4272d7">
 
     <link href="css/font-face.css" rel="stylesheet" media="all">
@@ -21,13 +21,9 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <link href="vendor/fontawesome-7.2.0/css/all.min.css" rel="stylesheet" media="all">
 
-    <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all">
-
-    <!-- Vendor CSS-->
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
 
-    <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
     <link href="css/theme-2026.css" rel="stylesheet" media="all">
 </head>
@@ -50,13 +46,13 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow open" href="#">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
                                 <i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: block;">
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li><a href="index.html">Dashboard 1</a></li>
                                 <li><a href="index2.html">Dashboard 2</a></li>
-                                <li class="active"><a href="index3.html">Dashboard 3</a></li>
+                                <li><a href="index3.html">Dashboard 3</a></li>
                                 <li><a href="index4.html">Dashboard 4</a></li>
                             </ul>
                         </li>
@@ -91,7 +87,7 @@
                         <li>
                             <a href="kanban.html"><i class="fa-solid fa-columns"></i>Kanban</a>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="notifications.html"><i class="fa-regular fa-bell"></i>Notifications</a>
                         </li>
                         <li>
@@ -148,7 +144,7 @@
                     <div class="container-fluid">
                         <div class="header-wrap">
                             <button class="sidebar-toggle js-sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-sidebar">
-                                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                                <span class="sidebar-toggle__bars" aria-hidden="true"></span>
                             </button>
                             <form class="form-header" role="search" onsubmit="return false">
                                 <i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
@@ -264,226 +260,201 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
 
-                        <!-- Page header -->
                         <div class="page-header">
                             <div>
-                                <h1>Marketing analytics</h1>
-                                <p class="subtitle">Traffic, conversions, and the channels driving them.</p>
+                                <h1>Notifications</h1>
+                                <p class="subtitle">Mentions, system updates, and recent account activity.</p>
                             </div>
                             <div class="page-header__actions">
-                                <button type="button" class="date-chip" aria-label="Date range: last 28 days">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    Last 28 days
-                                    <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                                </button>
-                                <button type="button" class="m-btn m-btn--ghost" id="dash-refresh-btn" aria-label="Refresh dashboard data">
-                                    <i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i>
-                                    Refresh
-                                </button>
-                                <button type="button" class="m-btn m-btn--ghost">
-                                    <i class="fa-solid fa-download" aria-hidden="true"></i>
-                                    Export
-                                </button>
+                                <button type="button" class="m-btn m-btn--ghost" onclick="window.toast && window.toast.success('All notifications marked as read')"><i class="fa-solid fa-check-double"></i> Mark all read</button>
+                                <a href="profile.html#tab-notifications" class="m-btn m-btn--primary"><i class="fa-solid fa-gear"></i> Preferences</a>
                             </div>
                         </div>
 
-                        <!-- KPI strip -->
-                        <div class="row row-tight">
-                            <div class="col-sm-6 col-lg-3">
-                                <article class="stat-card">
-                                    <div class="stat-card__head">
-                                        <p class="stat-card__label">Visitors</p>
-                                        <span class="stat-card__icon stat-card__icon--c1"><i class="fa-solid fa-users" aria-hidden="true"></i></span>
-                                    </div>
-                                    <p class="stat-card__value">84,290</p>
-                                    <p class="stat-card__delta stat-card__delta--up">
-                                        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>18.2% <span class="stat-card__delta-period">vs prev 28d</span>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <article class="stat-card">
-                                    <div class="stat-card__head">
-                                        <p class="stat-card__label">Sessions</p>
-                                        <span class="stat-card__icon stat-card__icon--c2"><i class="fa-solid fa-eye" aria-hidden="true"></i></span>
-                                    </div>
-                                    <p class="stat-card__value">142,180</p>
-                                    <p class="stat-card__delta stat-card__delta--up">
-                                        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>22.4% <span class="stat-card__delta-period">vs prev 28d</span>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <article class="stat-card">
-                                    <div class="stat-card__head">
-                                        <p class="stat-card__label">Bounce rate</p>
-                                        <span class="stat-card__icon stat-card__icon--c3"><i class="fa-solid fa-arrow-trend-down" aria-hidden="true"></i></span>
-                                    </div>
-                                    <p class="stat-card__value">38.4%</p>
-                                    <p class="stat-card__delta stat-card__delta--down">
-                                        <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>2.1pp <span class="stat-card__delta-period">vs prev 28d</span>
-                                    </p>
-                                </article>
-                            </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <article class="stat-card">
-                                    <div class="stat-card__head">
-                                        <p class="stat-card__label">Avg session</p>
-                                        <span class="stat-card__icon stat-card__icon--c4"><i class="fa-regular fa-clock" aria-hidden="true"></i></span>
-                                    </div>
-                                    <p class="stat-card__value">4m 12s</p>
-                                    <p class="stat-card__delta stat-card__delta--up">
-                                        <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>14s <span class="stat-card__delta-period">vs prev 28d</span>
-                                    </p>
-                                </article>
-                            </div>
+                        <div class="notif-filters" style="margin-bottom: 20px;">
+                            <button type="button" class="notif-filter is-active">All <span style="opacity:0.6;margin-left:4px;">14</span></button>
+                            <button type="button" class="notif-filter">Mentions <span style="opacity:0.6;margin-left:4px;">3</span></button>
+                            <button type="button" class="notif-filter">System <span style="opacity:0.6;margin-left:4px;">5</span></button>
+                            <button type="button" class="notif-filter">Billing <span style="opacity:0.6;margin-left:4px;">2</span></button>
+                            <button type="button" class="notif-filter">Security <span style="opacity:0.6;margin-left:4px;">4</span></button>
                         </div>
 
-                        <!-- Traffic trend + Sources donut -->
-                        <div class="row row-tight" style="margin-top: 16px;">
-                            <div class="col-lg-8">
-                                <section class="m-card" aria-labelledby="traffic-title">
-                                    <header class="m-card__header">
-                                        <div>
-                                            <h2 class="m-card__title" id="traffic-title">Traffic over time</h2>
-                                            <p class="m-card__subtitle">Daily visitors vs. sessions, last 28 days.</p>
+                        <!-- TODAY -->
+                        <div class="notif-day">
+                            <p class="notif-day__label">TODAY</p>
+                            <ul class="notif-list">
+                                <li class="is-unread">
+                                    <span class="notif-list__icon"><img src="images/icon/avatar-04.jpg" alt=""></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Diane Myers</b> mentioned you in <b>"Auth flow refactor — PR #2148"</b>: "The session token migration touches more than I thought, can you review?"</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--mention">Mention</span>
+                                            <span>14 min ago</span>
                                         </div>
-                                    </header>
-                                    <div style="height: 280px; position: relative;">
-                                        <canvas id="traffic-trend"></canvas>
                                     </div>
-                                </section>
-                            </div>
-                            <div class="col-lg-4">
-                                <section class="m-card" aria-labelledby="sources-donut-title">
-                                    <header class="m-card__header">
-                                        <div>
-                                            <h2 class="m-card__title" id="sources-donut-title">Traffic sources</h2>
-                                            <p class="m-card__subtitle">Share of incoming traffic.</p>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li class="is-unread">
+                                    <span class="notif-list__icon notif-list__icon--success"><i class="fa-solid fa-circle-check"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Backup completed</b> &mdash; weekly backup finished in 2m 14s. 4.2 GB archived to off-site storage.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--system">System</span>
+                                            <span>1 hour ago</span>
                                         </div>
-                                    </header>
-                                    <div class="donut-wrap">
-                                        <canvas id="traffic-sources"></canvas>
                                     </div>
-                                </section>
-                            </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li class="is-unread">
+                                    <span class="notif-list__icon notif-list__icon--warning"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Storage at 82%</b> &mdash; you&rsquo;ve used 82 GB of your 100 GB plan. Consider upgrading or pruning old projects.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--billing">Billing</span>
+                                            <span>2 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon"><img src="images/icon/avatar-06.jpg" alt=""></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Cynthia Harvey</b> approved your PR <b>"Q2 dashboard redesign"</b>.</p>
+                                        <div class="notif-list__meta">
+                                            <span>3 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--info"><i class="fa-solid fa-bolt"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>New version deployed</b> &mdash; v3.1.0 is now live. Includes the new analytics dashboard and a redesigned billing flow.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--system">System</span>
+                                            <span>5 hours ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                            </ul>
                         </div>
 
-                        <!-- Top pages + Top referrers -->
-                        <div class="row row-tight" style="margin-top: 16px;">
-                            <div class="col-lg-6">
-                                <section class="m-card" aria-labelledby="pages-title">
-                                    <header class="m-card__header">
-                                        <div>
-                                            <h2 class="m-card__title" id="pages-title">Top pages</h2>
-                                            <p class="m-card__subtitle">Most-visited URLs in the last 28 days.</p>
+                        <!-- YESTERDAY -->
+                        <div class="notif-day">
+                            <p class="notif-day__label">YESTERDAY</p>
+                            <ul class="notif-list">
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--danger"><i class="fa-solid fa-shield-halved"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>New sign-in from Berlin</b> &mdash; iPhone 15 Pro, Safari. If this wasn&rsquo;t you, secure your account immediately.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--security">Security</span>
+                                            <span>Yesterday, 22:14</span>
                                         </div>
-                                        <a href="#" class="m-btn m-btn--ghost" style="height:30px; padding:0 10px; font-size:12.5px;">View all</a>
-                                    </header>
-                                    <ul class="rank-list">
-                                        <li>
-                                            <span class="rank-list__rank">1</span>
-                                            <span class="rank-list__title">/                          (homepage)</span>
-                                            <span class="rank-list__value">28,420</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 100%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">2</span>
-                                            <span class="rank-list__title">/pricing</span>
-                                            <span class="rank-list__value">14,860</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 52%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">3</span>
-                                            <span class="rank-list__title">/blog/q1-product-launch</span>
-                                            <span class="rank-list__value">11,240</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 40%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">4</span>
-                                            <span class="rank-list__title">/features</span>
-                                            <span class="rank-list__value">8,920</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 31%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">5</span>
-                                            <span class="rank-list__title">/docs</span>
-                                            <span class="rank-list__value">6,480</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 23%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">6</span>
-                                            <span class="rank-list__title">/about</span>
-                                            <span class="rank-list__value">4,860</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 17%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">7</span>
-                                            <span class="rank-list__title">/changelog</span>
-                                            <span class="rank-list__value">3,140</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 11%;"></span>
-                                        </li>
-                                    </ul>
-                                </section>
-                            </div>
-                            <div class="col-lg-6">
-                                <section class="m-card" aria-labelledby="referrers-title">
-                                    <header class="m-card__header">
-                                        <div>
-                                            <h2 class="m-card__title" id="referrers-title">Top referrers</h2>
-                                            <p class="m-card__subtitle">External sites driving traffic.</p>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon"><img src="images/icon/avatar-05.jpg" alt=""></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Michelle Moreno</b> uploaded 3 files to <b>Brand assets v3</b>.</p>
+                                        <div class="notif-list__meta">
+                                            <span>Yesterday, 16:42</span>
                                         </div>
-                                        <a href="#" class="m-btn m-btn--ghost" style="height:30px; padding:0 10px; font-size:12.5px;">View all</a>
-                                    </header>
-                                    <ul class="rank-list">
-                                        <li>
-                                            <span class="rank-list__rank">1</span>
-                                            <span class="rank-list__title">google.com</span>
-                                            <span class="rank-list__value">22,140</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 100%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">2</span>
-                                            <span class="rank-list__title">producthunt.com</span>
-                                            <span class="rank-list__value">8,920</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 40%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">3</span>
-                                            <span class="rank-list__title">news.ycombinator.com</span>
-                                            <span class="rank-list__value">6,420</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 29%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">4</span>
-                                            <span class="rank-list__title">linkedin.com</span>
-                                            <span class="rank-list__value">4,820</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 22%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">5</span>
-                                            <span class="rank-list__title">x.com</span>
-                                            <span class="rank-list__value">3,580</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 16%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">6</span>
-                                            <span class="rank-list__title">github.com</span>
-                                            <span class="rank-list__value">2,940</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 13%;"></span>
-                                        </li>
-                                        <li>
-                                            <span class="rank-list__rank">7</span>
-                                            <span class="rank-list__title">reddit.com</span>
-                                            <span class="rank-list__value">1,820</span>
-                                            <span class="rank-list__bar" style="--rank-pct: 8%;"></span>
-                                        </li>
-                                    </ul>
-                                </section>
-                            </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--info"><i class="fa-regular fa-credit-card"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Receipt available</b> &mdash; invoice INV-2026-05 for $369.50 was paid successfully.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--billing">Billing</span>
+                                            <span>Yesterday, 09:15</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon"><img src="images/icon/avatar-01.jpg" alt=""></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>John Doe</b> mentioned you in <b>"Q1 customer-interview synthesis"</b>: "Great point about onboarding friction — let&rsquo;s prioritize this for next sprint."</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--mention">Mention</span>
+                                            <span>Yesterday, 08:30</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                            </ul>
                         </div>
 
-                        <!-- Footer -->
+                        <!-- THIS WEEK -->
+                        <div class="notif-day">
+                            <p class="notif-day__label">EARLIER THIS WEEK</p>
+                            <ul class="notif-list">
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--danger"><i class="fa-solid fa-shield-halved"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>2FA backup codes regenerated</b> &mdash; previous codes are now invalid. Make sure your new codes are stored safely.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--security">Security</span>
+                                            <span>2 days ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon"><img src="images/icon/avatar-02.jpg" alt=""></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Robert Taylor</b> assigned 5 issues to <b>you</b> on <b>API v2 documentation</b>.</p>
+                                        <div class="notif-list__meta">
+                                            <span>3 days ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--success"><i class="fa-solid fa-circle-check"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>Deploy succeeded</b> &mdash; <code style="background:var(--m-surface-2); padding:1px 6px; border-radius:4px; font-size:11.5px;">main</code> deployed to production. 142 commits since the last release.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--system">System</span>
+                                            <span>4 days ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--danger"><i class="fa-solid fa-key"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text"><b>API key rotated</b> &mdash; the production key was rotated by <b>Diane Myers</b>. Old key invalidated.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--security">Security</span>
+                                            <span>5 days ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                                <li>
+                                    <span class="notif-list__icon notif-list__icon--info"><i class="fa-regular fa-bell"></i></span>
+                                    <div class="notif-list__body">
+                                        <p class="notif-list__text">A new <b>weekly digest</b> is ready. Highlights: 3 new customers, 12 closed tickets, 8 deploys.</p>
+                                        <div class="notif-list__meta">
+                                            <span class="notif-list__chip notif-list__chip--system">System</span>
+                                            <span>6 days ago</span>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="notif-list__close" aria-label="Dismiss"><i class="fa-solid fa-xmark"></i></button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="text-align: center; margin: 24px 0;">
+                            <button type="button" class="m-btn m-btn--ghost">Load older notifications</button>
+                        </div>
+
                         <div class="row" style="margin-top: 28px;">
                             <div class="col-md-12">
                                 <div class="copyright">
@@ -494,9 +465,11 @@
 
                     </div>
                 </div>
+            </main>
         </div>
         <!-- END PAGE CONTAINER-->
     </div>
+
     <!-- Scripts -->
     <script src="js/vanilla-utils.js"></script>
     <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
@@ -505,7 +478,27 @@
     <script src="js/main-vanilla.js"></script>
     <script src="js/modern-plugins.js"></script>
 
+    <!-- Notifications: filter chip toggling + dismiss -->
+    <script>
+    (function () {
+        const filters = document.querySelectorAll('.notif-filter');
+        filters.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                filters.forEach((b) => b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+            });
+        });
+        document.querySelectorAll('.notif-list__close').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const li = btn.closest('li');
+                li.style.transition = 'opacity 200ms ease, transform 200ms ease';
+                li.style.opacity = '0';
+                li.style.transform = 'translateX(20px)';
+                setTimeout(() => li.remove(), 220);
+            });
+        });
+    })();
+    </script>
 </body>
-
 </html>
-<!-- end document-->

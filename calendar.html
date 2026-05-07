@@ -5,31 +5,30 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
-
-    <!-- Title Page-->
-    <title>Calendar</title>
+    <meta name="generator" content="CoolAdmin 3.0.0">
+    <meta name="description" content="Event calendar built with FullCalendar 6.1.20 and Bootstrap 5 styling.">
+    <title>Calendar | CoolAdmin Bootstrap 5 Admin Dashboard</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Calendar | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta property="og:description" content="Event calendar built with FullCalendar 6.1.20 and Bootstrap 5 styling.">
+    <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Calendar | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta name="twitter:description" content="Event calendar built with FullCalendar 6.1.20 and Bootstrap 5 styling.">
+    <meta name="theme-color" content="#4272d7">
 
     <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/fontawesome-7.1.0/css/all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
-    <!-- Bootstrap CSS-->
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="vendor/fontawesome-7.2.0/css/all.min.css" rel="stylesheet" media="all"><!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all">
 
-    <!-- Vendor CSS-->
-    <link href="css/aos.css" rel="stylesheet" media="all">
-    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="css/swiper-bundle-12.0.3.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.css" rel="stylesheet" media="all">
-
-    <!-- FullCalendar v6+ (CSS is bundled in JS) -->
+    <!-- Vendor CSS--><link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"><!-- FullCalendar v6+ (CSS is bundled in JS) -->
 
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="css/theme-2026.css" rel="stylesheet" media="all">
 
     <style type="text/css">
     /* FullCalendar Bootstrap 5 integration */
@@ -75,7 +74,9 @@
       since calendar doesn't add href's be default,
       it leads to odd behaviors like loading 'undefined'
       moving the class to menus lead to only the menu having the effect -->
-<body>
+<body class="theme-2026">
+    <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+
     <div class="page-wrapper">
         <!-- HEADER MOBILE-->
         <header class="header-mobile d-block d-lg-none">
@@ -85,7 +86,7 @@
                         <a class="logo" href="index.html">
                             <img src="images/icon/logo.png" alt="CoolAdmin" />
                         </a>
-                        <button class="hamburger hamburger--slider" type="button">
+                        <button class="hamburger hamburger--slider" type="button" aria-label="Toggle navigation">
                             <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                             </span>
@@ -98,7 +99,7 @@
                     <ul class="navbar-mobile__list list-unstyled">
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="index.html">Dashboard 1</a>
@@ -116,11 +117,11 @@
                         </li>
                         <li>
                             <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                                <i class="fa-solid fa-chart-bar"></i>Charts</a>
                         </li>
                         <li>
                             <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                                <i class="fa-solid fa-table"></i>Tables</a>
                         </li>
                         <li>
                             <a href="form.html">
@@ -128,15 +129,15 @@
                         </li>
                         <li>
                             <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                                <i class="fa-solid fa-calendar-alt"></i>Calendar</a>
                         </li>
                         <li>
                             <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                                <i class="fa-solid fa-map-marker-alt"></i>Maps</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
+                                <i class="fa-solid fa-copy"></i>Pages</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="login.html">Login</a>
@@ -151,7 +152,7 @@
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
+                                <i class="fa-solid fa-desktop"></i>UI Elements</a>
                             <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                                 <li>
                                     <a href="button.html">Button</a>
@@ -193,107 +194,103 @@
             </nav>
         </header>
         <!-- END HEADER MOBILE-->
-
         <!-- MENU SIDEBAR-->
-        <aside class="menu-sidebar d-none d-lg-block">
+        <aside class="menu-sidebar" id="main-sidebar">
             <div class="logo">
-                <a href="#">
-                    <img src="images/icon/logo.png" alt="Cool Admin" />
+                <a href="index.html" class="logo-link" aria-label="CoolAdmin home">
+                    <span class="logo-mark" aria-hidden="true">C</span>
+                    <span class="logo-text">CoolAdmin</span>
                 </a>
+                <button class="sidebar-close js-sidebar-toggle" type="button" aria-label="Close navigation">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                                <i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="index.html">Dashboard 1</a>
-                                </li>
-                                <li>
-                                    <a href="index2.html">Dashboard 2</a>
-                                </li>
-                                <li>
-                                    <a href="index3.html">Dashboard 3</a>
-                                </li>
-                                <li>
-                                    <a href="index4.html">Dashboard 4</a>
-                                </li>
+                                <li><a href="index.html">Dashboard 1</a></li>
+                                <li><a href="index2.html">Dashboard 2</a></li>
+                                <li><a href="index3.html">Dashboard 3</a></li>
+                                <li><a href="index4.html">Dashboard 4</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="chart.html">
-                                <i class="fas fa-chart-bar"></i>Charts</a>
+                            <a href="chart.html"><i class="fa-solid fa-chart-bar"></i>Charts</a>
                         </li>
-                        <li>
-                            <a href="table.html">
-                                <i class="fas fa-table"></i>Tables</a>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-table"></i>Tables</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="table.html">Tables</a></li>
+                                <li><a href="data-table.html">Data table</a></li>
+                            </ul>
                         </li>
-                        <li>
-                            <a href="form.html">
-                                <i class="far fa-check-square"></i>Forms</a>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-regular fa-square-check"></i>Forms</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="form.html">Forms</a></li>
+                                <li><a href="wizard.html">Setup wizard</a></li>
+                            </ul>
                         </li>
                         <li class="active">
-                            <a href="calendar.html">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                            <a href="calendar.html"><i class="fa-solid fa-calendar-alt"></i>Calendar</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                            <a href="map.html"><i class="fa-solid fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li>
+                            <a href="inbox.html"><i class="fa-solid fa-inbox"></i>Inbox</a>
+                        </li>
+                        <li>
+                            <a href="kanban.html"><i class="fa-solid fa-columns"></i>Kanban</a>
+                        </li>
+                        <li>
+                            <a href="notifications.html"><i class="fa-regular fa-bell"></i>Notifications</a>
+                        </li>
+                        <li>
+                            <a href="docs.html"><i class="fa-regular fa-file-lines"></i>Documentation</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
+                                <i class="fa-solid fa-user-gear"></i>Account</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="login.html">Login</a>
-                                </li>
-                                <li>
-                                    <a href="register.html">Register</a>
-                                </li>
-                                <li>
-                                    <a href="forget-pass.html">Forget Password</a>
-                                </li>
+                                <li><a href="profile.html">Profile &amp; settings</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="invoice.html">Invoice</a></li>
                             </ul>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
-                                <i class="fas fa-desktop"></i>UI Elements</a>
+                                <i class="fa-solid fa-copy"></i>Pages</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="button.html">Button</a>
-                                </li>
-                                <li>
-                                    <a href="badge.html">Badges</a>
-                                </li>
-                                <li>
-                                    <a href="tab.html">Tabs</a>
-                                </li>
-                                <li>
-                                    <a href="card.html">Cards</a>
-                                </li>
-                                <li>
-                                    <a href="alert.html">Alerts</a>
-                                </li>
-                                <li>
-                                    <a href="progress-bar.html">Progress Bars</a>
-                                </li>
-                                <li>
-                                    <a href="modal.html">Modals</a>
-                                </li>
-                                <li>
-                                    <a href="switch.html">Switchs</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grids</a>
-                                </li>
-                                <li>
-                                    <a href="fontawesome.html">Fontawesome Icon</a>
-                                </li>
-                                <li>
-                                    <a href="typo.html">Typography</a>
-                                </li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="register.html">Register</a></li>
+                                <li><a href="forget-pass.html">Forgot password</a></li>
+                                <li><a href="404.html">404 not found</a></li>
+                                <li><a href="500.html">500 server error</a></li>
+                                <li><a href="maintenance.html">Maintenance</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-desktop"></i>UI Elements</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="button.html">Buttons</a></li>
+                                <li><a href="badge.html">Badges</a></li>
+                                <li><a href="tab.html">Tabs</a></li>
+                                <li><a href="card.html">Cards</a></li>
+                                <li><a href="alert.html">Alerts</a></li>
+                                <li><a href="progress-bar.html">Progress bars</a></li>
+                                <li><a href="modal.html">Modals</a></li>
+                                <li><a href="switch.html">Switches</a></li>
+                                <li><a href="grid.html">Grid system</a></li>
+                                <li><a href="fontawesome.html">Font Awesome</a></li>
+                                <li><a href="typo.html">Typography</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -301,33 +298,30 @@
             </div>
         </aside>
         <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
+<!-- PAGE CONTAINER-->
         <div class="page-container">
             <!-- HEADER DESKTOP-->
             <header class="header-desktop">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         <div class="header-wrap">
-                            <form class="form-header" action="" method="POST">
-                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-                                <button class="au-btn--submit" type="submit">
-                                    <i class="zmdi zmdi-search"></i>
-                                </button>
+                            <button class="sidebar-toggle js-sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-sidebar">
+                                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                            </button>
+                            <form class="form-header" role="search" onsubmit="return false">
+                                <i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
+                                <input class="au-input au-input--xl" type="search" name="search" placeholder="Search anything…" aria-label="Search">
+                                <kbd class="form-header__hint" aria-hidden="true">⌘K</kbd>
                             </form>
                             <div class="header-button">
                                 <div class="noti-wrap">
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-comment-more"></i>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Messages">
+                                        <i class="fa-solid fa-comment-dots"></i>
                                         <span class="quantity">1</span>
                                         <div class="mess-dropdown js-dropdown">
-                                            <div class="mess__title">
-                                                <p>You have 2 news message</p>
-                                            </div>
+                                            <div class="mess__title"><p>Messages</p></div>
                                             <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-                                                </div>
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
                                                 <div class="content">
                                                     <h6>Michelle Moreno</h6>
                                                     <p>Have sent a photo</p>
@@ -335,139 +329,86 @@
                                                 </div>
                                             </div>
                                             <div class="mess__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-                                                </div>
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-04.jpg" alt=""></div>
                                                 <div class="content">
                                                     <h6>Diane Myers</h6>
-                                                    <p>You are now connected on message</p>
+                                                    <p>You are now connected</p>
                                                     <span class="time">Yesterday</span>
                                                 </div>
                                             </div>
-                                            <div class="mess__footer">
-                                                <a href="#">View all messages</a>
-                                            </div>
+                                            <div class="mess__footer"><a href="#">View all messages</a></div>
                                         </div>
                                     </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-email"></i>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Emails">
+                                        <i class="fa-solid fa-envelope"></i>
                                         <span class="quantity">1</span>
                                         <div class="email-dropdown js-dropdown">
-                                            <div class="email__title">
-                                                <p>You have 3 New Emails</p>
-                                            </div>
+                                            <div class="email__title"><p>Emails</p></div>
                                             <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-                                                </div>
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
                                                 <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
+                                                    <p>Meeting about new dashboard…</p>
                                                     <span>Cynthia Harvey, 3 min ago</span>
                                                 </div>
                                             </div>
                                             <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-                                                </div>
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-05.jpg" alt=""></div>
                                                 <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, Yesterday</span>
+                                                    <p>Quarterly report draft</p>
+                                                    <span>John Doe, Yesterday</span>
                                                 </div>
                                             </div>
-                                            <div class="email__item">
-                                                <div class="image img-cir img-40">
-                                                    <img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-                                                </div>
-                                                <div class="content">
-                                                    <p>Meeting about new dashboard...</p>
-                                                    <span>Cynthia Harvey, January 15, 2025</span>
-                                                </div>
-                                            </div>
-                                            <div class="email__footer">
-                                                <a href="#">See all emails</a>
-                                            </div>
+                                            <div class="email__footer"><a href="#">See all emails</a></div>
                                         </div>
                                     </div>
-                                    <div class="noti__item js-item-menu">
-                                        <i class="zmdi zmdi-notifications"></i>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Notifications">
+                                        <i class="fa-solid fa-bell"></i>
                                         <span class="quantity">3</span>
                                         <div class="notifi-dropdown js-dropdown">
-                                            <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
-                                            </div>
+                                            <div class="notifi__title"><p>Notifications</p></div>
                                             <div class="notifi__item">
-                                                <div class="bg-c1 img-cir img-40">
-                                                    <i class="zmdi zmdi-email-open"></i>
-                                                </div>
+                                                <div class="bg-c1 img-cir img-40"><i class="fa-solid fa-envelope-open"></i></div>
                                                 <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
+                                                    <p>You have a new email</p>
+                                                    <span class="date">Today, 14:30</span>
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
-                                                <div class="bg-c2 img-cir img-40">
-                                                    <i class="zmdi zmdi-account-box"></i>
-                                                </div>
+                                                <div class="bg-c2 img-cir img-40"><i class="fa-solid fa-id-card"></i></div>
                                                 <div class="content">
-                                                    <p>Your account has been blocked</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
+                                                    <p>Your account was updated</p>
+                                                    <span class="date">Yesterday</span>
                                                 </div>
                                             </div>
                                             <div class="notifi__item">
-                                                <div class="bg-c3 img-cir img-40">
-                                                    <i class="zmdi zmdi-file-text"></i>
-                                                </div>
+                                                <div class="bg-c3 img-cir img-40"><i class="fa-solid fa-file-lines"></i></div>
                                                 <div class="content">
-                                                    <p>You got a new file</p>
-                                                    <span class="date">January 15, 2025 14:30</span>
+                                                    <p>Report uploaded successfully</p>
+                                                    <span class="date">2 days ago</span>
                                                 </div>
                                             </div>
-                                            <div class="notifi__footer">
-                                                <a href="#">All notifications</a>
-                                            </div>
+                                            <div class="notifi__footer"><a href="#">All notifications</a></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
+                                    <div class="account-item clearfix js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Account menu">
+                                        <div class="image"><img src="images/icon/avatar-01.jpg" alt="John Doe"></div>
+                                        <div class="content"><a class="js-acc-btn" href="#">john doe</a></div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
-                                                <div class="image">
-                                                    <a href="#">
-                                                        <img src="images/icon/avatar-01.jpg" alt="John Doe" />
-                                                    </a>
-                                                </div>
+                                                <div class="image"><a href="#"><img src="images/icon/avatar-01.jpg" alt=""></a></div>
                                                 <div class="content">
-                                                    <h5 class="name">
-                                                        <a href="#">john doe</a>
-                                                    </h5>
+                                                    <h5 class="name"><a href="#">john doe</a></h5>
                                                     <span class="email">johndoe@example.com</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
-                                                </div>
-                                                <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
-                                                </div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-user"></i>Account</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-sack-dollar"></i>Billing</a></div>
                                             </div>
-                                            <div class="account-dropdown__footer">
-                                                <a href="#">
-                                                    <i class="zmdi zmdi-power"></i>Logout</a>
-                                            </div>
+                                            <div class="account-dropdown__footer"><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -476,119 +417,124 @@
                     </div>
                 </div>
             </header>
-            <!-- END HEADER DESKTOP-->
+<!-- END HEADER DESKTOP-->
 
             <!-- MAIN CONTENT-->
-            <div class="main-content">
+                        <main id="main-content" class="main-content">
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="overview-wrap">
-                                    <h2 class="title-1">calendar</h2>
-                                    <button class="au-btn au-btn-icon au-btn--blue" onclick="addNewEvent()">
-                                        <i class="zmdi zmdi-plus"></i>add event</button>
-                                </div>
+
+                        <div class="page-header">
+                            <div>
+                                <h1>Calendar</h1>
+                                <p class="subtitle">Schedule of meetings, deadlines, and events.</p>
+                            </div>
+                            <div class="page-header__actions">
+                                <button type="button" class="m-btn m-btn--ghost">
+                                    <i class="fa-solid fa-download" aria-hidden="true"></i>
+                                    Export
+                                </button>
+                                <button type="button" class="m-btn m-btn--primary" onclick="addNewEvent()">
+                                    <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                                    Add event
+                                </button>
                             </div>
                         </div>
-                        <div class="row m-t-25">
+
+                        <div class="row row-tight">
                             <div class="col-lg-9">
-                                <div class="au-card">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-40">Event Calendar</h3>
-                                        <div id="calendar" class="calendar-container"></div>
-                                    </div>
-                                </div>
+                                <section class="m-card">
+                                    <header class="m-card__header">
+                                        <div>
+                                            <h2 class="m-card__title">Event calendar</h2>
+                                            <p class="m-card__subtitle">Click any day or event to see details.</p>
+                                        </div>
+                                    </header>
+                                    <div id="calendar" class="calendar-container"></div>
+                                </section>
                             </div>
                             <div class="col-lg-3">
-                                <!-- UPCOMING EVENTS -->
-                                <div class="au-card m-b-30">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-30">Upcoming Events</h3>
-                                        <div class="upcoming-events">
-                                            <div class="event-item d-flex align-items-start mb-3 p-3 border rounded">
-                                                <div class="event-date text-center me-3">
-                                                    <div class="fs-6 fw-bold text-primary">JAN</div>
-                                                    <div class="fs-4 fw-bold">25</div>
-                                                </div>
-                                                <div class="event-details flex-grow-1">
-                                                    <h6 class="mb-1">Team Meeting</h6>
-                                                    <small class="text-muted">9:00 AM - 10:30 AM</small>
-                                                    <div class="mt-1">
-                                                        <span class="badge bg-primary">Meeting</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="event-item d-flex align-items-start mb-3 p-3 border rounded">
-                                                <div class="event-date text-center me-3">
-                                                    <div class="fs-6 fw-bold text-success">JAN</div>
-                                                    <div class="fs-4 fw-bold">28</div>
-                                                </div>
-                                                <div class="event-details flex-grow-1">
-                                                    <h6 class="mb-1">Project Deadline</h6>
-                                                    <small class="text-muted">All Day</small>
-                                                    <div class="mt-1">
-                                                        <span class="badge bg-danger">Deadline</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="event-item d-flex align-items-start mb-3 p-3 border rounded">
-                                                <div class="event-date text-center me-3">
-                                                    <div class="fs-6 fw-bold text-info">FEB</div>
-                                                    <div class="fs-4 fw-bold">02</div>
-                                                </div>
-                                                <div class="event-details flex-grow-1">
-                                                    <h6 class="mb-1">Client Presentation</h6>
-                                                    <small class="text-muted">2:00 PM - 3:30 PM</small>
-                                                    <div class="mt-1">
-                                                        <span class="badge bg-info">Presentation</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <section class="m-card">
+                                    <header class="m-card__header">
+                                        <div>
+                                            <h2 class="m-card__title">Upcoming events</h2>
+                                            <p class="m-card__subtitle">Next two weeks.</p>
                                         </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- CALENDAR LEGEND -->
-                                <div class="au-card">
-                                    <div class="au-card-inner">
-                                        <h3 class="title-2 m-b-30">Event Types</h3>
-                                        <div class="calendar-legend">
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="legend-color bg-primary rounded me-2" style="width: 16px; height: 16px;"></div>
-                                                <span class="fs-6">Meetings</span>
+                                    </header>
+                                    <ul class="deadline-list">
+                                        <li>
+                                            <div class="deadline-list__date"><strong>16</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">Team meeting</p>
+                                                <span class="deadline-list__project">9:00 AM &middot; 60 min</span>
                                             </div>
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="legend-color bg-success rounded me-2" style="width: 16px; height: 16px;"></div>
-                                                <span class="fs-6">Tasks</span>
+                                        </li>
+                                        <li>
+                                            <div class="deadline-list__date"><strong>18</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">Sprint planning</p>
+                                                <span class="deadline-list__project">10:00 AM &middot; 90 min</span>
                                             </div>
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="legend-color bg-warning rounded me-2" style="width: 16px; height: 16px;"></div>
-                                                <span class="fs-6">Appointments</span>
+                                        </li>
+                                        <li>
+                                            <div class="deadline-list__date"><strong>20</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">Project deadline</p>
+                                                <span class="deadline-list__project">All day</span>
                                             </div>
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="legend-color bg-danger rounded me-2" style="width: 16px; height: 16px;"></div>
-                                                <span class="fs-6">Deadlines</span>
+                                        </li>
+                                        <li>
+                                            <div class="deadline-list__date"><strong>22</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">Client presentation</p>
+                                                <span class="deadline-list__project">2:00 PM &middot; 90 min</span>
                                             </div>
-                                            <div class="d-flex align-items-center">
-                                                <div class="legend-color bg-info rounded me-2" style="width: 16px; height: 16px;"></div>
-                                                <span class="fs-6">Presentations</span>
+                                        </li>
+                                        <li>
+                                            <div class="deadline-list__date"><strong>24</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">1:1 with John</p>
+                                                <span class="deadline-list__project">3:00 PM &middot; 30 min</span>
                                             </div>
+                                        </li>
+                                        <li>
+                                            <div class="deadline-list__date"><strong>28</strong><span>May</span></div>
+                                            <div class="deadline-list__body">
+                                                <p class="deadline-list__title">Quarterly review</p>
+                                                <span class="deadline-list__project">11:00 AM &middot; 120 min</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </section>
+
+                                <section class="m-card" style="margin-top: 16px;">
+                                    <header class="m-card__header">
+                                        <div>
+                                            <h2 class="m-card__title">Event types</h2>
                                         </div>
-                                    </div>
-                                </div>
+                                    </header>
+                                    <ul class="legend-list">
+                                        <li><span class="legend-dot" style="background: var(--m-c1);"></span>Meetings</li>
+                                        <li><span class="legend-dot" style="background: var(--m-c2);"></span>Tasks</li>
+                                        <li><span class="legend-dot" style="background: var(--m-warning);"></span>Appointments</li>
+                                        <li><span class="legend-dot" style="background: var(--m-danger);"></span>Deadlines</li>
+                                        <li><span class="legend-dot" style="background: var(--m-c4);"></span>Presentations</li>
+                                    </ul>
+                                </section>
                             </div>
                         </div>
-                        <div class="row">
+
+                        <div class="row" style="margin-top: 28px;">
                             <div class="col-md-12">
                                 <div class="copyright">
-                                    <p>Copyright © 2025 Colorlib. All rights reserved. Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a>.</p>
+                                    <p>Copyright © 2026 Colorlib. All rights reserved. Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a>.</p>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
-            </div>
+            </main>
         </div>
 
     </div>
@@ -596,183 +542,273 @@
     <!-- Bootstrap 5 JS-->
     <script src="js/vanilla-utils.js"></script>
     <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.min.js"></script>
-    <script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
+    <!-- Vendor JS       --><script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
 
-    <!-- FullCalendar v6.1.11 -->
-    <script src="vendor/fullcalendar-6.1.11/fullcalendar.min.js"></script>
+    <!-- FullCalendar v6.1.20 -->
+    <script src="vendor/fullcalendar-6.1.20/fullcalendar.min.js"></script>
 
     <!-- Main JS-->
     <script src="js/bootstrap5-init.js"></script>
-    <script src="js/main-vanilla.js"></script>
-    <script src="js/swiper-bundle-12.0.3.min.js"></script>
-    <script src="js/aos.js"></script>
-    <script src="js/modern-plugins.js"></script>
+    <script src="js/main-vanilla.js"></script><script src="js/modern-plugins.js"></script>
 
     <!-- Calendar Initialization -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
+<script>
+    /* ------------------------------------------------------------------------
+       Date-relative event generator
+       The calendar populates itself with events spread across the CURRENT
+       month every time the page loads. So whether someone opens this template
+       in May 2026 or March 2030, the demo always shows a populated month with
+       past, present, and upcoming events.
+       ------------------------------------------------------------------------ */
+
+    document.addEventListener('DOMContentLoaded', function () {
         const calendarEl = document.getElementById('calendar');
-        
-        if (calendarEl) {
-            // Sample events data using modern date handling
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(today.getDate() + 1);
-            
-            const nextWeek = new Date(today);
-            nextWeek.setDate(today.getDate() + 7);
-            
-            const events = [
-                {
-                    title: 'Team Meeting',
-                    start: '2025-01-25T09:00:00',
-                    end: '2025-01-25T10:30:00',
-                    backgroundColor: '#007bff',
-                    borderColor: '#007bff',
-                    textColor: '#ffffff',
-                    extendedProps: {
-                        type: 'meeting',
-                        description: 'Weekly team sync meeting'
-                    }
-                },
-                {
-                    title: 'Project Deadline',
-                    start: '2025-01-28',
-                    allDay: true,
-                    backgroundColor: '#dc3545',
-                    borderColor: '#dc3545',
-                    textColor: '#ffffff',
-                    extendedProps: {
-                        type: 'deadline',
-                        description: 'Final submission deadline'
-                    }
-                },
-                {
-                    title: 'Client Presentation',
-                    start: '2025-02-02T14:00:00',
-                    end: '2025-02-02T15:30:00',
-                    backgroundColor: '#17a2b8',
-                    borderColor: '#17a2b8',
-                    textColor: '#ffffff',
-                    extendedProps: {
-                        type: 'presentation',
-                        description: 'Quarterly review presentation'
-                    }
-                },
-                {
-                    title: 'Doctor Appointment',
-                    start: '2025-01-30T11:00:00',
-                    end: '2025-01-30T12:00:00',
-                    backgroundColor: '#ffc107',
-                    borderColor: '#ffc107',
-                    textColor: '#000000',
-                    extendedProps: {
-                        type: 'appointment',
-                        description: 'Annual health checkup'
-                    }
-                },
-                {
-                    title: 'Development Task',
-                    start: '2025-01-27T10:00:00',
-                    end: '2025-01-27T16:00:00',
-                    backgroundColor: '#28a745',
-                    borderColor: '#28a745',
-                    textColor: '#ffffff',
-                    extendedProps: {
-                        type: 'task',
-                        description: 'Feature implementation'
-                    }
-                },
-                {
-                    title: 'Conference Call',
-                    start: '2025-02-05T15:00:00',
-                    end: '2025-02-05T16:00:00',
-                    backgroundColor: '#007bff',
-                    borderColor: '#007bff',
-                    textColor: '#ffffff',
-                    extendedProps: {
-                        type: 'meeting',
-                        description: 'International team sync'
-                    }
-                }
-            ];
+        if (!calendarEl) return;
 
-            // Initialize FullCalendar v6+
-            const calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                },
-                height: 'auto',
-                events: events,
-                eventDisplay: 'block',
-                dayMaxEvents: 3,
-                moreLinkText: 'more',
-                
-                // Event click handler
-                eventClick: function(info) {
-                    const event = info.event;
-                    const props = event.extendedProps;
-                    
-                    alert(`Event: ${event.title}\n` +
-                          `Type: ${props.type || 'N/A'}\n` +
-                          `Description: ${props.description || 'No description'}\n` +
-                          `Start: ${event.start ? event.start.toLocaleString() : 'N/A'}\n` +
-                          `End: ${event.end ? event.end.toLocaleString() : 'N/A'}`);
-                },
-                
-                // Date click handler for adding new events
-                dateClick: function(info) {
-                    const title = prompt('Enter event title:');
-                    if (title) {
-                        calendar.addEvent({
-                            title: title,
-                            start: info.date,
-                            allDay: info.allDay,
-                            backgroundColor: '#6c757d',
-                            borderColor: '#6c757d',
-                            textColor: '#ffffff'
-                        });
-                    }
-                },
-                
-                // Responsive behavior
-                windowResize: function() {
-                    calendar.updateSize();
-                }
-            });
+        const events = buildEvents(new Date());
+        renderDeadlineList(events);
 
-            calendar.render();
-            
-            // Store calendar instance globally for external access
-            window.calendarInstance = calendar;
-        }
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+            },
+            height: 'auto',
+            events: events,
+            eventDisplay: 'block',
+            displayEventTime: true,
+            dayMaxEvents: 3,
+            moreLinkText: 'more',
+            navLinks: true,
+            nowIndicator: true,
+            eventTimeFormat: { hour: 'numeric', minute: '2-digit', meridiem: 'short' },
+            eventClick: function (info) {
+                info.jsEvent.preventDefault();
+                const e = info.event;
+                const props = e.extendedProps;
+                const start = e.start ? e.start.toLocaleString(undefined, {
+                    weekday: 'short', month: 'short', day: 'numeric',
+                    hour: 'numeric', minute: '2-digit',
+                }) : '';
+                const end = e.end ? e.end.toLocaleString(undefined, {
+                    hour: 'numeric', minute: '2-digit',
+                }) : '';
+                console.log('Event clicked:', e.title, 'type:', props.type, 'when:', start, '–', end);
+            },
+            windowResize: function () { calendar.updateSize(); },
+        });
+        calendar.render();
+        window.calendarInstance = calendar;
     });
-    
-    // Function for "Add Event" button
-    function addNewEvent() {
-        const title = prompt('Enter event title:');
-        if (title && window.calendarInstance) {
-            const today = new Date();
-            window.calendarInstance.addEvent({
-                title: title,
-                start: today,
-                backgroundColor: '#6c757d',
-                borderColor: '#6c757d',
-                textColor: '#ffffff',
-                extendedProps: {
-                    type: 'custom',
-                    description: 'User created event'
+
+    /* Generate ~20 events spread across the current month — recurring weekly
+       items + a few date-relative anchors so the month always looks alive. */
+    function buildEvents(today) {
+        const y = today.getFullYear();
+        const m = today.getMonth();
+        const ymd = (d) => d.getFullYear() + '-' +
+            String(d.getMonth() + 1).padStart(2, '0') + '-' +
+            String(d.getDate()).padStart(2, '0');
+        const ymdt = (d, h, mm) => ymd(d) + 'T' +
+            String(h).padStart(2, '0') + ':' +
+            String(mm || 0).padStart(2, '0') + ':00';
+        const at = (date, h, mm) => new Date(date.getFullYear(), date.getMonth(), date.getDate(), h, mm || 0);
+        const sameMonth = (d) => d.getMonth() === m && d.getFullYear() === y;
+        const offset = (n) => {
+            const d = new Date(today);
+            d.setDate(today.getDate() + n);
+            return d;
+        };
+        const nthDow = (n, dow) => {
+            const d = new Date(y, m, 1);
+            let count = 0;
+            while (d.getMonth() === m) {
+                if (d.getDay() === dow) {
+                    count++;
+                    if (count === n) return new Date(d);
                 }
+                d.setDate(d.getDate() + 1);
+            }
+            return null;
+        };
+        const lastDow = (dow) => {
+            const d = new Date(y, m + 1, 0);
+            while (d.getDay() !== dow) d.setDate(d.getDate() - 1);
+            return d;
+        };
+
+        const TAG_COLORS = {
+            meeting:      { bg: '#eaf0fc', fg: '#4272d7' },  /* brand blue */
+            task:         { bg: '#e0f3f1', fg: '#0d8780' },  /* teal */
+            presentation: { bg: '#fff1e6', fg: '#d45f0a' },  /* warm orange */
+            deadline:     { bg: '#fef2f2', fg: '#dc2626' },  /* red */
+            personal:     { bg: '#fce7f3', fg: '#be185d' },  /* magenta */
+        };
+
+        const e = (title, start, end, allDay, tag) => ({
+            title,
+            start,
+            end,
+            allDay,
+            backgroundColor: TAG_COLORS[tag].bg,
+            borderColor: TAG_COLORS[tag].bg,
+            textColor: TAG_COLORS[tag].fg,
+            extendedProps: { type: tag },
+        });
+
+        const events = [];
+
+        // 1. Recurring daily standup — every weekday, 9:00–9:15
+        const cur = new Date(y, m, 1);
+        while (cur.getMonth() === m) {
+            const dow = cur.getDay();
+            if (dow >= 1 && dow <= 5) {
+                events.push(e('Team standup', ymdt(cur, 9, 0), ymdt(cur, 9, 15), false, 'meeting'));
+            }
+            cur.setDate(cur.getDate() + 1);
+        }
+
+        // 2. Sprint planning — first Monday, 10:00–11:30
+        const sp = nthDow(1, 1);
+        if (sp) events.push(e('Sprint planning', ymdt(sp, 10, 0), ymdt(sp, 11, 30), false, 'meeting'));
+
+        // 3. Sprint retro — last Friday, 15:00–16:30
+        const retro = lastDow(5);
+        events.push(e('Sprint retro', ymdt(retro, 15, 0), ymdt(retro, 16, 30), false, 'meeting'));
+
+        // 4. 1:1 with manager — every other Tuesday, 14:00
+        const firstTue = nthDow(1, 2);
+        if (firstTue) {
+            for (let week = 0; week < 5; week += 2) {
+                const d = new Date(firstTue);
+                d.setDate(d.getDate() + week * 7);
+                if (!sameMonth(d)) break;
+                events.push(e('1:1 with manager', ymdt(d, 14, 0), ymdt(d, 14, 30), false, 'meeting'));
+            }
+        }
+
+        // 5. Town hall — 3rd Thursday, 16:00–17:00
+        const th = nthDow(3, 4);
+        if (th) events.push(e('All-hands town hall', ymdt(th, 16, 0), ymdt(th, 17, 0), false, 'presentation'));
+
+        // 6. Today (or next weekday) — Design review with stakeholders
+        let t0 = new Date(today);
+        if (t0.getDay() === 0) t0 = offset(1);
+        if (t0.getDay() === 6) t0 = offset(2);
+        if (sameMonth(t0)) {
+            events.push(e('Design review with stakeholders', ymdt(t0, 11, 0), ymdt(t0, 12, 30), false, 'presentation'));
+        }
+
+        // 7. Today + 2 — Customer interviews (pricing)
+        const t2 = offset(2);
+        if (sameMonth(t2)) events.push(e('Customer interviews — pricing', ymdt(t2, 13, 0), ymdt(t2, 14, 0), false, 'task'));
+
+        // 8. Today + 4 — Client demo (Acme)
+        const t4 = offset(4);
+        if (sameMonth(t4)) events.push(e('Client demo — Acme', ymdt(t4, 14, 0), ymdt(t4, 15, 30), false, 'presentation'));
+
+        // 9. Today + 7 — Code freeze (all-day)
+        const t7 = offset(7);
+        if (sameMonth(t7)) events.push(e('Code freeze', ymd(t7), null, true, 'deadline'));
+
+        // 10. Today + 12 — Q2 product launch (all-day)
+        const t12 = offset(12);
+        if (sameMonth(t12)) events.push(e('Q2 product launch', ymd(t12), null, true, 'presentation'));
+
+        // 11. Today − 5 — Brand kickoff (past event)
+        const tn5 = offset(-5);
+        if (sameMonth(tn5)) events.push(e('Brand kickoff', ymdt(tn5, 10, 30), ymdt(tn5, 12, 0), false, 'meeting'));
+
+        // 12. Today − 9 — Quarterly OKR review (past, all-day)
+        const tn9 = offset(-9);
+        if (sameMonth(tn9)) events.push(e('Quarterly OKR review', ymd(tn9), null, true, 'deadline'));
+
+        // 13. Mid-month all-day team offsite (15th, or last day if month is short)
+        const lastDayOfMonth = new Date(y, m + 1, 0).getDate();
+        const offsiteDay = Math.min(15, lastDayOfMonth);
+        const offsite = new Date(y, m, offsiteDay);
+        events.push(e('Team strategy offsite', ymd(offsite), null, true, 'task'));
+
+        // 14. Personal — gym (twice a week, Mon + Wed evenings, 18:30)
+        const cursor = new Date(y, m, 1);
+        while (cursor.getMonth() === m) {
+            if (cursor.getDay() === 1 || cursor.getDay() === 3) {
+                events.push(e('Gym', ymdt(cursor, 18, 30), ymdt(cursor, 19, 30), false, 'personal'));
+            }
+            cursor.setDate(cursor.getDate() + 1);
+        }
+
+        // 15. Friday afternoon coffee chat (every Friday, 16:30)
+        const cof = new Date(y, m, 1);
+        while (cof.getMonth() === m) {
+            if (cof.getDay() === 5) {
+                events.push(e('Coffee with the team', ymdt(cof, 16, 30), ymdt(cof, 17, 0), false, 'personal'));
+            }
+            cof.setDate(cof.getDate() + 1);
+        }
+
+        return events;
+    }
+
+    /* Populate the sidebar "Upcoming events" list with the next 6 events
+       starting from today (or today onward), sorted ascending. */
+    function renderDeadlineList(allEvents) {
+        const container = document.querySelector('.deadline-list');
+        if (!container) return;
+
+        const todayISO = new Date();
+        todayISO.setHours(0, 0, 0, 0);
+        const upcoming = allEvents
+            .map((ev) => ({ ev, start: new Date(ev.start) }))
+            .filter((x) => x.start >= todayISO)
+            .sort((a, b) => a.start - b.start)
+            .slice(0, 6);
+
+        container.innerHTML = '';
+        upcoming.forEach(({ ev, start }) => {
+            const day = start.getDate();
+            const month = start.toLocaleDateString(undefined, { month: 'short' });
+            const meta = ev.allDay ? 'All day' : start.toLocaleTimeString(undefined, {
+                hour: 'numeric', minute: '2-digit', hour12: true,
             });
+            const li = document.createElement('li');
+            const dateBox = document.createElement('div');
+            dateBox.className = 'deadline-list__date';
+            dateBox.innerHTML = '<strong>' + String(day).padStart(2, '0') + '</strong><span>' + month + '</span>';
+            const body = document.createElement('div');
+            body.className = 'deadline-list__body';
+            const title = document.createElement('p');
+            title.className = 'deadline-list__title';
+            title.textContent = ev.title;
+            const project = document.createElement('span');
+            project.className = 'deadline-list__project';
+            project.textContent = meta;
+            body.append(title, project);
+            li.append(dateBox, body);
+            container.appendChild(li);
+        });
+
+        if (upcoming.length === 0) {
+            container.innerHTML = '<li style="padding:14px 0; color: var(--m-text-faint); font-size: 13px;">No upcoming events.</li>';
         }
     }
-    </script>
 
+    /* "Add event" button in the page header */
+    function addNewEvent() {
+        const title = prompt('Event title:');
+        if (!title || !window.calendarInstance) return;
+        window.calendarInstance.addEvent({
+            title,
+            start: new Date(),
+            backgroundColor: '#eaf0fc',
+            borderColor: '#eaf0fc',
+            textColor: '#4272d7',
+            extendedProps: { type: 'custom' },
+        });
+    }
+    </script>
 
 </body>
 

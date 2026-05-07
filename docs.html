@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="CoolAdmin 3.0.0">
+    <meta name="description" content="Quick start, file structure, customization, JavaScript APIs, and deployment.">
+    <title>Documentation | CoolAdmin Bootstrap 5 Admin Dashboard</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Documentation | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta property="og:description" content="Quick start, file structure, customization, JavaScript APIs, and deployment.">
+    <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Documentation | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta name="twitter:description" content="Quick start, file structure, customization, JavaScript APIs, and deployment.">
+    <meta name="theme-color" content="#4272d7">
+
+    <link href="css/font-face.css" rel="stylesheet" media="all">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="vendor/fontawesome-7.2.0/css/all.min.css" rel="stylesheet" media="all">
+
+    <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all">
+    <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+
+    <link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="css/theme-2026.css" rel="stylesheet" media="all">
+</head>
+
+<body class="theme-2026">
+    <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+
+    <div class="page-wrapper">
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar" id="main-sidebar">
+            <div class="logo">
+                <a href="index.html" class="logo-link" aria-label="CoolAdmin home">
+                    <span class="logo-mark" aria-hidden="true">C</span>
+                    <span class="logo-text">CoolAdmin</span>
+                </a>
+                <button class="sidebar-close js-sidebar-toggle" type="button" aria-label="Close navigation">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="index.html">Dashboard 1</a></li>
+                                <li><a href="index2.html">Dashboard 2</a></li>
+                                <li><a href="index3.html">Dashboard 3</a></li>
+                                <li><a href="index4.html">Dashboard 4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="chart.html"><i class="fa-solid fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-table"></i>Tables</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="table.html">Tables</a></li>
+                                <li><a href="data-table.html">Data table</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-regular fa-square-check"></i>Forms</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="form.html">Forms</a></li>
+                                <li><a href="wizard.html">Setup wizard</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="calendar.html"><i class="fa-solid fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html"><i class="fa-solid fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li>
+                            <a href="inbox.html"><i class="fa-solid fa-inbox"></i>Inbox</a>
+                        </li>
+                        <li>
+                            <a href="kanban.html"><i class="fa-solid fa-columns"></i>Kanban</a>
+                        </li>
+                        <li>
+                            <a href="notifications.html"><i class="fa-regular fa-bell"></i>Notifications</a>
+                        </li>
+                        <li class="active">
+                            <a href="docs.html"><i class="fa-regular fa-file-lines"></i>Documentation</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-user-gear"></i>Account</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="profile.html">Profile &amp; settings</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="invoice.html">Invoice</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-copy"></i>Pages</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="register.html">Register</a></li>
+                                <li><a href="forget-pass.html">Forgot password</a></li>
+                                <li><a href="404.html">404 not found</a></li>
+                                <li><a href="500.html">500 server error</a></li>
+                                <li><a href="maintenance.html">Maintenance</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-desktop"></i>UI Elements</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="button.html">Buttons</a></li>
+                                <li><a href="badge.html">Badges</a></li>
+                                <li><a href="tab.html">Tabs</a></li>
+                                <li><a href="card.html">Cards</a></li>
+                                <li><a href="alert.html">Alerts</a></li>
+                                <li><a href="progress-bar.html">Progress bars</a></li>
+                                <li><a href="modal.html">Modals</a></li>
+                                <li><a href="switch.html">Switches</a></li>
+                                <li><a href="grid.html">Grid system</a></li>
+                                <li><a href="fontawesome.html">Font Awesome</a></li>
+                                <li><a href="typo.html">Typography</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+<!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <button class="sidebar-toggle js-sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-sidebar">
+                                <span class="sidebar-toggle__bars" aria-hidden="true"></span>
+                            </button>
+                            <form class="form-header" role="search" onsubmit="return false">
+                                <i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
+                                <input class="au-input au-input--xl" type="search" name="search" placeholder="Search anything…" aria-label="Search">
+                                <kbd class="form-header__hint" aria-hidden="true">⌘K</kbd>
+                            </form>
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Messages">
+                                        <i class="fa-solid fa-comment-dots"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="mess-dropdown js-dropdown">
+                                            <div class="mess__title"><p>Messages</p></div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <h6>Michelle Moreno</h6>
+                                                    <p>Have sent a photo</p>
+                                                    <span class="time">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-04.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <h6>Diane Myers</h6>
+                                                    <p>You are now connected</p>
+                                                    <span class="time">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__footer"><a href="#">View all messages</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Emails">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="email-dropdown js-dropdown">
+                                            <div class="email__title"><p>Emails</p></div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard…</p>
+                                                    <span>Cynthia Harvey, 3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-05.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <p>Quarterly report draft</p>
+                                                    <span>John Doe, Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__footer"><a href="#">See all emails</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Notifications">
+                                        <i class="fa-solid fa-bell"></i>
+                                        <span class="quantity">3</span>
+                                        <div class="notifi-dropdown js-dropdown">
+                                            <div class="notifi__title"><p>Notifications</p></div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40"><i class="fa-solid fa-envelope-open"></i></div>
+                                                <div class="content">
+                                                    <p>You have a new email</p>
+                                                    <span class="date">Today, 14:30</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40"><i class="fa-solid fa-id-card"></i></div>
+                                                <div class="content">
+                                                    <p>Your account was updated</p>
+                                                    <span class="date">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40"><i class="fa-solid fa-file-lines"></i></div>
+                                                <div class="content">
+                                                    <p>Report uploaded successfully</p>
+                                                    <span class="date">2 days ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__footer"><a href="#">All notifications</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Account menu">
+                                        <div class="image"><img src="images/icon/avatar-01.jpg" alt="John Doe"></div>
+                                        <div class="content"><a class="js-acc-btn" href="#">john doe</a></div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image"><a href="#"><img src="images/icon/avatar-01.jpg" alt=""></a></div>
+                                                <div class="content">
+                                                    <h5 class="name"><a href="#">john doe</a></h5>
+                                                    <span class="email">johndoe@example.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-user"></i>Account</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-sack-dollar"></i>Billing</a></div>
+                                            </div>
+                                            <div class="account-dropdown__footer"><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main id="main-content" class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+
+                        <div class="page-header">
+                            <div>
+                                <h1>Documentation</h1>
+                                <p class="subtitle">Everything you need to customize, extend, and deploy CoolAdmin v3.</p>
+                            </div>
+                            <div class="page-header__actions">
+                                <a href="https://github.com" target="_blank" rel="noopener" class="m-btn m-btn--ghost"><i class="fa-brands fa-github"></i> GitHub</a>
+                                <a href="#install" class="m-btn m-btn--primary"><i class="fa-solid fa-rocket"></i> Quick start</a>
+                            </div>
+                        </div>
+
+                        <div class="docs-layout">
+                            <aside class="docs-toc" id="docs-toc">
+                                <p class="docs-toc__title">On this page</p>
+                                <ul class="docs-toc__list">
+                                    <li><a href="#install">Quick start</a></li>
+                                    <li><a href="#structure">File structure</a></li>
+                                    <li><a href="#themes">Color themes</a></li>
+                                    <li><a href="#typography">Typography</a></li>
+                                    <li><a href="#components">Components</a></li>
+                                    <li><a href="#js-apis">JavaScript APIs</a></li>
+                                    <li><a href="#charts">Chart configurations</a></li>
+                                    <li><a href="#new-page">Adding a new page</a></li>
+                                    <li><a href="#dark-mode">Dark mode</a></li>
+                                    <li><a href="#deploy">Deployment</a></li>
+                                </ul>
+                            </aside>
+
+                            <div class="docs-content">
+
+                                <section class="docs-section" id="install">
+                                    <h2>Quick start <a class="anchor" href="#install" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>CoolAdmin is a static HTML template &mdash; no build step, no toolchain. Open any <code>.html</code> file via a local server and you&rsquo;re running.</p>
+                                    <pre><button class="docs-copy-btn" type="button">Copy</button><code># Clone or download the template
+git clone https://github.com/your-username/cooladmin.git
+cd cooladmin
+
+# Serve locally (Python 3 example)
+python3 -m http.server 8000
+
+# Or with Node
+npx serve .</code></pre>
+                                    <p>Then visit <code>http://localhost:8000/index.html</code>. CSS is shipped pre-built &mdash; no Sass watcher to run.</p>
+
+                                    <blockquote>
+                                        <strong>Important</strong>
+                                        <p>Open files via a local server, not <code>file://</code>. Some browsers block JavaScript and CSS loading from the <code>file://</code> protocol for security reasons.</p>
+                                    </blockquote>
+                                </section>
+
+                                <section class="docs-section" id="structure">
+                                    <h2>File structure <a class="anchor" href="#structure" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <pre><code>cooladmin/
+├── *.html                    27 page templates (dashboards, tables, forms, etc.)
+├── css/
+│   ├── theme.css             legacy CoolAdmin styles (kept for compat)
+│   ├── theme-2026.css        modern v3 design system
+│   └── font-face.css         Poppins font-face declarations
+├── js/
+│   ├── vanilla-utils.js      jQuery shim ($, on, ready, etc.)
+│   ├── bootstrap5-init.js    Bootstrap 5 component init
+│   ├── main-vanilla.js       chart configs + UI behaviors + JS APIs
+│   └── modern-plugins.js     counters, lightbox, progress
+├── vendor/                   third-party CSS/JS
+│   ├── bootstrap-5.3.8.bundle.min.js
+│   ├── fontawesome-7.2.0/
+│   ├── chartjs/
+│   └── fullcalendar-6.1.20/
+├── images/                   logos, avatars, backgrounds
+└── README.md</code></pre>
+                                    <p>Every page links the same canonical CSS chain in this order:</p>
+                                    <ol>
+                                        <li><code>css/font-face.css</code> &mdash; Poppins (legacy)</li>
+                                        <li><code>https://rsms.me/inter/inter.css</code> &mdash; Inter (the modern font)</li>
+                                        <li><code>vendor/fontawesome-7.2.0/css/all.min.css</code> &mdash; icons</li>
+                                        <li><code>vendor/bootstrap-5.3.8.min.css</code> &mdash; Bootstrap base</li>
+                                        <li><code>css/theme.css</code> &mdash; legacy theme</li>
+                                        <li><code>css/theme-2026.css</code> &mdash; modern overlay (this is where almost everything lives)</li>
+                                    </ol>
+                                </section>
+
+                                <section class="docs-section" id="themes">
+                                    <h2>Color themes <a class="anchor" href="#themes" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Six accent-color presets ship out of the box. Use the floating palette button (bottom-right of any page) to try them, or set the body class directly:</p>
+                                    <pre><code>&lt;body class=&quot;theme-2026 theme-purple&quot;&gt;</code></pre>
+                                    <p>Available themes: <code>theme-blue</code> (default), <code>theme-purple</code>, <code>theme-teal</code>, <code>theme-rose</code>, <code>theme-amber</code>, <code>theme-graphite</code>.</p>
+                                    <p>To define your own theme, override the four accent variables on <code>body.theme-2026.theme-yourname</code>:</p>
+                                    <pre><code>body.theme-2026.theme-mycolor {
+    --m-accent:        #ff5722;
+    --m-accent-rgb:    255, 87, 34;
+    --m-accent-hover:  #e64a19;
+    --m-accent-soft:   #fff3e0;
+}</code></pre>
+                                    <p>The user&rsquo;s choice is persisted automatically in <code>localStorage</code> under the key <code>cooladmin.theme</code>.</p>
+                                </section>
+
+                                <section class="docs-section" id="typography">
+                                    <h2>Typography <a class="anchor" href="#typography" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>The default sans-serif is <strong style="color:var(--m-text);">Inter</strong> served from <code>rsms.me</code>. The legacy <strong style="color:var(--m-text);">Poppins</strong> is also bundled in <code>fonts/poppins</code> for offline use.</p>
+                                    <p>To swap fonts globally, change the <code>--m-font</code> token at the top of <code>css/theme-2026.css</code>:</p>
+                                    <pre><code>body.theme-2026 {
+    --m-font: &quot;Your Font&quot;, system-ui, sans-serif;
+}</code></pre>
+                                    <p>The type scale used across pages:</p>
+                                    <table>
+                                        <thead><tr><th>Element</th><th>Size</th><th>Weight</th></tr></thead>
+                                        <tbody>
+                                            <tr><td>Page header h1</td><td>22 px</td><td>600</td></tr>
+                                            <tr><td>Card title</td><td>14 px</td><td>600</td></tr>
+                                            <tr><td>Body</td><td>14 px</td><td>400</td></tr>
+                                            <tr><td>Subtitle / muted</td><td>13 px</td><td>400</td></tr>
+                                            <tr><td>KPI value</td><td>26 px</td><td>600 (tabular)</td></tr>
+                                            <tr><td>Eyebrow / label</td><td>11 px</td><td>600 uppercase</td></tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+
+                                <section class="docs-section" id="components">
+                                    <h2>Components <a class="anchor" href="#components" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Modern reusable patterns live under <code>.m-*</code> class names in <code>theme-2026.css</code>:</p>
+                                    <table>
+                                        <thead><tr><th>Class</th><th>Purpose</th></tr></thead>
+                                        <tbody>
+                                            <tr><td><code>.m-card</code></td><td>White surface with header / body / footer</td></tr>
+                                            <tr><td><code>.m-btn</code></td><td>Modern button (with <code>--primary</code>, <code>--ghost</code>)</td></tr>
+                                            <tr><td><code>.m-table</code></td><td>Borderless table with hover rows</td></tr>
+                                            <tr><td><code>.stat-card</code></td><td>KPI tile with label, value, delta, sparkline</td></tr>
+                                            <tr><td><code>.profile-card</code></td><td>User card with avatar, name, role, socials</td></tr>
+                                            <tr><td><code>.cover-card</code></td><td>Card with image cover + body</td></tr>
+                                            <tr><td><code>.pricing-card</code></td><td>Pricing tier card with <code>--featured</code></td></tr>
+                                            <tr><td><code>.notice-card</code></td><td>Inline alert card (info / success / warning / danger)</td></tr>
+                                            <tr><td><code>.rank-list</code></td><td>Numbered list with bars (top-N rankings)</td></tr>
+                                            <tr><td><code>.empty-state</code></td><td>"No data" placeholder with icon + title</td></tr>
+                                            <tr><td><code>.skeleton</code></td><td>Loading placeholder (with shimmer)</td></tr>
+                                        </tbody>
+                                    </table>
+                                </section>
+
+                                <section class="docs-section" id="js-apis">
+                                    <h2>JavaScript APIs <a class="anchor" href="#js-apis" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+
+                                    <h3>Toast notifications</h3>
+                                    <p>The toast system is auto-initialized on every page. Trigger it from anywhere:</p>
+                                    <pre><code>// Simple
+toast.success('Saved');
+toast.info('Heads up');
+toast.warning('Storage almost full');
+toast.error('Something went wrong');
+
+// Full options
+toast.show({
+    title: 'New version',
+    message: 'v3.1.0 is now live',
+    type: 'success',
+    duration: 6000,    // ms; 0 = no auto-dismiss
+});</code></pre>
+
+                                    <h3>Command palette</h3>
+                                    <p>Press <kbd>⌘</kbd><kbd>K</kbd> (or <kbd>Ctrl</kbd><kbd>K</kbd>) anywhere to open. Programmatic control:</p>
+                                    <pre><code>window.cmdk.open();
+window.cmdk.close();</code></pre>
+                                    <p>To add new commands, edit the <code>COMMANDS</code> array in <code>js/main-vanilla.js</code>:</p>
+                                    <pre><code>{ section: 'Pages', title: 'My new page', sub: 'Custom workflow',
+  href: 'my-page.html', icon: 'fa-bolt' }</code></pre>
+
+                                    <h3>Theme switcher</h3>
+                                    <p>The floating palette button auto-injects on every page. The user&rsquo;s choice is persisted in <code>localStorage</code>. To force a theme programmatically, just toggle the body class:</p>
+                                    <pre><code>document.body.classList.remove('theme-blue', 'theme-purple', 'theme-teal',
+                                'theme-rose', 'theme-amber', 'theme-graphite');
+document.body.classList.add('theme-purple');</code></pre>
+                                </section>
+
+                                <section class="docs-section" id="charts">
+                                    <h2>Chart configurations <a class="anchor" href="#charts" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Charts use <strong style="color:var(--m-text);">Chart.js 4.5</strong>. Shared helpers in <code>main-vanilla.js</code> keep configs DRY:</p>
+                                    <ul>
+                                        <li><code>withCanvas(id, fn)</code> &mdash; safe per-canvas init (skips if canvas isn&rsquo;t on the page)</li>
+                                        <li><code>kpiSparkline(ctx, opts)</code> &mdash; gradient-fill sparkline for KPI tiles</li>
+                                        <li><code>sparklineOptions()</code>, <code>lightTooltip</code>, <code>modernTooltip</code> &mdash; reusable option blocks</li>
+                                    </ul>
+                                    <p>To add a new chart, append a <code>withCanvas</code> block:</p>
+                                    <pre><code>withCanvas('my-chart', (ctx) =&gt; {
+    new Chart(ctx, {
+        type: 'line',
+        data: { /* ... */ },
+        options: { ...sparklineOptions(), /* overrides */ },
+    });
+});</code></pre>
+                                </section>
+
+                                <section class="docs-section" id="new-page">
+                                    <h2>Adding a new page <a class="anchor" href="#new-page" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Every dashboard-style page follows the same pattern: head &rarr; sidebar &rarr; topbar &rarr; <code>&lt;main&gt;</code> &rarr; scripts. The fastest way is to copy an existing page like <code>profile.html</code> and replace the main content.</p>
+                                    <ol>
+                                        <li>Duplicate <code>profile.html</code> to <code>my-page.html</code></li>
+                                        <li>Update the <code>&lt;title&gt;</code> and meta tags at the top</li>
+                                        <li>Replace everything inside the <code>&lt;main id=&quot;main-content&quot;&gt;</code> with your content</li>
+                                        <li>Add a sidebar entry by editing <code>build_sidebar()</code> in <code>tmp/coolupdate/migrate_chrome.py</code> and re-running it</li>
+                                        <li>Optionally add a command-palette entry in <code>main-vanilla.js</code></li>
+                                    </ol>
+                                </section>
+
+                                <section class="docs-section" id="dark-mode">
+                                    <h2>Dark mode <a class="anchor" href="#dark-mode" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Dark-mode tokens are pre-wired but not enabled by default. To enable, set <code>data-bs-theme="dark"</code> on the <code>&lt;html&gt;</code> element:</p>
+                                    <pre><code>&lt;html lang=&quot;en&quot; data-bs-theme=&quot;dark&quot;&gt;</code></pre>
+                                    <p>The <code>:root</code> tokens swap to dark surfaces (<code>--m-bg</code>, <code>--m-surface</code>, <code>--m-text</code>, etc.). Note: a few legacy CoolAdmin styles still use hardcoded colors &mdash; a thorough dark pass is on the roadmap for v3.1.</p>
+                                </section>
+
+                                <section class="docs-section" id="deploy">
+                                    <h2>Deployment <a class="anchor" href="#deploy" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
+                                    <p>Drop the entire folder onto any static host:</p>
+                                    <ul>
+                                        <li><strong style="color:var(--m-text);">Netlify / Vercel:</strong> drag-and-drop the folder, no build command needed</li>
+                                        <li><strong style="color:var(--m-text);">Cloudflare Pages:</strong> connect your Git repo, build command empty, output directory <code>./</code></li>
+                                        <li><strong style="color:var(--m-text);">GitHub Pages:</strong> push the repo, enable Pages from the <code>main</code> branch</li>
+                                        <li><strong style="color:var(--m-text);">S3 + CloudFront:</strong> sync to a bucket with public-read</li>
+                                        <li><strong style="color:var(--m-text);">Plain shared hosting:</strong> FTP / rsync the folder up</li>
+                                    </ul>
+                                    <p>The only external dependency is the Inter font from <code>rsms.me</code>. To go fully offline, download Inter and replace that <code>&lt;link&gt;</code> with a local stylesheet.</p>
+                                    <blockquote>
+                                        <strong>Tip</strong>
+                                        <p>Strip unused vendor folders before deploy if you don&rsquo;t need them &mdash; for example, drop <code>fullcalendar-6.1.20</code> if you don&rsquo;t use the calendar page (saves ~280 KB).</p>
+                                    </blockquote>
+                                </section>
+
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 28px;">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2026 Colorlib. All rights reserved. Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
+        </div>
+        <!-- END PAGE CONTAINER-->
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/vanilla-utils.js"></script>
+    <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
+    <script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
+    <script src="js/bootstrap5-init.js"></script>
+    <script src="js/main-vanilla.js"></script>
+    <script src="js/modern-plugins.js"></script>
+
+    <!-- Docs: TOC scrollspy + copy-to-clipboard -->
+    <script>
+    (function () {
+        // Scrollspy: highlight the active TOC link based on scroll position
+        const tocLinks = document.querySelectorAll('.docs-toc a');
+        const sections = [...document.querySelectorAll('.docs-section')];
+        if (!sections.length) return;
+
+        function setActive(id) {
+            tocLinks.forEach((a) => {
+                a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+            });
+        }
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) setActive(e.target.id);
+            });
+        }, { rootMargin: '-30% 0px -55% 0px' });
+        sections.forEach((s) => obs.observe(s));
+
+        // Copy-to-clipboard buttons on every <pre>
+        document.querySelectorAll('.docs-copy-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const code = btn.parentElement.querySelector('code');
+                if (!code) return;
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    const orig = btn.textContent;
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => { btn.textContent = orig; }, 1500);
+                });
+            });
+        });
+        // Also auto-add copy buttons to pre blocks that don't have one
+        document.querySelectorAll('.docs-content pre').forEach((pre) => {
+            if (pre.querySelector('.docs-copy-btn')) return;
+            const btn = document.createElement('button');
+            btn.className = 'docs-copy-btn';
+            btn.type = 'button';
+            btn.textContent = 'Copy';
+            btn.addEventListener('click', () => {
+                const code = pre.querySelector('code');
+                if (!code) return;
+                navigator.clipboard.writeText(code.textContent).then(() => {
+                    btn.textContent = 'Copied!';
+                    setTimeout(() => { btn.textContent = 'Copy'; }, 1500);
+                });
+            });
+            pre.appendChild(btn);
+        });
+    })();
+    </script>
+</body>
+</html>

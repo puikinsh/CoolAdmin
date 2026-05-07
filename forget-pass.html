@@ -2,79 +2,64 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="au theme template">
-    <meta name="author" content="Hau Nguyen">
-    <meta name="keywords" content="au theme template">
+    <meta name="generator" content="CoolAdmin 3.0.0">
+    <meta name="description" content="Password recovery page with clean form layout.">
+    <title>Forgot password | CoolAdmin Bootstrap 5 Admin Dashboard</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Forgot password | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta property="og:description" content="Password recovery page with clean form layout.">
+    <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Forgot password | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta name="twitter:description" content="Password recovery page with clean form layout.">
+    <meta name="theme-color" content="#4272d7">
 
-    <!-- Title Page-->
-    <title>Forget Password</title>
-
-    <!-- Fontfaces CSS-->
     <link href="css/font-face.css" rel="stylesheet" media="all">
-    <link href="vendor/fontawesome-7.1.0/css/all.min.css" rel="stylesheet" media="all">
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link href="vendor/fontawesome-7.2.0/css/all.min.css" rel="stylesheet" media="all">
 
-    <!-- Bootstrap CSS-->
     <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all">
-
-    <!-- Vendor CSS-->
-    <link href="css/aos.css" rel="stylesheet" media="all">
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="css/swiper-bundle-12.0.3.min.css" rel="stylesheet" media="all">
-    <link href="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.css" rel="stylesheet" media="all">
 
-    <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
-
+    <link href="css/theme-2026.css" rel="stylesheet" media="all">
 </head>
 
-<body>
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
-                            </a>
-                        </div>
-                        <div class="login-form">
-                            <form action="" method="post">
-                                <div class="form-group">
-                                    <label>Email Address</label>
-                                    <input class="au-input au-input--full" type="email" name="email" placeholder="Email">
-                                </div>
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">submit</button>
-                            </form>
-                        </div>
-                    </div>
+<body class="theme-2026 auth-page">
+    <a class="visually-hidden-focusable skip-link" href="#auth-form">Skip to recovery form</a>
+
+    <main id="auth-form" class="login-wrap">
+        <div class="login-content">
+            <a href="index.html" class="auth-brand" aria-label="CoolAdmin home">
+                <span class="logo-mark" aria-hidden="true">C</span>
+                <span class="logo-text">CoolAdmin</span>
+            </a>
+            <h1 class="auth-title">Reset your password</h1>
+            <p class="auth-subtitle">Enter your email and we'll send you a link to reset it.</p>
+
+            <form class="login-form" action="" method="post" onsubmit="return false">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input id="email" class="au-input" type="email" name="email"
+                        placeholder="you@example.com" autocomplete="email" required>
                 </div>
+                <button class="au-btn au-btn--green" type="submit">Send reset link</button>
+            </form>
+
+            <div class="register-link">
+                <p>Remembered it? <a href="login.html">Back to sign in</a></p>
             </div>
         </div>
+    </main>
 
-    </div>
-
-    <!-- Bootstrap 5 JS-->
-    <!-- Jquery JS-->
     <script src="js/vanilla-utils.js"></script>
-    <!-- Bootstrap JS-->
     <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
-    <!-- Vendor JS       -->
-    <script src="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.min.js"></script>
-    <script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
-
-    <!-- Main JS-->
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
-    <script src="js/swiper-bundle-12.0.3.min.js"></script>
-    <script src="js/aos.js"></script>
     <script src="js/modern-plugins.js"></script>
-
 </body>
-
 </html>
-<!-- end document-->

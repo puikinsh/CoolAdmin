@@ -4,34 +4,35 @@
 <head>
 	<!-- Required meta tags-->
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="au theme template">
-	<meta name="author" content="Hau Nguyen">
-	<meta name="keywords" content="au theme template">
-
-	<!-- Title Page-->
-	<title>Modal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="CoolAdmin 3.0.0">
+    <meta name="description" content="Bootstrap 5 modal dialogs: small, large, scrollable, and centered variations.">
+    <title>Modals | CoolAdmin Bootstrap 5 Admin Dashboard</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Modals | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta property="og:description" content="Bootstrap 5 modal dialogs: small, large, scrollable, and centered variations.">
+    <meta property="og:image" content="screenshots/cooladmin-bootstrap-dashboard-2.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Modals | CoolAdmin Bootstrap 5 Admin Dashboard">
+    <meta name="twitter:description" content="Bootstrap 5 modal dialogs: small, large, scrollable, and centered variations.">
+    <meta name="theme-color" content="#4272d7">
 
 	<!-- Fontfaces CSS-->
 	<link href="css/font-face.css" rel="stylesheet" media="all">
-	<link href="vendor/fontawesome-7.1.0/css/all.min.css" rel="stylesheet" media="all">
-	<link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-
-	<!-- Bootstrap CSS-->
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<link href="vendor/fontawesome-7.2.0/css/all.min.css" rel="stylesheet" media="all"><!-- Bootstrap CSS-->
 	<link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all">
 
-	<!-- Vendor CSS-->
-	<link href="css/aos.css" rel="stylesheet" media="all">
-	<link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-	<link href="css/swiper-bundle-12.0.3.min.css" rel="stylesheet" media="all">
-	<link href="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.css" rel="stylesheet" media="all">
-
-	<!-- Main CSS-->
+	<!-- Vendor CSS--><link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"><!-- Main CSS-->
 	<link href="css/theme.css" rel="stylesheet" media="all">
+    <link href="css/theme-2026.css" rel="stylesheet" media="all">
 
 </head>
 
-<body>
+<body class="theme-2026">
+    <a class="visually-hidden-focusable skip-link" href="#main-content">Skip to main content</a>
+
 	<div class="page-wrapper">
 		<!-- HEADER MOBILE-->
 		<header class="header-mobile d-block d-lg-none">
@@ -41,7 +42,7 @@
 						<a class="logo" href="index.html">
 							<img src="images/icon/logo.png" alt="CoolAdmin" />
 						</a>
-						<button class="hamburger hamburger--slider" type="button">
+						<button class="hamburger hamburger--slider" type="button" aria-label="Toggle navigation">
 							<span class="hamburger-box">
 								<span class="hamburger-inner"></span>
 							</span>
@@ -54,7 +55,7 @@
 					<ul class="navbar-mobile__list list-unstyled">
 						<li class="has-sub">
 							<a class="js-arrow" href="#">
-								<i class="fas fa-tachometer-alt"></i>Dashboard</a>
+								<i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
 							<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 								<li>
 									<a href="index.html">Dashboard 1</a>
@@ -72,11 +73,11 @@
 						</li>
 						<li>
 							<a href="chart.html">
-								<i class="fas fa-chart-bar"></i>Charts</a>
+								<i class="fa-solid fa-chart-bar"></i>Charts</a>
 						</li>
 						<li>
 							<a href="table.html">
-								<i class="fas fa-table"></i>Tables</a>
+								<i class="fa-solid fa-table"></i>Tables</a>
 						</li>
 						<li>
 							<a href="form.html">
@@ -84,15 +85,15 @@
 						</li>
 						<li>
 							<a href="calendar.html">
-								<i class="fas fa-calendar-alt"></i>Calendar</a>
+								<i class="fa-solid fa-calendar-alt"></i>Calendar</a>
 						</li>
 						<li>
 							<a href="map.html">
-								<i class="fas fa-map-marker-alt"></i>Maps</a>
+								<i class="fa-solid fa-map-marker-alt"></i>Maps</a>
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="#">
-								<i class="fas fa-copy"></i>Pages</a>
+								<i class="fa-solid fa-copy"></i>Pages</a>
 							<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 								<li>
 									<a href="login.html">Login</a>
@@ -107,7 +108,7 @@
 						</li>
 						<li class="has-sub">
 							<a class="js-arrow" href="#">
-								<i class="fas fa-desktop"></i>UI Elements</a>
+								<i class="fa-solid fa-desktop"></i>UI Elements</a>
 							<ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
 								<li>
 									<a href="button.html">Button</a>
@@ -149,335 +150,365 @@
 			</nav>
 		</header>
 		<!-- END HEADER MOBILE-->
-
-		<!-- MENU SIDEBAR-->
-		<aside class="menu-sidebar d-none d-lg-block">
-			<div class="logo">
-				<a href="#">
-					<img src="images/icon/logo.png" alt="Cool Admin" />
-				</a>
-			</div>
-			<div class="menu-sidebar__content js-scrollbar1">
-				<nav class="navbar-sidebar">
-					<ul class="list-unstyled navbar__list">
-						<li class="has-sub">
-							<a class="js-arrow" href="#">
-								<i class="fas fa-tachometer-alt"></i>Dashboard</a>
-							<ul class="list-unstyled navbar__sub-list js-sub-list">
-								<li>
-									<a href="index.html">Dashboard 1</a>
-								</li>
-								<li>
-									<a href="index2.html">Dashboard 2</a>
-								</li>
-								<li>
-									<a href="index3.html">Dashboard 3</a>
-								</li>
-								<li>
-									<a href="index4.html">Dashboard 4</a>
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="chart.html">
-								<i class="fas fa-chart-bar"></i>Charts</a>
-						</li>
-						<li>
-							<a href="table.html">
-								<i class="fas fa-table"></i>Tables</a>
-						</li>
-						<li>
-							<a href="form.html">
-								<i class="far fa-check-square"></i>Forms</a>
-						</li>
-						<li>
-							<a href="calendar.html">
-								<i class="fas fa-calendar-alt"></i>Calendar</a>
-						</li>
-						<li>
-							<a href="map.html">
-								<i class="fas fa-map-marker-alt"></i>Maps</a>
-						</li>
-						<li class="has-sub">
-							<a class="js-arrow" href="#">
-								<i class="fas fa-copy"></i>Pages</a>
-							<ul class="list-unstyled navbar__sub-list js-sub-list">
-								<li>
-									<a href="login.html">Login</a>
-								</li>
-								<li>
-									<a href="register.html">Register</a>
-								</li>
-								<li>
-									<a href="forget-pass.html">Forget Password</a>
-								</li>
-							</ul>
-						</li>
-						<li class="active has-sub">
-							<a class="js-arrow" href="#">
-								<i class="fas fa-desktop"></i>UI Elements</a>
-							<ul class="list-unstyled navbar__sub-list js-sub-list">
-								<li>
-									<a href="button.html">Button</a>
-								</li>
-								<li>
-									<a href="badge.html">Badges</a>
-								</li>
-								<li>
-									<a href="tab.html">Tabs</a>
-								</li>
-								<li>
-									<a href="card.html">Cards</a>
-								</li>
-								<li>
-									<a href="alert.html">Alerts</a>
-								</li>
-								<li>
-									<a href="progress-bar.html">Progress Bars</a>
-								</li>
-								<li>
-									<a href="modal.html">Modals</a>
-								</li>
-								<li>
-									<a href="switch.html">Switchs</a>
-								</li>
-								<li>
-									<a href="grid.html">Grids</a>
-								</li>
-								<li>
-									<a href="fontawesome.html">Fontawesome Icon</a>
-								</li>
-								<li>
-									<a href="typo.html">Typography</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</nav>
-			</div>
-		</aside>
-		<!-- END MENU SIDEBAR-->
-
-		<!-- PAGE CONTAINER-->
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar" id="main-sidebar">
+            <div class="logo">
+                <a href="index.html" class="logo-link" aria-label="CoolAdmin home">
+                    <span class="logo-mark" aria-hidden="true">C</span>
+                    <span class="logo-text">CoolAdmin</span>
+                </a>
+                <button class="sidebar-close js-sidebar-toggle" type="button" aria-label="Close navigation">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-tachometer-alt"></i>Dashboard</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="index.html">Dashboard 1</a></li>
+                                <li><a href="index2.html">Dashboard 2</a></li>
+                                <li><a href="index3.html">Dashboard 3</a></li>
+                                <li><a href="index4.html">Dashboard 4</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="chart.html"><i class="fa-solid fa-chart-bar"></i>Charts</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-table"></i>Tables</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="table.html">Tables</a></li>
+                                <li><a href="data-table.html">Data table</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-regular fa-square-check"></i>Forms</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="form.html">Forms</a></li>
+                                <li><a href="wizard.html">Setup wizard</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="calendar.html"><i class="fa-solid fa-calendar-alt"></i>Calendar</a>
+                        </li>
+                        <li>
+                            <a href="map.html"><i class="fa-solid fa-map-marker-alt"></i>Maps</a>
+                        </li>
+                        <li>
+                            <a href="inbox.html"><i class="fa-solid fa-inbox"></i>Inbox</a>
+                        </li>
+                        <li>
+                            <a href="kanban.html"><i class="fa-solid fa-columns"></i>Kanban</a>
+                        </li>
+                        <li>
+                            <a href="notifications.html"><i class="fa-regular fa-bell"></i>Notifications</a>
+                        </li>
+                        <li>
+                            <a href="docs.html"><i class="fa-regular fa-file-lines"></i>Documentation</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-user-gear"></i>Account</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="profile.html">Profile &amp; settings</a></li>
+                                <li><a href="pricing.html">Pricing</a></li>
+                                <li><a href="invoice.html">Invoice</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fa-solid fa-copy"></i>Pages</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="register.html">Register</a></li>
+                                <li><a href="forget-pass.html">Forgot password</a></li>
+                                <li><a href="404.html">404 not found</a></li>
+                                <li><a href="500.html">500 server error</a></li>
+                                <li><a href="maintenance.html">Maintenance</a></li>
+                            </ul>
+                        </li>
+                        <li class="active has-sub">
+                            <a class="js-arrow open" href="#">
+                                <i class="fa-solid fa-desktop"></i>UI Elements</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" style="display: block;">
+                                <li><a href="button.html">Buttons</a></li>
+                                <li><a href="badge.html">Badges</a></li>
+                                <li><a href="tab.html">Tabs</a></li>
+                                <li><a href="card.html">Cards</a></li>
+                                <li><a href="alert.html">Alerts</a></li>
+                                <li><a href="progress-bar.html">Progress bars</a></li>
+                                <li class="active"><a href="modal.html">Modals</a></li>
+                                <li><a href="switch.html">Switches</a></li>
+                                <li><a href="grid.html">Grid system</a></li>
+                                <li><a href="fontawesome.html">Font Awesome</a></li>
+                                <li><a href="typo.html">Typography</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+<!-- PAGE CONTAINER-->
 		<div class="page-container">
-			<!-- HEADER DESKTOP-->
-			<header class="header-desktop">
-				<div class="section__content section__content--p30">
-					<div class="container-fluid">
-						<div class="header-wrap">
-							<form class="form-header" action="" method="POST">
-								<input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-								<button class="au-btn--submit" type="submit">
-									<i class="zmdi zmdi-search"></i>
-								</button>
-							</form>
-							<div class="header-button">
-								<div class="noti-wrap">
-									<div class="noti__item js-item-menu">
-										<i class="zmdi zmdi-comment-more"></i>
-										<span class="quantity">1</span>
-										<div class="mess-dropdown js-dropdown">
-											<div class="mess__title">
-												<p>You have 2 news message</p>
-											</div>
-											<div class="mess__item">
-												<div class="image img-cir img-40">
-													<img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-												</div>
-												<div class="content">
-													<h6>Michelle Moreno</h6>
-													<p>Have sent a photo</p>
-													<span class="time">3 min ago</span>
-												</div>
-											</div>
-											<div class="mess__item">
-												<div class="image img-cir img-40">
-													<img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-												</div>
-												<div class="content">
-													<h6>Diane Myers</h6>
-													<p>You are now connected on message</p>
-													<span class="time">Yesterday</span>
-												</div>
-											</div>
-											<div class="mess__footer">
-												<a href="#">View all messages</a>
-											</div>
-										</div>
-									</div>
-									<div class="noti__item js-item-menu">
-										<i class="zmdi zmdi-email"></i>
-										<span class="quantity">1</span>
-										<div class="email-dropdown js-dropdown">
-											<div class="email__title">
-												<p>You have 3 New Emails</p>
-											</div>
-											<div class="email__item">
-												<div class="image img-cir img-40">
-													<img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-												</div>
-												<div class="content">
-													<p>Meeting about new dashboard...</p>
-													<span>Cynthia Harvey, 3 min ago</span>
-												</div>
-											</div>
-											<div class="email__item">
-												<div class="image img-cir img-40">
-													<img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-												</div>
-												<div class="content">
-													<p>Meeting about new dashboard...</p>
-													<span>Cynthia Harvey, Yesterday</span>
-												</div>
-											</div>
-											<div class="email__item">
-												<div class="image img-cir img-40">
-													<img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-												</div>
-												<div class="content">
-													<p>Meeting about new dashboard...</p>
-													<span>Cynthia Harvey, January 15, 2025</span>
-												</div>
-											</div>
-											<div class="email__footer">
-												<a href="#">See all emails</a>
-											</div>
-										</div>
-									</div>
-									<div class="noti__item js-item-menu">
-										<i class="zmdi zmdi-notifications"></i>
-										<span class="quantity">3</span>
-										<div class="notifi-dropdown js-dropdown">
-											<div class="notifi__title">
-												<p>You have 3 Notifications</p>
-											</div>
-											<div class="notifi__item">
-												<div class="bg-c1 img-cir img-40">
-													<i class="zmdi zmdi-email-open"></i>
-												</div>
-												<div class="content">
-													<p>You got a email notification</p>
-													<span class="date">January 15, 2025 14:30</span>
-												</div>
-											</div>
-											<div class="notifi__item">
-												<div class="bg-c2 img-cir img-40">
-													<i class="zmdi zmdi-account-box"></i>
-												</div>
-												<div class="content">
-													<p>Your account has been blocked</p>
-													<span class="date">January 15, 2025 14:30</span>
-												</div>
-											</div>
-											<div class="notifi__item">
-												<div class="bg-c3 img-cir img-40">
-													<i class="zmdi zmdi-file-text"></i>
-												</div>
-												<div class="content">
-													<p>You got a new file</p>
-													<span class="date">January 15, 2025 14:30</span>
-												</div>
-											</div>
-											<div class="notifi__footer">
-												<a href="#">All notifications</a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="account-wrap">
-									<div class="account-item clearfix js-item-menu">
-										<div class="image">
-											<img src="images/icon/avatar-01.jpg" alt="John Doe" />
-										</div>
-										<div class="content">
-											<a class="js-acc-btn" href="#">john doe</a>
-										</div>
-										<div class="account-dropdown js-dropdown">
-											<div class="info clearfix">
-												<div class="image">
-													<a href="#">
-														<img src="images/icon/avatar-01.jpg" alt="John Doe" />
-													</a>
-												</div>
-												<div class="content">
-													<h5 class="name">
-														<a href="#">john doe</a>
-													</h5>
-													<span class="email">johndoe@example.com</span>
-												</div>
-											</div>
-											<div class="account-dropdown__body">
-												<div class="account-dropdown__item">
-													<a href="#">
-														<i class="zmdi zmdi-account"></i>Account</a>
-												</div>
-												<div class="account-dropdown__item">
-													<a href="#">
-														<i class="zmdi zmdi-settings"></i>Setting</a>
-												</div>
-												<div class="account-dropdown__item">
-													<a href="#">
-														<i class="zmdi zmdi-money-box"></i>Billing</a>
-												</div>
-											</div>
-											<div class="account-dropdown__footer">
-												<a href="#">
-													<i class="zmdi zmdi-power"></i>Logout</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</header>
-			<!-- END HEADER DESKTOP-->
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <button class="sidebar-toggle js-sidebar-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="main-sidebar">
+                                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                            </button>
+                            <form class="form-header" role="search" onsubmit="return false">
+                                <i class="fa-solid fa-magnifying-glass form-header__icon" aria-hidden="true"></i>
+                                <input class="au-input au-input--xl" type="search" name="search" placeholder="Search anything…" aria-label="Search">
+                                <kbd class="form-header__hint" aria-hidden="true">⌘K</kbd>
+                            </form>
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Messages">
+                                        <i class="fa-solid fa-comment-dots"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="mess-dropdown js-dropdown">
+                                            <div class="mess__title"><p>Messages</p></div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <h6>Michelle Moreno</h6>
+                                                    <p>Have sent a photo</p>
+                                                    <span class="time">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-04.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <h6>Diane Myers</h6>
+                                                    <p>You are now connected</p>
+                                                    <span class="time">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__footer"><a href="#">View all messages</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Emails">
+                                        <i class="fa-solid fa-envelope"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="email-dropdown js-dropdown">
+                                            <div class="email__title"><p>Emails</p></div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-06.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard…</p>
+                                                    <span>Cynthia Harvey, 3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40"><img src="images/icon/avatar-05.jpg" alt=""></div>
+                                                <div class="content">
+                                                    <p>Quarterly report draft</p>
+                                                    <span>John Doe, Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__footer"><a href="#">See all emails</a></div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Notifications">
+                                        <i class="fa-solid fa-bell"></i>
+                                        <span class="quantity">3</span>
+                                        <div class="notifi-dropdown js-dropdown">
+                                            <div class="notifi__title"><p>Notifications</p></div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40"><i class="fa-solid fa-envelope-open"></i></div>
+                                                <div class="content">
+                                                    <p>You have a new email</p>
+                                                    <span class="date">Today, 14:30</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40"><i class="fa-solid fa-id-card"></i></div>
+                                                <div class="content">
+                                                    <p>Your account was updated</p>
+                                                    <span class="date">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40"><i class="fa-solid fa-file-lines"></i></div>
+                                                <div class="content">
+                                                    <p>Report uploaded successfully</p>
+                                                    <span class="date">2 days ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__footer"><a href="#">All notifications</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu" role="button" tabindex="0" aria-haspopup="true" aria-label="Account menu">
+                                        <div class="image"><img src="images/icon/avatar-01.jpg" alt="John Doe"></div>
+                                        <div class="content"><a class="js-acc-btn" href="#">john doe</a></div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image"><a href="#"><img src="images/icon/avatar-01.jpg" alt=""></a></div>
+                                                <div class="content">
+                                                    <h5 class="name"><a href="#">john doe</a></h5>
+                                                    <span class="email">johndoe@example.com</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-user"></i>Account</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></div>
+                                                <div class="account-dropdown__item"><a href="#"><i class="fa-solid fa-sack-dollar"></i>Billing</a></div>
+                                            </div>
+                                            <div class="account-dropdown__footer"><a href="#"><i class="fa-solid fa-power-off"></i>Logout</a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+<!-- END HEADER DESKTOP-->
 
 			<!-- MAIN CONTENT-->
-			<div class="main-content">
-				<div class="section__content section__content--p30">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-md-12">
-								<div class="card">
-									<div class="card-header">
-										<i class="me-2 fa fa-align-justify"></i>
-										<strong class="card-title" v-if="headerText">Modals</strong>
-									</div>
-									<div class="card-body">
+			            <main id="main-content" class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
 
-										<!-- Button trigger modal -->
-										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#smallmodal">
-											Small
-										</button>
+                        <div class="page-header">
+                            <div>
+                                <h1>Modals</h1>
+                                <p class="subtitle">Basic, confirmation, form, large, scrollable, and image-preview dialogs — restyled with the modern design.</p>
+                            </div>
+                        </div>
 
-										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#mediumModal">
-											Medium
-										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#largeModal">
-											Large
-										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#scrollmodal">
-											Scrolling
-										</button>
-										<button type="button" class="btn btn-secondary mb-1" data-bs-toggle="modal" data-bs-target="#staticModal">
-											Static
-										</button>
+                        <h5 class="section-eyebrow" style="margin-bottom: 8px;">DIALOG TYPES</h5>
+                        <section class="m-card">
+                            <header class="m-card__header"><div><h2 class="m-card__title">Modal patterns</h2><p class="m-card__subtitle">Click any trigger to open a Bootstrap 5 modal restyled with the modern design.</p></div></header>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button type="button" class="m-btn m-btn--primary" data-bs-toggle="modal" data-bs-target="#modal-basic">Basic dialog</button>
+                                <button type="button" class="m-btn m-btn--ghost" data-bs-toggle="modal" data-bs-target="#modal-confirm">Confirm delete</button>
+                                <button type="button" class="m-btn m-btn--ghost" data-bs-toggle="modal" data-bs-target="#modal-form">Form modal</button>
+                                <button type="button" class="m-btn m-btn--ghost" data-bs-toggle="modal" data-bs-target="#modal-large">Large modal</button>
+                                <button type="button" class="m-btn m-btn--ghost" data-bs-toggle="modal" data-bs-target="#modal-scroll">Scrollable</button>
+                                <button type="button" class="m-btn m-btn--ghost" data-bs-toggle="modal" data-bs-target="#modal-image">Image preview</button>
+                            </div>
+                        </section>
 
-									</div>
-								</div>
+                        <!-- Modals -->
+                        <div class="modal fade" id="modal-basic" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header"><h5 class="modal-title">Welcome to CoolAdmin</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                    <div class="modal-body"><p style="margin:0;">A clean, modern admin dashboard template built with Bootstrap 5, Inter, and a brand-blue accent palette.</p></div>
+                                    <div class="modal-footer"><button type="button" class="m-btn m-btn--ghost" data-bs-dismiss="modal">Close</button><button type="button" class="m-btn m-btn--primary">Got it</button></div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="modal fade" id="modal-confirm" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-body" style="text-align:center;padding:32px 24px;">
+                                        <div style="width:56px;height:56px;border-radius:50%;background:var(--m-danger-soft);color:var(--m-danger);display:inline-flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px;"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                                        <h5 style="margin:0 0 6px;font-size:16px;font-weight:600;color:var(--m-text);">Delete this item?</h5>
+                                        <p style="margin:0 0 20px;font-size:13.5px;color:var(--m-text-muted);">This action can&rsquo;t be undone.</p>
+                                        <div style="display:flex;gap:8px;">
+                                            <button type="button" class="m-btn m-btn--ghost" data-bs-dismiss="modal" style="flex:1;justify-content:center;">Cancel</button>
+                                            <button type="button" class="m-btn" data-bs-dismiss="modal" onclick="window.toast && window.toast.success('Item deleted')" style="flex:1;justify-content:center;background:var(--m-danger);color:#fff;border-color:var(--m-danger);">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="modal fade" id="modal-form" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header"><h5 class="modal-title">Invite teammate</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                                    <form onsubmit="event.preventDefault(); bootstrap.Modal.getInstance(document.getElementById('modal-form')).hide(); window.toast && window.toast.success('Invitation sent');">
+                                        <div class="modal-body">
+                                            <div class="form-group"><label>Email address</label><input type="email" class="form-control" placeholder="teammate@example.com" required></div>
+                                            <div class="form-group"><label>Role</label><select class="form-select"><option>Member</option><option>Admin</option><option>Owner</option></select></div>
+                                            <div class="form-group" style="margin:0;"><label>Message (optional)</label><textarea class="form-control" placeholder="Welcome! Looking forward to working with you."></textarea></div>
+                                        </div>
+                                        <div class="modal-footer"><button type="button" class="m-btn m-btn--ghost" data-bs-dismiss="modal">Cancel</button><button type="submit" class="m-btn m-btn--primary">Send invite</button></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="modal fade" id="modal-large" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header"><h5 class="modal-title">Detailed report</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                                    <div class="modal-body">
+                                        <p>Larger modal for richer content. Useful for previews, detailed forms, side-by-side info, etc.</p>
+                                        <div class="row row-tight">
+                                            <div class="col-md-4"><div class="stat-card" style="margin-bottom:0;"><div class="stat-card__head"><p class="stat-card__label">Revenue</p><span class="stat-card__icon stat-card__icon--c1"><i class="fa-solid fa-dollar-sign"></i></span></div><p class="stat-card__value">$48,217</p></div></div>
+                                            <div class="col-md-4"><div class="stat-card" style="margin-bottom:0;"><div class="stat-card__head"><p class="stat-card__label">Orders</p><span class="stat-card__icon stat-card__icon--c2"><i class="fa-solid fa-cart-shopping"></i></span></div><p class="stat-card__value">1,284</p></div></div>
+                                            <div class="col-md-4"><div class="stat-card" style="margin-bottom:0;"><div class="stat-card__head"><p class="stat-card__label">Users</p><span class="stat-card__icon stat-card__icon--c3"><i class="fa-solid fa-users"></i></span></div><p class="stat-card__value">8,492</p></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer"><button type="button" class="m-btn m-btn--ghost" data-bs-dismiss="modal">Close</button></div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="modal fade" id="modal-scroll" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header"><h5 class="modal-title">Terms &amp; conditions</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+                                    <div class="modal-body">
+                                        <p>Section 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 7. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 8. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 9. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                        <p>Section 10. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    </div>
+                                    <div class="modal-footer"><button type="button" class="m-btn m-btn--ghost" data-bs-dismiss="modal">Decline</button><button type="button" class="m-btn m-btn--primary" data-bs-dismiss="modal">Accept</button></div>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="modal fade" id="modal-image" tabindex="-1">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body" style="padding:0;text-align:center;background:#0f172a;">
+                                        <img src="images/bg-title-01.jpg" alt="" style="max-width:100%;border-radius:14px 14px 0 0;display:block;">
+                                    </div>
+                                    <div class="modal-footer" style="justify-content:space-between;">
+                                        <span style="color:var(--m-text-muted);font-size:13px;">Brand image &middot; 1920×1080</span>
+                                        <div style="display:flex;gap:8px;">
+                                            <button type="button" class="m-btn m-btn--ghost" onclick="window.toast && window.toast.success('Downloaded')"><i class="fa-solid fa-download"></i> Download</button>
+                                            <button type="button" class="m-btn m-btn--primary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                        <div class="row" style="margin-top: 28px;">
+                            <div class="col-md-12">
+                                <div class="copyright">
+                                    <p>Copyright © 2026 Colorlib. All rights reserved. Template by <a href="https://colorlib.com" rel="nofollow" target="_blank">Colorlib</a>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </main>
 			<!-- modal small -->
 			<div class="modal fade" id="smallmodal" tabindex="-1" role="dialog" aria-labelledby="smallmodalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -641,16 +672,11 @@
 	<script src="js/vanilla-utils.js"></script>
 	<!-- Bootstrap JS-->
 	<script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
-	<!-- Vendor JS       -->
-	<script src="vendor/perfect-scrollbar/perfect-scrollbar-1.5.6.min.js"></script>
-	<script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
+	<!-- Vendor JS       --><script src="vendor/chartjs/chart.umd.js-4.5.1.min.js"></script>
 
 	<!-- Main JS-->
 	<script src="js/bootstrap5-init.js"></script>
-	<script src="js/main-vanilla.js"></script>
-	<script src="js/swiper-bundle-12.0.3.min.js"></script>
-	<script src="js/aos.js"></script>
-	<script src="js/modern-plugins.js"></script>
+	<script src="js/main-vanilla.js"></script><script src="js/modern-plugins.js"></script>
 
 </body>
 
