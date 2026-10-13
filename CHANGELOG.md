@@ -5,6 +5,34 @@ All notable changes to the CoolAdmin Bootstrap 5 Admin Dashboard Template will b
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.0] - 2026-10-13
+
+### Changed
+
+- Update Vite 8.2.0 → 8.3.4, Sass 1.102.0 → 1.105.1, and concurrently 10.0.4 → 10.0.6; refresh the npm lockfile.
+- Update FullCalendar 7.0.2 → 7.1.2 and rebuild its distributable scripts with Terser 5.51.2. Preserve license banners and include the upstream MIT license.
+- Load Chart.js only on pages that render chart canvases, removing its 208 KB request from 23 pages.
+- Set the contributor Node requirement to >=22.12 and stop sibling development processes when one exits.
+- Use `font-display: swap` for self-hosted Poppins fonts.
+
+### Fixed
+
+- Replace unsupported Pug watcher glob patterns with directory watching; debounce saves, serialize builds, and preserve unchanged output timestamps.
+- Destroy chart instances before dashboard refresh removes their canvases, preventing retained instances and observers.
+
+### Added
+
+- Reproducible `build:vendor` command and `npm run check` validation workflow.
+- Node regression tests for template builds, watcher changes/additions/deletions, local asset references, conditional Chart.js loading, and repeated dashboard refreshes.
+- GitHub Actions validation on Node 22 and 24, including generated asset consistency checks.
+
+### Validation
+
+- `npm run check`: build plus six Node regression tests passed.
+- 35 pages checked in Chromium at 1440 px and 390 px: no console errors or failed requests. Calendar views, chart rendering, repeated refreshes, command palette, accent themes, and mobile navigation exercised.
+- `npm outdated` returned no outdated direct packages; `npm audit` reported zero vulnerabilities on 2026-10-13.
+- FullCalendar scripts: 803,469 → 340,963 bytes raw; 164,748 → 95,797 bytes gzip. Sizes exclude calendar CSS and are not a Core Web Vitals measurement.
+
 ## [3.4.0] - 2026-08-03
 
 ### Dependency refresh — every runtime and build dependency on latest, zero security alerts

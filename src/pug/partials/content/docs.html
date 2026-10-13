@@ -1,10 +1,10 @@
                         <div class="page-header">
                             <div>
                                 <h1>Documentation</h1>
-                                <p class="subtitle">Everything you need to customize, extend, and deploy CoolAdmin v3.</p>
+                                <p class="subtitle">Everything you need to customize, extend, and deploy CoolAdmin v3.5.0.</p>
                             </div>
                             <div class="page-header__actions">
-                                <a href="https://github.com" target="_blank" rel="noopener" class="m-btn m-btn--ghost"><i class="fa-brands fa-github"></i> GitHub</a>
+                                <a href="https://github.com/puikinsh/CoolAdmin" target="_blank" rel="noopener" class="m-btn m-btn--ghost"><i class="fa-brands fa-github"></i> GitHub</a>
                                 <a href="#install" class="m-btn m-btn--primary"><i class="fa-solid fa-rocket"></i> Quick start</a>
                             </div>
                         </div>
@@ -14,6 +14,7 @@
                                 <p class="docs-toc__title">On this page</p>
                                 <ul class="docs-toc__list">
                                     <li><a href="#install">Quick start</a></li>
+                                    <li><a href="#workflow">Build and testing</a></li>
                                     <li><a href="#structure">File structure</a></li>
                                     <li><a href="#themes">Color themes</a></li>
                                     <li><a href="#typography">Typography</a></li>
@@ -32,8 +33,8 @@
                                     <h2>Quick start <a class="anchor" href="#install" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
                                     <p>CoolAdmin is a static HTML template &mdash; no build step, no toolchain. Open any <code>.html</code> file via a local server and you&rsquo;re running.</p>
                                     <pre><button class="docs-copy-btn" type="button">Copy</button><code># Clone or download the template
-git clone https://github.com/your-username/cooladmin.git
-cd cooladmin
+git clone https://github.com/puikinsh/CoolAdmin.git
+cd CoolAdmin
 
 # Serve locally (Python 3 example)
 python3 -m http.server 8000
@@ -48,10 +49,24 @@ npx serve .</code></pre>
                                     </blockquote>
                                 </section>
 
+                                <section class="docs-section" id="workflow">
+                                    <h2>Contributor workflow</h2>
+                                    <p>Use Node &ge;22.12 to edit the Pug and SCSS sources. Built pages still run without Node.</p>
+                                    <pre><button class="docs-copy-btn" type="button">Copy</button><code>npm ci
+npm run dev       # Pug + Sass watchers, Vite at localhost:3000
+npm run build     # minified calendar assets + HTML + CSS
+npm test          # six Node regression tests
+npm run check     # build and tests</code></pre>
+                                    <p>Edit <code>src/pug/pages/</code>, shared templates in <code>src/pug/partials/</code>, and styles in <code>src/scss/</code>. Commit generated HTML/CSS with the source changes. Pug saves are debounced; unchanged pages are not rewritten.</p>
+                                    <p>v3.5.0 uses Vite 8.3.4, Sass 1.105.1, concurrently 10.0.6, Pug 3.0.4, Chokidar 5.0.0, and Terser 5.51.2. FullCalendar 7.1.2 runs on the calendar page; Chart.js 4.5.1 loads only on the five pages with chart canvases.</p>
+                                    <p>The calendar scripts shrink from 803 KB to 341 KB raw (165 KB to 96 KB gzip). Removing Chart.js avoids a 208 KB script request on 23 pages. Dashboard refresh releases old chart instances before replacing canvases. These are asset-size measurements, not page-speed scores.</p>
+                                    <p>CI checks Node 22/24, local assets, chart loading, calendar versions, Pug builds/watchers, chart cleanup, and generated output consistency. See <a href="https://cooladmin.colorlib.com/docs/testing-workflow/">the testing guide</a> and <a href="https://cooladmin.colorlib.com/docs/changelog/">release notes</a>.</p>
+                                </section>
+
                                 <section class="docs-section" id="structure">
                                     <h2>File structure <a class="anchor" href="#structure" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
                                     <pre><code>cooladmin/
-├── *.html                    27 page templates (dashboards, tables, forms, etc.)
+├── *.html                    35 generated pages (dashboards, tables, forms, etc.)
 ├── css/
 │   ├── theme.css             legacy CoolAdmin styles (kept for compat)
 │   ├── app.css        modern v3 design system
@@ -65,7 +80,11 @@ npx serve .</code></pre>
 │   ├── bootstrap-5.3.8.bundle.min.js
 │   ├── fontawesome-7.3.1/
 │   ├── chartjs/
-│   └── fullcalendar-7.0.2/
+│   └── fullcalendar-7.1.2/
+├── src/pug/                  page templates and shared partials
+├── src/scss/                 theme and app style sources
+├── test/                     Node regression tests
+├── scripts/                  Pug and vendor build helpers
 ├── images/                   logos, avatars, backgrounds
 └── README.md</code></pre>
                                     <p>Every page links the same canonical CSS chain in this order:</p>
@@ -97,7 +116,7 @@ npx serve .</code></pre>
                                 <section class="docs-section" id="typography">
                                     <h2>Typography <a class="anchor" href="#typography" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
                                     <p>The default sans-serif is <strong style="color:var(--m-text);">Inter</strong> served from <code>rsms.me</code>. The legacy <strong style="color:var(--m-text);">Poppins</strong> is also bundled in <code>fonts/poppins</code> for offline use.</p>
-                                    <p>To swap fonts globally, change the <code>--m-font</code> token at the top of <code>css/app.css</code>:</p>
+                                    <p>To swap fonts globally, change <code>--m-font</code> in <code>src/scss/app/_variables.scss</code> and run <code>npm run build:sass</code>:</p>
                                     <pre><code>body.app {
     --m-font: &quot;Your Font&quot;, system-ui, sans-serif;
 }</code></pre>
@@ -189,18 +208,17 @@ document.body.classList.add('theme-purple');</code></pre>
                                 </section>
 
                                 <section class="docs-section" id="new-page">
-                                    <h2>Adding a new page <a class="anchor" href="#new-page" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
-                                    <p>Every dashboard-style page follows the same pattern: head &rarr; sidebar &rarr; topbar &rarr; <code>&lt;main&gt;</code> &rarr; scripts. The fastest way is to copy an existing page like <code>profile.html</code> and replace the main content.</p>
+                                    <h2>Adding a new page</h2>
                                     <ol>
-                                        <li>Duplicate <code>profile.html</code> to <code>my-page.html</code></li>
-                                        <li>Update the <code>&lt;title&gt;</code> and meta tags at the top</li>
-                                        <li>Replace everything inside the <code>&lt;main id=&quot;main-content&quot;&gt;</code> with your content</li>
-                                        <li>Add a sidebar entry by editing <code>build_sidebar()</code> in <code>tmp/coolupdate/migrate_chrome.py</code> and re-running it</li>
-                                        <li>Optionally add a command-palette entry in <code>main-vanilla.js</code></li>
+                                        <li>Create <code>src/pug/pages/my-page.pug</code> from an existing page entry and update its metadata and <code>activePage</code>.</li>
+                                        <li>Add markup to <code>src/pug/partials/content/my-page.html</code> and include it from the page entry.</li>
+                                        <li>Add sidebar/mobile navigation in <code>src/pug/partials/_nav-data.pug</code>.</li>
+                                        <li>Add any palette entry separately to <code>COMMANDS</code> in <code>js/main-vanilla.js</code>.</li>
+                                        <li>Run <code>npm run check</code> and commit both sources and generated files.</li>
                                     </ol>
                                 </section>
 
-                                <section class="docs-section" id="dark-mode">
+<section class="docs-section" id="dark-mode">
                                     <h2>Dark mode <a class="anchor" href="#dark-mode" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
                                     <p>Dark-mode tokens are pre-wired but not enabled by default. To enable, set <code>data-bs-theme="dark"</code> on the <code>&lt;html&gt;</code> element:</p>
                                     <pre><code>&lt;html lang=&quot;en&quot; data-bs-theme=&quot;dark&quot;&gt;</code></pre>
@@ -209,18 +227,18 @@ document.body.classList.add('theme-purple');</code></pre>
 
                                 <section class="docs-section" id="deploy">
                                     <h2>Deployment <a class="anchor" href="#deploy" aria-label="Link"><i class="fa-solid fa-link"></i></a></h2>
-                                    <p>Drop the entire folder onto any static host:</p>
+                                    <p>Publish only built HTML, CSS, JS, vendor libraries, fonts, images, and required media to a static host. Keep source files, <code>node_modules</code>, Git metadata, and credentials out of the public directory:</p>
                                     <ul>
                                         <li><strong style="color:var(--m-text);">Netlify / Vercel:</strong> drag-and-drop the folder, no build command needed</li>
-                                        <li><strong style="color:var(--m-text);">Cloudflare Pages:</strong> connect your Git repo, build command empty, output directory <code>./</code></li>
-                                        <li><strong style="color:var(--m-text);">GitHub Pages:</strong> push the repo, enable Pages from the <code>main</code> branch</li>
+                                        <li><strong style="color:var(--m-text);">Cloudflare Pages:</strong> deploy the staged runtime directory</li>
+                                        <li><strong style="color:var(--m-text);">GitHub Pages:</strong> push the repo, publish a staged runtime directory from your chosen branch</li>
                                         <li><strong style="color:var(--m-text);">S3 + CloudFront:</strong> sync to a bucket with public-read</li>
                                         <li><strong style="color:var(--m-text);">Plain shared hosting:</strong> FTP / rsync the folder up</li>
                                     </ul>
-                                    <p>The only external dependency is the Inter font from <code>rsms.me</code>. To go fully offline, download Inter and replace that <code>&lt;link&gt;</code> with a local stylesheet.</p>
+                                    <p>Inter loads from <code>rsms.me</code>; the map page also uses Leaflet CDN assets and external map tiles. Self-host those assets and provide an appropriate tile source if offline use is required. Forms, authentication, payments, and data persistence require your own backend.</p>
                                     <blockquote>
                                         <strong>Tip</strong>
-                                        <p>Strip unused vendor folders before deploy if you don&rsquo;t need them &mdash; for example, drop <code>fullcalendar-7.0.2</code> if you don&rsquo;t use the calendar page (saves ~825 KB).</p>
+                                        <p>Strip unused vendor folders before deploy if you don&rsquo;t need them &mdash; for example, drop <code>fullcalendar-7.1.2</code> if you don&rsquo;t use the calendar page (removes the calendar scripts and styles).</p>
                                     </blockquote>
                                 </section>
 

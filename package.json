@@ -1,7 +1,7 @@
 {
   "name": "cooladmin",
-  "version": "3.4.0",
-  "description": "CoolAdmin — Bootstrap 5.3 admin dashboard template. 35 pages, vanilla JavaScript, no jQuery. Chart.js, FullCalendar 7, Leaflet, dark-mode tokens, command palette, and an optional Pug + SCSS + Vite source pipeline.",
+  "version": "3.5.0",
+  "description": "CoolAdmin — Bootstrap 5.3 admin dashboard template. 35 pages, vanilla JavaScript, Chart.js, FullCalendar 7, Leaflet, six accent themes, command palette, and a Pug + SCSS + Vite source pipeline.",
   "type": "module",
   "license": "MIT",
   "author": "Colorlib (https://colorlib.com)",
@@ -41,19 +41,27 @@
     "LICENSE.md"
   ],
   "scripts": {
-    "dev": "concurrently -n pug,sass,vite -c blue,magenta,green \"npm:dev:pug\" \"npm:dev:sass\" \"npm:dev:vite\"",
+    "dev": "concurrently --kill-others -n pug,sass,vite -c blue,magenta,green \"npm:dev:pug\" \"npm:dev:sass\" \"npm:dev:vite\"",
     "dev:pug": "node scripts/build-pug.js --watch",
     "dev:sass": "sass --watch src/scss/theme.scss:css/theme.css src/scss/app.scss:css/app.css --no-source-map --style=expanded",
     "dev:vite": "vite",
-    "build": "npm run build:pug && npm run build:sass",
+    "build": "npm run build:vendor && npm run build:pug && npm run build:sass",
     "build:pug": "node scripts/build-pug.js",
-    "build:sass": "sass src/scss/theme.scss:css/theme.css src/scss/app.scss:css/app.css --no-source-map --style=expanded"
+    "build:sass": "sass src/scss/theme.scss:css/theme.css src/scss/app.scss:css/app.css --no-source-map --style=expanded",
+    "build:vendor": "node scripts/build-vendor.js",
+    "test": "node --test",
+    "check": "npm run build && npm test"
   },
   "devDependencies": {
     "chokidar": "^5.0.0",
-    "concurrently": "^10.0.4",
+    "concurrently": "^10.0.6",
+    "fullcalendar": "^7.1.2",
     "pug": "^3.0.4",
-    "sass": "^1.102.0",
-    "vite": "^8.2.0"
+    "sass": "^1.105.1",
+    "terser": "^5.51.2",
+    "vite": "^8.3.4"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

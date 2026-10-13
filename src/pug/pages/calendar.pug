@@ -7,19 +7,18 @@ block variables
 block extra_head
   //- FullCalendar 7 ships its CSS as files (v6 injected it from JS).
   //- Order matters: skeleton → theme → palette (palette holds the color tokens).
-  link(rel='stylesheet' href='vendor/fullcalendar-7.0.2/skeleton.css')
-  link(rel='stylesheet' href='vendor/fullcalendar-7.0.2/themes/classic/theme.css')
-  link(rel='stylesheet' href='vendor/fullcalendar-7.0.2/themes/classic/palette.css')
+  link(rel='stylesheet' href='vendor/fullcalendar-7.1.2/skeleton.css')
+  link(rel='stylesheet' href='vendor/fullcalendar-7.1.2/themes/classic/theme.css')
+  link(rel='stylesheet' href='vendor/fullcalendar-7.1.2/themes/classic/palette.css')
   include ../partials/content/calendar.styles.html
 
 block content
   include ../partials/content/calendar.html
 
 block vendor_scripts
-  script(src='vendor/chartjs/chart.umd.js-4.5.1.min.js')
   //- Core bundle first — the theme self-registers into FullCalendar.Shared.globalPlugins.
-  script(src='vendor/fullcalendar-7.0.2/fullcalendar.global.js')
-  script(src='vendor/fullcalendar-7.0.2/themes/classic/theme.global.js')
+  script(src='vendor/fullcalendar-7.1.2/fullcalendar.global.min.js')
+  script(src='vendor/fullcalendar-7.1.2/themes/classic/theme.global.min.js')
 
 block extra_scripts
   include ../partials/content/calendar.scripts.html

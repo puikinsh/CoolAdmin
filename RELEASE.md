@@ -1,53 +1,43 @@
-# v2.2.0 - December 2025 Dependency Updates
+# CoolAdmin v3.5.0 — October 13, 2026
 
-This release brings all dependencies to their latest December 2025 versions, including a major Swiper.js upgrade to v12 with CSS-only theming.
+This release refreshes dependencies, reduces browser downloads, fixes development watching and chart cleanup, and adds reproducible build verification. It preserves all 35 pages and the no-build end-user workflow.
 
-## What's Changed
+## Dependency changes
 
-### Dependency Upgrades
+| Dependency | Previous | Current |
+| --- | --- | --- |
+| Vite | 8.2.0 | 8.3.4 |
+| Sass | 1.102.0 | 1.105.1 |
+| concurrently | 10.0.4 | 10.0.6 |
+| FullCalendar | 7.0.2 | 7.1.2 |
+| Terser | Not configured | 5.51.2 |
 
-| Dependency | Previous | New | Notes |
-|------------|----------|-----|-------|
-| Font Awesome | 7.0.1 | **7.1.0** | Latest FA7 with 4,500+ new icons |
-| Chart.js | 4.5.0 | **4.5.1** | Performance improvements, Chrome zoom fixes |
-| Swiper.js | 11.2.10 | **12.0.3** | Major upgrade with CSS-only theming |
-| Bootstrap | 5.3.8 | 5.3.8 | Already current |
-| Perfect Scrollbar | 1.5.6 | 1.5.6 | Already current |
+Chokidar 5.0.0, Pug 3.0.4, Bootstrap 5.3.8, Chart.js 4.5.1, Font Awesome 7.3.1, Hamburgers 1.2.1, and Leaflet 1.9.4 were already the latest stable npm releases checked on this date. The npm lockfile was refreshed. Prereleases were excluded.
 
-### Highlights
+## Performance and runtime fixes
 
-- **Font Awesome 7.1.0** - Latest FA7 release with improved icon architecture
-- **Chart.js 4.5.1** - Fixes for charts shrinking on certain zoom values in Chrome
-- **Swiper.js 12.0.3** - Major version upgrade:
-  - Pure CSS theming via custom properties (no LESS/SCSS required)
-  - Navigation icons reworked to eliminate font-icon issues and CSP false positives
-  - Lighter bundle size
-  - Virtual Slides improvements for `slidesPerView: 'auto'`
+Chart.js now loads only on the five pages containing chart canvases. Removing it from 23 other pages avoids a 208,479-byte raw script request per affected page. The calendar bundles are minified from the installed FullCalendar package; upstream license banners and the MIT license are retained. Its two scripts shrink from 803,469 to 340,963 raw bytes, and from 164,748 to 95,797 gzip bytes. These measurements exclude CSS and are not page-load timings.
 
-### Files Updated
+Dashboard refresh destroys charts before removing their canvases, releasing their observers and listeners. Repeated refreshes retain the expected instance count. Poppins uses `font-display: swap` so text can render while fonts load.
 
-- All 24 HTML files updated with new dependency references
-- `README.md` - Updated badges and version info
-- `CLAUDE.md` - Updated documentation
-- `CHANGELOG.md` - Added v2.2.0 release notes
+## Workflow changes
 
-## Installation
+The Pug watcher now watches a directory, filters `.pug`/`.html` files, debounces save bursts, and serializes builds. Identical output is not rewritten, preserving timestamps and avoiding unnecessary reloads. Compile errors leave the previous good output available while later fixes rebuild successfully.
 
-No build process required. Simply download and open any HTML file in a browser, or use a local server:
+`npm run build:vendor` reproduces calendar assets, `npm test` runs Node's built-in test runner, and `npm run check` builds and tests. CI validates Node 22/24 and committed/generated asset consistency. The contributor minimum is Node >=22.12. Development sibling processes stop when one exits.
 
-```bash
-python -m http.server 8000
-```
+## Verification
 
-## Browser Support
+- Full production build and six Node regression tests passed.
+- All 35 pages passed desktop/mobile Chromium checks at 1440 px and 390 px with zero console errors and failed requests.
+- Month/week/day/list calendar views, new events, chart rendering, repeated dashboard refreshes, command palette, accent themes, and mobile navigation were exercised.
+- `npm outdated`: no outdated direct npm packages. `npm audit`: zero vulnerabilities on October 13, 2026.
+- Sass output remained unchanged except for the separately authored Poppins font-display declarations.
 
-- Chrome 88+
-- Firefox 78+
-- Safari 14+
-- Edge 88+
-- Mobile Safari iOS 14+
-- Chrome Mobile Android 8+
+## Compatibility and integration notes
 
-## Full Changelog
+Built files still run on static hosting with no Node runtime. FullCalendar's core/theme filenames now end in `.min.js` under `vendor/fullcalendar-7.1.2/`; update custom integrations using the old paths. Use global UMD/script distributions with the template's classic script tags.
 
-See [CHANGELOG.md](CHANGELOG.md) for complete version history.
+The six theme presets change accent colors. Complete app dark-mode styling, backend authentication, persistent data, payments, and email require application work. Palette search is substring matching, and palette commands are maintained separately from Pug navigation data.
+
+See [deployment workflow](../DEPLOYMENT.md) for publication and rollback procedures.

@@ -820,6 +820,17 @@ function initDashboardRefresh() {
     const lockedHeights = statCards.map(c => c.getBoundingClientRect().height);
     const primaryHeight = primaryChartCard ? primaryChartCard.getBoundingClientRect().height : null;
 
+    // Release chart observers/listeners before replacing their canvases.
+    // A detached canvas cannot be found by __coolReinit after the refresh.
+    if (window.Chart) {
+      new Set([...statCards, primaryChartCard].filter(Boolean)).forEach((card) => {
+        card.querySelectorAll('canvas').forEach((canvas) => {
+          const chart = Chart.getChart(canvas);
+          if (chart) chart.destroy();
+        });
+      });
+    }
+
     statCards.forEach((card, i) => {
       card.style.minHeight = lockedHeights[i] + 'px';
       card.innerHTML = statSkeleton;
