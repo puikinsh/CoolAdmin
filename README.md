@@ -2,8 +2,8 @@
 
 ![CoolAdmin dashboard](screenshots/cooladmin-bootstrap-dashboard-2.png)
 
-[![Version](https://img.shields.io/badge/version-3.5.0-4272d7)](CHANGELOG.md)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952b3)](https://getbootstrap.com/)
+[![Version](https://img.shields.io/badge/version-3.5.1-4272d7)](CHANGELOG.md)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.9-7952b3)](https://getbootstrap.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.md)
 
 CoolAdmin is a free, MIT-licensed Bootstrap 5 dashboard template with **35 static pages**, **four dashboard layouts**, and **vanilla JavaScript**. Built HTML, CSS, and runtime libraries ship in the repository; end users need no Node toolchain. Contributors can edit shared Pug templates and SCSS sources.
@@ -11,16 +11,13 @@ CoolAdmin is a free, MIT-licensed Bootstrap 5 dashboard template with **35 stati
 - [Live demo](https://preview.colorlib.com/theme/cooladmin/)
 - [Website and documentation](https://cooladmin.colorlib.com/)
 - [Download ZIP](https://downloads.colorlib.com/theme/cooladmin.zip)
-- [Release notes](docs/releases/v3.5.0.md) · [Full changelog](CHANGELOG.md) · [Contributor guide](AGENTS.md)
+- [Release notes](docs/releases/v3.5.1.md) · [Full changelog](CHANGELOG.md) · [Contributor guide](AGENTS.md)
 
-## What's new in v3.5.0 — October 13, 2026
+## What's new in v3.5.1 — November 16, 2026
 
-- Updated Vite, Sass, concurrently, and FullCalendar to the latest stable npm releases verified on this date; refreshed the lockfile.
-- Removed the **208,479-byte Chart.js script request from 23 pages** without chart canvases. Chart.js now loads on `index.html`, `index2.html`, `index3.html`, `card.html`, and `chart.html` only.
-- Rebuilt FullCalendar 7.1.2 from its locked npm distribution with Terser. Its two scripts total **340,963 bytes raw / 95,797 bytes gzip**, compared with **803,469 / 164,748 bytes** previously. These figures exclude calendar CSS and do not measure page-load time or Core Web Vitals.
-- Fixed directory watching for Chokidar 5, debounced saves, serialized Pug builds, and preserved unchanged output timestamps.
-- Fixed detached chart instances during repeated dashboard refreshes; added `font-display: swap` to Poppins declarations.
-- Added six Node regression tests and CI on Node 22/24, including committed asset consistency checks.
+- Updated vendored Bootstrap to 5.3.9 and Chart.js to 4.6.1; FullCalendar 7.1.5, Vite 8.3.8, Sass 1.108.2, concurrently 10.0.7, and Chokidar 6.0.0.
+- Contributor Node requirement is now >=22.22 (Chokidar 6); built pages still need no Node.
+- All 35 pages re-verified at 1440 px and 390 px with zero console errors or failed requests. `npm audit`: 0 vulnerabilities.
 
 ## Pages and features
 
@@ -42,7 +39,7 @@ Open `http://localhost:8000/index.html`. A local HTTP server avoids browser rest
 
 ## Contributor workflow
 
-Use **Node >=22.12** and npm. Install the lockfile without changing dependency resolution:
+Use **Node >=22.22** and npm. Install the lockfile without changing dependency resolution:
 
 ```bash
 npm ci
@@ -80,21 +77,21 @@ scripts/                      Build helpers
 
 ## Dependencies
 
-Stable npm releases verified on October 13, 2026:
+Stable npm releases verified on November 16, 2026:
 
 | Library/tool | Version | Location/use |
 | --- | --- | --- |
-| Bootstrap | 5.3.8 | Vendored CSS and bundled JS |
-| Chart.js | 4.5.1 | Vendored UMD bundle; five chart pages |
-| FullCalendar | 7.1.2 | Calendar only; npm source and minified vendor output |
+| Bootstrap | 5.3.9 | Vendored CSS and bundled JS |
+| Chart.js | 4.6.1 | Vendored UMD bundle; five chart pages |
+| FullCalendar | 7.1.5 | Calendar only; npm source and minified vendor output |
 | Font Awesome Free | 7.3.1 | Vendored CSS and WOFF2 fonts |
 | Hamburgers | 1.2.1 | Vendored CSS |
 | Leaflet | 1.9.4 | Map-only CDN imports with integrity hashes |
-| Chokidar | 5.0.0 | Pug source watching |
-| concurrently | 10.0.6 | Development process orchestration |
+| Chokidar | 6.0.0 | Pug source watching |
+| concurrently | 10.0.7 | Development process orchestration |
 | Pug | 3.0.4 | Template compilation |
-| Sass | 1.105.1 | SCSS compilation |
-| Vite | 8.3.4 | Development server |
+| Sass | 1.108.2 | SCSS compilation |
+| Vite | 8.3.8 | Development server |
 | Terser | 5.51.2 | Calendar script minification |
 
 When upgrading FullCalendar, rebuild its vendor files, update the versioned paths in `src/pug/pages/calendar.pug` and documentation, and remove the superseded vendor directory. Preserve license notices. Other vendored libraries are checked separately from `npm outdated`.
@@ -103,7 +100,7 @@ When upgrading FullCalendar, rebuild its vendor files, update the versioned path
 
 `npm run check` covers local HTML/CSS asset references, conditional chart loading, calendar distribution/version, Pug build timestamps and errors, watcher add/change/unlink recovery, and repeated dashboard refresh chart cleanup. There is no coverage threshold or configured linter/formatter.
 
-For v3.5.0, all 35 pages were checked in Chromium at **1440 px** and **390 px** with no console errors or failed requests. Calendar Month/Week/Day/List views, chart rendering, repeated refreshes, palette keyboard controls, accent themes, and mobile navigation were exercised. `npm audit` reported **zero vulnerabilities**; `npm outdated` reported no outdated direct npm packages. These are dated checks, not ongoing guarantees.
+For v3.5.1, all 35 pages were checked in Chromium at **1440 px** and **390 px** with no console errors or failed requests. Calendar Month/Week/Day/List views, chart rendering, repeated refreshes, palette keyboard controls, accent themes, and mobile navigation were exercised. `npm audit` reported **zero vulnerabilities**; `npm outdated` reported no outdated direct npm packages. These are dated checks, not ongoing guarantees.
 
 Validate your production browsers and backend integrations separately. No Lighthouse or Core Web Vitals score is claimed for this release.
 

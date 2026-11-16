@@ -214,7 +214,7 @@ async function migratePage(name) {
   if (vendor.chartjs || vendor.fullcalendar || vendor.leafletJs) {
     lines.push('');
     lines.push('block vendor_scripts');
-    if (vendor.chartjs) lines.push(`  script(src='vendor/chartjs/chart.umd.js-4.5.1.min.js')`);
+    if (vendor.chartjs) lines.push(`  script(src='vendor/chartjs/chart.umd.js-4.6.1.min.js')`);
     if (vendor.fullcalendar) lines.push(`  script(src='vendor/fullcalendar-6.1.20/fullcalendar.min.js')`);
     if (vendor.leafletJs) lines.push(`  script(src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js' integrity='sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=' crossorigin='')`);
   }
