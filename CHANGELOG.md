@@ -5,6 +5,19 @@ All notable changes to the CoolAdmin Bootstrap 5 Admin Dashboard Template will b
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.1] - 2026-11-16
+
+### Changed
+
+- Update vendored Bootstrap 5.3.8 → 5.3.9 and Chart.js 4.5.1 → 4.6.1 (vendor filenames carry the new versions).
+- Update FullCalendar 7.1.2 → 7.1.5 (vendor directory is now `vendor/fullcalendar-7.1.5/`), Vite 8.3.8, Sass 1.108.2, concurrently 10.0.7 and Chokidar 5 → 6; refresh the lockfile.
+- Raise the contributor Node requirement to >=22.22 (Chokidar 6).
+
+### Validation
+
+- `npm run check` (build plus six regression tests) passes; `npm audit` reports 0 vulnerabilities; lockfile verified with npm 10.
+- All 35 pages checked at 1440 px and 390 px: HTTP 200, zero console errors, zero failed requests, no mobile horizontal overflow. Calendar views, modals, tabs, charts and the Leaflet map exercised. Screenshot diff against the previous release is under 1% on every page.
+
 ## [3.5.0] - 2026-10-13
 
 ### Changed

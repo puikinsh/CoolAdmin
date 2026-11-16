@@ -1,6 +1,6 @@
 {
   "name": "cooladmin",
-  "version": "3.5.0",
+  "version": "3.5.1",
   "description": "CoolAdmin — Bootstrap 5.3 admin dashboard template. 35 pages, vanilla JavaScript, Chart.js, FullCalendar 7, Leaflet, six accent themes, command palette, and a Pug + SCSS + Vite source pipeline.",
   "type": "module",
   "license": "MIT",
