@@ -53,15 +53,15 @@
     "check": "npm run build && npm test"
   },
   "devDependencies": {
-    "chokidar": "^5.0.0",
-    "concurrently": "^10.0.6",
-    "fullcalendar": "^7.1.2",
+    "chokidar": "^6.0.0",
+    "concurrently": "^10.0.7",
+    "fullcalendar": "^7.1.5",
     "pug": "^3.0.4",
-    "sass": "^1.105.1",
+    "sass": "^1.108.2",
     "terser": "^5.51.2",
-    "vite": "^8.3.4"
+    "vite": "^8.3.8"
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.22.0"
   }
 }

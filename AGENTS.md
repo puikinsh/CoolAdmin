@@ -8,7 +8,7 @@ SCSS sources live in `src/scss/`, with `theme.scss` and `app.scss` as entry poin
 
 ## Build, Test, and Development Commands
 
-- `npm ci`: install locked dependencies; use Node >=22.12.
+- `npm ci`: install locked dependencies; use Node >=22.22.
 - `npm run dev`: run Pug and Sass watchers alongside Vite at `http://localhost:3000`.
 - `npm run build`: regenerate minified FullCalendar bundles, HTML, and CSS.
 - `npm run build:pug` / `npm run build:sass`: rebuild templates or styles.
