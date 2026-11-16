@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://rsms.me/"/>
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
     <link href="vendor/fontawesome-7.3.1/css/all.min.css" rel="stylesheet" media="all"/>
-    <link href="vendor/bootstrap-5.3.8.min.css" rel="stylesheet" media="all"/>
+    <link href="vendor/bootstrap-5.3.9.min.css" rel="stylesheet" media="all"/>
     <link href="vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all"/>
     <link href="css/theme.css" rel="stylesheet" media="all"/>
     <link href="css/app.css" rel="stylesheet" media="all"/>
@@ -335,14 +335,14 @@ npx serve .</code></pre>
 
                                 <section class="docs-section" id="workflow">
                                     <h2>Contributor workflow</h2>
-                                    <p>Use Node &ge;22.12 to edit the Pug and SCSS sources. Built pages still run without Node.</p>
+                                    <p>Use Node &ge;22.22 to edit the Pug and SCSS sources. Built pages still run without Node.</p>
                                     <pre><button class="docs-copy-btn" type="button">Copy</button><code>npm ci
 npm run dev       # Pug + Sass watchers, Vite at localhost:3000
 npm run build     # minified calendar assets + HTML + CSS
 npm test          # six Node regression tests
 npm run check     # build and tests</code></pre>
                                     <p>Edit <code>src/pug/pages/</code>, shared templates in <code>src/pug/partials/</code>, and styles in <code>src/scss/</code>. Commit generated HTML/CSS with the source changes. Pug saves are debounced; unchanged pages are not rewritten.</p>
-                                    <p>v3.5.0 uses Vite 8.3.4, Sass 1.105.1, concurrently 10.0.6, Pug 3.0.4, Chokidar 5.0.0, and Terser 5.51.2. FullCalendar 7.1.2 runs on the calendar page; Chart.js 4.5.1 loads only on the five pages with chart canvases.</p>
+                                    <p>v3.5.1 uses Vite 8.3.8, Sass 1.108.2, concurrently 10.0.7, Pug 3.0.4, Chokidar 6.0.0, and Terser 5.51.2. FullCalendar 7.1.5 runs on the calendar page; Chart.js 4.6.1 loads only on the five pages with chart canvases.</p>
                                     <p>The calendar scripts shrink from 803 KB to 341 KB raw (165 KB to 96 KB gzip). Removing Chart.js avoids a 208 KB script request on 23 pages. Dashboard refresh releases old chart instances before replacing canvases. These are asset-size measurements, not page-speed scores.</p>
                                     <p>CI checks Node 22/24, local assets, chart loading, calendar versions, Pug builds/watchers, chart cleanup, and generated output consistency. See <a href="https://cooladmin.colorlib.com/docs/testing-workflow/">the testing guide</a> and <a href="https://cooladmin.colorlib.com/docs/changelog/">release notes</a>.</p>
                                 </section>
@@ -361,10 +361,10 @@ npm run check     # build and tests</code></pre>
 │   ├── main-vanilla.js       chart configs + UI behaviors + JS APIs
 │   └── modern-plugins.js     counters, lightbox, progress
 ├── vendor/                   third-party CSS/JS
-│   ├── bootstrap-5.3.8.bundle.min.js
+│   ├── bootstrap-5.3.9.bundle.min.js
 │   ├── fontawesome-7.3.1/
 │   ├── chartjs/
-│   └── fullcalendar-7.1.2/
+│   └── fullcalendar-7.1.5/
 ├── src/pug/                  page templates and shared partials
 ├── src/scss/                 theme and app style sources
 ├── test/                     Node regression tests
@@ -376,7 +376,7 @@ npm run check     # build and tests</code></pre>
                                         <li><code>css/font-face.css</code> &mdash; Poppins (legacy)</li>
                                         <li><code>https://rsms.me/inter/inter.css</code> &mdash; Inter (the modern font)</li>
                                         <li><code>vendor/fontawesome-7.3.1/css/all.min.css</code> &mdash; icons</li>
-                                        <li><code>vendor/bootstrap-5.3.8.min.css</code> &mdash; Bootstrap base</li>
+                                        <li><code>vendor/bootstrap-5.3.9.min.css</code> &mdash; Bootstrap base</li>
                                         <li><code>css/theme.css</code> &mdash; legacy theme</li>
                                         <li><code>css/app.css</code> &mdash; modern overlay (this is where almost everything lives)</li>
                                     </ol>
@@ -522,7 +522,7 @@ document.body.classList.add('theme-purple');</code></pre>
                                     <p>Inter loads from <code>rsms.me</code>; the map page also uses Leaflet CDN assets and external map tiles. Self-host those assets and provide an appropriate tile source if offline use is required. Forms, authentication, payments, and data persistence require your own backend.</p>
                                     <blockquote>
                                         <strong>Tip</strong>
-                                        <p>Strip unused vendor folders before deploy if you don&rsquo;t need them &mdash; for example, drop <code>fullcalendar-7.1.2</code> if you don&rsquo;t use the calendar page (removes the calendar scripts and styles).</p>
+                                        <p>Strip unused vendor folders before deploy if you don&rsquo;t need them &mdash; for example, drop <code>fullcalendar-7.1.5</code> if you don&rsquo;t use the calendar page (removes the calendar scripts and styles).</p>
                                     </blockquote>
                                 </section>
 
@@ -543,7 +543,7 @@ document.body.classList.add('theme-purple');</code></pre>
       </div>
     </div>
     <script src="js/vanilla-utils.js"></script>
-    <script src="vendor/bootstrap-5.3.8.bundle.min.js"></script>
+    <script src="vendor/bootstrap-5.3.9.bundle.min.js"></script>
     <script src="js/bootstrap5-init.js"></script>
     <script src="js/main-vanilla.js"></script>
     <script src="js/modern-plugins.js"></script><script>

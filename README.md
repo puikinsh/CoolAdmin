@@ -3,7 +3,7 @@
 ![CoolAdmin dashboard](screenshots/cooladmin-bootstrap-dashboard-2.png)
 
 [![Version](https://img.shields.io/badge/version-3.5.0-4272d7)](CHANGELOG.md)
-[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.8-7952b3)](https://getbootstrap.com/)
+[![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.9-7952b3)](https://getbootstrap.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.md)
 
 CoolAdmin is a free, MIT-licensed Bootstrap 5 dashboard template with **35 static pages**, **four dashboard layouts**, and **vanilla JavaScript**. Built HTML, CSS, and runtime libraries ship in the repository; end users need no Node toolchain. Contributors can edit shared Pug templates and SCSS sources.
@@ -42,7 +42,7 @@ Open `http://localhost:8000/index.html`. A local HTTP server avoids browser rest
 
 ## Contributor workflow
 
-Use **Node >=22.12** and npm. Install the lockfile without changing dependency resolution:
+Use **Node >=22.22** and npm. Install the lockfile without changing dependency resolution:
 
 ```bash
 npm ci
@@ -80,21 +80,21 @@ scripts/                      Build helpers
 
 ## Dependencies
 
-Stable npm releases verified on October 13, 2026:
+Stable npm releases verified on November 16, 2026:
 
 | Library/tool | Version | Location/use |
 | --- | --- | --- |
-| Bootstrap | 5.3.8 | Vendored CSS and bundled JS |
-| Chart.js | 4.5.1 | Vendored UMD bundle; five chart pages |
-| FullCalendar | 7.1.2 | Calendar only; npm source and minified vendor output |
+| Bootstrap | 5.3.9 | Vendored CSS and bundled JS |
+| Chart.js | 4.6.1 | Vendored UMD bundle; five chart pages |
+| FullCalendar | 7.1.5 | Calendar only; npm source and minified vendor output |
 | Font Awesome Free | 7.3.1 | Vendored CSS and WOFF2 fonts |
 | Hamburgers | 1.2.1 | Vendored CSS |
 | Leaflet | 1.9.4 | Map-only CDN imports with integrity hashes |
-| Chokidar | 5.0.0 | Pug source watching |
-| concurrently | 10.0.6 | Development process orchestration |
+| Chokidar | 6.0.0 | Pug source watching |
+| concurrently | 10.0.7 | Development process orchestration |
 | Pug | 3.0.4 | Template compilation |
-| Sass | 1.105.1 | SCSS compilation |
-| Vite | 8.3.4 | Development server |
+| Sass | 1.108.2 | SCSS compilation |
+| Vite | 8.3.8 | Development server |
 | Terser | 5.51.2 | Calendar script minification |
 
 When upgrading FullCalendar, rebuild its vendor files, update the versioned paths in `src/pug/pages/calendar.pug` and documentation, and remove the superseded vendor directory. Preserve license notices. Other vendored libraries are checked separately from `npm outdated`.

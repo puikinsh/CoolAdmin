@@ -1,14 +1,14 @@
 extends ../layouts/_default
 
 block variables
-  - var pageMeta = { "title": "Charts", "description": "Chart.js 4.5.1 visualizations: line, bar, doughnut, area, and combination charts." }
+  - var pageMeta = { "title": "Charts", "description": "Chart.js 4.6.1 visualizations: line, bar, doughnut, area, and combination charts." }
   - var activePage = 'chart.html'
 
 block content
   include ../partials/content/chart.html
 
 block vendor_scripts
-  script(src='vendor/chartjs/chart.umd.js-4.5.1.min.js')
+  script(src='vendor/chartjs/chart.umd.js-4.6.1.min.js')
 
 block extra_scripts
   include ../partials/content/chart.scripts.html
